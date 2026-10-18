@@ -3,9 +3,12 @@ package com.example.apipilot;
 import static org.hamcrest.Matchers.aMapWithSize;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.containsString;
+import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.hasKey;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.startsWith;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -49,6 +52,9 @@ class OpenApiDocumentationTests {
 				.andExpect(jsonPath("$.paths['/api/orders'].post.responses", hasKey("400")))
 				.andExpect(jsonPath("$.paths['/api/orders/{id}'].get.responses", hasKey("404")))
 				.andExpect(jsonPath("$.paths['/api/orders/{id}/status'].patch.responses", hasKey("409")))
+				.andExpect(jsonPath("$.paths['/api/orders/{id}'].get.responses", hasKey("400")))
+				.andExpect(jsonPath("$.paths['/api/users/{userId}/orders'].get.responses", hasKey("400")))
+				.andExpect(jsonPath("$.paths['/api/orders/{id}/status'].patch.responses", hasKey("400")))
 				.andExpect(jsonPath("$.paths['/api/orders/{id}'].get.responses['200'].content['application/json'].schema['$ref']",
 						is("#/components/schemas/Order")));
 	}
@@ -67,6 +73,16 @@ class OpenApiDocumentationTests {
 						containsInAnyOrder((Object[]) STATUSES)))
 				.andExpect(jsonPath("$.components.schemas.Order.required",
 						hasItems("id", "ownerUserId", "status", "total")));
+	}
+
+	@Test
+	void completedAtIsDocumentedAsNullableLocalDateTime() throws Exception {
+		mockMvc.perform(get("/v3/api-docs"))
+				.andExpect(jsonPath("$.components.schemas.Order.properties.completedAt.type",
+						containsInAnyOrder("string", "null")))
+				.andExpect(jsonPath("$.components.schemas.Order.properties.completedAt.format").doesNotExist())
+				.andExpect(jsonPath("$.components.schemas.Order.properties.completedAt.pattern", notNullValue()))
+				.andExpect(jsonPath("$.components.schemas.Order.required", not(hasItem("completedAt"))));
 	}
 
 	@Test

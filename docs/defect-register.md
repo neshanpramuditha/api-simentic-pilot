@@ -1,7 +1,7 @@
 # Preliminary defect register
 
 **Status:** Proposed. None of these defects has been injected into the API, and none of the detection expectations has been tested.
-**Baseline:** `docs/openapi-baseline.json`, exported from the clean API (OpenAPI 3.1.0, 4 operations).
+**Baseline:** `docs/openapi-baseline.json`, exported from the clean API (OpenAPI 3.1.0, 4 operations). Regenerated on 2026-10-18 after correcting baseline issues BL-01 to BL-03 (see the end of this document).
 **Date:** 2026-10-18
 
 ## How to read this register
@@ -110,7 +110,7 @@ Two facts about the baseline drive many of the Schemathesis hypotheses:
 - **Endpoint:** `PATCH /api/orders/{id}/status`
 - **Expected behaviour:** `DELIVERED → COMPLETED` sets `completedAt` to the completion time.
 - **Intentionally defective behaviour:** Status becomes `COMPLETED` but `completedAt` stays `null`.
-- **Schema-only:** H: Conditional — a strict validator would flag `null` against `type: string`, but see **BL-01**: it would flag the same `null` on every clean non-completed order, so the signal does not distinguish this defect.
+- **Schema-only:** H: Unlikely — since the BL-01 correction, `completedAt` is documented as `["string", "null"]`, so `null` is schema-valid on any status. (Against the original baseline, `null` was flagged on every clean non-completed order, so it never distinguished this defect either.)
 - **Postman (written test):** H: Likely — after the four-step flow to `COMPLETED`, assert `completedAt` is non-null.
 - **Schemathesis (standard checks):** H: Unlikely — reaching `COMPLETED` requires four chained `PATCH` calls on one order, which the baseline gives no links for.
 - **Proposed semantic rule:** Same as CF-01: `completedAt != null ⇔ status == COMPLETED`.
@@ -237,22 +237,40 @@ The pilot has no authentication, so "ownership" here means consistency of `owner
 
 ---
 
-## Known baseline issues (found during baseline export, not injected)
+## Baseline issues (found in the clean API's documentation, not injected)
 
-These are properties of the clean API's documentation that may cause tools to report problems against the **clean** API. They should be measured on the clean baseline before any defect is injected, so they are not mistaken for injected-defect detections.
+These were mismatches between the clean API and its generated contract. They were investigated against actual serialized responses on 2026-10-18. Every correction is documentation-only (OpenAPI annotations); no business logic, endpoint behaviour, serialization or database behaviour was changed.
 
-| ID | Issue | Evidence | Possible effect (H) |
+| ID | Issue | Classification | Treatment |
 |---|---|---|---|
-| BL-01 | `Order.completedAt` is documented as `type: string` only, but the clean API returns `null` for every order that is not `COMPLETED`. | `openapi-baseline.json` → `components.schemas.Order.properties.completedAt`; clean responses observed earlier with `"completedAt": null`. | Strict response-schema validation (schema-only, Schemathesis `response_schema_conformance`) may flag every clean `Order` response. |
-| BL-02 | `completedAt` is documented as `format: date-time` (RFC 3339, which requires a timezone offset), but the clean API returns a local timestamp without offset, e.g. `2026-10-18T20:11:35.9973185`. | `entity/Order.java` uses `LocalDateTime`. | Flagged only by validators that assert `format`; many do not by default. |
-| BL-03 | `GET /api/orders/{id}` and `GET /api/users/{userId}/orders` do not document `400`, but a non-integer path value (e.g. `/api/orders/abc`) returns `400` from Spring. | Response lists in `openapi-baseline.json`; observed on the clean API on 2026-10-18: `GET /api/orders/abc` → `400`, `GET /api/users/abc/orders` → `400`. | Schemathesis `status_code_conformance` may flag negative-mode requests against the clean API. |
-| BL-04 | Error responses (`400`, `404`, `409`) are documented without a body schema. | Response objects have `description` only. | Error bodies cannot be schema-validated; tools may skip or flag them depending on how they treat undocumented content. |
+| BL-01 | `Order.completedAt` was documented as `type: string`, but the clean API returns `"completedAt": null` for every order that is not `COMPLETED`. | Genuine contract mismatch | **Fixed.** Now `type: ["string", "null"]` (not in `required`; Jackson always writes the property). |
+| BL-02 | `completedAt` was documented as `format: date-time` (RFC 3339, which requires a UTC offset). The API actually sends `LocalDateTime` as ISO-8601 local date-time in server time with no offset, and a variable number of fractional digits, e.g. `2026-10-18T21:03:39.154171` (server zone UTC+05:30). | Genuine contract mismatch | **Fixed in the schema, not the serialization.** `format` removed; replaced by `pattern: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,9})?$` and a description stating server local time without offset. Changing to `OffsetDateTime`/`Instant` was rejected for now: it would change the wire format (adds an offset), the meaning (wall-clock → absolute instant) and probably the column type, i.e. API behaviour. |
+| BL-03 | `GET /api/orders/{id}` and `GET /api/users/{userId}/orders` did not document `400`, but a non-integer or out-of-range path value (`abc`, `99999999999999999999`) returns `400`. | Genuine contract mismatch | **Fixed.** `400` documented on both operations; the `PATCH` operation's existing `400` description now also names the invalid-ID case. |
+| BL-04 | Error responses (`400`, `404`, `409`) have no body schema. Observed body for `Accept: application/json` or `*/*`: `{"timestamp": "…Z", "status": <int>, "error": "<reason phrase>", "path": "<request path>"}`, identical in shape for all three codes. For `Accept: text/html` the body is empty `text/html`. | Optional documentation improvement (an undescribed body is incomplete, not wrong) | **Deferred.** The body is Spring Boot's default error format: it varies with the `Accept` header and with `server.error.*` properties, and is likely to be replaced if a `ProblemDetail` handler is added. Adding a docs-only class now would bake a transient format into the baseline. |
 
-Fixing BL-01 to BL-03 would change the baseline. If they are fixed, re-export the baseline (see `docs/README.md`) before injecting defects.
+### Measured effect (schema-only validation of the clean API)
+
+16 real responses were captured from the clean API (fresh database, `Accept: application/json`) and validated in isolation with Ajv 8.17.1 (JSON Schema 2020-12, `ajv-formats` 3.0.1, format assertion on): status-code documented, and body valid against the documented schema where one exists. The set was 2 × `POST` 201, 2 × `GET /orders/{id}` 200, 5 × `PATCH` 200 (through to `COMPLETED` and `CANCELLED`), 2 × `GET /users/{userId}/orders` 200 (one item, empty), 404, 2 × 400 for non-integer path IDs, 400 for `total: 0`, 409 for `COMPLETED → CANCELLED`.
+
+| Contract | Schema-only failures on the clean API | Causes |
+|---|---|---|
+| Original baseline (commit `3b6f459`) | **12 of 16** | `completedAt must be string` (7, BL-01), `completedAt must match format "date-time"` (3, BL-02), `status 400 not documented` (2, BL-03) |
+| Corrected baseline | **0 of 16** | — (5 error responses have no body schema, so only their status codes were checked; BL-04) |
+
+### Remaining known limitations (not fixed)
+
+| ID | Limitation | Status |
+|---|---|---|
+| BL-04 | Error bodies are not schema-checked (see above). | Deferred |
+| BL-05 | Inconsistent time semantics: error `timestamp` is UTC with `Z`; `completedAt` is server local time without offset. A `completedAt` value cannot be converted to an instant without knowing the server's time zone. | Recorded; changing either would alter API behaviour |
+| BL-06 | Other framework-generated status codes are not documented, e.g. `415` (wrong `Content-Type`), `406` (unsatisfiable `Accept`), `405` (wrong method), `500`. | Not measured; may appear as `status_code_conformance` findings if a tool sends such requests (H) |
+| BL-07 | Authentication is not defined, so Redocly's recommended ruleset reports 4 `security-defined` errors; also `info-license` and `no-server-example.com` (localhost) warnings. | By design for the pilot; structural validation passes |
+
+Re-export the baseline (see `docs/README.md`) after any further change to the contract, and before injecting defects.
 
 ## Existing JUnit suite versus the proposed defects (H)
 
-The current suite (`OrderControllerTests`) already asserts several of these behaviours, so injecting the corresponding defect is expected to make `mvnw test` fail. Plan for this (for example, inject defects behind a switch so the clean build stays green).
+The current suite (`OrderControllerTests`, and for CF-02 also `ContractConformanceTests`) already asserts several of these behaviours, so injecting the corresponding defect is expected to make `mvnw test` fail. Plan for this (for example, inject defects behind a switch so the clean build stays green).
 
 | Expected to fail the current suite (H) | Not covered by the current suite (H) |
 |---|---|

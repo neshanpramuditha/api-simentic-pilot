@@ -46,6 +46,7 @@ public class OrderController {
 
 	@Operation(summary = "Get an order by ID")
 	@ApiResponse(responseCode = "200", description = "Order found")
+	@ApiResponse(responseCode = "400", description = "ID is not a valid 64-bit integer", content = @Content)
 	@ApiResponse(responseCode = "404", description = "No order with this ID", content = @Content)
 	@GetMapping("/orders/{id}")
 	public Order getOrder(@Parameter(description = "Order ID", example = "1") @PathVariable Long id) {
@@ -55,6 +56,7 @@ public class OrderController {
 	@Operation(summary = "List a user's orders",
 			description = "Returns every order owned by the user; an empty list if the user has none.")
 	@ApiResponse(responseCode = "200", description = "Orders owned by the user")
+	@ApiResponse(responseCode = "400", description = "User ID is not a valid 64-bit integer", content = @Content)
 	@GetMapping("/users/{userId}/orders")
 	public List<Order> getOrdersByUser(@Parameter(description = "Owner user ID", example = "7") @PathVariable Long userId) {
 		return orderService.getOrdersByUser(userId);
@@ -65,7 +67,8 @@ public class OrderController {
 					+ "SHIPPED -> DELIVERED; DELIVERED -> COMPLETED. COMPLETED and CANCELLED are final. "
 					+ "Moving to COMPLETED sets completedAt.")
 	@ApiResponse(responseCode = "200", description = "Status updated")
-	@ApiResponse(responseCode = "400", description = "Request body failed validation", content = @Content)
+	@ApiResponse(responseCode = "400", description = "ID is not a valid 64-bit integer, or request body failed validation",
+			content = @Content)
 	@ApiResponse(responseCode = "404", description = "No order with this ID", content = @Content)
 	@ApiResponse(responseCode = "409", description = "Transition not allowed from the current status", content = @Content)
 	@PatchMapping("/orders/{id}/status")

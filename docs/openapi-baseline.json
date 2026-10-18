@@ -25,10 +25,10 @@
         "description" : "An order",
         "properties" : {
           "completedAt" : {
-            "description" : "When the order reached COMPLETED; null until then",
-            "example" : "2026-10-18T20:11:35",
-            "format" : "date-time",
-            "type" : "string"
+            "description" : "When the order reached COMPLETED, in server local time without a UTC offset; null until then",
+            "example" : "2026-10-18T20:11:35.154171",
+            "pattern" : "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?$",
+            "type" : [ "string", "null" ]
           },
           "id" : {
             "description" : "Order ID, assigned by the server",
@@ -138,6 +138,9 @@
             },
             "description" : "Order found"
           },
+          "400" : {
+            "description" : "ID is not a valid 64-bit integer"
+          },
           "404" : {
             "description" : "No order with this ID"
           }
@@ -183,7 +186,7 @@
             "description" : "Status updated"
           },
           "400" : {
-            "description" : "Request body failed validation"
+            "description" : "ID is not a valid 64-bit integer, or request body failed validation"
           },
           "404" : {
             "description" : "No order with this ID"
@@ -224,6 +227,9 @@
               }
             },
             "description" : "Orders owned by the user"
+          },
+          "400" : {
+            "description" : "User ID is not a valid 64-bit integer"
           }
         },
         "summary" : "List a user's orders",

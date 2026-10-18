@@ -43,7 +43,11 @@ public class Order {
 	@Column(nullable = false, precision = 19, scale = 2)
 	private BigDecimal total;
 
-	@Schema(description = "When the order reached COMPLETED; null until then", example = "2026-10-18T20:11:35")
+	// Documented as it is actually serialized: ISO-8601 local date-time in server time, with no UTC offset,
+	// so it does not satisfy OpenAPI "format: date-time" (RFC 3339, offset required).
+	@Schema(description = "When the order reached COMPLETED, in server local time without a UTC offset; null until then",
+			example = "2026-10-18T20:11:35.154171", implementation = String.class, types = { "string", "null" },
+			pattern = "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,9})?$")
 	private LocalDateTime completedAt;
 
 	protected Order() {
