@@ -1,0 +1,242 @@
+{
+  "components" : {
+    "schemas" : {
+      "CreateOrderRequest" : {
+        "description" : "Request body for creating an order",
+        "properties" : {
+          "ownerUserId" : {
+            "description" : "ID of the user who owns the order",
+            "example" : 7,
+            "exclusiveMinimum" : 0,
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "total" : {
+            "description" : "Order total; greater than zero, at most 2 decimal places",
+            "example" : 49.99,
+            "exclusiveMinimum" : 0.00,
+            "type" : "number"
+          }
+        },
+        "required" : [ "ownerUserId", "total" ],
+        "type" : "object"
+      },
+      "Order" : {
+        "description" : "An order",
+        "properties" : {
+          "completedAt" : {
+            "description" : "When the order reached COMPLETED; null until then",
+            "example" : "2026-10-18T20:11:35",
+            "format" : "date-time",
+            "type" : "string"
+          },
+          "id" : {
+            "description" : "Order ID, assigned by the server",
+            "example" : 1,
+            "format" : "int64",
+            "readOnly" : true,
+            "type" : "integer"
+          },
+          "ownerUserId" : {
+            "description" : "ID of the user who owns the order",
+            "example" : 7,
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "status" : {
+            "description" : "Current lifecycle status",
+            "enum" : [ "CREATED", "PAID", "SHIPPED", "DELIVERED", "COMPLETED", "CANCELLED" ],
+            "example" : "CREATED",
+            "type" : "string"
+          },
+          "total" : {
+            "description" : "Order total",
+            "example" : 49.99,
+            "type" : "number"
+          }
+        },
+        "required" : [ "id", "ownerUserId", "status", "total" ],
+        "type" : "object"
+      },
+      "UpdateOrderStatusRequest" : {
+        "description" : "Request body for changing an order's status",
+        "properties" : {
+          "status" : {
+            "description" : "Target status; must be an allowed transition from the current status",
+            "enum" : [ "CREATED", "PAID", "SHIPPED", "DELIVERED", "COMPLETED", "CANCELLED" ],
+            "example" : "PAID",
+            "type" : "string"
+          }
+        },
+        "required" : [ "status" ],
+        "type" : "object"
+      }
+    }
+  },
+  "info" : {
+    "description" : "Feasibility pilot for the API Contract-Drift and Semantic-Response Validation Framework. Manages orders and enforces a fixed order-status lifecycle.",
+    "title" : "Order Management API",
+    "version" : "0.0.1"
+  },
+  "openapi" : "3.1.0",
+  "paths" : {
+    "/api/orders" : {
+      "post" : {
+        "description" : "Creates a new order with status CREATED.",
+        "operationId" : "createOrder",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CreateOrderRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Order"
+                }
+              }
+            },
+            "description" : "Order created"
+          },
+          "400" : {
+            "description" : "Request body failed validation"
+          }
+        },
+        "summary" : "Create an order",
+        "tags" : [ "Orders" ]
+      }
+    },
+    "/api/orders/{id}" : {
+      "get" : {
+        "operationId" : "getOrder",
+        "parameters" : [ {
+          "description" : "Order ID",
+          "example" : 1,
+          "in" : "path",
+          "name" : "id",
+          "required" : true,
+          "schema" : {
+            "format" : "int64",
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Order"
+                }
+              }
+            },
+            "description" : "Order found"
+          },
+          "404" : {
+            "description" : "No order with this ID"
+          }
+        },
+        "summary" : "Get an order by ID",
+        "tags" : [ "Orders" ]
+      }
+    },
+    "/api/orders/{id}/status" : {
+      "patch" : {
+        "description" : "Allowed transitions: CREATED -> PAID | CANCELLED; PAID -> SHIPPED | CANCELLED; SHIPPED -> DELIVERED; DELIVERED -> COMPLETED. COMPLETED and CANCELLED are final. Moving to COMPLETED sets completedAt.",
+        "operationId" : "updateStatus",
+        "parameters" : [ {
+          "description" : "Order ID",
+          "example" : 1,
+          "in" : "path",
+          "name" : "id",
+          "required" : true,
+          "schema" : {
+            "format" : "int64",
+            "type" : "integer"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/UpdateOrderStatusRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Order"
+                }
+              }
+            },
+            "description" : "Status updated"
+          },
+          "400" : {
+            "description" : "Request body failed validation"
+          },
+          "404" : {
+            "description" : "No order with this ID"
+          },
+          "409" : {
+            "description" : "Transition not allowed from the current status"
+          }
+        },
+        "summary" : "Change an order's status",
+        "tags" : [ "Orders" ]
+      }
+    },
+    "/api/users/{userId}/orders" : {
+      "get" : {
+        "description" : "Returns every order owned by the user; an empty list if the user has none.",
+        "operationId" : "getOrdersByUser",
+        "parameters" : [ {
+          "description" : "Owner user ID",
+          "example" : 7,
+          "in" : "path",
+          "name" : "userId",
+          "required" : true,
+          "schema" : {
+            "format" : "int64",
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "items" : {
+                    "$ref" : "#/components/schemas/Order"
+                  },
+                  "type" : "array"
+                }
+              }
+            },
+            "description" : "Orders owned by the user"
+          }
+        },
+        "summary" : "List a user's orders",
+        "tags" : [ "Orders" ]
+      }
+    }
+  },
+  "servers" : [ {
+    "description" : "Generated server url",
+    "url" : "http://localhost:8080"
+  } ],
+  "tags" : [ {
+    "description" : "Create orders, look them up, and move them through the status lifecycle",
+    "name" : "Orders"
+  } ]
+}
