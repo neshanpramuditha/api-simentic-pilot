@@ -1,0 +1,36 @@
+﻿No authorization data found. Please use the `postman login` command.
+Refer:https://learning.postman.com/docs/postman-cli/postman-cli-options/#postman-login
+
+Running your collection...
+postman
+
+SV-01 total type
+
+Root Create order
+
+  POST http://localhost:8080/api/orders [201 Created, 237 B, 195 ms]
+  Pass  status is 201
+  Pass  total is a JSON number
+  Pass  body matches the baseline Order schema
+
+------------------------------------------------------------------------
+|                         |             executed |              failed |
+--------------------------+----------------------+----------------------
+|              iterations |                    1 |                   0 |
+--------------------------+----------------------+----------------------
+|                requests |                    1 |                   0 |
+--------------------------+----------------------+----------------------
+|            test-scripts |                    1 |                   0 |
+--------------------------+----------------------+----------------------
+|      prerequest-scripts |                    0 |                   0 |
+--------------------------+----------------------+----------------------
+|              assertions |                    3 |                   0 |
+------------------------------------------------------------------------
+| total run duration: 312 ms                                           |
+------------------------------------------------------------------------
+| total data received: 76 B (approx)                                   |
+------------------------------------------------------------------------
+| average response time: 195 ms [min: 195 ms, max: 195 ms, s.d.: 0 us] |
+------------------------------------------------------------------------
+Postman credentials are required for publishing run details to Postman cloud.
+Please specify it by using the `postman login` command

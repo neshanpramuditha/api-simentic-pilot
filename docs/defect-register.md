@@ -1,6 +1,6 @@
 # Preliminary defect register
 
-**Status:** Proposed. None of these defects has been injected into the API, and none of the detection expectations has been tested.
+**Status:** Proposed. **SV-01** has been implemented behind a disabled-by-default switch and measured (results recorded under SV-01). The other 16 defects have not been injected, and their detection expectations remain untested hypotheses.
 **Baseline:** `docs/openapi-baseline.json`, exported from the clean API (OpenAPI 3.1.0, 4 operations). Regenerated on 2026-10-18 after correcting baseline issues BL-01 to BL-03 (see the end of this document).
 **Date:** 2026-10-18
 
@@ -22,10 +22,12 @@ The three detection approaches are defined as:
 | **Postman (written test)** | A Postman collection whose test scripts were written specifically to check the expected behaviour, including multi-request flows where needed. This is an upper bound: it assumes the tester anticipated the defect. |
 | **Schemathesis (standard checks)** | Schemathesis run against `openapi-baseline.json` with its built-in checks only (e.g. `not_a_server_error`, `status_code_conformance`, `content_type_conformance`, `response_schema_conformance`, `negative_data_rejection`, `positive_data_acceptance`, `use_after_free`, `ensure_resource_availability`), no custom checks, no hand-written links, and an empty database at start. The exact version, check list and mode must be recorded when the experiment is run. |
 
-Two facts about the baseline drive many of the Schemathesis hypotheses:
+Two facts about the baseline drove many of the Schemathesis hypotheses below, which were written before any Schemathesis run:
 
-- The baseline contains **no OpenAPI `links`** and `POST /api/orders` returns **no `Location` header**, so Schemathesis has no declared way to chain "create an order, then read or update it". Requests with generated IDs against an empty database will mostly receive `404`.
+- The baseline contains **no OpenAPI `links`** and `POST /api/orders` returns **no `Location` header**, so it was assumed that Schemathesis has no declared way to chain "create an order, then read or update it", and that requests with generated IDs against an empty database would mostly receive `404`.
 - `GET /api/users/{userId}/orders` returns `[]` (schema-valid) for any user with no orders.
+
+> **Observed on the clean API (2026-10-18, Schemathesis 4.29.4, configuration in `docs/experiments/schemathesis/README.md`):** the first assumption did not hold. Schemathesis inferred 9 links by itself and covered 5; `GET /api/orders/{id}` returned 72 existing orders (`CREATED`, `PAID`, `CANCELLED`) and `GET /api/users/{userId}/orders` returned 55 `200` responses. No order reached `SHIPPED`, `DELIVERED` or `COMPLETED` in that configuration. The individual Schemathesis hypotheses below have **not** been revised or tested yet; those that rely on "no links" (SV-02, SV-03, DB-03 and others) should be read with this observation in mind and confirmed per defect.
 
 ## Summary
 
@@ -62,6 +64,7 @@ Two facts about the baseline drive many of the Schemathesis hypotheses:
 - **Postman (written test):** H: Likely — a JSON-schema assertion or `typeof total === "number"` check fails.
 - **Schemathesis (standard checks):** H: Likely — Schemathesis generates schema-valid `POST` bodies that reach `201`, and `response_schema_conformance` validates the body.
 - **Proposed semantic rule:** Not applicable (pure schema defect).
+- **Measured (2026-10-18, `docs/experiments/sv-01/results.md`):** implemented behind `pilot.defects.sv01-total-as-string.enabled` (default off). Schema-only: **detected** (2 of 16 responses fail, `/total must be number`). Schemathesis 4.29.4: **detected** (new unique failure `"49.99" is not of type "number"`, `response_schema_conformance`; SB-01 to SB-04 also present, as in clean mode). Postman CLI 1.74.0: **detected** (2 of 3 assertions fail; first attempt had a test execution error, see results). All three hypotheses confirmed.
 
 ### SV-02 — required `status` omitted
 - **Category:** Schema violation
@@ -265,6 +268,8 @@ These were mismatches between the clean API and its generated contract. They wer
 | BL-05 | Inconsistent time semantics: error `timestamp` is UTC with `Z`; `completedAt` is server local time without offset. A `completedAt` value cannot be converted to an instant without knowing the server's time zone. | Recorded; changing either would alter API behaviour |
 | BL-06 | Other framework-generated status codes are not documented, e.g. `415` (wrong `Content-Type`), `406` (unsatisfiable `Accept`), `405` (wrong method), `500`. | Not measured; may appear as `status_code_conformance` findings if a tool sends such requests (H) |
 | BL-07 | Authentication is not defined, so Redocly's recommended ruleset reports 4 `security-defined` errors; also `info-license` and `no-server-example.com` (localhost) warnings. | By design for the pilot; structural validation passes |
+| BL-08 | Any request with `Content-Type: multipart/form-data` and no boundary returns `500` (Tomcat `FileUploadException` not mapped to 4xx), on all four operations. | Observed (Schemathesis SB-01 to SB-03, reproduced manually). Actual API defect, not injected; fixing it changes behaviour, so left as is |
+| BL-09 | `CreateOrderRequest.total` is limited by `@Digits(integer = 17, fraction = 2)`, but the baseline expresses this only in prose, so schema-valid values such as `0.001` and `5e-324` are rejected with `400`. | Observed (Schemathesis SB-04, reproduced manually). Specification issue; not fixed yet |
 
 Re-export the baseline (see `docs/README.md`) after any further change to the contract, and before injecting defects.
 

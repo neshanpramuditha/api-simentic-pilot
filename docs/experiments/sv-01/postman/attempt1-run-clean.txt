@@ -1,0 +1,49 @@
+﻿No authorization data found. Please use the `postman login` command.
+Refer:https://learning.postman.com/docs/postman-cli/postman-cli-options/#postman-login
+
+Running your collection...
+postman
+
+SV-01 total type
+
+Root Create order
+
+  POST http://localhost:8080/api/orders [201 Created, 237 B, 202 ms]
+  Pass  status is 201
+  Pass  total is a JSON number
+  1. body matches the baseline Order schema
+
+------------------------------------------------------------------------
+|                         |             executed |              failed |
+--------------------------+----------------------+----------------------
+|              iterations |                    1 |                   0 |
+--------------------------+----------------------+----------------------
+|                requests |                    1 |                   0 |
+--------------------------+----------------------+----------------------
+|            test-scripts |                    1 |                   0 |
+--------------------------+----------------------+----------------------
+|      prerequest-scripts |                    0 |                   0 |
+--------------------------+----------------------+----------------------
+|              assertions |                    3 |                   1 |
+------------------------------------------------------------------------
+| total run duration: 329 ms                                           |
+------------------------------------------------------------------------
+| total data received: 76 B (approx)                                   |
+------------------------------------------------------------------------
+| average response time: 202 ms [min: 202 ms, max: 202 ms, s.d.: 0 us] |
+------------------------------------------------------------------------
+
+  #  failure  detail                                                             
+                                                                                 
+ 1.  Error    body matches the baseline Order schema                             
+              unknown format "int64" is used in schema at path "#/properties/id" 
+              at assertion:2 in test-script                                      
+              inside "Create order"                                              
+Postman credentials are required for publishing run details to Postman cloud.
+Please specify it by using the `postman login` command
+
+A new version of Postman CLI is available (v1.75.0). Refer https://go.pstmn.io/cli-release-notes for changelogs.
+To update your Postman CLI, run:
+
+postman update
+

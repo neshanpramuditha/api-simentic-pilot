@@ -3,7 +3,8 @@
 | File | Purpose |
 |---|---|
 | `openapi-baseline.json` | OpenAPI 3.1 document generated from the clean (defect-free) API. Reference contract for drift and validation experiments. |
-| `defect-register.md` | Preliminary register of defects planned for injection, with detection hypotheses. |
+| `defect-register.md` | Preliminary register of defects planned for injection, with detection hypotheses and measured results. |
+| `experiments/` | Reproducible experiment scripts and raw evidence: `start-api.ps1` / `stop-api.ps1`, `schema-only/`, `schemathesis/` (configuration and clean-API baseline), and one folder per injected defect (`sv-01/`, …) with design, results and tool output. |
 
 ## Regenerating the baseline
 

@@ -1,0 +1,49 @@
+﻿No authorization data found. Please use the `postman login` command.
+Refer:https://learning.postman.com/docs/postman-cli/postman-cli-options/#postman-login
+
+Running your collection...
+postman
+
+SV-01 total type
+
+Root Create order
+
+  POST http://localhost:8080/api/orders [201 Created, 239 B, 226 ms]
+  Pass  status is 201
+  1. total is a JSON number
+  2. body matches the baseline Order schema
+
+------------------------------------------------------------------------
+|                         |             executed |              failed |
+--------------------------+----------------------+----------------------
+|              iterations |                    1 |                   0 |
+--------------------------+----------------------+----------------------
+|                requests |                    1 |                   0 |
+--------------------------+----------------------+----------------------
+|            test-scripts |                    1 |                   0 |
+--------------------------+----------------------+----------------------
+|      prerequest-scripts |                    0 |                   0 |
+--------------------------+----------------------+----------------------
+|              assertions |                    3 |                   2 |
+------------------------------------------------------------------------
+| total run duration: 364 ms                                           |
+------------------------------------------------------------------------
+| total data received: 78 B (approx)                                   |
+------------------------------------------------------------------------
+| average response time: 226 ms [min: 226 ms, max: 226 ms, s.d.: 0 us] |
+------------------------------------------------------------------------
+
+  #  failure         detail                                                       
+                                                                                  
+ 1.  AssertionError  total is a JSON number                                       
+                     expected 'string' to deeply equal 'number'                   
+                     at assertion:1 in test-script                                
+                     inside "Create order"                                        
+                                                                                  
+ 2.  AssertionError  body matches the baseline Order schema                       
+                     expected data to satisfy schema but found following errors:  
+                     data.total should be number                                  
+                     at assertion:2 in test-script                                
+                     inside "Create order"                                        
+Postman credentials are required for publishing run details to Postman cloud.
+Please specify it by using the `postman login` command
