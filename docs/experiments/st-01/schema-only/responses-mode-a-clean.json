@@ -1,0 +1,217 @@
+[
+  {
+    "method": "POST",
+    "template": "/api/orders",
+    "url": "/api/orders",
+    "status": 201,
+    "contentType": "application/json",
+    "body": {
+      "ownerUserId": 7,
+      "total": 49.99,
+      "completedAt": null,
+      "id": 1,
+      "status": "CREATED"
+    }
+  },
+  {
+    "method": "POST",
+    "template": "/api/orders",
+    "url": "/api/orders",
+    "status": 201,
+    "contentType": "application/json",
+    "body": {
+      "ownerUserId": 8,
+      "total": 10,
+      "completedAt": null,
+      "id": 2,
+      "status": "CREATED"
+    }
+  },
+  {
+    "method": "GET",
+    "template": "/api/orders/{id}",
+    "url": "/api/orders/1",
+    "status": 200,
+    "contentType": "application/json",
+    "body": {
+      "ownerUserId": 7,
+      "total": 49.99,
+      "completedAt": null,
+      "id": 1,
+      "status": "CREATED"
+    }
+  },
+  {
+    "method": "PATCH",
+    "template": "/api/orders/{id}/status",
+    "url": "/api/orders/1/status",
+    "status": 200,
+    "contentType": "application/json",
+    "body": {
+      "ownerUserId": 7,
+      "total": 49.99,
+      "completedAt": null,
+      "id": 1,
+      "status": "PAID"
+    }
+  },
+  {
+    "method": "PATCH",
+    "template": "/api/orders/{id}/status",
+    "url": "/api/orders/1/status",
+    "status": 200,
+    "contentType": "application/json",
+    "body": {
+      "ownerUserId": 7,
+      "total": 49.99,
+      "completedAt": null,
+      "id": 1,
+      "status": "SHIPPED"
+    }
+  },
+  {
+    "method": "PATCH",
+    "template": "/api/orders/{id}/status",
+    "url": "/api/orders/1/status",
+    "status": 200,
+    "contentType": "application/json",
+    "body": {
+      "ownerUserId": 7,
+      "total": 49.99,
+      "completedAt": null,
+      "id": 1,
+      "status": "DELIVERED"
+    }
+  },
+  {
+    "method": "PATCH",
+    "template": "/api/orders/{id}/status",
+    "url": "/api/orders/1/status",
+    "status": 200,
+    "contentType": "application/json",
+    "body": {
+      "ownerUserId": 7,
+      "total": 49.99,
+      "completedAt": "2026-10-19T08:28:52.4850296",
+      "id": 1,
+      "status": "COMPLETED"
+    }
+  },
+  {
+    "method": "GET",
+    "template": "/api/orders/{id}",
+    "url": "/api/orders/1",
+    "status": 200,
+    "contentType": "application/json",
+    "body": {
+      "ownerUserId": 7,
+      "total": 49.99,
+      "completedAt": "2026-10-19T08:28:52.48503",
+      "id": 1,
+      "status": "COMPLETED"
+    }
+  },
+  {
+    "method": "PATCH",
+    "template": "/api/orders/{id}/status",
+    "url": "/api/orders/2/status",
+    "status": 200,
+    "contentType": "application/json",
+    "body": {
+      "ownerUserId": 8,
+      "total": 10,
+      "completedAt": null,
+      "id": 2,
+      "status": "CANCELLED"
+    }
+  },
+  {
+    "method": "GET",
+    "template": "/api/users/{userId}/orders",
+    "url": "/api/users/7/orders",
+    "status": 200,
+    "contentType": "application/json",
+    "body": [
+      {
+        "ownerUserId": 7,
+        "total": 49.99,
+        "completedAt": "2026-10-19T08:28:52.48503",
+        "id": 1,
+        "status": "COMPLETED"
+      }
+    ]
+  },
+  {
+    "method": "GET",
+    "template": "/api/users/{userId}/orders",
+    "url": "/api/users/99/orders",
+    "status": 200,
+    "contentType": "application/json",
+    "body": []
+  },
+  {
+    "method": "GET",
+    "template": "/api/orders/{id}",
+    "url": "/api/orders/999",
+    "status": 404,
+    "contentType": "application/json",
+    "body": {
+      "timestamp": "2026-10-19T02:58:52.802Z",
+      "status": 404,
+      "error": "Not Found",
+      "path": "/api/orders/999"
+    }
+  },
+  {
+    "method": "GET",
+    "template": "/api/orders/{id}",
+    "url": "/api/orders/abc",
+    "status": 400,
+    "contentType": "application/json",
+    "body": {
+      "timestamp": "2026-10-19T02:58:52.814Z",
+      "status": 400,
+      "error": "Bad Request",
+      "path": "/api/orders/abc"
+    }
+  },
+  {
+    "method": "GET",
+    "template": "/api/users/{userId}/orders",
+    "url": "/api/users/abc/orders",
+    "status": 400,
+    "contentType": "application/json",
+    "body": {
+      "timestamp": "2026-10-19T02:58:52.819Z",
+      "status": 400,
+      "error": "Bad Request",
+      "path": "/api/users/abc/orders"
+    }
+  },
+  {
+    "method": "POST",
+    "template": "/api/orders",
+    "url": "/api/orders",
+    "status": 400,
+    "contentType": "application/json",
+    "body": {
+      "timestamp": "2026-10-19T02:58:52.852Z",
+      "status": 400,
+      "error": "Bad Request",
+      "path": "/api/orders"
+    }
+  },
+  {
+    "method": "PATCH",
+    "template": "/api/orders/{id}/status",
+    "url": "/api/orders/1/status",
+    "status": 409,
+    "contentType": "application/json",
+    "body": {
+      "timestamp": "2026-10-19T02:58:52.859Z",
+      "status": 409,
+      "error": "Conflict",
+      "path": "/api/orders/1/status"
+    }
+  }
+]

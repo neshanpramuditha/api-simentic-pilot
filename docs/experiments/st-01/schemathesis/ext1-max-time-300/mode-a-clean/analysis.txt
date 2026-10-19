@@ -1,0 +1,50 @@
+﻿HAR entries: 15316
+  DELETE /api/orders                   total=   1  405:1
+  DELETE /api/orders/{id}              total=   1  405:1
+  DELETE /api/orders/{id}/status       total=   1  405:1
+  DELETE /api/users/{userId}/orders    total=   1  405:1
+  GET /api/orders                      total=   1  405:1
+  GET /api/orders/{id}                 total=2613  200:2472 400:43 404:97 500:1
+  GET /api/orders/{id}/status          total=   1  405:1
+  GET /api/users/{userId}/orders       total=1690  200:1641 400:48 500:1
+  OPTIONS /api/orders                  total=   1  200:1
+  OPTIONS /api/orders/{id}             total=   1  200:1
+  OPTIONS /api/orders/{id}/status      total=   1  200:1
+  OPTIONS /api/users/{userId}/orders   total=   1  200:1
+  PATCH /api/orders                    total=   1  405:1
+  PATCH /api/orders/{id}               total=   1  405:1
+  PATCH /api/orders/{id}/status        total=2935  200:210 400:184 404:63 409:2476 415:1 500:1
+  PATCH /api/users/{userId}/orders     total=   1  405:1
+  POST /api/orders                     total=8050  201:988 400:7062
+  POST /api/orders/{id}                total=   1  405:1
+  POST /api/orders/{id}/status         total=   1  405:1
+  POST /api/users/{userId}/orders      total=   1  405:1
+  PUT /api/orders                      total=   1  405:1
+  PUT /api/orders/{id}                 total=   1  405:1
+  PUT /api/orders/{id}/status          total=   1  405:1
+  PUT /api/users/{userId}/orders       total=   1  405:1
+  QUERY /api/orders                    total=   1  405:1
+  QUERY /api/orders/{id}               total=   1  405:1
+  QUERY /api/orders/{id}/status        total=   1  405:1
+  QUERY /api/users/{userId}/orders     total=   1  405:1
+  TRACE /api/orders                    total=   1  405:1
+  TRACE /api/orders/{id}               total=   1  405:1
+  TRACE /api/orders/{id}/status        total=   1  405:1
+  TRACE /api/users/{userId}/orders     total=   1  405:1
+GET /api/orders/{id} 200 bodies by order status: {"CREATED":1895,"PAID":76,"CANCELLED":473,"SHIPPED":28}
+PATCH 200 resulting statuses: {"PAID":89,"CANCELLED":104,"SHIPPED":17}
+check executions (name -> {status: count}):
+  allow_header_conformance       {"success":15313}
+  content_type_conformance       {"success":15281}
+  ensure_resource_availability   {"success":15281}
+  ignored_auth                   {"success":15281}
+  max_response_time              {"success":15313}
+  missing_required_header        {"success":15313}
+  negative_data_rejection        {"success":15281}
+  not_a_server_error             {"success":15310,"failure":3}
+  positive_data_acceptance       {"success":11132,"failure":69}
+  response_headers_conformance   {"success":15281}
+  response_schema_conformance    {"success":15281}
+  status_code_conformance        {"success":15281}
+  unsupported_method             {"success":15313}
+  use_after_free                 {"success":15281}

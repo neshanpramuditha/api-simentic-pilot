@@ -3,7 +3,9 @@
 # and Schemathesis is installed from requirements.txt in this folder.
 param(
 	[Parameter(Mandatory = $true)] [string] $OutDir,
-	[string] $Schemathesis = "schemathesis"
+	[string] $Schemathesis = "schemathesis",
+	# Extra options for separately recorded experiments (e.g. "--max-time","300"). Empty = recorded baseline configuration.
+	[string[]] $ExtraArgs = @()
 )
 
 $ErrorActionPreference = "Stop"
@@ -25,6 +27,7 @@ if (Test-Path .schemathesis) { Remove-Item -Recurse -Force .schemathesis }
 	--generation-database none `
 	--no-color `
 	--report junit,ndjson,har `
-	--report-dir $OutDir 2>&1 | Out-File -Encoding utf8 (Join-Path $OutDir "stdout.txt")
+	--report-dir $OutDir `
+	@ExtraArgs 2>&1 | Out-File -Encoding utf8 (Join-Path $OutDir "stdout.txt")
 
 Write-Output "schemathesis exit code: $LASTEXITCODE (1 = at least one failure)"

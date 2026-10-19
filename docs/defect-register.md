@@ -1,6 +1,6 @@
 # Preliminary defect register
 
-**Status:** Proposed. **SV-01** has been implemented behind a disabled-by-default switch and measured (results recorded under SV-01). The other 16 defects have not been injected, and their detection expectations remain untested hypotheses.
+**Status:** Proposed. **SV-01** and **ST-01** have been implemented behind disabled-by-default switches and measured (results recorded under each). The other 15 defects have not been injected, and their detection expectations remain untested hypotheses.
 **Baseline:** `docs/openapi-baseline.json`, exported from the clean API (OpenAPI 3.1.0, 4 operations). Regenerated on 2026-10-18 after correcting baseline issues BL-01 to BL-03 (see the end of this document).
 **Date:** 2026-10-18
 
@@ -27,7 +27,7 @@ Two facts about the baseline drove many of the Schemathesis hypotheses below, wh
 - The baseline contains **no OpenAPI `links`** and `POST /api/orders` returns **no `Location` header**, so it was assumed that Schemathesis has no declared way to chain "create an order, then read or update it", and that requests with generated IDs against an empty database would mostly receive `404`.
 - `GET /api/users/{userId}/orders` returns `[]` (schema-valid) for any user with no orders.
 
-> **Observed on the clean API (2026-10-18, Schemathesis 4.29.4, configuration in `docs/experiments/schemathesis/README.md`):** the first assumption did not hold. Schemathesis inferred 9 links by itself and covered 5; `GET /api/orders/{id}` returned 72 existing orders (`CREATED`, `PAID`, `CANCELLED`) and `GET /api/users/{userId}/orders` returned 55 `200` responses. No order reached `SHIPPED`, `DELIVERED` or `COMPLETED` in that configuration. The individual Schemathesis hypotheses below have **not** been revised or tested yet; those that rely on "no links" (SV-02, SV-03, DB-03 and others) should be read with this observation in mind and confirmed per defect.
+> **Observed on the clean API (2026-10-18, Schemathesis 4.29.4, configuration in `docs/experiments/schemathesis/README.md`):** the first assumption did not hold. Schemathesis inferred 9 links by itself and covered 5; `GET /api/orders/{id}` returned 72 existing orders (`CREATED`, `PAID`, `CANCELLED`) and `GET /api/users/{userId}/orders` returned 55 `200` responses. No order reached `SHIPPED`, `DELIVERED` or `COMPLETED` in that configuration; with `--max-time 300` (EXT-1, `docs/experiments/st-01/results.md`) the deepest state was `SHIPPED`. The individual Schemathesis hypotheses below have **not** been revised or tested yet; those that rely on "no links" (SV-02, SV-03, DB-03 and others) should be read with this observation in mind and confirmed per defect.
 
 ## Summary
 
@@ -141,6 +141,7 @@ Allowed transitions in the clean API: `CREATED → PAID | CANCELLED`, `PAID → 
 - **Postman (written test):** H: Likely — a flow that drives an order to `COMPLETED`, then tries `CANCELLED` and expects `409`.
 - **Schemathesis (standard checks):** H: Unlikely — `200` is a documented status code, and reaching `COMPLETED` needs a chained flow.
 - **Proposed semantic rule:** For `PATCH …/status` `2xx`: `(previousStatus, response.status)` must be in the allowed-transition table. `previousStatus` comes from a prior `GET` or the last observed response for that `id`.
+- **Measured (2026-10-19, `docs/experiments/st-01/results.md`):** implemented behind `pilot.defects.st01-completed-to-cancelled.enabled` (default off; SV-01 off). In ST-01 mode the forbidden request returns `200` and the stored order changes from `COMPLETED` to `CANCELLED` (with `completedAt` still set). Schema-only: **missed** — the defect was exercised (200, schema-valid body), 0 of 16 failures. Postman CLI 1.74.0: **detected** (2 of 18 assertions fail at step 6: status and persisted state). JUnit suite: **detected** (2 of 29 fail). Schemathesis 4.29.4, baseline configuration: **not exercised** — no order reached `COMPLETED`; traffic identical to clean mode. Separate experiment EXT-1 (`--max-time 300`): **not exercised** — deepest state `SHIPPED`. Schema-only and Postman hypotheses confirmed; the Schemathesis hypothesis ("Unlikely") is neither confirmed nor refuted, because the defect was never reached.
 
 ### ST-02 — skipping lifecycle steps
 - **Category:** Invalid state transition

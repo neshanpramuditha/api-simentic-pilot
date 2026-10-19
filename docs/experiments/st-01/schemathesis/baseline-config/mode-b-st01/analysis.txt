@@ -1,0 +1,50 @@
+﻿HAR entries: 581
+  DELETE /api/orders                   total=   1  405:1
+  DELETE /api/orders/{id}              total=   1  405:1
+  DELETE /api/orders/{id}/status       total=   1  405:1
+  DELETE /api/users/{userId}/orders    total=   1  405:1
+  GET /api/orders                      total=   1  405:1
+  GET /api/orders/{id}                 total=  85  200:72 400:7 404:5 500:1
+  GET /api/orders/{id}/status          total=   1  405:1
+  GET /api/users/{userId}/orders       total=  65  200:55 400:9 500:1
+  OPTIONS /api/orders                  total=   1  200:1
+  OPTIONS /api/orders/{id}             total=   1  200:1
+  OPTIONS /api/orders/{id}/status      total=   1  200:1
+  OPTIONS /api/users/{userId}/orders   total=   1  200:1
+  PATCH /api/orders                    total=   1  405:1
+  PATCH /api/orders/{id}               total=   1  405:1
+  PATCH /api/orders/{id}/status        total= 109  200:9 400:21 404:8 409:69 415:1 500:1
+  PATCH /api/users/{userId}/orders     total=   1  405:1
+  POST /api/orders                     total= 294  201:23 400:271
+  POST /api/orders/{id}                total=   1  405:1
+  POST /api/orders/{id}/status         total=   1  405:1
+  POST /api/users/{userId}/orders      total=   1  405:1
+  PUT /api/orders                      total=   1  405:1
+  PUT /api/orders/{id}                 total=   1  405:1
+  PUT /api/orders/{id}/status          total=   1  405:1
+  PUT /api/users/{userId}/orders       total=   1  405:1
+  QUERY /api/orders                    total=   1  405:1
+  QUERY /api/orders/{id}               total=   1  405:1
+  QUERY /api/orders/{id}/status        total=   1  405:1
+  QUERY /api/users/{userId}/orders     total=   1  405:1
+  TRACE /api/orders                    total=   1  405:1
+  TRACE /api/orders/{id}               total=   1  405:1
+  TRACE /api/orders/{id}/status        total=   1  405:1
+  TRACE /api/users/{userId}/orders     total=   1  405:1
+GET /api/orders/{id} 200 bodies by order status: {"CREATED":39,"PAID":8,"CANCELLED":25}
+PATCH 200 resulting statuses: {"PAID":6,"CANCELLED":3}
+check executions (name -> {status: count}):
+  allow_header_conformance       {"success":578}
+  content_type_conformance       {"success":546}
+  ensure_resource_availability   {"success":546}
+  ignored_auth                   {"success":546}
+  max_response_time              {"success":578}
+  missing_required_header        {"success":578}
+  negative_data_rejection        {"success":546}
+  not_a_server_error             {"success":575,"failure":3}
+  positive_data_acceptance       {"success":373,"failure":3}
+  response_headers_conformance   {"success":546}
+  response_schema_conformance    {"success":546}
+  status_code_conformance        {"success":546}
+  unsupported_method             {"success":578}
+  use_after_free                 {"success":546}

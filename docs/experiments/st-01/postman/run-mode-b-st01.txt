@@ -1,0 +1,89 @@
+﻿No authorization data found. Please use the `postman login` command.
+Refer:https://learning.postman.com/docs/postman-cli/postman-cli-options/#postman-login
+
+Running your collection...
+postman
+
+ST-01 lifecycle
+
+Root 1 Create order
+
+  POST http://localhost:8080/api/orders [201 Created, 237 B, 215 ms]
+  Pass  status is 201
+  Pass  response status is CREATED
+  GET http://localhost:8080/api/orders/1 [200 OK, 232 B, 26 ms]
+  Pass  persisted status is CREATED (fresh GET)
+
+Root 2 PAID
+
+  PATCH http://localhost:8080/api/orders/1/status [200 OK, 229 B, 23 ms]
+  Pass  status is 200
+  Pass  response status is PAID
+  GET http://localhost:8080/api/orders/1 [200 OK, 229 B, 8 ms]
+  Pass  persisted status is PAID (fresh GET)
+
+Root 3 SHIPPED
+
+  PATCH http://localhost:8080/api/orders/1/status [200 OK, 232 B, 9 ms]
+  Pass  status is 200
+  Pass  response status is SHIPPED
+  GET http://localhost:8080/api/orders/1 [200 OK, 232 B, 5 ms]
+  Pass  persisted status is SHIPPED (fresh GET)
+
+Root 4 DELIVERED
+
+  PATCH http://localhost:8080/api/orders/1/status [200 OK, 234 B, 8 ms]
+  Pass  status is 200
+  Pass  response status is DELIVERED
+  GET http://localhost:8080/api/orders/1 [200 OK, 234 B, 5 ms]
+  Pass  persisted status is DELIVERED (fresh GET)
+
+Root 5 COMPLETED
+
+  PATCH http://localhost:8080/api/orders/1/status [200 OK, 260 B, 9 ms]
+  Pass  status is 200
+  Pass  response status is COMPLETED
+  Pass  completedAt is set
+  GET http://localhost:8080/api/orders/1 [200 OK, 258 B, 6 ms]
+  Pass  persisted status is COMPLETED (fresh GET)
+
+Root 6 CANCELLED (must be rejected)
+
+  PATCH http://localhost:8080/api/orders/1/status [200 OK, 258 B, 11 ms]
+  1. COMPLETED -> CANCELLED is rejected with 409
+  GET http://localhost:8080/api/orders/1 [200 OK, 258 B, 7 ms]
+  2. persisted status is COMPLETED (fresh GET)
+
+----------------------------------------------------------------------
+|                         |            executed |             failed |
+--------------------------+---------------------+---------------------
+|              iterations |                   1 |                  0 |
+--------------------------+---------------------+---------------------
+|                requests |                  12 |                  0 |
+--------------------------+---------------------+---------------------
+|            test-scripts |                   6 |                  0 |
+--------------------------+---------------------+---------------------
+|      prerequest-scripts |                   0 |                  0 |
+--------------------------+---------------------+---------------------
+|              assertions |                  18 |                  2 |
+----------------------------------------------------------------------
+| total run duration: 901 ms                                         |
+----------------------------------------------------------------------
+| total data received: 1012 B (approx)                               |
+----------------------------------------------------------------------
+| average response time: 27 ms [min: 5 ms, max: 215 ms, s.d.: 56 ms] |
+----------------------------------------------------------------------
+
+  #  failure         detail                                                
+                                                                           
+ 1.  AssertionError  COMPLETED -> CANCELLED is rejected with 409           
+                     expected response to have status code 409 but got 200 
+                     at assertion:0 in test-script                         
+                     inside "6 CANCELLED (must be rejected)"               
+                                                                           
+ 2.  AssertionError  persisted status is COMPLETED (fresh GET)             
+                     expected 'CANCELLED' to deeply equal 'COMPLETED'      
+                     at assertion:1 in test-script                         
+                     inside "6 CANCELLED (must be rejected)"               
+Postman credentials are required for publishing run details to Postman cloud.
+Please specify it by using the `postman login` command

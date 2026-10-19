@@ -1,0 +1,392 @@
+﻿[INFO] Scanning for projects...
+[INFO] Loaded 24136 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] 
+[INFO] -------------------< com.example:api-semantic-pilot >-------------------
+[INFO] Building  0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ api-semantic-pilot ---
+[INFO] Deleting <project>\target
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ api-semantic-pilot ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ api-semantic-pilot ---
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 10 source files with javac [debug parameters release 21] to target\classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ api-semantic-pilot ---
+[INFO] skip non existing resourceDirectory <project>\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ api-semantic-pilot ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 8 source files with javac [debug parameters release 21] to target\test-classes
+[INFO] 
+[INFO] --- surefire:3.5.6:test (default-test) @ api-semantic-pilot ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.apipilot.ApiSemanticPilotApplicationTests
+08:27:18.354 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.apipilot.ApiSemanticPilotApplicationTests]: ApiSemanticPilotApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:27:18.470 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.apipilot.ApiSemanticPilotApplication for test class com.example.apipilot.ApiSemanticPilotApplicationTests
+08:27:18.549 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.apipilot.ApiSemanticPilotApplicationTests]: ApiSemanticPilotApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+08:27:18.551 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.apipilot.ApiSemanticPilotApplication for test class com.example.apipilot.ApiSemanticPilotApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-19T08:27:18.866+05:30  INFO 10500 --- [api-semantic-pilot] [           main] c.e.a.ApiSemanticPilotApplicationTests   : Starting ApiSemanticPilotApplicationTests using Java 21.0.12.1 with PID 10500 (started by <user> in <project>)
+2026-10-19T08:27:18.867+05:30  INFO 10500 --- [api-semantic-pilot] [           main] c.e.a.ApiSemanticPilotApplicationTests   : No active profile set, falling back to 1 default profile: "default"
+2026-10-19T08:27:19.716+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-19T08:27:19.777+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 53 ms. Found 1 JPA repository interface.
+2026-10-19T08:27:20.244+05:30  INFO 10500 --- [api-semantic-pilot] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-19T08:27:20.301+05:30  INFO 10500 --- [api-semantic-pilot] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-19T08:27:20.812+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-19T08:27:20.841+05:30  INFO 10500 --- [api-semantic-pilot] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-19T08:27:20.981+05:30  INFO 10500 --- [api-semantic-pilot] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:semanticdb user=SA
+2026-10-19T08:27:20.983+05:30  INFO 10500 --- [api-semantic-pilot] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-19T08:27:21.054+05:30  INFO 10500 --- [api-semantic-pilot] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:semanticdb]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: SEMANTICDB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-19T08:27:21.804+05:30  INFO 10500 --- [api-semantic-pilot] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists orders cascade 
+Hibernate: create table orders (total numeric(19,2) not null, completed_at timestamp(6), id bigint generated by default as identity, owner_user_id bigint not null, status enum ('CANCELLED','COMPLETED','CREATED','DELIVERED','PAID','SHIPPED') not null, primary key (id))
+2026-10-19T08:27:21.834+05:30  INFO 10500 --- [api-semantic-pilot] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-19T08:27:21.932+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-19T08:27:22.958+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.b.h.a.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:semanticdb'
+2026-10-19T08:27:23.060+05:30  INFO 10500 --- [api-semantic-pilot] [           main] c.e.a.ApiSemanticPilotApplicationTests   : Started ApiSemanticPilotApplicationTests in 4.454 seconds (process running for 5.602)
+2026-10-19T08:27:23.062+05:30  WARN 10500 --- [api-semantic-pilot] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-10-19T08:27:23.062+05:30  WARN 10500 --- [api-semantic-pilot] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (<user-home>\.m2\repository\net\bytebuddy\byte-buddy-agent\1.18.11\byte-buddy-agent-1.18.11.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.372 s -- in com.example.apipilot.ApiSemanticPilotApplicationTests
+[INFO] Running com.example.apipilot.ContractConformanceTests
+2026-10-19T08:27:23.538+05:30  INFO 10500 --- [api-semantic-pilot] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.apipilot.ContractConformanceTests]: ContractConformanceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-19T08:27:23.549+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.apipilot.ApiSemanticPilotApplication for test class com.example.apipilot.ContractConformanceTests
+2026-10-19T08:27:23.551+05:30  INFO 10500 --- [api-semantic-pilot] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.apipilot.ContractConformanceTests]: ContractConformanceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-19T08:27:23.554+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.apipilot.ApiSemanticPilotApplication for test class com.example.apipilot.ContractConformanceTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-19T08:27:23.653+05:30  INFO 10500 --- [api-semantic-pilot] [           main] c.e.apipilot.ContractConformanceTests    : Starting ContractConformanceTests using Java 21.0.12.1 with PID 10500 (started by <user> in <project>)
+2026-10-19T08:27:23.653+05:30  INFO 10500 --- [api-semantic-pilot] [           main] c.e.apipilot.ContractConformanceTests    : No active profile set, falling back to 1 default profile: "default"
+2026-10-19T08:27:23.931+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-19T08:27:23.951+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 1 JPA repository interface.
+2026-10-19T08:27:24.056+05:30  INFO 10500 --- [api-semantic-pilot] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-19T08:27:24.094+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-19T08:27:24.096+05:30  INFO 10500 --- [api-semantic-pilot] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2026-10-19T08:27:24.100+05:30  INFO 10500 --- [api-semantic-pilot] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:semantictestdb user=SA
+2026-10-19T08:27:24.100+05:30  INFO 10500 --- [api-semantic-pilot] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2026-10-19T08:27:24.101+05:30  INFO 10500 --- [api-semantic-pilot] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:semantictestdb]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: SEMANTICTESTDB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-19T08:27:24.154+05:30  INFO 10500 --- [api-semantic-pilot] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists orders cascade 
+Hibernate: create table orders (total numeric(19,2) not null, completed_at timestamp(6), id bigint generated by default as identity, owner_user_id bigint not null, status enum ('CANCELLED','COMPLETED','CREATED','DELIVERED','PAID','SHIPPED') not null, primary key (id))
+2026-10-19T08:27:24.159+05:30  INFO 10500 --- [api-semantic-pilot] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-19T08:27:24.400+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.b.h.a.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:semantictestdb'
+2026-10-19T08:27:24.442+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-19T08:27:24.442+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T08:27:24.446+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 3 ms
+2026-10-19T08:27:24.467+05:30  INFO 10500 --- [api-semantic-pilot] [           main] c.e.apipilot.ContractConformanceTests    : Started ContractConformanceTests in 0.906 seconds (process running for 7.01)
+2026-10-19T08:27:24.468+05:30  WARN 10500 --- [api-semantic-pilot] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-10-19T08:27:24.469+05:30  WARN 10500 --- [api-semantic-pilot] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+2026-10-19T08:27:24.830+05:30  WARN 10500 --- [api-semantic-pilot] [           main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'id': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "abc"]
+2026-10-19T08:27:24.841+05:30  WARN 10500 --- [api-semantic-pilot] [           main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'userId': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "abc"]
+2026-10-19T08:27:24.843+05:30  WARN 10500 --- [api-semantic-pilot] [           main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'id': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "99999999999999999999"]
+2026-10-19T08:27:25.243+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 384 ms
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: update orders set completed_at=?,owner_user_id=?,status=?,total=? where id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: delete from orders where id=?
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.058 s -- in com.example.apipilot.ContractConformanceTests
+[INFO] Running com.example.apipilot.controller.OrderControllerTests
+2026-10-19T08:27:25.599+05:30  INFO 10500 --- [api-semantic-pilot] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.apipilot.controller.OrderControllerTests]: OrderControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-19T08:27:25.625+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.apipilot.ApiSemanticPilotApplication for test class com.example.apipilot.controller.OrderControllerTests
+2026-10-19T08:27:25.626+05:30  INFO 10500 --- [api-semantic-pilot] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.apipilot.controller.OrderControllerTests]: OrderControllerTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-19T08:27:25.630+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.apipilot.ApiSemanticPilotApplication for test class com.example.apipilot.controller.OrderControllerTests
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: delete from orders where id=?
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: delete from orders where id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+2026-10-19T08:27:25.930+05:30  WARN 10500 --- [api-semantic-pilot] [           main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.example.apipilot.entity.Order com.example.apipilot.controller.OrderController.createOrder(com.example.apipilot.dto.CreateOrderRequest): [Field error in object 'createOrderRequest' on field 'total': rejected value [0]; codes [DecimalMin.createOrderRequest.total,DecimalMin.total,DecimalMin.java.math.BigDecimal,DecimalMin]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createOrderRequest.total,total]; arguments []; default message [total],false,0.00]; default message [must be greater than 0.00]] ]
+Hibernate: select count(*) from orders o1_0
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+2026-10-19T08:27:26.242+05:30  WARN 10500 --- [api-semantic-pilot] [           main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.example.apipilot.entity.Order com.example.apipilot.controller.OrderController.createOrder(com.example.apipilot.dto.CreateOrderRequest): [Field error in object 'createOrderRequest' on field 'total': rejected value [0.00]; codes [DecimalMin.createOrderRequest.total,DecimalMin.total,DecimalMin.java.math.BigDecimal,DecimalMin]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createOrderRequest.total,total]; arguments []; default message [total],false,0.00]; default message [must be greater than 0.00]] ]
+Hibernate: select count(*) from orders o1_0
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+2026-10-19T08:27:26.264+05:30  WARN 10500 --- [api-semantic-pilot] [           main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.example.apipilot.entity.Order com.example.apipilot.controller.OrderController.createOrder(com.example.apipilot.dto.CreateOrderRequest): [Field error in object 'createOrderRequest' on field 'total': rejected value [-5.00]; codes [DecimalMin.createOrderRequest.total,DecimalMin.total,DecimalMin.java.math.BigDecimal,DecimalMin]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createOrderRequest.total,total]; arguments []; default message [total],false,0.00]; default message [must be greater than 0.00]] ]
+Hibernate: select count(*) from orders o1_0
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: delete from orders where id=?
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: update orders set completed_at=?,owner_user_id=?,status=?,total=? where id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: delete from orders where id=?
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: select count(*) from orders o1_0
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: delete from orders where id=?
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.owner_user_id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: delete from orders where id=?
+Hibernate: delete from orders where id=?
+Hibernate: delete from orders where id=?
+2026-10-19T08:27:26.498+05:30  WARN 10500 --- [api-semantic-pilot] [           main] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.example.apipilot.entity.Order com.example.apipilot.controller.OrderController.createOrder(com.example.apipilot.dto.CreateOrderRequest): [Field error in object 'createOrderRequest' on field 'ownerUserId': rejected value [null]; codes [NotNull.createOrderRequest.ownerUserId,NotNull.ownerUserId,NotNull.java.lang.Long,NotNull]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [createOrderRequest.ownerUserId,ownerUserId]; arguments []; default message [ownerUserId]]; default message [must not be null]] ]
+Hibernate: select count(*) from orders o1_0
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: delete from orders where id=?
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: update orders set completed_at=?,owner_user_id=?,status=?,total=? where id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: delete from orders where id=?
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: update orders set completed_at=?,owner_user_id=?,status=?,total=? where id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.966 s -- in com.example.apipilot.controller.OrderControllerTests
+[INFO] Running com.example.apipilot.controller.TransitionSequenceTests
+2026-10-19T08:27:26.570+05:30  INFO 10500 --- [api-semantic-pilot] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.apipilot.controller.TransitionSequenceTests]: TransitionSequenceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-19T08:27:26.573+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.apipilot.ApiSemanticPilotApplication for test class com.example.apipilot.controller.TransitionSequenceTests
+2026-10-19T08:27:26.574+05:30  INFO 10500 --- [api-semantic-pilot] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.apipilot.controller.TransitionSequenceTests]: TransitionSequenceTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-19T08:27:26.583+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.apipilot.ApiSemanticPilotApplication for test class com.example.apipilot.controller.TransitionSequenceTests
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: delete from orders where id=?
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: update orders set completed_at=?,owner_user_id=?,status=?,total=? where id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: update orders set completed_at=?,owner_user_id=?,status=?,total=? where id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: update orders set completed_at=?,owner_user_id=?,status=?,total=? where id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: update orders set completed_at=?,owner_user_id=?,status=?,total=? where id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.072 s -- in com.example.apipilot.controller.TransitionSequenceTests
+[INFO] Running com.example.apipilot.defects.St01CompletedToCancelledTests
+2026-10-19T08:27:26.644+05:30  INFO 10500 --- [api-semantic-pilot] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.apipilot.defects.St01CompletedToCancelledTests]: St01CompletedToCancelledTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-19T08:27:26.661+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.apipilot.ApiSemanticPilotApplication for test class com.example.apipilot.defects.St01CompletedToCancelledTests
+2026-10-19T08:27:26.663+05:30  INFO 10500 --- [api-semantic-pilot] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.apipilot.defects.St01CompletedToCancelledTests]: St01CompletedToCancelledTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-19T08:27:26.665+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.apipilot.ApiSemanticPilotApplication for test class com.example.apipilot.defects.St01CompletedToCancelledTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-19T08:27:26.693+05:30  INFO 10500 --- [api-semantic-pilot] [           main] c.e.a.d.St01CompletedToCancelledTests    : Starting St01CompletedToCancelledTests using Java 21.0.12.1 with PID 10500 (started by <user> in <project>)
+2026-10-19T08:27:26.694+05:30  INFO 10500 --- [api-semantic-pilot] [           main] c.e.a.d.St01CompletedToCancelledTests    : No active profile set, falling back to 1 default profile: "default"
+2026-10-19T08:27:26.920+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-19T08:27:26.932+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 1 JPA repository interface.
+2026-10-19T08:27:27.025+05:30  INFO 10500 --- [api-semantic-pilot] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-19T08:27:27.072+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-19T08:27:27.074+05:30  INFO 10500 --- [api-semantic-pilot] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2026-10-19T08:27:27.084+05:30  INFO 10500 --- [api-semantic-pilot] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn20: url=jdbc:h2:mem:st01testdb user=SA
+2026-10-19T08:27:27.084+05:30  INFO 10500 --- [api-semantic-pilot] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2026-10-19T08:27:27.085+05:30  INFO 10500 --- [api-semantic-pilot] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:st01testdb]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: ST01TESTDB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-19T08:27:27.132+05:30  INFO 10500 --- [api-semantic-pilot] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists orders cascade 
+Hibernate: create table orders (total numeric(19,2) not null, completed_at timestamp(6), id bigint generated by default as identity, owner_user_id bigint not null, status enum ('CANCELLED','COMPLETED','CREATED','DELIVERED','PAID','SHIPPED') not null, primary key (id))
+2026-10-19T08:27:27.136+05:30  INFO 10500 --- [api-semantic-pilot] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-19T08:27:27.159+05:30  WARN 10500 --- [api-semantic-pilot] [           main] a.d.St01CompletedToCancelledOrderService : DEFECT ST-01 ENABLED: PATCH /api/orders/{id}/status accepts COMPLETED -> CANCELLED
+2026-10-19T08:27:27.312+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.b.h.a.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:st01testdb'
+2026-10-19T08:27:27.326+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-19T08:27:27.326+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T08:27:27.327+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-19T08:27:27.336+05:30  INFO 10500 --- [api-semantic-pilot] [           main] c.e.a.d.St01CompletedToCancelledTests    : Started St01CompletedToCancelledTests in 0.667 seconds (process running for 9.879)
+2026-10-19T08:27:27.337+05:30  WARN 10500 --- [api-semantic-pilot] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-10-19T08:27:27.337+05:30  WARN 10500 --- [api-semantic-pilot] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+2026-10-19T08:27:27.432+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 80 ms
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: delete from orders where id=?
+Hibernate: delete from orders where id=?
+Hibernate: delete from orders where id=?
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: update orders set completed_at=?,owner_user_id=?,status=?,total=? where id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: update orders set completed_at=?,owner_user_id=?,status=?,total=? where id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: update orders set completed_at=?,owner_user_id=?,status=?,total=? where id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: update orders set completed_at=?,owner_user_id=?,status=?,total=? where id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: update orders set completed_at=?,owner_user_id=?,status=?,total=? where id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.927 s -- in com.example.apipilot.defects.St01CompletedToCancelledTests
+[INFO] Running com.example.apipilot.defects.Sv01TotalAsStringTests
+2026-10-19T08:27:27.572+05:30  INFO 10500 --- [api-semantic-pilot] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.apipilot.defects.Sv01TotalAsStringTests]: Sv01TotalAsStringTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-19T08:27:27.577+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.apipilot.ApiSemanticPilotApplication for test class com.example.apipilot.defects.Sv01TotalAsStringTests
+2026-10-19T08:27:27.578+05:30  INFO 10500 --- [api-semantic-pilot] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.apipilot.defects.Sv01TotalAsStringTests]: Sv01TotalAsStringTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-19T08:27:27.580+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.apipilot.ApiSemanticPilotApplication for test class com.example.apipilot.defects.Sv01TotalAsStringTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-19T08:27:27.612+05:30  INFO 10500 --- [api-semantic-pilot] [           main] c.e.a.defects.Sv01TotalAsStringTests     : Starting Sv01TotalAsStringTests using Java 21.0.12.1 with PID 10500 (started by <user> in <project>)
+2026-10-19T08:27:27.612+05:30  INFO 10500 --- [api-semantic-pilot] [           main] c.e.a.defects.Sv01TotalAsStringTests     : No active profile set, falling back to 1 default profile: "default"
+2026-10-19T08:27:27.791+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-19T08:27:27.803+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 1 JPA repository interface.
+2026-10-19T08:27:27.858+05:30  INFO 10500 --- [api-semantic-pilot] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-19T08:27:27.879+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-19T08:27:27.880+05:30  INFO 10500 --- [api-semantic-pilot] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2026-10-19T08:27:27.882+05:30  INFO 10500 --- [api-semantic-pilot] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection conn30: url=jdbc:h2:mem:sv01testdb user=SA
+2026-10-19T08:27:27.882+05:30  INFO 10500 --- [api-semantic-pilot] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2026-10-19T08:27:27.884+05:30  INFO 10500 --- [api-semantic-pilot] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:mem:sv01testdb]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: SV01TESTDB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-19T08:27:27.916+05:30  INFO 10500 --- [api-semantic-pilot] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: drop table if exists orders cascade 
+Hibernate: create table orders (total numeric(19,2) not null, completed_at timestamp(6), id bigint generated by default as identity, owner_user_id bigint not null, status enum ('CANCELLED','COMPLETED','CREATED','DELIVERED','PAID','SHIPPED') not null, primary key (id))
+2026-10-19T08:27:27.920+05:30  INFO 10500 --- [api-semantic-pilot] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-19T08:27:27.958+05:30  WARN 10500 --- [api-semantic-pilot] [           main] c.e.a.defects.Sv01TotalAsStringAdvice    : DEFECT SV-01 ENABLED: POST /api/orders returns total as a JSON string
+2026-10-19T08:27:28.056+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.b.h.a.H2ConsoleAutoConfiguration     : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:sv01testdb'
+2026-10-19T08:27:28.071+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-10-19T08:27:28.071+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-10-19T08:27:28.072+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-10-19T08:27:28.079+05:30  INFO 10500 --- [api-semantic-pilot] [           main] c.e.a.defects.Sv01TotalAsStringTests     : Started Sv01TotalAsStringTests in 0.493 seconds (process running for 10.623)
+2026-10-19T08:27:28.080+05:30  WARN 10500 --- [api-semantic-pilot] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-10-19T08:27:28.080+05:30  WARN 10500 --- [api-semantic-pilot] [           main] o.s.core.events.SpringDocAppInitializer  : SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0 where o1_0.id=?
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: delete from orders where id=?
+2026-10-19T08:27:28.202+05:30  INFO 10500 --- [api-semantic-pilot] [           main] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 76 ms
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+Hibernate: insert into orders (completed_at,owner_user_id,status,total,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.completed_at,o1_0.owner_user_id,o1_0.status,o1_0.total from orders o1_0
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.667 s -- in com.example.apipilot.defects.Sv01TotalAsStringTests
+[INFO] Running com.example.apipilot.OpenApiDocumentationTests
+2026-10-19T08:27:28.241+05:30  INFO 10500 --- [api-semantic-pilot] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.apipilot.OpenApiDocumentationTests]: OpenApiDocumentationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-19T08:27:28.243+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.apipilot.ApiSemanticPilotApplication for test class com.example.apipilot.OpenApiDocumentationTests
+2026-10-19T08:27:28.245+05:30  INFO 10500 --- [api-semantic-pilot] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.apipilot.OpenApiDocumentationTests]: OpenApiDocumentationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-10-19T08:27:28.249+05:30  INFO 10500 --- [api-semantic-pilot] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.apipilot.ApiSemanticPilotApplication for test class com.example.apipilot.OpenApiDocumentationTests
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.099 s -- in com.example.apipilot.OpenApiDocumentationTests
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  17.092 s
+[INFO] Finished at: 2026-10-19T08:27:28+05:30
+[INFO] ------------------------------------------------------------------------

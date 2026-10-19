@@ -1,0 +1,156 @@
+﻿Schemathesis v4.29.4
+━━━━━━━━━━━━━━━━━━━━
+
+
+ ✅  Loaded specification from docs/openapi-baseline.json (in 0.66s)           
+
+     Base URL:         http://localhost:8080                                   
+     Specification:    Open API 3.1.0                                          
+     Operations:       4 selected / 4 total                                    
+
+
+ ✅  API capabilities:                                                         
+
+     Supports NULL byte in headers:                            ✘               
+     Accepts backslash and control characters in URL paths:    ✘               
+
+ ✅  Examples (in 0.71s)                                                       
+                                                                               
+     ✅ 4 passed                                                               
+
+ ❌  Coverage (in 2.17s)                                                       
+                                                                               
+     ❌ 4 failed                                                               
+
+ ❌  Fuzzing (in 80.25s)                                                       
+                                                                               
+     ✅ 3 passed  ❌ 1 failed                                                  
+
+ ❌  Stateful (in 216.77s)                                                     
+
+     Scenarios:    1895                                                        
+     API Links:    6 covered / 9 selected / 9 total                            
+
+     ✅ 1861 passed  ❌ 34 failed                                              
+
+=================================== FAILURES ===================================
+_____________________________ GET /api/orders/{id} _____________________________
+1. Test Case ID: MdkQa3
+
+- Server error on unexpected Content-Type
+
+    `Content-Type: multipart/form-data` without a boundary returned 500, expected 400 Bad Request or 415 Unsupported Media Type
+
+    Reject a malformed `Content-Type` before parsing the request body
+
+[500] Internal Server Error:
+
+    `{"timestamp":"2026-10-19T03:01:55.659Z","status":500,"error":"Internal Server Error","path":"/api/orders/1"}`
+
+Reproduce with:
+
+    curl -X GET -H 'Content-Type: multipart/form-data' http://localhost:8080/api/orders/1
+    
+    st replay MdkQa3
+
+________________________ GET /api/users/{userId}/orders ________________________
+1. Test Case ID: l742MP
+
+- Server error on unexpected Content-Type
+
+    `Content-Type: multipart/form-data` without a boundary returned 500, expected 400 Bad Request or 415 Unsupported Media Type
+
+    Reject a malformed `Content-Type` before parsing the request body
+
+[500] Internal Server Error:
+
+    `{"timestamp":"2026-10-19T03:01:54.740Z","status":500,"error":"Internal Server Error","path":"/api/users/7/orders"}`
+
+Reproduce with:
+
+    curl -X GET -H 'Content-Type: multipart/form-data' http://localhost:8080/api/users/7/orders
+    
+    st replay l742MP
+
+________________________ PATCH /api/orders/{id}/status _________________________
+1. Test Case ID: DKIVbr
+
+- Server error on unexpected Content-Type
+
+    `Content-Type: multipart/form-data` without a boundary returned 500, expected 400 Bad Request or 415 Unsupported Media Type
+
+    Reject a malformed `Content-Type` before parsing the request body
+
+[500] Internal Server Error:
+
+    `{"timestamp":"2026-10-19T03:01:56.622Z","status":500,"error":"Internal Server Error","path":"/api/orders/1/status"}`
+
+Reproduce with:
+
+    curl -X PATCH -H 'Content-Type: multipart/form-data' -d '{"status": "PAID"}' http://localhost:8080/api/orders/1/status
+    
+    st replay DKIVbr
+
+_______________________________ POST /api/orders _______________________________
+1. Test Case ID: fc90sA
+
+- API rejected schema-compliant request
+
+    Valid data should have been accepted
+    Expected: 2xx, 401, 403, 404, 409, 429, 5xx
+
+[400] Bad Request:
+
+    `{"timestamp":"2026-10-19T03:01:55.385Z","status":400,"error":"Bad Request","path":"/api/orders"}`
+
+Reproduce with:
+
+    curl -X POST -H 'Content-Type: application/json' -d '{"ownerUserId": 7, "total": 5e-324}' http://localhost:8080/api/orders
+    
+    st replay fc90sA
+
+=================================== WARNINGS ===================================
+
+Missing test data: 1 operation repeatedly returned 404 Not Found, preventing tests from reaching your API's core logic
+
+  - PATCH /api/orders/{id}/status
+
+💡 Check the operations that create this data - their responses do not yield usable identifiers
+
+Schema validation mismatch: 1 operation mostly rejected generated data due to validation errors, indicating schema constraints don't match API validation
+
+  - PATCH /api/orders/{id}/status
+
+💡 Check your schema constraints - API validation may be stricter than documented
+
+=================================== SUMMARY ====================================
+
+API Operations:
+  Selected: 4/4
+  Tested: 4
+
+Test Phases:
+  ✅ Examples
+  ❌ Coverage
+  ❌ Fuzzing
+  ❌ Stateful
+
+Failures:
+  ❌ Server error on unexpected Content-Type: 3
+  ❌ API rejected schema-compliant request: 1
+
+Warnings:
+  ⚠️ Missing valid test data: 1 operation repeatedly returned 404 responses
+  ⚠️ Schema validation mismatch: 1 operation mostly rejected generated data
+
+Test cases:
+  15325 generated, 4 found 4 unique failures, 9 errored, 3 skipped
+
+Reports:
+  - JUNIT: <report-dir>\ext1-mode-a-clean\junit-20261019T083152Z.xml
+  - HAR: <report-dir>\ext1-mode-a-clean\har-20261019T083152Z.json
+  - NDJSON: <report-dir>\ext1-mode-a-clean\ndjson-20261019T083152Z.ndjson
+
+Seed: 42
+
+====================== 4 failures, 2 warnings in 300.06s =======================

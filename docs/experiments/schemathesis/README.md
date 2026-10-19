@@ -33,7 +33,7 @@ To reproduce: install `requirements.txt` into a fresh virtual environment, start
 
 ## Clean-API baseline (2026-10-18, commit `32c7dc2`, no defects injected)
 
-Raw output: `clean-baseline/run1/` and `clean-baseline/run2/` (`stdout.txt`, `junit.xml`, `events.ndjson`, `requests.har.json`). Report files were renamed from Schemathesis's timestamped names; in every `stdout.txt` the absolute local report directory on the "Reports:" lines was replaced by `<report-dir>\`. No other edits. A scan of all evidence found no credentials, cookies, tokens or personal data (requests carry only `Accept`, `Accept-Encoding`, `Connection`, `Content-Length`, `Content-Type`, `User-Agent`, `X-Schemathesis-TestCaseId`).
+Raw output: `clean-baseline/run1/` and `clean-baseline/run2/` (`stdout.txt`, `junit.xml`, `events.ndjson`, `requests.har.json`). Report files were renamed from Schemathesis's timestamped names. The absolute local report directory (which contains the Windows user name) was replaced by `<report-dir>\` on the "Reports:" lines of every `stdout.txt` and in the recorded command line in the first event of every `events.ndjson`; Maven logs had the user home, project path and user name replaced by `<user-home>`, `<project>` and `<user>`. No other edits. **Correction:** the NDJSON redaction was initially missed; the unpushed SV-01 commit was amended (`db978dc` → `73bae48`, NDJSON files only) before anything was pushed, so the branch history contains only the redacted files. A scan of all evidence found no credentials, cookies, tokens or authorization headers (requests carry only `Accept`, `Accept-Encoding`, `Connection`, `Content-Length`, `Content-Type`, `User-Agent`, `X-Schemathesis-TestCaseId`).
 
 ### Reproducibility
 
@@ -97,4 +97,4 @@ No findings were classified as configuration problems or tool limitations.
 
 - SB-01 to SB-04 are present in the clean API. Any defect experiment using this configuration will report them as well; they must be subtracted, not counted as detections.
 - Links: Schemathesis 4.29.4 inferred 9 links from the baseline without any `links` in the spec, and stateful testing reached existing orders. The register's preliminary assumption that Schemathesis would have "no declared way to chain" operations was wrong for this version and configuration; see the note in `docs/defect-register.md`.
-- Not yet observed: whether Schemathesis reaches `SHIPPED`, `DELIVERED` or `COMPLETED` with other settings (e.g. more examples or `--max-time`). Under this configuration it did not.
+- Under this configuration no order reached `SHIPPED`, `DELIVERED` or `COMPLETED`. A separate experiment, EXT-1 (`--max-time 300`, see `docs/experiments/st-01/results.md`), reached `SHIPPED` but not `DELIVERED` or `COMPLETED`. `run-schemathesis.ps1 -ExtraArgs …` runs such variants; without `-ExtraArgs` it runs exactly the configuration above.

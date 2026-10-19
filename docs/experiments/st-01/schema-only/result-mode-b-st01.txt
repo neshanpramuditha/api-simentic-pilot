@@ -1,0 +1,18 @@
+﻿pass  POST /api/orders -> 201
+pass  POST /api/orders -> 201
+pass  GET /api/orders/1 -> 200
+pass  PATCH /api/orders/1/status -> 200
+pass  PATCH /api/orders/1/status -> 200
+pass  PATCH /api/orders/1/status -> 200
+pass  PATCH /api/orders/1/status -> 200
+pass  GET /api/orders/1 -> 200
+pass  PATCH /api/orders/2/status -> 200
+pass  GET /api/users/7/orders -> 200
+pass  GET /api/users/99/orders -> 200
+pass  GET /api/orders/999 -> 404  (no body schema documented; body not checked)
+pass  GET /api/orders/abc -> 400  (no body schema documented; body not checked)
+pass  GET /api/users/abc/orders -> 400  (no body schema documented; body not checked)
+pass  POST /api/orders -> 400  (no body schema documented; body not checked)
+pass  PATCH /api/orders/1/status -> 200
+
+16 responses, 0 schema-only failures

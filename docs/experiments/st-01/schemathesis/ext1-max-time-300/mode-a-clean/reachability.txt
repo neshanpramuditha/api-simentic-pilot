@@ -1,0 +1,5 @@
+﻿requests: 15316
+order statuses observed in 2xx bodies: CANCELLED, CREATED, PAID, SHIPPED
+reached COMPLETED: false
+PATCH target statuses requested: {"0":1,"CREATED":1831,"PAID":346,"undefined":107,"[object Object]":1,",":1,"null":1,"false":1,"AAA":1,"CANCELLED":359,"COMPLETED":16,"DELIVERED":11,"SHIPPED":184,"__not_in_enum__":15,"ÑÝÌ":1}
+COMPLETED -> CANCELLED attempts on a known-COMPLETED order: 0
