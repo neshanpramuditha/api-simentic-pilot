@@ -56,9 +56,24 @@ Each step needs the repository owner's explicit approval at the time.
 
 1. Approve a specific `proposed-freeze-manifest.md` revision. Record the quote or link in §2.
 2. Commit the documentation directory. The commit must contain only `docs/experiments/go-no-go-validation/`.
-3. Verify (§4) that, for every listed file:
-   - the `git ls-tree HEAD` blob id equals the manifest's blob id;
-   - the working-tree SHA-256 equals the manifest's value.
+3. ~~Verify (§4) that, for every listed file:~~
+   ~~- the `git ls-tree HEAD` blob id equals the manifest's blob id;~~
+   ~~- the working-tree SHA-256 equals the manifest's value.~~
+
+   *Amended by W-2 (2026-10-21, proposed, not adopted; `operational-definitions.md` R19). The struck-through text above is kept as history:*
+
+   **3a. Blob id (authoritative).** For every listed file, the `git ls-tree HEAD` blob id **must equal** the manifest's blob id.
+   - **Any blob-id mismatch stops the freeze**: record it in §4, and nothing is frozen.
+   - No investigation can resolve a blob-id mismatch under this manifest revision; only a new, separately approved manifest revision can.
+
+   **3b. Working-tree SHA-256 (integrity).** For every listed file, compare the SHA-256 of the current working-tree bytes with the manifest's value.
+   - **Equal:** this check passed.
+   - **Different:** the mismatch is **not** accepted silently and is **not** treated as harmless. It must be investigated with **executed commands**, recorded verbatim in §4. It counts as **resolved** only if all three of these are shown:
+     1. the file's blob id passed 3a;
+     2. `git diff --quiet HEAD -- <file>` exits with 0 (no content difference from HEAD after Git's normalisation);
+     3. the SHA-256 of the current bytes with every CRLF replaced by LF equals the SHA-256 of `git cat-file blob <blob id>`. This shows that the difference is **solely line-ending conversion**.
+   - A mismatch resolved in this way counts as a **passed** check for step 5, and is recorded in §2 as "SHA-256 mismatch, resolved: line endings only" together with the file names.
+   - **Any other cause, or a mismatch that cannot be explained, counts as a failed check**: step 5 applies (record the failure and stop; nothing is frozen).
 4. Re-verify the 45 entries in `baseline-hashes.sha256`.
 5. Fill in §2, §2.1 and §6. Set the freeze status to FROZEN **only if every check passed**. If any check fails, record the failure and stop: **nothing is frozen**.
 6. Commit this file.
@@ -146,3 +161,13 @@ Get-FileHash -Algorithm SHA256 docs/experiments/go-no-go-validation/<file>
 |---|---|---|
 | §1–§9 | Adopt, except where marked superseded (§4 in part, §8, §9 A2–A5) | — |
 | R0–R18 | Adopt, except where marked superseded (R5 rule scope, R15.2 interim U-1 paragraphs, the Δ̄_nat parts of R10 steps 2–3 as replaced by R18.2) | — |
+| R19 (wording amendments W-1 to W-4) | Adopt (see the table below) | — |
+
+### Dated wording amendments (2026-10-21; `operational-definitions.md` R19)
+
+| Amendment | Affects | Proposed disposition | Adopted at freeze? |
+|---|---|---|---|
+| W-1 | `operational-definitions.md` R18.1: "byte-identical" becomes "content-identical by authoritative Git blob id" | Adopt | — |
+| W-2 | This file, §3 step 3: 3a (a blob-id mismatch stops the freeze) and 3b (a SHA-256 mismatch is investigated, and counts as passed only if shown to be line endings only) | Adopt | — |
+| W-3 | `operational-definitions.md` R17.2: the documentation is committed (`560d775`) and merged (`4f19c98`) | Adopt | — |
+| W-4 | `operational-definitions.md` R16, row U-4: the observed CRLF state of the current working copy, distinguished from fresh-checkout behaviour, which is untested | Adopt | — |

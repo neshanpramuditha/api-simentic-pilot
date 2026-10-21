@@ -12,6 +12,7 @@
 > | R14.4 (pilot), R14.6 (equivalence review), R8 V5 | Final conditions (2026-10-21): **R15**. Open items: **R16** |
 > | R6 item 3, R8 step 1, R15.2, R16 U-1/U-2/U-4 | Freeze decisions (2026-10-21): **R17** |
 > | R10 steps 2–3 (Δ̄_nat), R16 U-3, R17.5 F-1/F-3 | F-1/F-3 resolutions (2026-10-21): **R18** |
+> | R18.1 wording, R17.2 "Consequence", R16 U-4, `freeze-record.md` §3 step 3 | Dated wording amendments W-1 to W-4 (2026-10-21): **R19** |
 > | §1, the 20 pp row's "What it means" (native score against the best *non-scripted* baseline) | Superseded by R1, R4 and R8: scripted score against the best *scripted* baseline, plus the guard |
 >
 > The earlier text is kept as history; superseded statements are marked, not deleted.
@@ -165,7 +166,7 @@ On 2026-10-21 the repository owner approved the direction of the decisions below
 | Label | Meaning | Where it appears |
 |---|---|---|
 | **[M]** | Existing measured evidence (unchanged) | §R0.1 only |
-| **[P]** | Proposed rule, definition or threshold | §R1–§R11, §R14–§R18 |
+| **[P]** | Proposed rule, definition or threshold | §R1–§R11, §R14–§R19 |
 | **[H]** | Hypothetical example; **not data** | §R12 only |
 | Future results | — | Only in the CSV templates and new result directories, never in this document |
 
@@ -699,7 +700,7 @@ These were checked by reading the rules; nothing was executed.
 | U-1 (**RESOLVED → R17.1**) | Can a documented self-review satisfy the equivalence requirement (R15.2)? | Interim: no. The outcome stays INCONCLUSIVE without an independent reviewer. **Needs explicit confirmation** |
 | U-2 (**RESOLVED → R17.1**) | Does the independent-review condition also apply to the Experiment 1 equivalence review (Experiment 1 §7.4 item 1, arm D against arm P)? | Not extended. Experiment 1 keeps "a second person reviews it if available" (Experiment 1 §11). **Needs a decision** |
 | U-3 (**RESOLVED → R18.2**) | Which disputed-code bound is used for Δ̄_nat in gate step 2? R6 bounding is defined only for the R8 category | Not defined. A conservative choice would be the SV-low bound. **Needs a decision** |
-| U-4 (**RESOLVED → R17.2**) | Hash representation for the freeze. Files are LF in the working tree, and Git reports that they will be converted to CRLF on checkout | The proposed manifest records both the working-tree SHA-256 and the Git blob id. **Needs a decision on which one is authoritative** |
+| U-4 (**RESOLVED → R17.2**) | Hash representation for the freeze. Files are LF in the working tree, and Git reports that they will be converted to CRLF on checkout *(W-4, R19, proposed: superseded as a description of the current state; see R19)* | The proposed manifest records both the working-tree SHA-256 and the Git blob id. **Needs a decision on which one is authoritative** |
 
 ---
 
@@ -748,7 +749,7 @@ On 2026-10-21 the repository owner decided U-1, U-2 and U-4 as recorded below. *
 - **Fresh-checkout line-ending behaviour has not been tested.** `core.autocrlf=true` is set, and no `.gitattributes` rule covers these files. A fresh checkout may write different bytes (CRLF), giving a different working-tree SHA-256 with the same blob id. This is an inference, not a test result.
 - **The 45/45 baseline verification applies only to the present working copy.** `baseline-hashes.sha256` records working-tree SHA-256 values only. It is **not** modified, and no blob ids are added to it.
 - **Not changed** to resolve this: `.gitattributes`, the Git configuration, and the frozen baseline.
-- **Consequence:** a blob id identifies version-controlled content only once that content is **committed**. Most of the documents to be frozen are uncommitted working-tree changes (see the freeze blockers in R17.5).
+- **Consequence:** a blob id identifies version-controlled content only once that content is **committed**. Most of the documents to be frozen are uncommitted working-tree changes (see the freeze blockers in R17.5). *(W-3, R19, proposed: superseded. The documentation is committed in `560d775` and merged to `master` by `4f19c98`.)*
 
 ## R17.3 Six-hour Schemathesis pilot: limitations (kept as approved)
 
@@ -800,7 +801,7 @@ On 2026-10-21 the repository owner decided F-1 and F-3 as recorded below. **Thes
 - `freeze-record.md` does not list itself.
 - `proposed-freeze-manifest.md` does not list itself, and does not list `freeze-record.md`, which changes when the freeze is completed.
 
-**The protocol files are not edited at freeze**, so they stay byte-identical to the approved manifest. In particular:
+**The protocol files are not edited at freeze**, so they stay byte-identical to the approved manifest. *(W-1, R19, proposed: read "content-identical to the approved manifest by authoritative Git blob id". Working-tree bytes may differ between environments, for example by line endings.)* In particular:
 - their status lines keep reading **"DRAFT, NOT FROZEN"**;
 - their in-file freeze logs (Experiment 1 §12, Experiment 2 §11) stay empty;
 - their amendment tables keep reading **"NOT ADOPTED"**.
@@ -849,3 +850,20 @@ On 2026-10-21 the repository owner decided F-1 and F-3 as recorded below. **Thes
 - This never changes the gate. Like every other threshold here, 0.20 is a judgement-based proposal, not a validated standard.
 
 **Supersedes:** the Δ̄_nat parts of R10 steps 2 and 3 (pointers added there), and R16 U-3.
+
+---
+
+# R19. Dated wording amendments (2026-10-21): PROPOSED, NOT ADOPTED, NOT FROZEN
+
+The repository owner requested these four wording corrections on 2026-10-21. **They change wording and recorded facts only.** No threshold, outcome category, precondition or gate step changes. The original text is kept, with pointers added. Adoption status is recorded in `freeze-record.md` §6 (proposed disposition: adopt; the "Adopted at freeze?" column is still empty).
+
+| ID | Location | Original wording (kept) | Amended wording (proposed) |
+|---|---|---|---|
+| **W-1** | R18.1, "The protocol files are not edited at freeze" | "…so they stay byte-identical to the approved manifest." | "…so they stay **content-identical to the approved manifest, as identified by the authoritative Git blob id**. Their working-tree bytes need not be identical in every environment: line-ending conversion (for example `core.autocrlf=true`) can change the bytes, and so the working-tree SHA-256, without changing the blob id." |
+| **W-2** | `freeze-record.md` §3 step 3 | "Verify (§4) that, for every listed file: the `git ls-tree HEAD` blob id equals the manifest's blob id; the working-tree SHA-256 equals the manifest's value." | **3a:** a blob-id mismatch **stops the freeze**; it cannot be resolved under the same manifest revision. **3b:** a working-tree SHA-256 mismatch is **investigated with executed commands recorded in §4**. It counts as resolved, and so as a passed check for step 5, **only if** the blob id passed 3a, `git diff --quiet HEAD -- <file>` exits with 0, **and** the SHA-256 of the current bytes with CRLF replaced by LF equals the SHA-256 of `git cat-file blob <blob id>`. Any other cause, or an unexplained mismatch, is a **failed** check: stop, and nothing is frozen. *(Full text in `freeze-record.md` §3.)* |
+| **W-3** | R17.2, "Consequence" bullet | "Most of the documents to be frozen are uncommitted working-tree changes (see the freeze blockers in R17.5)." | "The documentation to be frozen **is committed** in `560d775` ('docs: go/no-go validation protocols and proposed freeze manifest (not frozen)') and **merged** to `master` by `4f19c98` ('Merge pull request #1 …'). Any later edit to a listed file must be committed again before its blob id can be authoritative for a freeze." |
+| **W-4** | R16, row U-4 | "Files are LF in the working tree, and Git reports that they will be converted to CRLF on checkout." | "**Current working copy (observed by executed commands, 2026-10-21):** after the merge checkout under `core.autocrlf=true`, 11 of the 12 manifest-listed files are CRLF on disk; `baseline-hashes.sha256`, which the merge did not rewrite, is LF. Their LF-normalised SHA-256 values equal the earlier LF values, and the blob ids are unchanged. **Fresh-checkout behaviour in any other environment remains untested.** The 45/45 baseline verification applies only to the present working copy." |
+
+**Scope check** (by reading):
+- W-2 refines only §3 step 3. It does **not** change §3 step 5 ("record the failure and stop"). Instead, 3b defines which outcomes count as passed and which as failed for step 5.
+- No other rule, precondition or gate (R8, R9, R10, R14–R18) is affected.
