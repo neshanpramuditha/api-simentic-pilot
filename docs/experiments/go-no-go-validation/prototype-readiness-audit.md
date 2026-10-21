@@ -299,3 +299,55 @@ None of these is a redesign. Each is a bounded extension. But **any of them made
   - Body substitution, headers and authentication, configurable JDBC and drivers, and the read-back parameter mapping are likely to be needed.
   - To keep "configuration-only" testable, make these changes as **generic extensions before the target is selected**, freeze them by hash, and report them.
   - Anything changed after the target is seen counts as per-API adaptation effort.
+
+---
+
+## Addendum: re-verification (2026-10-21)
+
+This addendum records changes since the audit above. The original findings are left unedited.
+
+**Labels:**
+
+| Label | Meaning |
+|---|---|
+| **[V]** | Verified by a read-only command or by reading files |
+| **[I]** | Inference |
+| **[U]** | Untested |
+
+### A1. Git state, and a correction to §1
+
+- HEAD is now `33ed52ae7ff98d9c34995acc7170d244f73a023d`, "Define baseline", authored 2026-10-21 by the repository owner **[V]**.
+- The working tree was clean and `git ls-files --others --exclude-standard` returned 0 files before this addendum was written **[V]**.
+- The engine, `event-api/`, `library-api/`, the evaluation, reuse and DB-02 evidence, and this directory are now **tracked** **[V]**.
+
+The §1 statement that these are untracked was true at HEAD `4d9e7d8` and **no longer applies**. The risk of losing them through `git clean` is resolved.
+
+**Still not tracked [V]:** `target/` is git-ignored, so these are versioned only through `baseline-hashes.sha256`:
+- the API jars;
+- `semantic-validator/target/*.jar`;
+- `classpath.txt`.
+
+### A2. Baseline hashes
+
+- All 45 entries in `baseline-hashes.sha256` matched the current files on 2026-10-21 **[V]**.
+- The file was **not modified**. Its header still names HEAD `4d9e7d8`: that is the baseline it records, and it is kept as is.
+
+### A3. New gaps and contradictions found
+
+| # | Finding | Effect |
+|---|---|---|
+| N1 | `run-event-matrix.ps1` requires `-EngineV01`, a directory with the engine 0.1 jar, which is not in the repository **[V]**. Its run types are fixed (lines 38, 62–97) **[V]** | The stored Event matrix cannot be re-run as is. Experiment 2's PM-R, PM-S and ST-S need a **new** runner |
+| N2 | `run-library-matrix.ps1` and `verify-run.js` (Library) have no Postman support **[V]** | Postman runs on Library cannot be verified without new oracle code |
+| N3 | `verify-event-run.js` checks that the scenario requests are the 19 steps in order, and classifies read-backs by position (validator: GET before a transition; Postman: GET after) **[V]** | It breaks for new request sequences (Experiment 1 arm P, held-out scenarios) and for extra pre-request GETs (PM-S) **[I]** |
+| N4 | `run-schemathesis.ps1` is hard-wired to the Order spec and port 8080, and deletes `.schemathesis/` (a git-ignored cache) **[V]** | Not usable for Event. A new script is needed |
+| N5 | `run.json` records mode, type, repeat, defect, exit code, duration and the `DEFECT` lines. There are no timestamps, no tool versions and no rules, collection or jar hashes **[V]** | Recording gap for Experiment 2 criterion E8 and for reproducibility |
+| N6 | `save-matrix-evidence.js`, `library-reuse/save-evidence.js`, `save-schemathesis-evidence.ps1` and `diagnosis.js` write into their destination **without checking whether files already exist** **[V]** | They overwrite if pointed at an existing results directory. Always use a new destination. Git now allows recovery of committed files |
+| N7 | The existing Postman collection already puts evidence into custom assertion messages (Event generator lines 40–42, 66) **[V]** | Rubric §4.4 does not say whether this is native or scripted. See `operational-definitions.md` §4 |
+| N8 | The Order Postman collection has no invariant, transition-table or database checks. Library has no collection **[V]** | See `postman-baseline-checklist.md` §2 |
+| N9 | Schemathesis is not installed; Python 3.13.6 and pip 25.2 are present **[V]**. The Event spec has no `links` **[V]** | See `schemathesis-baseline-audit.md` |
+
+### A4. Unchanged
+
+- The engine is still v0.2 (covered by A2) **[V]**.
+- This addendum and the 2026-10-21 documentation changes touch only files in `docs/experiments/go-no-go-validation/`. This was checked with `git status` and `git diff` after the changes, and recorded in the session report.
+- **Whether a rebuild of the jars reproduces the recorded hashes is untested [U].**
