@@ -2,11 +2,13 @@
 
 **Status: DRAFT, NOT FROZEN.**
 
+> *Proposed revision E2-A31 (F-1):* this file is **not edited at freeze**. The authoritative freeze and adoption status is recorded only in `freeze-record.md`. Until that record shows the freeze procedure completed, this protocol is DRAFT, NOT FROZEN. After that, the status line above and the "NOT ADOPTED" labels below are historical.
+
 Freeze in this order:
 1. The rubric (§4).
 2. The answer key (§3.2).
 3. The tool configurations (§2).
-4. Record their SHA-256 in §11 **before any report is scored**. This includes re-scoring the existing Event artifacts.
+4. Record their SHA-256 in §11 **before any report is scored**. This includes re-scoring the existing Event artifacts. *(Proposed revision E2-A18: decision scoring uses only the new run set N1. The existing artifacts are the historical set H and are compared descriptively only.)* *(Proposed revision E2-A30: the Git blob id is authoritative. Recording this file's own hash inside it is self-referential; the freeze-record mechanics are open, R17.5 F-1.)* *(F-1 resolved by E2-A31: the record goes in `freeze-record.md`.)*
 
 **Disclosure.** The author of this protocol has already read the existing validator and Postman reports for the Event defects (audit §5). The rubric was written with that knowledge. A second rater (§7) is the main mitigation.
 
@@ -27,11 +29,11 @@ All configurations are frozen before scoring. Each one is a separate column in t
 
 | Config ID | Tool and setup | Evidence artifacts scored | Status |
 |---|---|---|---|
-| **SV** | Validator, engine 0.2 (hash-frozen), active mode with JDBC, `event-api.rules.v2.json`, default reporting. **The engine is not changed before scoring.** | `semval.json`, `semval.md` | Existing artifacts (`event-reuse/results/matrix/*/semval-v02-jdbc-r*`) |
-| **PM-D** | Postman CLI 1.74.0, `event.postman_collection.json`, CLI text output as in the existing runs | `postman.txt` | Existing artifacts (`*/postman-r*`) |
+| **SV** | Validator, engine 0.2 (hash-frozen), active mode with JDBC, `event-api.rules.v2.json`, default reporting. **The engine is not changed before scoring.** | `semval.json`, `semval.md` | Existing artifacts (`event-reuse/results/matrix/*/semval-v02-jdbc-r*`) *(E2-A18: re-run in N1; existing = historical set H)* |
+| **PM-D** | Postman CLI 1.74.0, `event.postman_collection.json`, CLI text output as in the existing runs | `postman.txt` | Existing artifacts (`*/postman-r*`) *(E2-A18: re-run in N1; existing = historical set H)* |
 | **PM-R** | Same collection, **reporting configured but no script change**: `--output <dir>` (YAML run summary and executions) plus `--verbose` | `postman.txt` and the `--output` files | To be run. A pilot must confirm what the files contain |
-| **PM-S** | PM-R plus **scripted evidence**. Collection scripts add: the request and response context in the assertion message or a logged block; the before/after database row through the database probe; a run timestamp and collection version. Authoring time and lines are recorded as overhead. Capped at 90 active minutes | as PM-R | To be built |
-| **ST-S** | Schemathesis 4.29.4 with **custom checks** (EVT-INV-001…005 equivalents, the transition table, database consistency through the probe). Driven by a **scenario adapter**: a Python script that sends the same 19 scenario requests through Schemathesis's case API and applies its checks, so the defects are triggered identically. Native output (failure report, reproduction command, NDJSON/JUnit) plus check messages | stdout, NDJSON, JUnit, adapter log | To be built. **The 4.29.4 Python API details must be verified in the pilot.** If the adapter is not possible, record ST-S as "not comparable on identical triggering" |
+| **PM-S** | PM-R plus **scripted evidence**. Collection scripts add: the request and response context in the assertion message or a logged block; the before/after database row through the database probe; a run timestamp and collection version. Authoring time and lines are recorded as overhead. Capped at 90 active minutes *(proposed revisions: the cap covers evidence code only, see E2-A20; PM-S is a primary decision baseline, see E2-A9)* | as PM-R | To be built |
+| **ST-S** | Schemathesis 4.29.4 with **custom checks** (EVT-INV-001…005 equivalents, the transition table, database consistency through the probe). Driven by a **scenario adapter**: a Python script that sends the same 19 scenario requests through Schemathesis's case API and applies its checks, so the defects are triggered identically. Native output (failure report, reproduction command, NDJSON/JUnit) plus check messages | stdout, NDJSON, JUnit, adapter log | To be built. **The 4.29.4 Python API details must be verified in the pilot.** If the adapter is not possible, record ST-S as "not comparable on identical triggering" *(E2-A19, E2-A23: a bounded 6-hour pilot, then stop; "not evaluated"; never a validator advantage)* |
 | ST-N (optional) | Schemathesis native stateful run with the same custom checks on a seeded database | as ST-S | Optional. Record "exercised: yes/no" per defect; score only if exercised |
 | ST-0 | Schemathesis built-in checks only | — | Known from the Order API to raise no semantic failures (`docs/defect-register.md`). Not re-run on Event except for the schema contrast |
 
@@ -40,7 +42,7 @@ All configurations are frozen before scoring. Each one is a separate column in t
 **Why three Postman levels?**
 - PM-D against PM-R separates a *reporting-configuration* effect from a tool effect (threat 10).
 - PM-R against PM-S separates evidence that is available **by configuration** from evidence that has to be **authored**.
-- Only a comparison against PM-R and ST-S supports any "better reporting" statement. The comparison against PM-S yields the **overhead** a baseline needs to reach parity.
+- Only a comparison against PM-R and ST-S supports any "better reporting" statement. The comparison against PM-S yields the **overhead** a baseline needs to reach parity. *(Proposed revision E2-A9: the decision baselines are PM-S and ST-S under the scripted metric; PM-D and PM-R are descriptive.)*
 
 ## 3. Defect instances
 
@@ -90,7 +92,7 @@ The answer key defines what "expected vs actual" and "prior/persisted state" mea
 
 **Counting rules.**
 - **Each element is counted once per unit**, however many items contain it.
-- **One observed value satisfies at most one element.** If a value could satisfy two elements, it is assigned to the first in rubric order, and the other element needs separate evidence.
+- **One observed value satisfies at most one element.** If a value could satisfy two elements, it is assigned to the first in rubric order, and the other element needs separate evidence. *(Proposed revision E2-A17: this applies only to E4b, E6a and E7a; E1b and E5 are statement elements.)*
 
 **What counts as present.** An element is *present* only if all four conditions hold:
 1. It is in the **tool's own output artifacts** for that run. The harness proxy HAR, API logs, database dumps and the tool's memory do not count.
@@ -150,7 +152,7 @@ Each element in a unit gets exactly one code:
 | `P` | Present, produced by the tool or its configuration with no evidence-specific scripting | yes, in both native and scripted scores |
 | `PS` | Present only because evidence-specific script or check code was written (PM-S, ST-S check messages) | only in the scripted score |
 | `AM` | Absent, *missing*: the tool could produce it under this protocol's allowed configuration, but this configuration did not | no |
-| `AU` | Absent, *unavailable*: no means under this protocol (for example, database evidence for a tool without probe or JDBC access) | no |
+| `AU` | Absent, *unavailable*: no means under this protocol (for example, database evidence for a tool without probe or JDBC access). *(E2-A28: per element and per unit, with a recorded reason; without one it is recoded AM)* | no |
 | `NA` | Not applicable (§4.3) | excluded |
 
 Evidence that "could be retrieved with a custom script" but was not is **AM**, never P. Reports list AM and AU separately, so missing and unavailable evidence stay distinct.
@@ -161,7 +163,7 @@ Every metric is computed per configuration, per category and per instance. The r
 
 | Metric | Definition |
 |---|---|
-| **Criterion completeness (primary)** | For each applicable criterion E1–E8: (present elements / applicable elements). Then the mean over the applicable criteria of the unit. Each criterion carries equal weight, so the many E8 elements cannot dominate |
+| **Criterion completeness (primary)** | For each applicable criterion E1–E8: (present elements / applicable elements). Then the mean over the applicable criteria of the unit. Each criterion carries equal weight, so the many E8 elements cannot dominate. *(E2-A9: the primary score counts P + PS, i.e. scripted; formulas in R4)* |
 | Element completeness | Present / applicable elements, pooled over the unit |
 | Native vs scripted | Both metrics with only `P` counted (native) and with `P`+`PS` counted (scripted) |
 | Traceable request and response | % of units with E3a, E3b, E3c (if applicable), E4a and E4b all present |
@@ -176,19 +178,19 @@ Every metric is computed per configuration, per category and per instance. The r
 
 ## 6. Procedure
 
-1. **Freeze** the rubric, the answer key and the configurations (§11). Recompute the hashes in `baseline-hashes.sha256`.
-2. **Build** the database probe, the PM-S scripts (timed, as overhead) and the ST-S checks and adapter (timed, as overhead).
-3. **Pilot.** Run the clean API and one defect for PM-R, PM-S and ST-S *only to confirm they run and produce no false positives on clean*. Pilot outputs are kept but **not scored**. If the pilot shows a configuration cannot run, record that and stop for that configuration. Do not redesign the protocol around it.
+1. **Freeze** the rubric, the answer key and the configurations (§11). Recompute the hashes in `baseline-hashes.sha256`. *(Meaning: verify them against the file. The file is never modified.)*
+2. **Build** the database probe, the PM-S scripts (timed, as overhead) and the ST-S checks and adapter (timed, as overhead). *(E2-A20 / R14.6 / R15.3: detection, setup and adapter effort uncapped, recorded in `notes`; only evidence code is capped at 90 minutes.)*
+3. **Pilot.** Run the clean API and one defect for PM-R, PM-S and ST-S *only to confirm they run and produce no false positives on clean*. Pilot outputs are kept but **not scored**. If the pilot shows a configuration cannot run, record that and stop for that configuration. Do not redesign the protocol around it. *(E2-A23: the ST-S feasibility pilot is time-boxed at 6 active hours. E2-A24: the detection-check equivalence review is completed **before any baseline is scored**.)*
 4. **Matrix.** Clean plus 5 defect modes × {PM-R, PM-S, ST-S} × 2 repeats, using the existing run conventions:
    - a new API process and a new H2 file database per run;
    - the switch-line check;
    - the recording proxy;
    - a database dump and the oracle (`verify-event-run.js`).
 
-   SV and PM-D use the existing runs.
-   - **Optionally, re-run SV and PM-D on the rebuilt jars to confirm** the results are identical to the stored ones. If they differ, the new runs replace the old ones, and the difference is reported.
+   SV and PM-D use the existing runs. *(Proposed revision E2-A18: SV and PM-D are re-run in N1.)*
+   - **Optionally, re-run SV and PM-D on the rebuilt jars to confirm** the results are identical to the stored ones. If they differ, the new runs replace the old ones, and the difference is reported. *(Proposed revision E2-A18: the re-run is **required** in run set N1. Stored results are never replaced; they stay as the historical set H.)*
 5. **Extract.** A script, adapted from `diagnosis.js` to the new rubric, lists the failure items at the cause step for each unit. It proposes an evidence locator per element (file plus JSON path or line).
-6. **Score manually.** The scorer assigns the element codes in `evidence-matrix-template.csv` and records each locator and a masked excerpt. The script's proposals are checked, never accepted unseen.
+6. **Score manually.** The scorer assigns the element codes in `evidence-matrix-template.csv` and records each locator and a masked excerpt. The script's proposals are checked, never accepted unseen. *(E2-A24: baseline units are scored only after the equivalence review is recorded.)*
 7. **Verify.** For each `P` or `PS`, compare the value with the HAR or database dump. If it is wrong, change the code to `AM` and add a note.
 8. **Self-audit** at least 48 h later: re-score a random 30% of units (the seed is recorded) without looking at the first scores. Report the agreement between the two passes.
 9. **Second rater** (§7).
@@ -203,13 +205,15 @@ Every metric is computed per configuration, per category and per instance. The r
   - they are not told the hypothesis.
 - Report the **percentage agreement per element**, and list each disagreement with how it was resolved.
 - Cohen's κ is reported only if two raters scored the same units, and it is labelled as based on a small sample.
-- **Without a second rater:** report the self-audit only, and state that no inter-rater reliability exists.
+- **Without a second rater:** report the self-audit only, and state that no inter-rater reliability exists. *(Proposed revision E2-A27: without an independent reviewer, Experiment 2 is INCONCLUSIVE for the project gate. This is an evaluation limitation, not evidence of validator failure or superiority.)*
 
 ## 8. Decision rule and threshold
 
 The rule is defined before scoring.
 
 ### 8.1 Favourable
+
+> *Proposed revisions E2-A9, E2-A10, E2-A15 and E2-A22 replace §8.1 and §8.2 with the scripted primary metric and the ordered outcome function (`operational-definitions.md` R8). This text is kept as history until freeze.*
 
 The result is favourable for a reporting-content claim only if **all** of these hold:
 1. The instances are comparable: the same build, scenario, switch and fresh database for every configuration. ST-S uses the adapter, or it is excluded with a reason.
@@ -229,7 +233,7 @@ The result is favourable for a reporting-content claim only if **all** of these 
 
 ### 8.3 Why 20 percentage points
 
-- With 7–8 applicable criteria per state or database unit, 20 pp is a difference of about 1.5–2 whole criteria. An example is prior state plus database evidence: a class of information a developer would otherwise collect by hand.
+- With 7–8 applicable criteria per state or database unit, 20 pp is a difference of ~~about 1.5–2 whole criteria. An example is prior state plus database evidence: a class of information a developer would otherwise collect by hand.~~ **about 1.4 criteria (ST) to 1.6 criteria (DB); two whole criteria would be 25–29 pp (corrected 2026-10-21, revision 2; see `operational-definitions.md` R11).**
 - Differences of one criterion or less are within what one ambiguous element judgment by a single rater can produce.
 - No external benchmark for this threshold exists. It is a pre-registered judgement, and it is stated as one.
 
@@ -262,6 +266,8 @@ Record the commands exactly. Store no Postman credentials, and run with `--no-re
 
 ## 11. Freeze log
 
+> *E2-A31: the freeze of this file is recorded in `freeze-record.md`, not here; the first row below stays empty. The supporting artifacts in the other rows are frozen separately when built, before any run, and recorded in their own freeze-record entries.*
+
 | Date (UTC) | Item | SHA-256 | Recorded by |
 |---|---|---|---|
 | | experiment-2-evidence-completeness-protocol.md (rubric §4, answer key §3.2, configurations §2) | | |
@@ -271,4 +277,71 @@ Record the commands exactly. Store no Postman credentials, and run with `--no-re
 
 ## Amendments
 
-None yet.
+### Proposed amendments (2026-10-21): NOT ADOPTED
+
+These are proposals. The protocol text above still applies until each one is adopted (dated here) and the freeze log (§11) is filled. *(E2-A31: adoption and freeze are recorded in `freeze-record.md`, not here.)* **No threshold changes:** the margin stays 20 percentage points, with SV at least equal to the baseline on every unit.
+
+| ID | Section affected | Proposed change | Reason |
+|---|---|---|---|
+| E2-A1 (**SUPERSEDED 2026-10-21 rev 2 by E2-A11**: classification kept and refined) | §4.4 | Use the detection-code / evidence-code rule (`operational-definitions.md` §4): data that appears only through custom messages, logs or extra fields is `PS`; the assertion, its name and the tool's default message are `P` | The existing collection already puts evidence into custom messages (Event generator lines 40–42, 66); without a rule, PM-R's native score is undefined |
+| E2-A2 (**WITHDRAWN 2026-10-21 rev 2**: the native metric is no longer primary; see E2-A9) | §8.2 | Add: because of E2-A1, a favourable *native* result supports only "evidence without authoring". Any wider "more complete evidence" claim also needs the scripted comparison against PM-S | Says openly that the native metric favours the validator by construction |
+| E2-A3 (**SUPERSEDED IN PART 2026-10-21 rev 2 by E2-A10**: the defect averaging is kept; "best non-scripted baseline" is replaced by the best *scripted* baseline) | §8.1(5) | The average is taken over **defects**: I2a and I2b are averaged first. "At least" includes ties. "Best non-scripted baseline" is per unit, the higher native score of PM-R and ST-S, or PM-R alone if ST-S is excluded | EVT-DB-01 would otherwise count twice; definitions were missing (A3–A5) |
+| E2-A4 | §6 step 4 | Replace "using the existing run conventions" with: a **new** runner file that keeps those conventions (new API process, new H2 file database, the `DEFECT` line check, the recording proxy, the database dump, the oracle) and records the run metadata in `postman-baseline-checklist.md` §5 (M1–M6). The existing runner is not edited | `run-event-matrix.ps1` cannot run PM-R, PM-S or ST-S, and needs a v0.1 jar that is not in the repository (audit addendum N1) |
+| E2-A5 | §6 step 4 | The oracle must be told that database-probe calls are not in `traffic.har.json`, and that PM-S may add pre-request GETs. Use a new or parameterised oracle file, self-tested first | `verify-event-run.js` classifies read-backs by position (N3) |
+| E2-A6 (**REFINED 2026-10-21 rev 2 by E2-A12**: the scripting policy now applies to PM-S and ST-S alike) | §2 PM-S | The PM-S changes are those in `postman-baseline-checklist.md` items P4 and P7–P11, together with the evidence scripting. Record `detection_code_lines` and `evidence_code_lines` | Ties "scripted" to a concrete list of changes |
+| E2-A7 | §2 ST-S | Prerequisites and exclusion conditions as in `schemathesis-baseline-audit.md` §7–§8 | Makes ST-S's dependency on untested Schemathesis features explicit |
+| E2-A8 | §6 steps 5, 10 | Extraction and scoring scripts must write to a **new** output directory and refuse to write if it already exists | Existing save and diagnosis scripts overwrite their destination (N6) |
+
+### Proposed amendments, revision 2 (2026-10-21): NOT ADOPTED
+
+On 2026-10-21 the repository owner approved the direction of these amendments. They remain **proposed** until this protocol is frozen (§11). Full definitions are in `operational-definitions.md` R1–R13. **Thresholds are unchanged and remain proposed** (20 pp; the guard at −20 pp).
+
+| ID | Section affected | Proposed change |
+|---|---|---|
+| E2-A9 | §2 ("Why three Postman levels?": the statement that only PM-R and ST-S support a "better reporting" statement), §5, §8 | **Primary metric: scripted criterion completeness**, so PM-S and ST-S (P + PS) are the decision baselines; PM-D and PM-R remain descriptive. Secondary metrics: native completeness, and authoring overhead (minutes and lines, descriptive). **No effort threshold in Experiment 2** (R1) |
+| E2-A10 | §5, §8.1 | Scoring formulas, the defect-level averaging (EVT-DB-01 counted once), the decision set T and guard set G, the best scripted baseline B(d), repeat handling, and no pooling across categories or APIs (R4) |
+| E2-A11 | §4.1, §4.4 | Deletion-test classification for custom messages, logs, follow-up requests, probe results, framework output and harness metadata (R2). A read-back may satisfy E7a only, labelled as API-observed state; never E7b. E5b clarification: a concrete expected status code counts, but does not establish the business reason (R2) |
+| E2-A12 | §2 (PM-S, ST-S) | Scripting policy: generic, derived, frozen before defect runs, the rubric given as the evidence specification, the same probe, **a 90-active-minute cap for both Postman and Schemathesis**, active time and code size recorded separately (R3) |
+| E2-A13 | §4.1 | The one-value rule applies to observed data values, not to labels or provenance. One provenance statement covering both rows may support E6b and E7b (R5). **Open issue O-1** (R13) must be decided before freezing. *(Revision 3: O-1 resolved, and the rule scope is replaced by E2-A17.)* |
+| E2-A14 | §7 | Disputed-code resolution: a second rater preferred, otherwise the mandatory self-audit; bounding analysis (SV-low / SV-high); disclosure (R6) |
+| E2-A15 | §8.1, §8.2 | Replace with the ordered, mutually exclusive outcome function: preconditions V1–V5, then FAVOURABLE / INCONCLUSIVE (mixed) / UNFAVOURABLE / COMPARABLE, the guard calculation, and V6 robustness (R8) |
+| E2-A16 | §8.3 | Arithmetic corrected in place (struck-through original kept). Sensitivity reporting at 10 / 30 pp, proposed and not validated; it never changes the decided category (R7, R11) |
+
+### Proposed amendments, revision 3 (2026-10-21): NOT ADOPTED
+
+These record the owner's decisions on O-1 to O-6. They remain **proposed** until this protocol is frozen (§11). Full text is in `operational-definitions.md` R14. **Thresholds are unchanged and remain judgement-based proposals**: 20 pp, the −20 pp guard bound, sensitivity at 10/30 pp, and the Schemathesis pilot time box of 6 h.
+
+| ID | Section affected | Proposed change |
+|---|---|---|
+| E2-A17 | §4.1 (the sentence "One observed value satisfies at most one element") | The one-value rule applies only to the state-data elements **E4b, E6a and E7a**. **E1b, E5a and E5b are statement elements**, assessed separately. A satisfiability check shows every applicable element remains satisfiable (R14.1). Replaces the scope stated in E2-A13 |
+| E2-A18 | §6 step 4 ("Optionally, re-run SV and PM-D …") | **Required, not optional.** All decision configurations, including SV and PM-D, come from one new run set **N1** on the same rebuilt jars, with full run metadata. The historical set **H** is read-only and only compared descriptively (R14.3) |
+| E2-A19 | §2 (ST-S row) | A bounded Schemathesis **feasibility pilot** (6 active hours, proposed) runs before the matrix and is not scored. On failure: a documented exclusion (blocker, attempts, consequences). Claims are then limited to Postman, and the exclusion is **not** evidence that the validator is superior (R14.4) |
+| E2-A20 | §2 (PM-S row, "Capped at 90 active minutes"; ST-S) | The 90-minute cap covers **evidence-authoring code only**, the same for PM-S and ST-S. Detection checks, setup, environment and adapter effort are recorded separately and uncapped, and must pass an equivalence review **before** the evidence clock starts. A baseline that fails the review gives V5 failure (INCONCLUSIVE), never a weaker scored baseline (R14.6) |
+| E2-A21 | §4.4 (AU) | The validator's E8 elements stay applicable and visible. AU is assigned only per §4.4/R2, with a reason recorded per element. No report fields are added and the engine is not modified (R14.5) |
+| E2-A22 | §8 | Confirmed: this experiment **alone cannot produce GO or GO-CANDIDATE**. No reporting-only GO route exists under the current scope; one could only be introduced through an explicit, dated, frozen scope and gate revision before further evaluation (R14.2) |
+
+### Proposed amendments, revision 3 final conditions (2026-10-21): NOT ADOPTED, NOT FROZEN
+
+| ID | Section affected | Proposed change |
+|---|---|---|
+| E2-A23 | §2 (ST-S), §6 step 3 | **The 6-active-hour pilot time box is approved as a judgement-based bound.** If the pass criterion is not met within it, the pilot stops; the blocker and attempts are recorded; Schemathesis is reported as "not evaluated"; this is not evidence of validator superiority (R15.1) |
+| E2-A24 | §6 steps 3 and 6, §7 | **Detection-check equivalence review before any baseline is scored.** An independent second reviewer is preferred. A self-review is recorded as such and is not treated as independent verification. The outcome stays INCONCLUSIVE until the requirement is satisfied (R15.2). **Open U-1:** whether a self-review can ever satisfy it. Interim reading: no |
+| E2-A25 | §2, §8 | Missing, unusable or excluded ST-S (or PM-S) results are never imputed or scored as 0 in any baseline maximum. Either the baseline is excluded through documented exclusion, or V5 fails. No validator advantage can be inferred (R15.4) |
+| E2-A24 note | — | **Freeze decisions (2026-10-21):** open item U-1 in E2-A24 is resolved by E2-A27 |
+| E2-A26 | §5 (reporting overhead), §10 | Detection, setup and adapter effort are recorded in `notes` as `DETECTION:`, `SETUP:` and `ADAPTER:` entries with active minutes and a description; no new CSV column. `overhead_minutes` = evidence-authoring minutes only (R15.3) |
+
+### Proposed amendments, freeze decisions (2026-10-21): NOT ADOPTED, NOT FROZEN
+
+| ID | Section affected | Proposed change |
+|---|---|---|
+| E2-A27 | §6 steps 8–9, §7, §8 | **Independent review is required** for (a) detection-check equivalence and (b) disputed evidence scoring, as new precondition **V7**. Without an independent reviewer, Experiment 2 is **INCONCLUSIVE for the project gate**; scores are reported descriptively. This is an evaluation limitation, not evidence of validator failure or superiority (R17.1) |
+| E2-A28 | §4.4 | **AU** is per element and per unit, under the operational definition, with a recorded reason in `notes` (`AU: <element> — <reason> — <reference>`). An AU without a reason is recoded AM. Baselines also need a documented pilot attempt (R17.4) |
+| E2-A29 | §2 (ST-S), §6 step 3 | The 6-hour pilot limit is kept. Its limitations are documented: a judgement; may exclude a feasible baseline, which narrows the claims but gives no validator advantage; self-recorded time; clean plus one defect only (R17.3) |
+| E2-A30 | §11 (freeze log) | Freeze identifiers: the Git blob id is authoritative for version-controlled content; working-tree SHA-256 is an integrity check of the bytes used. Fresh-checkout behaviour is untested. **The freeze-record mechanics (R17.5, F-1) are undecided** *(resolved by E2-A31)* |
+
+### Proposed amendments, F-1/F-3 resolutions (2026-10-21): NOT ADOPTED, NOT FROZEN
+
+| ID | Section affected | Proposed change |
+|---|---|---|
+| E2-A31 | Header, §11 | **Separate freeze record (F-1).** The freeze, the blob ids, the working-tree SHA-256 values and the adoption status of E2-A1 to E2-A32 are recorded only in `freeze-record.md`. This file is not edited at freeze, and never contains its own hash. Its status line and amendment labels become historical once `freeze-record.md` shows the procedure completed (R18.1) |
+| E2-A32 | §5 (native score, secondary), §8 (gate interface) | **Native-margin bound (F-3).** The native margin used by the effort-only gate route is computed under both plausible-code bounds. The route needs **Δ̄_nat^low ≥ 0.20** (the least favourable bound), together with Experiment 2 = COMPARABLE, all preconditions including V7, and Experiment 1 = FAVOURABLE on T1–T3. If the bounds disagree, the native-margin result is INCONCLUSIVE and the route is not taken. **The Experiment 2 outcome (R8) is unchanged, and no reporting-only GO route is created** (R18.2) |

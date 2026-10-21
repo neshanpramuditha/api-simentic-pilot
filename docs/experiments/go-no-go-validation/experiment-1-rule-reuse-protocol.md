@@ -2,9 +2,11 @@
 
 **Status: DRAFT, NOT FROZEN.**
 
+> *Proposed revision E1-A13 (F-1):* this file is **not edited at freeze**. The authoritative freeze and adoption status is recorded only in `freeze-record.md`. Until that record shows the freeze procedure completed, this protocol is DRAFT, NOT FROZEN. After that, the status line above and the "NOT ADOPTED" labels below are historical.
+
 Before the first timed trial:
 1. Finish §12 (pre-trial checklist).
-2. Record the SHA-256 of this file in the freeze log (§12).
+2. Record the SHA-256 of this file in the freeze log (§12). *(Proposed revision E1-A12: the Git blob id is authoritative. Recording a file's own hash inside the file is self-referential; the freeze-record mechanics are open, R17.5 F-1.)* *(F-1 resolved by E1-A13: the record goes in `freeze-record.md`.)*
 3. After that, change the protocol only through dated amendments appended at the end, each with its reason.
 
 **Classification: exploratory, not confirmatory.**
@@ -104,6 +106,8 @@ Use the existing APIs unchanged. Before each trial:
 
 ### 5.2 Independent target (T3)
 
+> *Proposed revision E1-A5 replaces these criteria with the tool-neutral criteria in `independent-api-selection-criteria.md`. Criterion 7 below filters for engine fit. This text is kept as history until freeze.*
+
 Selection criteria are fixed before the search to avoid cherry-picking. A candidate must meet all of them:
 1. It was not written in this project, nor by anyone who has seen the engine or its rules.
 2. It runs locally without external services; Docker is acceptable.
@@ -184,9 +188,9 @@ After END, the experimenter runs the defect modes (§7.4). If an arm misses a de
 
 The experimenter performs these after END.
 
-1. **Equivalence review:** map each required check to the artifact that implements it (template §10.2). A check counts as implemented only if a mapped assertion or rule exists **and** was executed on the clean run.
+1. **Equivalence review:** map each required check to the artifact that implements it (template §10.2). A check counts as implemented only if a mapped assertion or rule exists **and** was executed on the clean run. *(Proposed revision E1-A11: an independent reviewer where feasible; otherwise a self-review, recorded as `self-review` and labelled weaker evidence.)*
 2. **Clean runs:** 2 repeats, fresh API and database each, so 0 failures are expected.
-3. **Defect runs:** for each target defect, 2 repeats, fresh API and database, switch line checked. Use the existing matrix and oracle scripts.
+3. **Defect runs:** for each target defect, 2 repeats, fresh API and database, switch line checked. Use the existing matrix and oracle scripts. *(Proposed revision E1-A4: use new, self-tested runner and oracle files; the existing scripts stay unchanged.)*
    - Record detection at the cause step, downstream-only detection, false-positive steps (the "affected steps" definition from `verify-*.js`) and the exit code.
 4. **Held-out scenario (H1.4):** a second scenario, written by the experimenter before the trials and unseen by the implementer, in which the same defects act at different steps. Run both arms' artifacts on it.
    - Arm P's request sequence must be replaced with the held-out sequence. Swapping in a new request sequence is mechanical and is not timed.
@@ -218,7 +222,7 @@ The experimenter performs these after END.
 | False positives | Failing steps outside the oracle's affected steps, clean and defect runs |
 | Repeat consistency | Identical failure keys across the 2 repeats (yes/no) |
 | Transfer (H1.4) | Defects still detected on the held-out scenario / applicable |
-| Debug runs | Number of tool executions during the trial, from the tool logs or the shell history |
+| Debug runs | Number of tool executions during the trial, from the tool logs or the shell history *(E1-A6: only executions logged by the timer wrapper)* |
 
 **Lines of code are never used as the sole measure of effort.** Time is the primary effort metric; lines and counts are descriptive.
 
@@ -227,6 +231,8 @@ The experimenter performs these after END.
 The rule is defined before any trial.
 
 ### 9.1 Favourable
+
+> *Proposed revisions E1-A1, E1-A2, E1-A8 and E1-A10 replace §9.1–§9.2 with the ordered outcome function (`operational-definitions.md` R9). This text is kept as history until freeze.*
 
 A task is favourable only if **all** of these hold:
 1. Equivalence: both arms implement all applicable checks and pass the clean runs (H1.3).
@@ -309,7 +315,7 @@ Per-run data goes into `experiment-data-template.csv` with `experiment = E1`. Th
 | Self-authored, engine-aware targets | T3 independent target; T1/T2 limits stated | No portability claim without T3 |
 | Postman weakened by an unequal source or no database access | Careful Event source collection, database probe, free choice of authoring method | Probe overhead reported |
 | Hidden engine or helper changes | Hash check before and after; every non-artifact diff reported | — |
-| Experimenter bias in the equivalence review | Mapping table published; a second person reviews it if available | Medium |
+| Experimenter bias in the equivalence review | Mapping table published; a second person reviews it if available *(E1-A11: self-review labelled weaker evidence, limitation recorded)* | Medium |
 | Scenario authoring dominates the time | Scenario lines and time reported inside arm D; arm P also builds its request sequence | Both arms do comparable sequencing work |
 
 ## 12. Pre-trial checklist and freeze log
@@ -322,7 +328,7 @@ Per-run data goes into `experiment-data-template.csv` with `experiment = E1`. Th
 - [ ] (T3) Engine v0.3 generic changes, if any, frozen *before* the target search
 - [ ] (T3) Target selected per §5.2, with the search log saved
 - [ ] Timer script tested
-- [ ] SHA-256 of this protocol recorded below
+- [ ] SHA-256 of this protocol recorded below *(E1-A13: recorded in `freeze-record.md` instead; the table below stays empty)*
 
 | Date (UTC) | File | SHA-256 | Recorded by |
 |---|---|---|---|
@@ -330,4 +336,52 @@ Per-run data goes into `experiment-data-template.csv` with `experiment = E1`. Th
 
 ## Amendments
 
-None yet.
+### Proposed amendments (2026-10-21): NOT ADOPTED
+
+These are proposals. The protocol text above still applies until each one is adopted by recording its adoption date here and freezing this file (§12). *(E1-A13: adoption is recorded in `freeze-record.md` §6, not here.)* **No threshold changes:** the ratio stays 0.67, and the cap stays 120 minutes.
+
+| ID | Section affected | Proposed change | Reason |
+|---|---|---|---|
+| E1-A1 | §9.1(2) | Replace "or every difference is explained by a recorded difference in what was implemented" with: a detection difference is acceptable only if the check mapping (§10.2) shows a check was not implemented or not executed. In that case **the task is not equivalent and is not interpreted for H1.1** | "Explained" leaves room for interpretation (`operational-definitions.md` §9 A1) |
+| E1-A2 | §9.2 | Incomplete tasks: if arm D hits the cap, the task is unfavourable. If arm P hits the cap and D completes, P's time is recorded as 120 minutes (a lower bound) and the usual conditions apply | "Every completed task" would let tasks drop out (A2) |
+| E1-A3 | §3, §8 | Adopt the classes engine / runtime configuration / rule configuration / helper / pre-registered extension (`operational-definitions.md` §3), and the line-counting method (§2 there) | Makes "engine change" and "configuration only" checkable by hash |
+| E1-A4 | §7.4(3) | Replace "Use the existing matrix and oracle scripts" with: use **new** runner and oracle files that accept any request sequence and arm. They must be self-tested before any trial. The existing scripts stay unchanged | The existing Library oracle has no Postman support; the Event oracle assumes the 19-step sequence and identifies read-backs by position (audit addendum N1–N3) |
+| E1-A5 | §5.2 | Replace with a reference to `independent-api-selection-criteria.md` (tool-neutral criteria S1–S10, ordered screening, engine frozen before the search) | Earlier criterion 7 (authentication can be disabled) filtered for what the engine supports, which risks choosing an API that fits the engine |
+| E1-A6 | §8 "Debug runs" | Count only the tool executions logged by the timer wrapper | Shell history is not reliable (A9) |
+| E1-A7 | §8 | Report the rule-reuse classification (reused / adapted / new; `operational-definitions.md` §5) as a descriptive metric | Defines "rule reuse" |
+| E1-A2 note | — | **Revision 2 (2026-10-21):** the cap handling in E1-A2 is kept and is folded into the outcome function of E1-A8 | — |
+
+### Proposed amendments, revision 2 (2026-10-21): NOT ADOPTED
+
+On 2026-10-21 the repository owner approved the direction of these amendments. They remain **proposed** until this protocol is frozen (§12). **The threshold is unchanged and remains proposed** (0.67; it is not an externally validated standard).
+
+| ID | Section affected | Proposed change | Reason |
+|---|---|---|---|
+| E1-A8 | §9.1, §9.2 | Replace with the ordered, mutually exclusive outcome function in `operational-definitions.md` R9: `r_t = max(r⁻_t, r⁺_t)`, the cap treated as a lower bound, then UNFAVOURABLE → INCONCLUSIVE → FAVOURABLE → COMPARABLE. Required tasks are T1, T2 **and T3**. A result for T1/T2 only is labelled scope-limited and can support CONTINUE at most | The earlier categories could overlap. A GO route must need the independent API |
+| E1-A9 | §9.3 | Sensitivity reporting at ρ = 0.5 and 0.8 (proposed, not validated). The decision uses 0.67 only. If the category differs across ρ, the result is flagged threshold-sensitive (R7) | Shows how much the verdict depends on a judgement-based threshold |
+| E1-A10 | §9 | The effort-only GO-CANDIDATE route (R10, step 2) requires this experiment to be FAVOURABLE on **all** required tasks, including the independent API (T3). The resulting claim is limited to "comparable evidence with lower authoring effort" | Approved 2026-10-21 |
+
+### Revision 3 note (2026-10-21)
+
+- No change to this protocol's rules or thresholds.
+- Under the current gate, **every GO-CANDIDATE route requires this experiment to be FAVOURABLE on T1, T2 and T3**. A reporting-only route without Experiment 1 was **not adopted** (`operational-definitions.md` R14.2).
+- The 0.67 ratio and the sensitivity values 0.5/0.8 remain judgement-based proposals.
+
+### Revision 3 final-conditions note (2026-10-21): NOT FROZEN
+
+- The independent-reviewer requirement for **Experiment 2** detection-check equivalence (`operational-definitions.md` R15.2) is **not** extended to this protocol's equivalence review (§7.4 item 1). §11 still reads "a second person reviews it if available".
+- Whether it should be extended is **open item U-2** (R16). *(Resolved by E1-A11 below.)*
+
+### Proposed amendments, freeze decisions (2026-10-21): NOT ADOPTED, NOT FROZEN
+
+| ID | Section affected | Proposed change |
+|---|---|---|
+| E1-A11 | §7.4 item 1, §10.1, §11 | The equivalence review uses an **independent reviewer where feasible**. Otherwise the existing fallback (review by the experimenter) is kept, but: the record states `self-review`; the result is labelled **weaker evidence** wherever it is reported; the limitation is recorded in the trial log Notes and in the write-up. The R9 outcome rules are unchanged (`operational-definitions.md` R17.1) |
+| E1-A12 | §12 (freeze log) | Freeze identifiers as in R17.2: the Git blob id is authoritative, and working-tree SHA-256 is an integrity check. **The freeze-record mechanics (R17.5, F-1) are undecided** *(resolved by E1-A13)* |
+
+### Proposed amendments, F-1/F-3 resolutions (2026-10-21): NOT ADOPTED, NOT FROZEN
+
+| ID | Section affected | Proposed change |
+|---|---|---|
+| E1-A13 | Header steps 2–3, §12 | **Separate freeze record (F-1).** The freeze, the blob ids, the working-tree SHA-256 values and the adoption status of E1-A1 to E1-A13 are recorded only in `freeze-record.md`. This file is not edited at freeze, and never contains its own hash. Its status line and amendment labels become historical once `freeze-record.md` shows the procedure completed (`operational-definitions.md` R18.1) |
+| E1-A13 note | §9 (gate interface) | F-3 (R18.2) changes only the Experiment 2 native-margin condition of gate step 2. **This experiment's outcome rules (R9) are unchanged**, and every GO-CANDIDATE route still requires Experiment 1 = FAVOURABLE on T1, T2 and T3 |
