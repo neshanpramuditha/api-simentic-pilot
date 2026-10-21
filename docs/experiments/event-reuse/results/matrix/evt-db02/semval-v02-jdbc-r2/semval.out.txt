@@ -1,0 +1,2 @@
+semantic-validator: 19 exchanges, 7 rules, totals {PASS=96, FAIL=1, NOT_APPLICABLE=28}, 2450 ms -> <run-root>\evt-db02\semval-v02-jdbc-r2\semval.json
+  FAIL EVT-DB-001 #9 transitionRegistration: persisted state differs from the 200 response: [state: persisted=CONFIRMED response($.state)=CANCELLED, cancellation_reason: persisted=null response($.cancellationReason)=Schedule conflict]

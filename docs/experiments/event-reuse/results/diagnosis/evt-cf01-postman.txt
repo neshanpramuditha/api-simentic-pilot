@@ -1,0 +1,87 @@
+# evt-cf01: Postman CLI output (sections with failures, then the failure table; ids masked)
+
+Root 2 R1 -> CHECKED_IN
+
+  POST http://localhost:8092/v1/registrations/REG-xxxxxxxx/transitions [200 OK, 453 B, 11 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  1. [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  GET http://localhost:8092/v1/registrations/REG-xxxxxxxx [200 OK, 453 B, 7 ms]
+  Pass  [READBACK] stored registration equals the 200 response
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CHECKED_IN
+
+Root 3 fetch R1
+
+  GET http://localhost:8092/v1/registrations/REG-xxxxxxxx [200 OK, 453 B, 7 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  2. [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CHECKED_IN
+
+Root 5 fetch R1
+
+  GET http://localhost:8092/v1/registrations/REG-xxxxxxxx [200 OK, 453 B, 9 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  3. [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CHECKED_IN
+
+Root 15 list ATT-7
+
+  GET http://localhost:8092/v1/attendees/ATT-7/registrations [200 OK, 1.01 KB, 70 ms]
+  Pass  [schema] body matches the OpenAPI AttendeeRegistrations schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN (item 0)
+  Pass  [INV-002] cancelledAt set iff CANCELLED (item 0)
+  Pass  [INV-003] cancellationReason set iff CANCELLED (item 0)
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED (item 0)
+  4. [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 0)
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN (item 1)
+  Pass  [INV-002] cancelledAt set iff CANCELLED (item 1)
+  Pass  [INV-003] cancellationReason set iff CANCELLED (item 1)
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED (item 1)
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 1)
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN (item 2)
+  Pass  [INV-002] cancelledAt set iff CANCELLED (item 2)
+  Pass  [INV-003] cancellationReason set iff CANCELLED (item 2)
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED (item 2)
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 2)
+  Pass  [STEP] status is 200
+  Pass  [STEP] list states are CHECKED_IN, CANCELLED, WAITLISTED
+
+
+#  failure         detail                                                                                                                                 
+                                                                                                                                                            
+ 1.  AssertionError  [INV-005] requestedAt <= confirmedAt <= checkedInAt                                                                                    
+                     confirmedAt 2026-10-19T07:40:03.690474Z vs checkedInAt 2026-10-19T07:40:03.460791Z: expected 1792395603690 to be at most 1792395603460 
+                     at assertion:5 in test-script                                                                                                          
+                     inside "2 R1 -> CHECKED_IN"                                                                                                            
+                                                                                                                                                            
+ 2.  AssertionError  [INV-005] requestedAt <= confirmedAt <= checkedInAt                                                                                    
+                     confirmedAt 2026-10-19T07:40:03.690474Z vs checkedInAt 2026-10-19T07:40:03.460791Z: expected 1792395603690 to be at most 1792395603460 
+                     at assertion:5 in test-script                                                                                                          
+                     inside "3 fetch R1"                                                                                                                    
+                                                                                                                                                            
+ 3.  AssertionError  [INV-005] requestedAt <= confirmedAt <= checkedInAt                                                                                    
+                     confirmedAt 2026-10-19T07:40:03.690474Z vs checkedInAt 2026-10-19T07:40:03.460791Z: expected 1792395603690 to be at most 1792395603460 
+                     at assertion:5 in test-script                                                                                                          
+                     inside "5 fetch R1"                                                                                                                    
+                                                                                                                                                            
+ 4.  AssertionError  [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 0)                                                                           
+                     confirmedAt 2026-10-19T07:40:03.690474Z vs checkedInAt 2026-10-19T07:40:03.460791Z: expected 1792395603690 to be at most 1792395603460 
+                     at assertion:5 in test-script                                                                                                          
+                     inside "15 list ATT-7"                                                                                                                 
+Postman credentials are required for publishing run details to Postman cloud.
+Please specify it by using the `postman login` command
+

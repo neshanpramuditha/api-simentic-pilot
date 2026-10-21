@@ -1,0 +1,157 @@
+{
+  "run": {
+    "mode": "evt-db02",
+    "type": "capture",
+    "repeat": 1,
+    "defectSwitchOk": true
+  },
+  "traffic": {
+    "harEntries": 19,
+    "readBacks": 0,
+    "scenarioRequests": 19,
+    "problems": []
+  },
+  "oracle": {
+    "transitions": {
+      "REQUESTED": [
+        "CONFIRMED",
+        "WAITLISTED",
+        "CANCELLED"
+      ],
+      "WAITLISTED": [
+        "CONFIRMED",
+        "CANCELLED"
+      ],
+      "CONFIRMED": [
+        "CHECKED_IN",
+        "CANCELLED"
+      ],
+      "CHECKED_IN": [],
+      "CANCELLED": []
+    },
+    "violations": [
+      {
+        "key": "EVT-DB-001@9",
+        "rule": "EVT-DB-001",
+        "step": 9,
+        "item": null,
+        "kind": "db-success",
+        "detail": "response state CANCELLED but stored CONFIRMED (traffic entry 10)"
+      }
+    ],
+    "causeSteps": [
+      9
+    ],
+    "deviations": [
+      {
+        "step": 10,
+        "detail": "state CONFIRMED != CANCELLED"
+      },
+      {
+        "step": 15,
+        "detail": "list CHECKED_IN,CONFIRMED,WAITLISTED != CHECKED_IN,CANCELLED,WAITLISTED"
+      }
+    ],
+    "affectedSteps": [
+      9,
+      10,
+      15
+    ],
+    "hiddenStateChanges": [
+      {
+        "id": "REG-7P9AFG5G",
+        "claimed": {
+          "state": "CANCELLED",
+          "confirmedAt": true,
+          "checkedInAt": false,
+          "cancelledAt": true,
+          "cancellationReason": "Schedule conflict"
+        },
+        "stored": {
+          "state": "CONFIRMED",
+          "confirmedAt": true,
+          "checkedInAt": false,
+          "cancelledAt": false,
+          "cancellationReason": null
+        }
+      }
+    ],
+    "dbRowsCheckedInWithoutTime": 0,
+    "dbRowsOutOfOrder": 0,
+    "exercised": true,
+    "anyDefectSignature": true
+  },
+  "tools": {
+    "semval-v01-passive": {
+      "exitCode": 0,
+      "totals": {
+        "PASS": 64,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 32
+      },
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      },
+      "failKeys": [],
+      "tp": 0,
+      "extraKeys": [],
+      "fn": [
+        {
+          "key": "EVT-DB-001@9",
+          "reason": "not evaluable: no database access (passive mode or no JDBC URL configured)"
+        }
+      ],
+      "failSteps": [],
+      "falsePositiveSteps": [],
+      "detectedAtCause": false,
+      "evidenceProblems": [],
+      "fails": 0,
+      "durationMs": 442
+    },
+    "semval-v02-passive": {
+      "exitCode": 0,
+      "totals": {
+        "PASS": 88,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 37
+      },
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      },
+      "failKeys": [],
+      "tp": 0,
+      "extraKeys": [],
+      "fn": [
+        {
+          "key": "EVT-DB-001@9",
+          "reason": "not evaluable: no database access (passive mode or no JDBC URL configured)"
+        }
+      ],
+      "failSteps": [],
+      "falsePositiveSteps": [],
+      "detectedAtCause": false,
+      "evidenceProblems": [],
+      "fails": 0,
+      "durationMs": 461
+    },
+    "ajv": {
+      "checked": 14,
+      "violations": 0,
+      "failSteps": [],
+      "falsePositiveSteps": [],
+      "detectedAtCause": false,
+      "durationMs": 260
+    }
+  }
+}

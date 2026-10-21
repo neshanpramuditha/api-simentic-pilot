@@ -1,0 +1,11 @@
+{
+    "mode":  "clean",
+    "config":  "semval-nojdbc",
+    "repeat":  2,
+    "defect":  "",
+    "exitCode":  0,
+    "durationMs":  2201,
+    "defectLines":  [
+
+                    ]
+}

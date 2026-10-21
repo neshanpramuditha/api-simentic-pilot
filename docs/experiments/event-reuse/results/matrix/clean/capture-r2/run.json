@@ -1,0 +1,14 @@
+{
+    "mode":  "clean",
+    "type":  "capture",
+    "repeat":  2,
+    "defect":  "",
+    "exitCodeV01Passive":  0,
+    "durationMsV01Passive":  424,
+    "exitCodeV02Passive":  0,
+    "durationMsV02Passive":  405,
+    "durationMsAjv":  245,
+    "defectLines":  [
+
+                    ]
+}

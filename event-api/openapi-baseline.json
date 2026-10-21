@@ -1,0 +1,310 @@
+{
+  "components" : {
+    "schemas" : {
+      "AttendeeRegistrations" : {
+        "description" : "All registrations of one attendee, oldest request first",
+        "properties" : {
+          "attendeeRef" : {
+            "description" : "Reference of the attendee",
+            "example" : "ATT-7",
+            "type" : "string"
+          },
+          "count" : {
+            "description" : "Number of items",
+            "example" : 2,
+            "format" : "int32",
+            "type" : "integer"
+          },
+          "items" : {
+            "items" : {
+              "$ref" : "#/components/schemas/Registration"
+            },
+            "type" : "array"
+          }
+        },
+        "required" : [ "attendeeRef", "count", "items" ],
+        "type" : "object"
+      },
+      "Registration" : {
+        "description" : "An attendee's registration for an event",
+        "properties" : {
+          "attendeeRef" : {
+            "description" : "Reference of the attendee",
+            "example" : "ATT-7",
+            "type" : "string"
+          },
+          "cancellationReason" : {
+            "description" : "Reason given for the cancellation; null unless CANCELLED",
+            "maxLength" : 200,
+            "type" : [ "string", "null" ]
+          },
+          "cancelledAt" : {
+            "description" : "When the registration was cancelled; null unless CANCELLED",
+            "format" : "date-time",
+            "type" : [ "string", "null" ]
+          },
+          "checkedInAt" : {
+            "description" : "When the attendee checked in; null unless CHECKED_IN",
+            "format" : "date-time",
+            "type" : [ "string", "null" ]
+          },
+          "confirmedAt" : {
+            "description" : "When the registration was confirmed; kept after check-in or cancellation; null if never confirmed",
+            "format" : "date-time",
+            "type" : [ "string", "null" ]
+          },
+          "eventCode" : {
+            "description" : "Code of the event",
+            "example" : "JAVA-CONF-26",
+            "type" : "string"
+          },
+          "registrationId" : {
+            "description" : "Registration identifier, assigned by the server",
+            "example" : "REG-7QK2M9XD",
+            "pattern" : "^REG-[A-Z0-9]{8}$",
+            "readOnly" : true,
+            "type" : "string"
+          },
+          "requestedAt" : {
+            "description" : "When the registration was requested",
+            "example" : "2026-10-19T09:00:00.000001Z",
+            "format" : "date-time",
+            "type" : "string"
+          },
+          "seats" : {
+            "description" : "Number of seats reserved",
+            "example" : 2,
+            "format" : "int32",
+            "maximum" : 4,
+            "minimum" : 1,
+            "type" : "integer"
+          },
+          "state" : {
+            "description" : "Lifecycle state",
+            "enum" : [ "REQUESTED", "WAITLISTED", "CONFIRMED", "CHECKED_IN", "CANCELLED" ],
+            "example" : "REQUESTED",
+            "type" : "string"
+          }
+        },
+        "required" : [ "attendeeRef", "cancellationReason", "cancelledAt", "checkedInAt", "confirmedAt", "eventCode", "registrationId", "requestedAt", "seats", "state" ],
+        "type" : "object"
+      },
+      "RegistrationRequest" : {
+        "description" : "Request body for registering an attendee for an event",
+        "properties" : {
+          "attendeeRef" : {
+            "description" : "Reference of the attendee",
+            "example" : "ATT-7",
+            "pattern" : "^ATT-[0-9]{1,8}$",
+            "type" : "string"
+          },
+          "eventCode" : {
+            "description" : "Code of the event",
+            "example" : "JAVA-CONF-26",
+            "pattern" : "^[A-Z0-9-]{3,20}$",
+            "type" : "string"
+          },
+          "seats" : {
+            "description" : "Number of seats to reserve",
+            "example" : 2,
+            "format" : "int32",
+            "maximum" : 4,
+            "minimum" : 1,
+            "type" : "integer"
+          }
+        },
+        "required" : [ "attendeeRef", "eventCode", "seats" ],
+        "type" : "object"
+      },
+      "TransitionRequest" : {
+        "description" : "Requested state change",
+        "properties" : {
+          "reason" : {
+            "description" : "Reason; required (non-blank) when the target is CANCELLED, ignored otherwise",
+            "example" : "Schedule conflict",
+            "maxLength" : 200,
+            "minLength" : 0,
+            "type" : "string"
+          },
+          "to" : {
+            "description" : "Target state; must be allowed from the current state",
+            "enum" : [ "REQUESTED", "WAITLISTED", "CONFIRMED", "CHECKED_IN", "CANCELLED" ],
+            "example" : "CONFIRMED",
+            "type" : "string"
+          }
+        },
+        "required" : [ "to" ],
+        "type" : "object"
+      }
+    }
+  },
+  "info" : {
+    "description" : "Third subject API for the semantic-validator portability experiment. Attendees register for events; registrations are confirmed or wait-listed, checked in, or cancelled with a reason.",
+    "title" : "Event Registration API",
+    "version" : "1.0.0"
+  },
+  "openapi" : "3.1.0",
+  "paths" : {
+    "/v1/attendees/{attendeeRef}/registrations" : {
+      "get" : {
+        "description" : "Returns all registrations of the attendee, oldest request first, in an envelope.",
+        "operationId" : "listAttendeeRegistrations",
+        "parameters" : [ {
+          "description" : "Reference of the attendee",
+          "example" : "ATT-7",
+          "in" : "path",
+          "name" : "attendeeRef",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AttendeeRegistrations"
+                }
+              }
+            },
+            "description" : "Registrations of the attendee (possibly none)"
+          }
+        },
+        "summary" : "List an attendee's registrations",
+        "tags" : [ "Registrations" ]
+      }
+    },
+    "/v1/registrations" : {
+      "post" : {
+        "description" : "Creates a registration in state REQUESTED.",
+        "operationId" : "registerAttendee",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/RegistrationRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Registration"
+                }
+              }
+            },
+            "description" : "Registration created",
+            "headers" : {
+              "Location" : {
+                "description" : "URL of the new registration",
+                "schema" : {
+                  "type" : "string"
+                },
+                "style" : "simple"
+              }
+            }
+          },
+          "400" : {
+            "description" : "Request body failed validation"
+          }
+        },
+        "summary" : "Register an attendee for an event",
+        "tags" : [ "Registrations" ]
+      }
+    },
+    "/v1/registrations/{registrationId}" : {
+      "get" : {
+        "operationId" : "fetchRegistration",
+        "parameters" : [ {
+          "description" : "Registration identifier",
+          "example" : "REG-7QK2M9XD",
+          "in" : "path",
+          "name" : "registrationId",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Registration"
+                }
+              }
+            },
+            "description" : "Registration found"
+          },
+          "404" : {
+            "description" : "No registration with this identifier"
+          }
+        },
+        "summary" : "Fetch a registration",
+        "tags" : [ "Registrations" ]
+      }
+    },
+    "/v1/registrations/{registrationId}/transitions" : {
+      "post" : {
+        "description" : "Allowed: REQUESTED -> CONFIRMED | WAITLISTED | CANCELLED; WAITLISTED -> CONFIRMED | CANCELLED; CONFIRMED -> CHECKED_IN | CANCELLED. CHECKED_IN and CANCELLED are final. Any other change is 422. CONFIRMED sets confirmedAt, CHECKED_IN sets checkedInAt, CANCELLED sets cancelledAt and cancellationReason (a non-blank reason is required).",
+        "operationId" : "transitionRegistration",
+        "parameters" : [ {
+          "description" : "Registration identifier",
+          "example" : "REG-7QK2M9XD",
+          "in" : "path",
+          "name" : "registrationId",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/TransitionRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Registration"
+                }
+              }
+            },
+            "description" : "State changed"
+          },
+          "400" : {
+            "description" : "Unknown target state, invalid body, or cancellation without a reason"
+          },
+          "404" : {
+            "description" : "No registration with this identifier"
+          },
+          "422" : {
+            "description" : "Transition not allowed from the current state"
+          }
+        },
+        "summary" : "Change a registration's state",
+        "tags" : [ "Registrations" ]
+      }
+    }
+  },
+  "servers" : [ {
+    "description" : "Generated server url",
+    "url" : "http://localhost:8082"
+  } ],
+  "tags" : [ {
+    "description" : "Register attendees for events and move registrations through their lifecycle",
+    "name" : "Registrations"
+  } ]
+}

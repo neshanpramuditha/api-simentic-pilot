@@ -1,0 +1,2 @@
+﻿semantic-validator: 11 exchanges, 3 rules, totals {PASS=22, FAIL=0, NOT_APPLICABLE=2}, 825 ms -> <report-dir>\matrix\clean\semval-r1\report.json
+semantic-validator exit code: 0 (0 = no rule failed, 1 = at least one FAIL)

@@ -1,0 +1,1 @@
+unit_id,instance_id,defect_id,category,cause_step,config_id,repeat,run_dir,downstream_only,report_artifact,element_id,applicable,status_code,evidence_locator,evidence_excerpt_masked,verified_against_ground_truth,ground_truth_source,scorer,scored_utc,scoring_pass,audit_sample,notes

@@ -1,0 +1,164 @@
+[
+  {
+    "step": "1 create order A",
+    "method": "POST",
+    "template": "/api/orders",
+    "url": "/api/orders",
+    "status": 201,
+    "body": {
+      "ownerUserId": 7,
+      "total": 49.99,
+      "completedAt": null,
+      "id": 1,
+      "status": "CREATED"
+    }
+  },
+  {
+    "step": "2 A -> PAID",
+    "method": "PATCH",
+    "template": "/api/orders/{id}/status",
+    "url": "/api/orders/1/status",
+    "status": 200,
+    "body": {
+      "ownerUserId": 7,
+      "total": 49.99,
+      "completedAt": null,
+      "id": 1,
+      "status": "PAID"
+    }
+  },
+  {
+    "step": "3 A -> SHIPPED",
+    "method": "PATCH",
+    "template": "/api/orders/{id}/status",
+    "url": "/api/orders/1/status",
+    "status": 200,
+    "body": {
+      "ownerUserId": 7,
+      "total": 49.99,
+      "completedAt": null,
+      "id": 1,
+      "status": "SHIPPED"
+    }
+  },
+  {
+    "step": "4 A -> DELIVERED",
+    "method": "PATCH",
+    "template": "/api/orders/{id}/status",
+    "url": "/api/orders/1/status",
+    "status": 200,
+    "body": {
+      "ownerUserId": 7,
+      "total": 49.99,
+      "completedAt": null,
+      "id": 1,
+      "status": "DELIVERED"
+    }
+  },
+  {
+    "step": "5 A -> COMPLETED",
+    "method": "PATCH",
+    "template": "/api/orders/{id}/status",
+    "url": "/api/orders/1/status",
+    "status": 200,
+    "body": {
+      "ownerUserId": 7,
+      "total": 49.99,
+      "completedAt": "2026-10-19T09:26:09.5546709",
+      "id": 1,
+      "status": "COMPLETED"
+    }
+  },
+  {
+    "step": "6 A -> CANCELLED (forbidden)",
+    "method": "PATCH",
+    "template": "/api/orders/{id}/status",
+    "url": "/api/orders/1/status",
+    "status": 200,
+    "body": {
+      "ownerUserId": 7,
+      "total": 49.99,
+      "completedAt": "2026-10-19T09:26:09.554671",
+      "id": 1,
+      "status": "CANCELLED"
+    }
+  },
+  {
+    "step": "7 read A",
+    "method": "GET",
+    "template": "/api/orders/{id}",
+    "url": "/api/orders/1",
+    "status": 200,
+    "body": {
+      "ownerUserId": 7,
+      "total": 49.99,
+      "completedAt": "2026-10-19T09:26:09.554671",
+      "id": 1,
+      "status": "CANCELLED"
+    }
+  },
+  {
+    "step": "8 create order B",
+    "method": "POST",
+    "template": "/api/orders",
+    "url": "/api/orders",
+    "status": 201,
+    "body": {
+      "ownerUserId": 7,
+      "total": 10,
+      "completedAt": null,
+      "id": 2,
+      "status": "CREATED"
+    }
+  },
+  {
+    "step": "9 B -> DELIVERED (forbidden)",
+    "method": "PATCH",
+    "template": "/api/orders/{id}/status",
+    "url": "/api/orders/2/status",
+    "status": 409,
+    "body": {
+      "timestamp": "2026-10-19T03:56:09.594Z",
+      "status": 409,
+      "error": "Conflict",
+      "path": "/api/orders/2/status"
+    }
+  },
+  {
+    "step": "10 read B",
+    "method": "GET",
+    "template": "/api/orders/{id}",
+    "url": "/api/orders/2",
+    "status": 200,
+    "body": {
+      "ownerUserId": 7,
+      "total": 10,
+      "completedAt": null,
+      "id": 2,
+      "status": "CREATED"
+    }
+  },
+  {
+    "step": "11 list user 7",
+    "method": "GET",
+    "template": "/api/users/{userId}/orders",
+    "url": "/api/users/7/orders",
+    "status": 200,
+    "body": [
+      {
+        "ownerUserId": 7,
+        "total": 49.99,
+        "completedAt": "2026-10-19T09:26:09.554671",
+        "id": 1,
+        "status": "CANCELLED"
+      },
+      {
+        "ownerUserId": 7,
+        "total": 10,
+        "completedAt": null,
+        "id": 2,
+        "status": "CREATED"
+      }
+    ]
+  }
+]

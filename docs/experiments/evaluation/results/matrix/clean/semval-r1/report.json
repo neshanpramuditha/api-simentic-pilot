@@ -1,0 +1,190 @@
+{
+  "tool" : "semantic-validator 0.1.0",
+  "mode" : "run",
+  "source" : "scenario scenario.json against http://localhost:8080 (with database access)",
+  "ruleSet" : "order-api semantic rules v1",
+  "durationMillis" : 825,
+  "exchanges" : 11,
+  "unmatchedRequests" : 0,
+  "totals" : {
+    "PASS" : 22,
+    "FAIL" : 0,
+    "NOT_APPLICABLE" : 2
+  },
+  "byRule" : {
+    "ORD-INV-001" : {
+      "PASS" : 10,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 2
+    },
+    "ORD-ST-001" : {
+      "PASS" : 6,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 0
+    },
+    "ORD-DB-001" : {
+      "PASS" : 6,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 0
+    }
+  },
+  "rules" : [ {
+    "id" : "ORD-INV-001",
+    "description" : "completedAt is set if and only if status is COMPLETED",
+    "operations" : [ "createOrder", "getOrder", "updateStatus", "getOrdersByUser" ]
+  }, {
+    "id" : "ORD-ST-001",
+    "description" : "Order status changes follow the order lifecycle; forbidden changes are rejected with 409",
+    "operations" : [ "updateStatus" ]
+  }, {
+    "id" : "ORD-DB-001",
+    "description" : "The persisted order matches a successful status change and is unchanged after a rejected one",
+    "operations" : [ "updateStatus" ]
+  } ],
+  "failures" : [ ],
+  "findings" : [ {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 0,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "updateStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "updateStatus",
+    "message" : "allowed transition CREATED -> PAID succeeded"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "updateStatus",
+    "message" : "persisted state matches the response"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "updateStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "updateStatus",
+    "message" : "allowed transition PAID -> SHIPPED succeeded"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "updateStatus",
+    "message" : "persisted state matches the response"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "updateStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "updateStatus",
+    "message" : "allowed transition SHIPPED -> DELIVERED succeeded"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "updateStatus",
+    "message" : "persisted state matches the response"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 4,
+    "operationId" : "updateStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 4,
+    "operationId" : "updateStatus",
+    "message" : "allowed transition DELIVERED -> COMPLETED succeeded"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 4,
+    "operationId" : "updateStatus",
+    "message" : "persisted state matches the response"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 5,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 5,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CANCELLED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 5,
+    "operationId" : "updateStatus",
+    "message" : "row unchanged after HTTP 409"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 6,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 7,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 8,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> DELIVERED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "updateStatus",
+    "message" : "row unchanged after HTTP 409"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 9,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 10,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 10,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  } ]
+}

@@ -1,0 +1,308 @@
+No authorization data found. Please use the `postman login` command.
+Refer:https://learning.postman.com/docs/postman-cli/postman-cli-options/#postman-login
+
+Running your collection...
+postman
+
+Event Registration scenario EVT-SC-1
+
+Root 0 register R1
+
+  POST http://localhost:8092/v1/registrations [201 Created, 410 B, 1921 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 201
+  Pass  [STEP] state is REQUESTED
+
+Root 1 R1 -> CONFIRMED
+
+  POST http://localhost:8092/v1/registrations/REG-B6ASY3KP/transitions [200 OK, 430 B, 74 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  GET http://localhost:8092/v1/registrations/REG-B6ASY3KP [200 OK, 427 B, 21 ms]
+  Pass  [READBACK] stored registration equals the 200 response
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CONFIRMED
+
+Root 2 R1 -> CHECKED_IN
+
+  POST http://localhost:8092/v1/registrations/REG-B6ASY3KP/transitions [200 OK, 456 B, 25 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  GET http://localhost:8092/v1/registrations/REG-B6ASY3KP [200 OK, 453 B, 15 ms]
+  Pass  [READBACK] stored registration equals the 200 response
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CHECKED_IN
+
+Root 3 fetch R1
+
+  GET http://localhost:8092/v1/registrations/REG-B6ASY3KP [200 OK, 453 B, 17 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CHECKED_IN
+
+Root 4 R1 -> CANCELLED (forbidden: CHECKED_IN is final)
+
+  POST http://localhost:8092/v1/registrations/REG-B6ASY3KP/transitions [422 Unprocessable Entity, 318 B, 63 ms]
+  GET http://localhost:8092/v1/registrations/REG-B6ASY3KP [200 OK, 485 B, 21 ms]
+  1. [READBACK] registration unchanged after HTTP 422
+  Pass  [STEP] status is 422
+
+Root 5 fetch R1
+
+  GET http://localhost:8092/v1/registrations/REG-B6ASY3KP [200 OK, 485 B, 29 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  2. [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 200
+  3. [STEP] state is CHECKED_IN
+
+Root 6 register R2
+
+  POST http://localhost:8092/v1/registrations [201 Created, 408 B, 47 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 201
+  Pass  [STEP] state is REQUESTED
+
+Root 7 R2 -> WAITLISTED
+
+  POST http://localhost:8092/v1/registrations/REG-KDSNLT2P/transitions [200 OK, 401 B, 24 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  GET http://localhost:8092/v1/registrations/REG-KDSNLT2P [200 OK, 401 B, 17 ms]
+  Pass  [READBACK] stored registration equals the 200 response
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is WAITLISTED
+
+Root 8 R2 -> CONFIRMED
+
+  POST http://localhost:8092/v1/registrations/REG-KDSNLT2P/transitions [200 OK, 428 B, 27 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  GET http://localhost:8092/v1/registrations/REG-KDSNLT2P [200 OK, 425 B, 22 ms]
+  Pass  [READBACK] stored registration equals the 200 response
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CONFIRMED
+
+Root 9 R2 -> CANCELLED with reason
+
+  POST http://localhost:8092/v1/registrations/REG-KDSNLT2P/transitions [200 OK, 468 B, 36 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  GET http://localhost:8092/v1/registrations/REG-KDSNLT2P [200 OK, 465 B, 44 ms]
+  Pass  [READBACK] stored registration equals the 200 response
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CANCELLED
+
+Root 10 fetch R2
+
+  GET http://localhost:8092/v1/registrations/REG-KDSNLT2P [200 OK, 465 B, 14 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CANCELLED
+
+Root 11 register R3
+
+  POST http://localhost:8092/v1/registrations [201 Created, 408 B, 19 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 201
+  Pass  [STEP] state is REQUESTED
+
+Root 12 R3 -> WAITLISTED
+
+  POST http://localhost:8092/v1/registrations/REG-AJ6ECP8E/transitions [200 OK, 401 B, 17 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  GET http://localhost:8092/v1/registrations/REG-AJ6ECP8E [200 OK, 401 B, 16 ms]
+  Pass  [READBACK] stored registration equals the 200 response
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is WAITLISTED
+
+Root 13 R3 -> CHECKED_IN (forbidden: not confirmed)
+
+  POST http://localhost:8092/v1/registrations/REG-AJ6ECP8E/transitions [422 Unprocessable Entity, 318 B, 16 ms]
+  GET http://localhost:8092/v1/registrations/REG-AJ6ECP8E [200 OK, 426 B, 13 ms]
+  4. [READBACK] registration unchanged after HTTP 422
+  Pass  [STEP] status is 422
+
+Root 14 fetch R3
+
+  GET http://localhost:8092/v1/registrations/REG-AJ6ECP8E [200 OK, 426 B, 15 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  5. [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  6. [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 200
+  7. [STEP] state is WAITLISTED
+
+Root 15 list ATT-7
+
+  GET http://localhost:8092/v1/attendees/ATT-7/registrations [200 OK, 1.07 KB, 176 ms]
+  Pass  [schema] body matches the OpenAPI AttendeeRegistrations schema
+  8. [INV-001] checkedInAt set iff CHECKED_IN (item 0)
+  Pass  [INV-002] cancelledAt set iff CANCELLED (item 0)
+  Pass  [INV-003] cancellationReason set iff CANCELLED (item 0)
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED (item 0)
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 0)
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN (item 1)
+  Pass  [INV-002] cancelledAt set iff CANCELLED (item 1)
+  Pass  [INV-003] cancellationReason set iff CANCELLED (item 1)
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED (item 1)
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 1)
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN (item 2)
+  Pass  [INV-002] cancelledAt set iff CANCELLED (item 2)
+  Pass  [INV-003] cancellationReason set iff CANCELLED (item 2)
+  9. [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED (item 2)
+ 10. [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 2)
+  Pass  [STEP] status is 200
+ 11. [STEP] list states are CHECKED_IN, CANCELLED, WAITLISTED
+
+Root 16 unknown registration -> CONFIRMED
+
+  POST http://localhost:8092/v1/registrations/REG-NOPE0000/transitions [404 Not Found, 295 B, 30 ms]
+  GET http://localhost:8092/v1/registrations/REG-NOPE0000 [404 Not Found, 283 B, 37 ms]
+  Pass  [STEP] status is 404
+
+Root 17 R3 -> DONE (not a state)
+
+  POST http://localhost:8092/v1/registrations/REG-AJ6ECP8E/transitions [400 Bad Request, 299 B, 32 ms]
+  GET http://localhost:8092/v1/registrations/REG-AJ6ECP8E [200 OK, 426 B, 23 ms]
+  Pass  [READBACK] registration unchanged after HTTP 400
+  Pass  [STEP] status is 400
+
+Root 18 register with 0 seats
+
+  POST http://localhost:8092/v1/registrations [400 Bad Request, 274 B, 70 ms]
+  Pass  [STEP] status is 400
+
+-------------------------------------------------------------------------
+|                         |             executed |               failed |
+--------------------------+----------------------+-----------------------
+|              iterations |                    1 |                    0 |
+--------------------------+----------------------+-----------------------
+|                requests |                   29 |                    0 |
+--------------------------+----------------------+-----------------------
+|            test-scripts |                   38 |                    0 |
+--------------------------+----------------------+-----------------------
+|      prerequest-scripts |                    0 |                    0 |
+--------------------------+----------------------+-----------------------
+|              assertions |                  136 |                   11 |
+-------------------------------------------------------------------------
+| total run duration: 5.8 s                                             |
+-------------------------------------------------------------------------
+| total data received: 7.44 KB (approx)                                 |
+-------------------------------------------------------------------------
+| average response time: 99 ms [min: 13 ms, max: 1921 ms, s.d.: 345 ms] |
+-------------------------------------------------------------------------
+
+   #  failure         detail                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                           
+ 01.  AssertionError  [READBACK] registration unchanged after HTTP 422                                                                                                                                                                                                                                                                                                                                                                     
+                      read-back GET {"state":"CANCELLED","confirmedAt":"2026-10-19T07:31:44.870243Z","checkedInAt":"2026-10-19T07:31:45.085751Z","cancelledAt":"2026-10-19T07:31:45.381006Z","cancellationReason":"Left early"} vs before {"state":"CHECKED_IN","confirmedAt":"2026-10-19T07:31:44.870243Z","checkedInAt":"2026-10-19T07:31:45.085751Z","cancelledAt":null,"cancellationReason":null}: expected false to deeply equal true 
+                      at assertion:0 in test-script                                                                                                                                                                                                                                                                                                                                                                                        
+                      inside "4 R1 -> CANCELLED (forbidden: CHECKED_IN is final)"                                                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                                                                                                                                           
+ 02.  AssertionError  [INV-001] checkedInAt set iff CHECKED_IN                                                                                                                                                                                                                                                                                                                                                                             
+                      {"state":"CANCELLED","checkedInAt":"2026-10-19T07:31:45.085751Z"}: expected true to deeply equal false                                                                                                                                                                                                                                                                                                               
+                      at assertion:1 in test-script                                                                                                                                                                                                                                                                                                                                                                                        
+                      inside "5 fetch R1"                                                                                                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                                                                                                                                           
+ 03.  AssertionError  [STEP] state is CHECKED_IN                                                                                                                                                                                                                                                                                                                                                                                           
+                      expected 'CANCELLED' to deeply equal 'CHECKED_IN'                                                                                                                                                                                                                                                                                                                                                                    
+                      at assertion:1 in test-script                                                                                                                                                                                                                                                                                                                                                                                        
+                      inside "5 fetch R1"                                                                                                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                                                                                                                                           
+ 04.  AssertionError  [READBACK] registration unchanged after HTTP 422                                                                                                                                                                                                                                                                                                                                                                     
+                      read-back GET {"state":"CHECKED_IN","confirmedAt":null,"checkedInAt":"2026-10-19T07:31:47.295734Z","cancelledAt":null,"cancellationReason":null} vs before {"state":"WAITLISTED","confirmedAt":null,"checkedInAt":null,"cancelledAt":null,"cancellationReason":null}: expected false to deeply equal true                                                                                                            
+                      at assertion:0 in test-script                                                                                                                                                                                                                                                                                                                                                                                        
+                      inside "13 R3 -> CHECKED_IN (forbidden: not confirmed)"                                                                                                                                                                                                                                                                                                                                                              
+                                                                                                                                                                                                                                                                                                                                                                                                                                           
+ 05.  AssertionError  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED                                                                                                                                                                                                                                                                                                                         
+                      confirmedAt of a CHECKED_IN registration: expected null to not equal null                                                                                                                                                                                                                                                                                                                                            
+                      at assertion:4 in test-script                                                                                                                                                                                                                                                                                                                                                                                        
+                      inside "14 fetch R3"                                                                                                                                                                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                                                                                                                                                           
+ 06.  AssertionError  [INV-005] requestedAt <= confirmedAt <= checkedInAt                                                                                                                                                                                                                                                                                                                                                                  
+                      confirmedAt null vs checkedInAt 2026-10-19T07:31:47.295734Z: expected NaN to be at most 1792395107295                                                                                                                                                                                                                                                                                                                
+                      at assertion:5 in test-script                                                                                                                                                                                                                                                                                                                                                                                        
+                      inside "14 fetch R3"                                                                                                                                                                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                                                                                                                                                           
+ 07.  AssertionError  [STEP] state is WAITLISTED                                                                                                                                                                                                                                                                                                                                                                                           
+                      expected 'CHECKED_IN' to deeply equal 'WAITLISTED'                                                                                                                                                                                                                                                                                                                                                                   
+                      at assertion:1 in test-script                                                                                                                                                                                                                                                                                                                                                                                        
+                      inside "14 fetch R3"                                                                                                                                                                                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                                                                                                                                                                                                                                           
+ 08.  AssertionError  [INV-001] checkedInAt set iff CHECKED_IN (item 0)                                                                                                                                                                                                                                                                                                                                                                    
+                      {"state":"CANCELLED","checkedInAt":"2026-10-19T07:31:45.085751Z"}: expected true to deeply equal false                                                                                                                                                                                                                                                                                                               
+                      at assertion:1 in test-script                                                                                                                                                                                                                                                                                                                                                                                        
+                      inside "15 list ATT-7"                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                           
+ 09.  AssertionError  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED (item 2)                                                                                                                                                                                                                                                                                                                
+                      confirmedAt of a CHECKED_IN registration: expected null to not equal null                                                                                                                                                                                                                                                                                                                                            
+                      at assertion:14 in test-script                                                                                                                                                                                                                                                                                                                                                                                       
+                      inside "15 list ATT-7"                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                           
+ 10.  AssertionError  [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 2)                                                                                                                                                                                                                                                                                                                                                         
+                      confirmedAt null vs checkedInAt 2026-10-19T07:31:47.295734Z: expected NaN to be at most 1792395107295                                                                                                                                                                                                                                                                                                                
+                      at assertion:15 in test-script                                                                                                                                                                                                                                                                                                                                                                                       
+                      inside "15 list ATT-7"                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                           
+ 11.  AssertionError  [STEP] list states are CHECKED_IN, CANCELLED, WAITLISTED                                                                                                                                                                                                                                                                                                                                                             
+                      expected [ 'CANCELLED', 'CANCELLED', …(1) ] to deeply equal [ 'CHECKED_IN', 'CANCELLED', …(1) ]                                                                                                                                                                                                                                                                                                                      
+                      at assertion:1 in test-script                                                                                                                                                                                                                                                                                                                                                                                        
+                      inside "15 list ATT-7"                                                                                                                                                                                                                                                                                                                                                                                               
+Postman credentials are required for publishing run details to Postman cloud.
+Please specify it by using the `postman login` command

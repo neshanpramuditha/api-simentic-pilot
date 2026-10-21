@@ -1,0 +1,1 @@
+semantic-validator: 19 exchanges, 6 rules, totals {PASS=64, FAIL=0, NOT_APPLICABLE=32}, 44 ms -> <run-root>\evt-cf01\capture-r2\semval-v01-passive.json

@@ -1,0 +1,107 @@
+{
+  "run": {
+    "mode": "lib-st01",
+    "config": "semval-jdbc",
+    "repeat": 1,
+    "exitCode": 1,
+    "durationMs": 2745,
+    "defectLines": [
+      "DEFECT LIB-ST-01 ENABLED: PATCH /api/loans/{id}/status accepts REQUESTED -> ISSUED"
+    ]
+  },
+  "traffic": {
+    "harEntries": 24,
+    "readBacks": 9,
+    "scenarioRequests": 15,
+    "problems": []
+  },
+  "oracle": {
+    "transitions": {
+      "REQUESTED": [
+        "APPROVED",
+        "REJECTED"
+      ],
+      "APPROVED": [
+        "ISSUED"
+      ],
+      "ISSUED": [
+        "RETURNED"
+      ],
+      "REJECTED": [],
+      "RETURNED": []
+    },
+    "violations": [
+      {
+        "key": "LIB-ST-001@7",
+        "ruleId": "LIB-ST-001",
+        "step": 7,
+        "item": null,
+        "kind": "transition",
+        "detail": "REQUESTED -> ISSUED accepted with 200"
+      }
+    ],
+    "causeSteps": [
+      7
+    ],
+    "hiddenStateChanges": [],
+    "dbInvariantViolations": [],
+    "exercised": true,
+    "anyDefectSignature": true
+  },
+  "validator": {
+    "totals": {
+      "PASS": 40,
+      "FAIL": 1,
+      "NOT_APPLICABLE": 11
+    },
+    "byRule": {
+      "LIB-INV-001": {
+        "PASS": 13,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 4
+      },
+      "LIB-INV-002": {
+        "PASS": 13,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 4
+      },
+      "LIB-ST-001": {
+        "PASS": 6,
+        "FAIL": 1,
+        "NOT_APPLICABLE": 2
+      },
+      "LIB-DB-001": {
+        "PASS": 8,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 1
+      }
+    },
+    "failKeys": [
+      "LIB-ST-001@7"
+    ]
+  },
+  "comparison": {
+    "tp": [
+      "LIB-ST-001@7"
+    ],
+    "fp": [],
+    "fn": [],
+    "detectedAtCause": true,
+    "failSteps": [
+      7
+    ]
+  },
+  "evidence": {
+    "problems": [],
+    "failsWithFullEvidence": 1,
+    "fails": 1
+  },
+  "database": {
+    "outcomes": {
+      "PASS: persisted state matches the response": 5,
+      "PASS: row unchanged after HTTP n": 3,
+      "NOT_APPLICABLE: no row before the request": 1
+    },
+    "correctlyScoped": true
+  }
+}

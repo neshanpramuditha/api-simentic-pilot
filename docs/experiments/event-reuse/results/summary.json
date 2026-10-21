@@ -1,0 +1,3345 @@
+{
+  "rows": [
+    {
+      "mode": "clean",
+      "tool": "semval-v01-active",
+      "repeat": 1,
+      "runType": "semval-v01-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": null,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "affectedSteps": [],
+      "hiddenStateChanges": 0,
+      "exitCode": 0,
+      "durationMs": 2566,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "tp": 0,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "clean",
+      "tool": "semval-v01-active",
+      "repeat": 2,
+      "runType": "semval-v01-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": null,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "affectedSteps": [],
+      "hiddenStateChanges": 0,
+      "exitCode": 0,
+      "durationMs": 2624,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "tp": 0,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "clean",
+      "tool": "semval-v02-active",
+      "repeat": 1,
+      "runType": "semval-v02-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": null,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "affectedSteps": [],
+      "hiddenStateChanges": 0,
+      "exitCode": 0,
+      "durationMs": 2913,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "tp": 0,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "clean",
+      "tool": "semval-v02-active",
+      "repeat": 2,
+      "runType": "semval-v02-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": null,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "affectedSteps": [],
+      "hiddenStateChanges": 0,
+      "exitCode": 0,
+      "durationMs": 2545,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "tp": 0,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "clean",
+      "tool": "semval-v01-passive",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": null,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "affectedSteps": [],
+      "hiddenStateChanges": 0,
+      "exitCode": 0,
+      "durationMs": 402,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "tp": 0,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "clean",
+      "tool": "semval-v01-passive",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": null,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "affectedSteps": [],
+      "hiddenStateChanges": 0,
+      "exitCode": 0,
+      "durationMs": 424,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "tp": 0,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "clean",
+      "tool": "semval-v02-passive",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": null,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "affectedSteps": [],
+      "hiddenStateChanges": 0,
+      "exitCode": 0,
+      "durationMs": 418,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "tp": 0,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "clean",
+      "tool": "semval-v02-passive",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": null,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "affectedSteps": [],
+      "hiddenStateChanges": 0,
+      "exitCode": 0,
+      "durationMs": 405,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "tp": 0,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "clean",
+      "tool": "postman",
+      "repeat": 1,
+      "runType": "postman",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": null,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "affectedSteps": [],
+      "hiddenStateChanges": 0,
+      "exitCode": 0,
+      "durationMs": 4941,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": {},
+      "postmanAssertions": 136,
+      "postmanFailed": 0,
+      "invariantKeysMatchOracle": true
+    },
+    {
+      "mode": "clean",
+      "tool": "postman",
+      "repeat": 2,
+      "runType": "postman",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": null,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "affectedSteps": [],
+      "hiddenStateChanges": 0,
+      "exitCode": 0,
+      "durationMs": 5379,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": {},
+      "postmanAssertions": 136,
+      "postmanFailed": 0,
+      "invariantKeysMatchOracle": true
+    },
+    {
+      "mode": "clean",
+      "tool": "ajv",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": null,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "affectedSteps": [],
+      "hiddenStateChanges": 0,
+      "durationMs": 261,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": null,
+      "ajvViolations": 0
+    },
+    {
+      "mode": "clean",
+      "tool": "ajv",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": null,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "affectedSteps": [],
+      "hiddenStateChanges": 0,
+      "durationMs": 245,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": null,
+      "ajvViolations": 0
+    },
+    {
+      "mode": "evt-st01",
+      "tool": "semval-v01-active",
+      "repeat": 1,
+      "runType": "semval-v01-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        8
+      ],
+      "affectedSteps": [
+        8
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 2473,
+      "failSteps": [
+        8
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-ST-001@8"
+      ],
+      "tp": 1,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 1,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-st01",
+      "tool": "semval-v01-active",
+      "repeat": 2,
+      "runType": "semval-v01-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        8
+      ],
+      "affectedSteps": [
+        8
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 2827,
+      "failSteps": [
+        8
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-ST-001@8"
+      ],
+      "tp": 1,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 1,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-st01",
+      "tool": "semval-v02-active",
+      "repeat": 1,
+      "runType": "semval-v02-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        8
+      ],
+      "affectedSteps": [
+        8
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 2531,
+      "failSteps": [
+        8
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-ST-001@8"
+      ],
+      "tp": 1,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 1,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-st01",
+      "tool": "semval-v02-active",
+      "repeat": 2,
+      "runType": "semval-v02-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        8
+      ],
+      "affectedSteps": [
+        8
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 2516,
+      "failSteps": [
+        8
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-ST-001@8"
+      ],
+      "tp": 1,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 1,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-st01",
+      "tool": "semval-v01-passive",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        8
+      ],
+      "affectedSteps": [
+        8
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 395,
+      "failSteps": [
+        8
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-ST-001@8"
+      ],
+      "tp": 1,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 1,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-st01",
+      "tool": "semval-v01-passive",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        8
+      ],
+      "affectedSteps": [
+        8
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 838,
+      "failSteps": [
+        8
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-ST-001@8"
+      ],
+      "tp": 1,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 1,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-st01",
+      "tool": "semval-v02-passive",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        8
+      ],
+      "affectedSteps": [
+        8
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 450,
+      "failSteps": [
+        8
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-ST-001@8"
+      ],
+      "tp": 1,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 1,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-st01",
+      "tool": "semval-v02-passive",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        8
+      ],
+      "affectedSteps": [
+        8
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 546,
+      "failSteps": [
+        8
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-ST-001@8"
+      ],
+      "tp": 1,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 1,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-st01",
+      "tool": "postman",
+      "repeat": 1,
+      "runType": "postman",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        8
+      ],
+      "affectedSteps": [
+        8
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 4944,
+      "failSteps": [
+        8
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "STEP@8",
+        "STEP@8"
+      ],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": {
+        "STEP": 2
+      },
+      "postmanAssertions": 130,
+      "postmanFailed": 2,
+      "invariantKeysMatchOracle": true
+    },
+    {
+      "mode": "evt-st01",
+      "tool": "postman",
+      "repeat": 2,
+      "runType": "postman",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        8
+      ],
+      "affectedSteps": [
+        8
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 9004,
+      "failSteps": [
+        8
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "STEP@8",
+        "STEP@8"
+      ],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": {
+        "STEP": 2
+      },
+      "postmanAssertions": 130,
+      "postmanFailed": 2,
+      "invariantKeysMatchOracle": true
+    },
+    {
+      "mode": "evt-st01",
+      "tool": "ajv",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        8
+      ],
+      "affectedSteps": [
+        8
+      ],
+      "hiddenStateChanges": 0,
+      "durationMs": 285,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": null,
+      "ajvViolations": 0
+    },
+    {
+      "mode": "evt-st01",
+      "tool": "ajv",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        8
+      ],
+      "affectedSteps": [
+        8
+      ],
+      "hiddenStateChanges": 0,
+      "durationMs": 295,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": null,
+      "ajvViolations": 0
+    },
+    {
+      "mode": "evt-db01",
+      "tool": "semval-v01-active",
+      "repeat": 1,
+      "runType": "semval-v01-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 6,
+      "causeSteps": [
+        4,
+        13
+      ],
+      "affectedSteps": [
+        4,
+        5,
+        13,
+        14,
+        15
+      ],
+      "hiddenStateChanges": 2,
+      "exitCode": 1,
+      "durationMs": 6034,
+      "failSteps": [
+        4,
+        5,
+        13,
+        14
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-DB-001@4",
+        "EVT-INV-001@5",
+        "EVT-DB-001@13",
+        "EVT-INV-004@14"
+      ],
+      "tp": 4,
+      "fn": [
+        {
+          "key": "EVT-INV-001@15#0",
+          "reason": "list item not checked (one finding for the whole envelope)"
+        },
+        {
+          "key": "EVT-INV-004@15#2",
+          "reason": "list item not checked (one finding for the whole envelope)"
+        }
+      ],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 1,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 1,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 2
+      }
+    },
+    {
+      "mode": "evt-db01",
+      "tool": "semval-v01-active",
+      "repeat": 2,
+      "runType": "semval-v01-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 6,
+      "causeSteps": [
+        4,
+        13
+      ],
+      "affectedSteps": [
+        4,
+        5,
+        13,
+        14,
+        15
+      ],
+      "hiddenStateChanges": 2,
+      "exitCode": 1,
+      "durationMs": 5965,
+      "failSteps": [
+        4,
+        5,
+        13,
+        14
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-DB-001@4",
+        "EVT-INV-001@5",
+        "EVT-DB-001@13",
+        "EVT-INV-004@14"
+      ],
+      "tp": 4,
+      "fn": [
+        {
+          "key": "EVT-INV-001@15#0",
+          "reason": "list item not checked (one finding for the whole envelope)"
+        },
+        {
+          "key": "EVT-INV-004@15#2",
+          "reason": "list item not checked (one finding for the whole envelope)"
+        }
+      ],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 1,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 1,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 2
+      }
+    },
+    {
+      "mode": "evt-db01",
+      "tool": "semval-v02-active",
+      "repeat": 1,
+      "runType": "semval-v02-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 6,
+      "causeSteps": [
+        4,
+        13
+      ],
+      "affectedSteps": [
+        4,
+        5,
+        13,
+        14,
+        15
+      ],
+      "hiddenStateChanges": 2,
+      "exitCode": 1,
+      "durationMs": 5792,
+      "failSteps": [
+        4,
+        5,
+        13,
+        14,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-DB-001@4",
+        "EVT-INV-001@5",
+        "EVT-DB-001@13",
+        "EVT-INV-004@14",
+        "EVT-INV-005@14",
+        "EVT-INV-001@15#0",
+        "EVT-INV-004@15#2",
+        "EVT-INV-005@15#2"
+      ],
+      "tp": 6,
+      "fn": [],
+      "extraKeys": [
+        {
+          "key": "EVT-INV-005@14",
+          "onAffectedStep": true
+        },
+        {
+          "key": "EVT-INV-005@15#2",
+          "onAffectedStep": true
+        }
+      ],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 2,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 2,
+        "EVT-INV-005": 2,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 2
+      }
+    },
+    {
+      "mode": "evt-db01",
+      "tool": "semval-v02-active",
+      "repeat": 2,
+      "runType": "semval-v02-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 6,
+      "causeSteps": [
+        4,
+        13
+      ],
+      "affectedSteps": [
+        4,
+        5,
+        13,
+        14,
+        15
+      ],
+      "hiddenStateChanges": 2,
+      "exitCode": 1,
+      "durationMs": 4288,
+      "failSteps": [
+        4,
+        5,
+        13,
+        14,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-DB-001@4",
+        "EVT-INV-001@5",
+        "EVT-DB-001@13",
+        "EVT-INV-004@14",
+        "EVT-INV-005@14",
+        "EVT-INV-001@15#0",
+        "EVT-INV-004@15#2",
+        "EVT-INV-005@15#2"
+      ],
+      "tp": 6,
+      "fn": [],
+      "extraKeys": [
+        {
+          "key": "EVT-INV-005@14",
+          "onAffectedStep": true
+        },
+        {
+          "key": "EVT-INV-005@15#2",
+          "onAffectedStep": true
+        }
+      ],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 2,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 2,
+        "EVT-INV-005": 2,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 2
+      }
+    },
+    {
+      "mode": "evt-db01",
+      "tool": "semval-v01-passive",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 6,
+      "causeSteps": [
+        4,
+        13
+      ],
+      "affectedSteps": [
+        4,
+        5,
+        13,
+        14,
+        15
+      ],
+      "hiddenStateChanges": 2,
+      "exitCode": 1,
+      "durationMs": 1705,
+      "failSteps": [
+        5,
+        14
+      ],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [
+        "EVT-INV-001@5",
+        "EVT-INV-004@14"
+      ],
+      "tp": 2,
+      "fn": [
+        {
+          "key": "EVT-INV-001@15#0",
+          "reason": "list item not checked (one finding for the whole envelope)"
+        },
+        {
+          "key": "EVT-INV-004@15#2",
+          "reason": "list item not checked (one finding for the whole envelope)"
+        },
+        {
+          "key": "EVT-DB-001@4",
+          "reason": "not evaluable: no database access (passive mode or no JDBC URL configured)"
+        },
+        {
+          "key": "EVT-DB-001@13",
+          "reason": "not evaluable: no database access (passive mode or no JDBC URL configured)"
+        }
+      ],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 1,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 1,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-db01",
+      "tool": "semval-v01-passive",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 6,
+      "causeSteps": [
+        4,
+        13
+      ],
+      "affectedSteps": [
+        4,
+        5,
+        13,
+        14,
+        15
+      ],
+      "hiddenStateChanges": 2,
+      "exitCode": 1,
+      "durationMs": 555,
+      "failSteps": [
+        5,
+        14
+      ],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [
+        "EVT-INV-001@5",
+        "EVT-INV-004@14"
+      ],
+      "tp": 2,
+      "fn": [
+        {
+          "key": "EVT-INV-001@15#0",
+          "reason": "list item not checked (one finding for the whole envelope)"
+        },
+        {
+          "key": "EVT-INV-004@15#2",
+          "reason": "list item not checked (one finding for the whole envelope)"
+        },
+        {
+          "key": "EVT-DB-001@4",
+          "reason": "not evaluable: no database access (passive mode or no JDBC URL configured)"
+        },
+        {
+          "key": "EVT-DB-001@13",
+          "reason": "not evaluable: no database access (passive mode or no JDBC URL configured)"
+        }
+      ],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 1,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 1,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-db01",
+      "tool": "semval-v02-passive",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 6,
+      "causeSteps": [
+        4,
+        13
+      ],
+      "affectedSteps": [
+        4,
+        5,
+        13,
+        14,
+        15
+      ],
+      "hiddenStateChanges": 2,
+      "exitCode": 1,
+      "durationMs": 2824,
+      "failSteps": [
+        5,
+        14,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [
+        "EVT-INV-001@5",
+        "EVT-INV-004@14",
+        "EVT-INV-005@14",
+        "EVT-INV-001@15#0",
+        "EVT-INV-004@15#2",
+        "EVT-INV-005@15#2"
+      ],
+      "tp": 4,
+      "fn": [
+        {
+          "key": "EVT-DB-001@4",
+          "reason": "not evaluable: no database access (passive mode or no JDBC URL configured)"
+        },
+        {
+          "key": "EVT-DB-001@13",
+          "reason": "not evaluable: no database access (passive mode or no JDBC URL configured)"
+        }
+      ],
+      "extraKeys": [
+        {
+          "key": "EVT-INV-005@14",
+          "onAffectedStep": true
+        },
+        {
+          "key": "EVT-INV-005@15#2",
+          "onAffectedStep": true
+        }
+      ],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 2,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 2,
+        "EVT-INV-005": 2,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-db01",
+      "tool": "semval-v02-passive",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 6,
+      "causeSteps": [
+        4,
+        13
+      ],
+      "affectedSteps": [
+        4,
+        5,
+        13,
+        14,
+        15
+      ],
+      "hiddenStateChanges": 2,
+      "exitCode": 1,
+      "durationMs": 643,
+      "failSteps": [
+        5,
+        14,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [
+        "EVT-INV-001@5",
+        "EVT-INV-004@14",
+        "EVT-INV-005@14",
+        "EVT-INV-001@15#0",
+        "EVT-INV-004@15#2",
+        "EVT-INV-005@15#2"
+      ],
+      "tp": 4,
+      "fn": [
+        {
+          "key": "EVT-DB-001@4",
+          "reason": "not evaluable: no database access (passive mode or no JDBC URL configured)"
+        },
+        {
+          "key": "EVT-DB-001@13",
+          "reason": "not evaluable: no database access (passive mode or no JDBC URL configured)"
+        }
+      ],
+      "extraKeys": [
+        {
+          "key": "EVT-INV-005@14",
+          "onAffectedStep": true
+        },
+        {
+          "key": "EVT-INV-005@15#2",
+          "onAffectedStep": true
+        }
+      ],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 2,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 2,
+        "EVT-INV-005": 2,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-db01",
+      "tool": "postman",
+      "repeat": 1,
+      "runType": "postman",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 6,
+      "causeSteps": [
+        4,
+        13
+      ],
+      "affectedSteps": [
+        4,
+        5,
+        13,
+        14,
+        15
+      ],
+      "hiddenStateChanges": 2,
+      "exitCode": 1,
+      "durationMs": 13001,
+      "failSteps": [
+        4,
+        5,
+        13,
+        14,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "READBACK@4",
+        "EVT-INV-001@5",
+        "STEP@5",
+        "READBACK@13",
+        "EVT-INV-004@14",
+        "EVT-INV-005@14",
+        "STEP@14",
+        "EVT-INV-001@15#0",
+        "EVT-INV-004@15#2",
+        "EVT-INV-005@15#2",
+        "STEP@15"
+      ],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": {
+        "READBACK": 2,
+        "INV-001": 2,
+        "STEP": 3,
+        "INV-004": 2,
+        "INV-005": 2
+      },
+      "postmanAssertions": 136,
+      "postmanFailed": 11,
+      "invariantKeysMatchOracle": false
+    },
+    {
+      "mode": "evt-db01",
+      "tool": "postman",
+      "repeat": 2,
+      "runType": "postman",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 6,
+      "causeSteps": [
+        4,
+        13
+      ],
+      "affectedSteps": [
+        4,
+        5,
+        13,
+        14,
+        15
+      ],
+      "hiddenStateChanges": 2,
+      "exitCode": 1,
+      "durationMs": 7585,
+      "failSteps": [
+        4,
+        5,
+        13,
+        14,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "READBACK@4",
+        "EVT-INV-001@5",
+        "STEP@5",
+        "READBACK@13",
+        "EVT-INV-004@14",
+        "EVT-INV-005@14",
+        "STEP@14",
+        "EVT-INV-001@15#0",
+        "EVT-INV-004@15#2",
+        "EVT-INV-005@15#2",
+        "STEP@15"
+      ],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": {
+        "READBACK": 2,
+        "INV-001": 2,
+        "STEP": 3,
+        "INV-004": 2,
+        "INV-005": 2
+      },
+      "postmanAssertions": 136,
+      "postmanFailed": 11,
+      "invariantKeysMatchOracle": false
+    },
+    {
+      "mode": "evt-db01",
+      "tool": "ajv",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 6,
+      "causeSteps": [
+        4,
+        13
+      ],
+      "affectedSteps": [
+        4,
+        5,
+        13,
+        14,
+        15
+      ],
+      "hiddenStateChanges": 2,
+      "durationMs": 1345,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": null,
+      "ajvViolations": 0
+    },
+    {
+      "mode": "evt-db01",
+      "tool": "ajv",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 6,
+      "causeSteps": [
+        4,
+        13
+      ],
+      "affectedSteps": [
+        4,
+        5,
+        13,
+        14,
+        15
+      ],
+      "hiddenStateChanges": 2,
+      "durationMs": 437,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": null,
+      "ajvViolations": 0
+    },
+    {
+      "mode": "evt-db02",
+      "tool": "semval-v01-active",
+      "repeat": 1,
+      "runType": "semval-v01-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        9
+      ],
+      "affectedSteps": [
+        9,
+        10,
+        15
+      ],
+      "hiddenStateChanges": 1,
+      "exitCode": 1,
+      "durationMs": 3862,
+      "failSteps": [
+        9
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-DB-001@9"
+      ],
+      "tp": 1,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 1
+      }
+    },
+    {
+      "mode": "evt-db02",
+      "tool": "semval-v01-active",
+      "repeat": 2,
+      "runType": "semval-v01-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        9
+      ],
+      "affectedSteps": [
+        9,
+        10,
+        15
+      ],
+      "hiddenStateChanges": 1,
+      "exitCode": 1,
+      "durationMs": 3262,
+      "failSteps": [
+        9
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-DB-001@9"
+      ],
+      "tp": 1,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 1
+      }
+    },
+    {
+      "mode": "evt-db02",
+      "tool": "semval-v02-active",
+      "repeat": 1,
+      "runType": "semval-v02-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        9
+      ],
+      "affectedSteps": [
+        9,
+        10,
+        15
+      ],
+      "hiddenStateChanges": 1,
+      "exitCode": 1,
+      "durationMs": 3553,
+      "failSteps": [
+        9
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-DB-001@9"
+      ],
+      "tp": 1,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 1
+      }
+    },
+    {
+      "mode": "evt-db02",
+      "tool": "semval-v02-active",
+      "repeat": 2,
+      "runType": "semval-v02-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        9
+      ],
+      "affectedSteps": [
+        9,
+        10,
+        15
+      ],
+      "hiddenStateChanges": 1,
+      "exitCode": 1,
+      "durationMs": 3681,
+      "failSteps": [
+        9
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-DB-001@9"
+      ],
+      "tp": 1,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 1
+      }
+    },
+    {
+      "mode": "evt-db02",
+      "tool": "semval-v01-passive",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        9
+      ],
+      "affectedSteps": [
+        9,
+        10,
+        15
+      ],
+      "hiddenStateChanges": 1,
+      "exitCode": 0,
+      "durationMs": 442,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "tp": 0,
+      "fn": [
+        {
+          "key": "EVT-DB-001@9",
+          "reason": "not evaluable: no database access (passive mode or no JDBC URL configured)"
+        }
+      ],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-db02",
+      "tool": "semval-v01-passive",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        9
+      ],
+      "affectedSteps": [
+        9,
+        10,
+        15
+      ],
+      "hiddenStateChanges": 1,
+      "exitCode": 0,
+      "durationMs": 734,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "tp": 0,
+      "fn": [
+        {
+          "key": "EVT-DB-001@9",
+          "reason": "not evaluable: no database access (passive mode or no JDBC URL configured)"
+        }
+      ],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-db02",
+      "tool": "semval-v02-passive",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        9
+      ],
+      "affectedSteps": [
+        9,
+        10,
+        15
+      ],
+      "hiddenStateChanges": 1,
+      "exitCode": 0,
+      "durationMs": 461,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "tp": 0,
+      "fn": [
+        {
+          "key": "EVT-DB-001@9",
+          "reason": "not evaluable: no database access (passive mode or no JDBC URL configured)"
+        }
+      ],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-db02",
+      "tool": "semval-v02-passive",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        9
+      ],
+      "affectedSteps": [
+        9,
+        10,
+        15
+      ],
+      "hiddenStateChanges": 1,
+      "exitCode": 0,
+      "durationMs": 526,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "tp": 0,
+      "fn": [
+        {
+          "key": "EVT-DB-001@9",
+          "reason": "not evaluable: no database access (passive mode or no JDBC URL configured)"
+        }
+      ],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-db02",
+      "tool": "postman",
+      "repeat": 1,
+      "runType": "postman",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        9
+      ],
+      "affectedSteps": [
+        9,
+        10,
+        15
+      ],
+      "hiddenStateChanges": 1,
+      "exitCode": 1,
+      "durationMs": 6136,
+      "failSteps": [
+        9,
+        10,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "READBACK@9",
+        "STEP@10",
+        "STEP@15"
+      ],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": {
+        "READBACK": 1,
+        "STEP": 2
+      },
+      "postmanAssertions": 136,
+      "postmanFailed": 3,
+      "invariantKeysMatchOracle": true
+    },
+    {
+      "mode": "evt-db02",
+      "tool": "postman",
+      "repeat": 2,
+      "runType": "postman",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        9
+      ],
+      "affectedSteps": [
+        9,
+        10,
+        15
+      ],
+      "hiddenStateChanges": 1,
+      "exitCode": 1,
+      "durationMs": 5920,
+      "failSteps": [
+        9,
+        10,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "READBACK@9",
+        "STEP@10",
+        "STEP@15"
+      ],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": {
+        "READBACK": 1,
+        "STEP": 2
+      },
+      "postmanAssertions": 136,
+      "postmanFailed": 3,
+      "invariantKeysMatchOracle": true
+    },
+    {
+      "mode": "evt-db02",
+      "tool": "ajv",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        9
+      ],
+      "affectedSteps": [
+        9,
+        10,
+        15
+      ],
+      "hiddenStateChanges": 1,
+      "durationMs": 260,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": null,
+      "ajvViolations": 0
+    },
+    {
+      "mode": "evt-db02",
+      "tool": "ajv",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        9
+      ],
+      "affectedSteps": [
+        9,
+        10,
+        15
+      ],
+      "hiddenStateChanges": 1,
+      "durationMs": 324,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": null,
+      "ajvViolations": 0
+    },
+    {
+      "mode": "evt-ri01",
+      "tool": "semval-v01-active",
+      "repeat": 1,
+      "runType": "semval-v01-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 3183,
+      "failSteps": [
+        2,
+        3,
+        5
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-INV-001@2",
+        "EVT-INV-001@3",
+        "EVT-INV-001@5"
+      ],
+      "tp": 3,
+      "fn": [
+        {
+          "key": "EVT-INV-001@15#0",
+          "reason": "list item not checked (one finding for the whole envelope)"
+        }
+      ],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 3,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-ri01",
+      "tool": "semval-v01-active",
+      "repeat": 2,
+      "runType": "semval-v01-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 3456,
+      "failSteps": [
+        2,
+        3,
+        5
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-INV-001@2",
+        "EVT-INV-001@3",
+        "EVT-INV-001@5"
+      ],
+      "tp": 3,
+      "fn": [
+        {
+          "key": "EVT-INV-001@15#0",
+          "reason": "list item not checked (one finding for the whole envelope)"
+        }
+      ],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 3,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-ri01",
+      "tool": "semval-v02-active",
+      "repeat": 1,
+      "runType": "semval-v02-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 3539,
+      "failSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-INV-001@2",
+        "EVT-INV-001@3",
+        "EVT-INV-001@5",
+        "EVT-INV-001@15#0"
+      ],
+      "tp": 4,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 4,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-ri01",
+      "tool": "semval-v02-active",
+      "repeat": 2,
+      "runType": "semval-v02-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 3235,
+      "failSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-INV-001@2",
+        "EVT-INV-001@3",
+        "EVT-INV-001@5",
+        "EVT-INV-001@15#0"
+      ],
+      "tp": 4,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 4,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-ri01",
+      "tool": "semval-v01-passive",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 446,
+      "failSteps": [
+        2,
+        3,
+        5
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-INV-001@2",
+        "EVT-INV-001@3",
+        "EVT-INV-001@5"
+      ],
+      "tp": 3,
+      "fn": [
+        {
+          "key": "EVT-INV-001@15#0",
+          "reason": "list item not checked (one finding for the whole envelope)"
+        }
+      ],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 3,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-ri01",
+      "tool": "semval-v01-passive",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 444,
+      "failSteps": [
+        2,
+        3,
+        5
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-INV-001@2",
+        "EVT-INV-001@3",
+        "EVT-INV-001@5"
+      ],
+      "tp": 3,
+      "fn": [
+        {
+          "key": "EVT-INV-001@15#0",
+          "reason": "list item not checked (one finding for the whole envelope)"
+        }
+      ],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 3,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-ri01",
+      "tool": "semval-v02-passive",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 445,
+      "failSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-INV-001@2",
+        "EVT-INV-001@3",
+        "EVT-INV-001@5",
+        "EVT-INV-001@15#0"
+      ],
+      "tp": 4,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 4,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-ri01",
+      "tool": "semval-v02-passive",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 488,
+      "failSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-INV-001@2",
+        "EVT-INV-001@3",
+        "EVT-INV-001@5",
+        "EVT-INV-001@15#0"
+      ],
+      "tp": 4,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 4,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-ri01",
+      "tool": "postman",
+      "repeat": 1,
+      "runType": "postman",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 6169,
+      "failSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-INV-001@2",
+        "EVT-INV-001@3",
+        "EVT-INV-001@5",
+        "EVT-INV-001@15#0"
+      ],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": {
+        "INV-001": 4
+      },
+      "postmanAssertions": 136,
+      "postmanFailed": 4,
+      "invariantKeysMatchOracle": true
+    },
+    {
+      "mode": "evt-ri01",
+      "tool": "postman",
+      "repeat": 2,
+      "runType": "postman",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 6104,
+      "failSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-INV-001@2",
+        "EVT-INV-001@3",
+        "EVT-INV-001@5",
+        "EVT-INV-001@15#0"
+      ],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": {
+        "INV-001": 4
+      },
+      "postmanAssertions": 136,
+      "postmanFailed": 4,
+      "invariantKeysMatchOracle": true
+    },
+    {
+      "mode": "evt-ri01",
+      "tool": "ajv",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "durationMs": 233,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": null,
+      "ajvViolations": 0
+    },
+    {
+      "mode": "evt-ri01",
+      "tool": "ajv",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "durationMs": 283,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": null,
+      "ajvViolations": 0
+    },
+    {
+      "mode": "evt-cf01",
+      "tool": "semval-v01-active",
+      "repeat": 1,
+      "runType": "semval-v01-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 0,
+      "durationMs": 2966,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "tp": 0,
+      "fn": [
+        {
+          "key": "EVT-INV-005@2",
+          "reason": "rule absent from this rule set"
+        },
+        {
+          "key": "EVT-INV-005@3",
+          "reason": "rule absent from this rule set"
+        },
+        {
+          "key": "EVT-INV-005@5",
+          "reason": "rule absent from this rule set"
+        },
+        {
+          "key": "EVT-INV-005@15#0",
+          "reason": "rule absent from this rule set"
+        }
+      ],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-cf01",
+      "tool": "semval-v01-active",
+      "repeat": 2,
+      "runType": "semval-v01-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 0,
+      "durationMs": 3359,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "tp": 0,
+      "fn": [
+        {
+          "key": "EVT-INV-005@2",
+          "reason": "rule absent from this rule set"
+        },
+        {
+          "key": "EVT-INV-005@3",
+          "reason": "rule absent from this rule set"
+        },
+        {
+          "key": "EVT-INV-005@5",
+          "reason": "rule absent from this rule set"
+        },
+        {
+          "key": "EVT-INV-005@15#0",
+          "reason": "rule absent from this rule set"
+        }
+      ],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-cf01",
+      "tool": "semval-v02-active",
+      "repeat": 1,
+      "runType": "semval-v02-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 2610,
+      "failSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-INV-005@2",
+        "EVT-INV-005@3",
+        "EVT-INV-005@5",
+        "EVT-INV-005@15#0"
+      ],
+      "tp": 4,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 4,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-cf01",
+      "tool": "semval-v02-active",
+      "repeat": 2,
+      "runType": "semval-v02-jdbc",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 2734,
+      "failSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-INV-005@2",
+        "EVT-INV-005@3",
+        "EVT-INV-005@5",
+        "EVT-INV-005@15#0"
+      ],
+      "tp": 4,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 4,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-cf01",
+      "tool": "semval-v01-passive",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 0,
+      "durationMs": 536,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "tp": 0,
+      "fn": [
+        {
+          "key": "EVT-INV-005@2",
+          "reason": "rule absent from this rule set"
+        },
+        {
+          "key": "EVT-INV-005@3",
+          "reason": "rule absent from this rule set"
+        },
+        {
+          "key": "EVT-INV-005@5",
+          "reason": "rule absent from this rule set"
+        },
+        {
+          "key": "EVT-INV-005@15#0",
+          "reason": "rule absent from this rule set"
+        }
+      ],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-cf01",
+      "tool": "semval-v01-passive",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 0,
+      "durationMs": 430,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "tp": 0,
+      "fn": [
+        {
+          "key": "EVT-INV-005@2",
+          "reason": "rule absent from this rule set"
+        },
+        {
+          "key": "EVT-INV-005@3",
+          "reason": "rule absent from this rule set"
+        },
+        {
+          "key": "EVT-INV-005@5",
+          "reason": "rule absent from this rule set"
+        },
+        {
+          "key": "EVT-INV-005@15#0",
+          "reason": "rule absent from this rule set"
+        }
+      ],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-cf01",
+      "tool": "semval-v02-passive",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 1003,
+      "failSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-INV-005@2",
+        "EVT-INV-005@3",
+        "EVT-INV-005@5",
+        "EVT-INV-005@15#0"
+      ],
+      "tp": 4,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 4,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-cf01",
+      "tool": "semval-v02-passive",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 510,
+      "failSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-INV-005@2",
+        "EVT-INV-005@3",
+        "EVT-INV-005@5",
+        "EVT-INV-005@15#0"
+      ],
+      "tp": 4,
+      "fn": [],
+      "extraKeys": [],
+      "evidenceProblems": [],
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 4,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      }
+    },
+    {
+      "mode": "evt-cf01",
+      "tool": "postman",
+      "repeat": 1,
+      "runType": "postman",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 5396,
+      "failSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-INV-005@2",
+        "EVT-INV-005@3",
+        "EVT-INV-005@5",
+        "EVT-INV-005@15#0"
+      ],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": {
+        "INV-005": 4
+      },
+      "postmanAssertions": 136,
+      "postmanFailed": 4,
+      "invariantKeysMatchOracle": true
+    },
+    {
+      "mode": "evt-cf01",
+      "tool": "postman",
+      "repeat": 2,
+      "runType": "postman",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "exitCode": 1,
+      "durationMs": 6059,
+      "failSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "fpSteps": [],
+      "detectedAtCause": true,
+      "keys": [
+        "EVT-INV-005@2",
+        "EVT-INV-005@3",
+        "EVT-INV-005@5",
+        "EVT-INV-005@15#0"
+      ],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": {
+        "INV-005": 4
+      },
+      "postmanAssertions": 136,
+      "postmanFailed": 4,
+      "invariantKeysMatchOracle": true
+    },
+    {
+      "mode": "evt-cf01",
+      "tool": "ajv",
+      "repeat": 1,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "durationMs": 407,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": null,
+      "ajvViolations": 0
+    },
+    {
+      "mode": "evt-cf01",
+      "tool": "ajv",
+      "repeat": 2,
+      "runType": "capture",
+      "switchOk": true,
+      "trafficOk": true,
+      "exercised": true,
+      "oracleViolations": 4,
+      "causeSteps": [
+        2
+      ],
+      "affectedSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "hiddenStateChanges": 0,
+      "durationMs": 257,
+      "failSteps": [],
+      "fpSteps": [],
+      "detectedAtCause": false,
+      "keys": [],
+      "fn": null,
+      "extraKeys": null,
+      "evidenceProblems": null,
+      "failsByRule": null,
+      "ajvViolations": 0
+    }
+  ],
+  "reproducibility": [
+    {
+      "group": "clean/semval-v01-active",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "clean/semval-v02-active",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "clean/semval-v01-passive",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "clean/semval-v02-passive",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "clean/postman",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "clean/ajv",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-st01/semval-v01-active",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-st01/semval-v02-active",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-st01/semval-v01-passive",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-st01/semval-v02-passive",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-st01/postman",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-st01/ajv",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-db01/semval-v01-active",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-db01/semval-v02-active",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-db01/semval-v01-passive",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-db01/semval-v02-passive",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-db01/postman",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-db01/ajv",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-db02/semval-v01-active",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-db02/semval-v02-active",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-db02/semval-v01-passive",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-db02/semval-v02-passive",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-db02/postman",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-db02/ajv",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-ri01/semval-v01-active",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-ri01/semval-v02-active",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-ri01/semval-v01-passive",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-ri01/semval-v02-passive",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-ri01/postman",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-ri01/ajv",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-cf01/semval-v01-active",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-cf01/semval-v02-active",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-cf01/semval-v01-passive",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-cf01/semval-v02-passive",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-cf01/postman",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "evt-cf01/ajv",
+      "repeats": 2,
+      "failKeysIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    }
+  ],
+  "incomplete": []
+}

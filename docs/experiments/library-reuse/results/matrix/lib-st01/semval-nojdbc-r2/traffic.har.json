@@ -1,0 +1,851 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "record-proxy",
+      "version": "1"
+    },
+    "entries": [
+      {
+        "startedDateTime": "2026-10-19T06:16:29.014Z",
+        "time": 231,
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8081/api/loans",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1001}"
+          }
+        },
+        "response": {
+          "status": 201,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 172,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1001,\"id\":\"166c7567-79bf-4285-b8cf-9bc58ba669b3\",\"issuedAt\":null,\"requestedAt\":\"2026-10-19T06:16:29.161093Z\",\"returnedAt\":null,\"status\":\"REQUESTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.264Z",
+        "time": 42,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8081/api/loans/166c7567-79bf-4285-b8cf-9bc58ba669b3",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 172,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1001,\"id\":\"166c7567-79bf-4285-b8cf-9bc58ba669b3\",\"issuedAt\":null,\"requestedAt\":\"2026-10-19T06:16:29.161093Z\",\"returnedAt\":null,\"status\":\"REQUESTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.310Z",
+        "time": 27,
+        "request": {
+          "method": "PATCH",
+          "url": "http://localhost:8081/api/loans/166c7567-79bf-4285-b8cf-9bc58ba669b3/status",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"status\":\"APPROVED\"}"
+          }
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 171,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1001,\"id\":\"166c7567-79bf-4285-b8cf-9bc58ba669b3\",\"issuedAt\":null,\"requestedAt\":\"2026-10-19T06:16:29.161093Z\",\"returnedAt\":null,\"status\":\"APPROVED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.350Z",
+        "time": 6,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8081/api/loans/166c7567-79bf-4285-b8cf-9bc58ba669b3",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 171,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1001,\"id\":\"166c7567-79bf-4285-b8cf-9bc58ba669b3\",\"issuedAt\":null,\"requestedAt\":\"2026-10-19T06:16:29.161093Z\",\"returnedAt\":null,\"status\":\"APPROVED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.359Z",
+        "time": 8,
+        "request": {
+          "method": "PATCH",
+          "url": "http://localhost:8081/api/loans/166c7567-79bf-4285-b8cf-9bc58ba669b3/status",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"status\":\"ISSUED\"}"
+          }
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 197,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1001,\"id\":\"166c7567-79bf-4285-b8cf-9bc58ba669b3\",\"issuedAt\":\"2026-10-19T06:16:29.364729600Z\",\"requestedAt\":\"2026-10-19T06:16:29.161093Z\",\"returnedAt\":null,\"status\":\"ISSUED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.373Z",
+        "time": 6,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8081/api/loans/166c7567-79bf-4285-b8cf-9bc58ba669b3",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 194,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1001,\"id\":\"166c7567-79bf-4285-b8cf-9bc58ba669b3\",\"issuedAt\":\"2026-10-19T06:16:29.364730Z\",\"requestedAt\":\"2026-10-19T06:16:29.161093Z\",\"returnedAt\":null,\"status\":\"ISSUED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.386Z",
+        "time": 7,
+        "request": {
+          "method": "PATCH",
+          "url": "http://localhost:8081/api/loans/166c7567-79bf-4285-b8cf-9bc58ba669b3/status",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"status\":\"RETURNED\"}"
+          }
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 224,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1001,\"id\":\"166c7567-79bf-4285-b8cf-9bc58ba669b3\",\"issuedAt\":\"2026-10-19T06:16:29.364730Z\",\"requestedAt\":\"2026-10-19T06:16:29.161093Z\",\"returnedAt\":\"2026-10-19T06:16:29.390586200Z\",\"status\":\"RETURNED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.405Z",
+        "time": 5,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8081/api/loans/166c7567-79bf-4285-b8cf-9bc58ba669b3",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 221,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1001,\"id\":\"166c7567-79bf-4285-b8cf-9bc58ba669b3\",\"issuedAt\":\"2026-10-19T06:16:29.364730Z\",\"requestedAt\":\"2026-10-19T06:16:29.161093Z\",\"returnedAt\":\"2026-10-19T06:16:29.390586Z\",\"status\":\"RETURNED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.419Z",
+        "time": 23,
+        "request": {
+          "method": "PATCH",
+          "url": "http://localhost:8081/api/loans/166c7567-79bf-4285-b8cf-9bc58ba669b3/status",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"status\":\"ISSUED\"}"
+          }
+        },
+        "response": {
+          "status": 409,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 136,
+            "mimeType": "application/json",
+            "text": "{\"timestamp\":\"2026-10-19T06:16:29.435Z\",\"status\":409,\"error\":\"Conflict\",\"path\":\"/api/loans/166c7567-79bf-4285-b8cf-9bc58ba669b3/status\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.447Z",
+        "time": 5,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8081/api/loans/166c7567-79bf-4285-b8cf-9bc58ba669b3",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 221,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1001,\"id\":\"166c7567-79bf-4285-b8cf-9bc58ba669b3\",\"issuedAt\":\"2026-10-19T06:16:29.364730Z\",\"requestedAt\":\"2026-10-19T06:16:29.161093Z\",\"returnedAt\":\"2026-10-19T06:16:29.390586Z\",\"status\":\"RETURNED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.459Z",
+        "time": 7,
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8081/api/loans",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1002}"
+          }
+        },
+        "response": {
+          "status": 201,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 175,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1002,\"id\":\"07110225-01ce-4b51-a855-4fe6fac10fe7\",\"issuedAt\":null,\"requestedAt\":\"2026-10-19T06:16:29.462893900Z\",\"returnedAt\":null,\"status\":\"REQUESTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.473Z",
+        "time": 4,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8081/api/loans/07110225-01ce-4b51-a855-4fe6fac10fe7",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 172,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1002,\"id\":\"07110225-01ce-4b51-a855-4fe6fac10fe7\",\"issuedAt\":null,\"requestedAt\":\"2026-10-19T06:16:29.462894Z\",\"returnedAt\":null,\"status\":\"REQUESTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.487Z",
+        "time": 8,
+        "request": {
+          "method": "PATCH",
+          "url": "http://localhost:8081/api/loans/07110225-01ce-4b51-a855-4fe6fac10fe7/status",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"status\":\"ISSUED\"}"
+          }
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 197,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1002,\"id\":\"07110225-01ce-4b51-a855-4fe6fac10fe7\",\"issuedAt\":\"2026-10-19T06:16:29.491967300Z\",\"requestedAt\":\"2026-10-19T06:16:29.462894Z\",\"returnedAt\":null,\"status\":\"ISSUED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.515Z",
+        "time": 6,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8081/api/loans/07110225-01ce-4b51-a855-4fe6fac10fe7",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 194,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1002,\"id\":\"07110225-01ce-4b51-a855-4fe6fac10fe7\",\"issuedAt\":\"2026-10-19T06:16:29.491967Z\",\"requestedAt\":\"2026-10-19T06:16:29.462894Z\",\"returnedAt\":null,\"status\":\"ISSUED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.525Z",
+        "time": 8,
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8081/api/loans",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1003}"
+          }
+        },
+        "response": {
+          "status": 201,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 175,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1003,\"id\":\"6f8a1260-9ebb-4b70-a9a9-6ebd14cdd91a\",\"issuedAt\":null,\"requestedAt\":\"2026-10-19T06:16:29.528388500Z\",\"returnedAt\":null,\"status\":\"REQUESTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.540Z",
+        "time": 5,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8081/api/loans/6f8a1260-9ebb-4b70-a9a9-6ebd14cdd91a",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 172,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1003,\"id\":\"6f8a1260-9ebb-4b70-a9a9-6ebd14cdd91a\",\"issuedAt\":null,\"requestedAt\":\"2026-10-19T06:16:29.528389Z\",\"returnedAt\":null,\"status\":\"REQUESTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.556Z",
+        "time": 8,
+        "request": {
+          "method": "PATCH",
+          "url": "http://localhost:8081/api/loans/6f8a1260-9ebb-4b70-a9a9-6ebd14cdd91a/status",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"status\":\"REJECTED\"}"
+          }
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 171,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1003,\"id\":\"6f8a1260-9ebb-4b70-a9a9-6ebd14cdd91a\",\"issuedAt\":null,\"requestedAt\":\"2026-10-19T06:16:29.528389Z\",\"returnedAt\":null,\"status\":\"REJECTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.570Z",
+        "time": 4,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8081/api/loans/6f8a1260-9ebb-4b70-a9a9-6ebd14cdd91a",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 171,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1003,\"id\":\"6f8a1260-9ebb-4b70-a9a9-6ebd14cdd91a\",\"issuedAt\":null,\"requestedAt\":\"2026-10-19T06:16:29.528389Z\",\"returnedAt\":null,\"status\":\"REJECTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.585Z",
+        "time": 8,
+        "request": {
+          "method": "PATCH",
+          "url": "http://localhost:8081/api/loans/6f8a1260-9ebb-4b70-a9a9-6ebd14cdd91a/status",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"status\":\"APPROVED\"}"
+          }
+        },
+        "response": {
+          "status": 409,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 136,
+            "mimeType": "application/json",
+            "text": "{\"timestamp\":\"2026-10-19T06:16:29.592Z\",\"status\":409,\"error\":\"Conflict\",\"path\":\"/api/loans/6f8a1260-9ebb-4b70-a9a9-6ebd14cdd91a/status\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:29.603Z",
+        "time": 421,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8081/api/members/42/loans",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 590,
+            "mimeType": "application/json",
+            "text": "[{\"memberId\":42,\"bookId\":1001,\"id\":\"166c7567-79bf-4285-b8cf-9bc58ba669b3\",\"issuedAt\":\"2026-10-19T06:16:29.364730Z\",\"requestedAt\":\"2026-10-19T06:16:29.161093Z\",\"returnedAt\":\"2026-10-19T06:16:29.390586Z\",\"status\":\"RETURNED\"},{\"memberId\":42,\"bookId\":1002,\"id\":\"07110225-01ce-4b51-a855-4fe6fac10fe7\",\"issuedAt\":\"2026-10-19T06:16:29.491967Z\",\"requestedAt\":\"2026-10-19T06:16:29.462894Z\",\"returnedAt\":null,\"status\":\"ISSUED\"},{\"memberId\":42,\"bookId\":1003,\"id\":\"6f8a1260-9ebb-4b70-a9a9-6ebd14cdd91a\",\"issuedAt\":null,\"requestedAt\":\"2026-10-19T06:16:29.528389Z\",\"returnedAt\":null,\"status\":\"REJECTED\"}]"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:30.027Z",
+        "time": 6,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8081/api/loans/00000000-0000-4000-8000-000000000000",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 404,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 130,
+            "mimeType": "application/json",
+            "text": "{\"timestamp\":\"2026-10-19T06:16:30.032Z\",\"status\":404,\"error\":\"Not Found\",\"path\":\"/api/loans/00000000-0000-4000-8000-000000000000\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:30.040Z",
+        "time": 6,
+        "request": {
+          "method": "PATCH",
+          "url": "http://localhost:8081/api/loans/00000000-0000-4000-8000-000000000000/status",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"status\":\"APPROVED\"}"
+          }
+        },
+        "response": {
+          "status": 404,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 137,
+            "mimeType": "application/json",
+            "text": "{\"timestamp\":\"2026-10-19T06:16:30.044Z\",\"status\":404,\"error\":\"Not Found\",\"path\":\"/api/loans/00000000-0000-4000-8000-000000000000/status\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:30.053Z",
+        "time": 4,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8081/api/loans/166c7567-79bf-4285-b8cf-9bc58ba669b3",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 221,
+            "mimeType": "application/json",
+            "text": "{\"memberId\":42,\"bookId\":1001,\"id\":\"166c7567-79bf-4285-b8cf-9bc58ba669b3\",\"issuedAt\":\"2026-10-19T06:16:29.364730Z\",\"requestedAt\":\"2026-10-19T06:16:29.161093Z\",\"returnedAt\":\"2026-10-19T06:16:29.390586Z\",\"status\":\"RETURNED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T06:16:30.066Z",
+        "time": 8,
+        "request": {
+          "method": "PATCH",
+          "url": "http://localhost:8081/api/loans/166c7567-79bf-4285-b8cf-9bc58ba669b3/status",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"status\":\"LOST\"}"
+          }
+        },
+        "response": {
+          "status": 400,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 139,
+            "mimeType": "application/json",
+            "text": "{\"timestamp\":\"2026-10-19T06:16:30.072Z\",\"status\":400,\"error\":\"Bad Request\",\"path\":\"/api/loans/166c7567-79bf-4285-b8cf-9bc58ba669b3/status\"}"
+          }
+        }
+      }
+    ]
+  }
+}

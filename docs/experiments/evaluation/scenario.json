@@ -1,0 +1,28 @@
+{
+  "id": "EVAL-SC-1",
+  "description": "Shared controlled scenario for all tools (fresh API, empty database). Order A goes through the full lifecycle and is then cancelled (forbidden); order B tries to skip to DELIVERED (forbidden). Read-backs and the list endpoint expose persisted state.",
+  "steps": [
+    { "name": "1 create order A", "operationId": "createOrder", "body": { "ownerUserId": 7, "total": 49.99 }, "save": { "a": "$.id" },
+      "expect": { "status": 201, "orderStatus": "CREATED" } },
+    { "name": "2 A -> PAID", "operationId": "updateStatus", "pathParams": { "id": "${a}" }, "body": { "status": "PAID" },
+      "expect": { "status": 200, "orderStatus": "PAID" } },
+    { "name": "3 A -> SHIPPED", "operationId": "updateStatus", "pathParams": { "id": "${a}" }, "body": { "status": "SHIPPED" },
+      "expect": { "status": 200, "orderStatus": "SHIPPED" } },
+    { "name": "4 A -> DELIVERED", "operationId": "updateStatus", "pathParams": { "id": "${a}" }, "body": { "status": "DELIVERED" },
+      "expect": { "status": 200, "orderStatus": "DELIVERED" } },
+    { "name": "5 A -> COMPLETED", "operationId": "updateStatus", "pathParams": { "id": "${a}" }, "body": { "status": "COMPLETED" },
+      "expect": { "status": 200, "orderStatus": "COMPLETED" } },
+    { "name": "6 A -> CANCELLED (forbidden)", "operationId": "updateStatus", "pathParams": { "id": "${a}" }, "body": { "status": "CANCELLED" },
+      "expect": { "status": 409 } },
+    { "name": "7 read A", "operationId": "getOrder", "pathParams": { "id": "${a}" },
+      "expect": { "status": 200, "orderStatus": "COMPLETED" } },
+    { "name": "8 create order B", "operationId": "createOrder", "body": { "ownerUserId": 7, "total": 10.00 }, "save": { "b": "$.id" },
+      "expect": { "status": 201, "orderStatus": "CREATED" } },
+    { "name": "9 B -> DELIVERED (forbidden)", "operationId": "updateStatus", "pathParams": { "id": "${b}" }, "body": { "status": "DELIVERED" },
+      "expect": { "status": 409 } },
+    { "name": "10 read B", "operationId": "getOrder", "pathParams": { "id": "${b}" },
+      "expect": { "status": 200, "orderStatus": "CREATED" } },
+    { "name": "11 list user 7", "operationId": "getOrdersByUser", "pathParams": { "userId": "7" },
+      "expect": { "status": 200, "listStatuses": ["COMPLETED", "CREATED"] } }
+  ]
+}

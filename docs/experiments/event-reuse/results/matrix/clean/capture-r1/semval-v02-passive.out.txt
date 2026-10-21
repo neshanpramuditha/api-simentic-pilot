@@ -1,0 +1,1 @@
+semantic-validator: 19 exchanges, 7 rules, totals {PASS=88, FAIL=0, NOT_APPLICABLE=37}, 47 ms -> <run-root>\clean\capture-r1\semval-v02-passive.json

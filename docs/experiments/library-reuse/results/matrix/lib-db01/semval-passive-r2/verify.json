@@ -1,0 +1,223 @@
+{
+  "run": {
+    "mode": "lib-db01",
+    "config": "semval-passive",
+    "repeat": 2,
+    "exitCode": 1,
+    "durationMs": 418,
+    "defectLines": [
+      "DEFECT LIB-DB-01 ENABLED: PATCH /api/loans/{id}/status saves rejected (409) status changes"
+    ]
+  },
+  "traffic": {
+    "harEntries": 15,
+    "readBacks": 0,
+    "scenarioRequests": 15,
+    "problems": []
+  },
+  "oracle": {
+    "transitions": {
+      "REQUESTED": [
+        "APPROVED",
+        "REJECTED"
+      ],
+      "APPROVED": [
+        "ISSUED"
+      ],
+      "ISSUED": [
+        "RETURNED"
+      ],
+      "REJECTED": [],
+      "RETURNED": []
+    },
+    "violations": [
+      {
+        "key": "LIB-INV-001@5",
+        "ruleId": "LIB-INV-001",
+        "step": 5,
+        "item": null,
+        "kind": "invariant",
+        "detail": "status=ISSUED returnedAt=2026-10-19T06:18:41.597927Z"
+      },
+      {
+        "key": "LIB-INV-001@12#0",
+        "ruleId": "LIB-INV-001",
+        "step": 12,
+        "item": 0,
+        "kind": "invariant",
+        "detail": "status=ISSUED returnedAt=2026-10-19T06:18:41.597927Z"
+      },
+      {
+        "key": "LIB-DB-001@4",
+        "ruleId": "LIB-DB-001",
+        "step": 4,
+        "item": null,
+        "kind": "db",
+        "detail": "HTTP 409 but loan changed {\"status\":\"RETURNED\",\"issuedAt\":true,\"returnedAt\":true} -> {\"status\":\"ISSUED\",\"issuedAt\":true,\"returnedAt\":true} (observed in traffic entry 5)"
+      },
+      {
+        "key": "LIB-DB-001@7",
+        "ruleId": "LIB-DB-001",
+        "step": 7,
+        "item": null,
+        "kind": "db",
+        "detail": "HTTP 409 but loan changed {\"status\":\"REQUESTED\",\"issuedAt\":false,\"returnedAt\":false} -> {\"status\":\"ISSUED\",\"issuedAt\":true,\"returnedAt\":false} (observed in traffic entry 8)"
+      },
+      {
+        "key": "LIB-DB-001@11",
+        "ruleId": "LIB-DB-001",
+        "step": 11,
+        "item": null,
+        "kind": "db",
+        "detail": "HTTP 409 but loan changed {\"status\":\"REJECTED\",\"issuedAt\":false,\"returnedAt\":false} -> {\"status\":\"APPROVED\",\"issuedAt\":false,\"returnedAt\":false} (observed in traffic entry 12)"
+      }
+    ],
+    "causeSteps": [
+      4,
+      7,
+      11
+    ],
+    "hiddenStateChanges": [
+      {
+        "id": "4b5d7282-201c-4fea-a63f-e97ef429d815",
+        "claimed": {
+          "status": "RETURNED",
+          "issuedAt": true,
+          "returnedAt": true
+        },
+        "persisted": {
+          "status": "ISSUED",
+          "issuedAt": true,
+          "returnedAt": true
+        }
+      },
+      {
+        "id": "ee4ed37d-0a84-4990-bb7f-b530c459ed0f",
+        "claimed": {
+          "status": "REQUESTED",
+          "issuedAt": false,
+          "returnedAt": false
+        },
+        "persisted": {
+          "status": "ISSUED",
+          "issuedAt": true,
+          "returnedAt": false
+        }
+      },
+      {
+        "id": "16c397fd-c2ac-4d36-acbc-b446a77f2f0f",
+        "claimed": {
+          "status": "REJECTED",
+          "issuedAt": false,
+          "returnedAt": false
+        },
+        "persisted": {
+          "status": "APPROVED",
+          "issuedAt": false,
+          "returnedAt": false
+        }
+      }
+    ],
+    "dbInvariantViolations": [
+      {
+        "id": "4b5d7282-201c-4fea-a63f-e97ef429d815",
+        "status": "ISSUED",
+        "issuedAt": true,
+        "returnedAt": true
+      }
+    ],
+    "exercised": true,
+    "anyDefectSignature": true
+  },
+  "validator": {
+    "totals": {
+      "PASS": 29,
+      "FAIL": 2,
+      "NOT_APPLICABLE": 21
+    },
+    "byRule": {
+      "LIB-INV-001": {
+        "PASS": 10,
+        "FAIL": 2,
+        "NOT_APPLICABLE": 5
+      },
+      "LIB-INV-002": {
+        "PASS": 12,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 5
+      },
+      "LIB-ST-001": {
+        "PASS": 7,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 2
+      },
+      "LIB-DB-001": {
+        "PASS": 0,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 9
+      }
+    },
+    "failKeys": [
+      "LIB-INV-001@5",
+      "LIB-INV-001@12#0"
+    ]
+  },
+  "comparison": {
+    "tp": [
+      "LIB-INV-001@5",
+      "LIB-INV-001@12#0"
+    ],
+    "fp": [],
+    "fn": [
+      {
+        "key": "LIB-DB-001@4",
+        "ruleId": "LIB-DB-001",
+        "step": 4,
+        "item": null,
+        "kind": "db",
+        "detail": "HTTP 409 but loan changed {\"status\":\"RETURNED\",\"issuedAt\":true,\"returnedAt\":true} -> {\"status\":\"ISSUED\",\"issuedAt\":true,\"returnedAt\":true} (observed in traffic entry 5)",
+        "validator": "NOT_APPLICABLE",
+        "notEvaluable": true,
+        "reason": "no database access (passive mode or no JDBC URL configured)"
+      },
+      {
+        "key": "LIB-DB-001@7",
+        "ruleId": "LIB-DB-001",
+        "step": 7,
+        "item": null,
+        "kind": "db",
+        "detail": "HTTP 409 but loan changed {\"status\":\"REQUESTED\",\"issuedAt\":false,\"returnedAt\":false} -> {\"status\":\"ISSUED\",\"issuedAt\":true,\"returnedAt\":false} (observed in traffic entry 8)",
+        "validator": "NOT_APPLICABLE",
+        "notEvaluable": true,
+        "reason": "no database access (passive mode or no JDBC URL configured)"
+      },
+      {
+        "key": "LIB-DB-001@11",
+        "ruleId": "LIB-DB-001",
+        "step": 11,
+        "item": null,
+        "kind": "db",
+        "detail": "HTTP 409 but loan changed {\"status\":\"REJECTED\",\"issuedAt\":false,\"returnedAt\":false} -> {\"status\":\"APPROVED\",\"issuedAt\":false,\"returnedAt\":false} (observed in traffic entry 12)",
+        "validator": "NOT_APPLICABLE",
+        "notEvaluable": true,
+        "reason": "no database access (passive mode or no JDBC URL configured)"
+      }
+    ],
+    "detectedAtCause": false,
+    "failSteps": [
+      5,
+      12
+    ]
+  },
+  "evidence": {
+    "problems": [],
+    "failsWithFullEvidence": 2,
+    "fails": 2
+  },
+  "database": {
+    "outcomes": {
+      "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+    },
+    "correctlyScoped": true
+  }
+}

@@ -1,0 +1,87 @@
+# evt-ri01: Postman CLI output (sections with failures, then the failure table; ids masked)
+
+Root 2 R1 -> CHECKED_IN
+
+  POST http://localhost:8092/v1/registrations/REG-xxxxxxxx/transitions [200 OK, 428 B, 15 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  1. [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  GET http://localhost:8092/v1/registrations/REG-xxxxxxxx [200 OK, 428 B, 10 ms]
+  Pass  [READBACK] stored registration equals the 200 response
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CHECKED_IN
+
+Root 3 fetch R1
+
+  GET http://localhost:8092/v1/registrations/REG-xxxxxxxx [200 OK, 428 B, 13 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  2. [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CHECKED_IN
+
+Root 5 fetch R1
+
+  GET http://localhost:8092/v1/registrations/REG-xxxxxxxx [200 OK, 428 B, 16 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  3. [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CHECKED_IN
+
+Root 15 list ATT-7
+
+  GET http://localhost:8092/v1/attendees/ATT-7/registrations [200 OK, 1014 B, 137 ms]
+  Pass  [schema] body matches the OpenAPI AttendeeRegistrations schema
+  4. [INV-001] checkedInAt set iff CHECKED_IN (item 0)
+  Pass  [INV-002] cancelledAt set iff CANCELLED (item 0)
+  Pass  [INV-003] cancellationReason set iff CANCELLED (item 0)
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED (item 0)
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 0)
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN (item 1)
+  Pass  [INV-002] cancelledAt set iff CANCELLED (item 1)
+  Pass  [INV-003] cancellationReason set iff CANCELLED (item 1)
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED (item 1)
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 1)
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN (item 2)
+  Pass  [INV-002] cancelledAt set iff CANCELLED (item 2)
+  Pass  [INV-003] cancellationReason set iff CANCELLED (item 2)
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED (item 2)
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 2)
+  Pass  [STEP] status is 200
+  Pass  [STEP] list states are CHECKED_IN, CANCELLED, WAITLISTED
+
+
+#  failure         detail                                                                         
+                                                                                                    
+ 1.  AssertionError  [INV-001] checkedInAt set iff CHECKED_IN                                       
+                     {"state":"CHECKED_IN","checkedInAt":null}: expected false to deeply equal true 
+                     at assertion:1 in test-script                                                  
+                     inside "2 R1 -> CHECKED_IN"                                                    
+                                                                                                    
+ 2.  AssertionError  [INV-001] checkedInAt set iff CHECKED_IN                                       
+                     {"state":"CHECKED_IN","checkedInAt":null}: expected false to deeply equal true 
+                     at assertion:1 in test-script                                                  
+                     inside "3 fetch R1"                                                            
+                                                                                                    
+ 3.  AssertionError  [INV-001] checkedInAt set iff CHECKED_IN                                       
+                     {"state":"CHECKED_IN","checkedInAt":null}: expected false to deeply equal true 
+                     at assertion:1 in test-script                                                  
+                     inside "5 fetch R1"                                                            
+                                                                                                    
+ 4.  AssertionError  [INV-001] checkedInAt set iff CHECKED_IN (item 0)                              
+                     {"state":"CHECKED_IN","checkedInAt":null}: expected false to deeply equal true 
+                     at assertion:1 in test-script                                                  
+                     inside "15 list ATT-7"                                                         
+Postman credentials are required for publishing run details to Postman cloud.
+Please specify it by using the `postman login` command
+

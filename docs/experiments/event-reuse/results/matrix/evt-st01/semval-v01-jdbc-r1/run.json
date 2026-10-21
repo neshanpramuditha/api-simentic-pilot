@@ -1,0 +1,11 @@
+{
+    "mode":  "evt-st01",
+    "type":  "semval-v01-jdbc",
+    "repeat":  1,
+    "defect":  "st01-waitlist-confirm-rejected",
+    "exitCode":  1,
+    "durationMs":  2473,
+    "defectLines":  [
+                        "DEFECT EVT-ST-01 ENABLED: WAITLISTED -\u003e CONFIRMED is rejected with 422"
+                    ]
+}

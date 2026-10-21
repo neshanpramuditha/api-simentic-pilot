@@ -1,0 +1,382 @@
+{
+  "info": {
+    "name": "Evaluation scenario EVAL-SC-1",
+    "description": "Generated from docs/experiments/evaluation/scenario.json by build-postman-collection.js; do not edit by hand.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "a",
+      "value": ""
+    },
+    {
+      "key": "b",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "1 create order A",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/orders",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"ownerUserId\":7,\"total\":49.99}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const orderSchema = {\"properties\":{\"completedAt\":{\"pattern\":\"^\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}(\\\\.\\\\d{1,9})?$\",\"type\":[\"string\",\"null\"]},\"id\":{\"type\":\"integer\"},\"ownerUserId\":{\"type\":\"integer\"},\"status\":{\"enum\":[\"CREATED\",\"PAID\",\"SHIPPED\",\"DELIVERED\",\"COMPLETED\",\"CANCELLED\"],\"type\":\"string\"},\"total\":{\"type\":\"number\"}},\"required\":[\"id\",\"ownerUserId\",\"status\",\"total\"],\"type\":\"object\"};",
+              "pm.test(\"status is 201\", () => pm.response.to.have.status(201));",
+              "pm.test(\"order status is CREATED\", () => pm.expect(pm.response.json().status).to.eql(\"CREATED\"));",
+              "pm.test(\"body matches the baseline Order schema\", () => pm.response.to.have.jsonSchema(orderSchema));",
+              "pm.collectionVariables.set(\"a\", pm.response.json()[\"id\"]);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "2 A -> PAID",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/orders/{{a}}/status",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"status\":\"PAID\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const orderSchema = {\"properties\":{\"completedAt\":{\"pattern\":\"^\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}(\\\\.\\\\d{1,9})?$\",\"type\":[\"string\",\"null\"]},\"id\":{\"type\":\"integer\"},\"ownerUserId\":{\"type\":\"integer\"},\"status\":{\"enum\":[\"CREATED\",\"PAID\",\"SHIPPED\",\"DELIVERED\",\"COMPLETED\",\"CANCELLED\"],\"type\":\"string\"},\"total\":{\"type\":\"number\"}},\"required\":[\"id\",\"ownerUserId\",\"status\",\"total\"],\"type\":\"object\"};",
+              "pm.test(\"status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"order status is PAID\", () => pm.expect(pm.response.json().status).to.eql(\"PAID\"));",
+              "pm.test(\"body matches the baseline Order schema\", () => pm.response.to.have.jsonSchema(orderSchema));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "3 A -> SHIPPED",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/orders/{{a}}/status",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"status\":\"SHIPPED\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const orderSchema = {\"properties\":{\"completedAt\":{\"pattern\":\"^\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}(\\\\.\\\\d{1,9})?$\",\"type\":[\"string\",\"null\"]},\"id\":{\"type\":\"integer\"},\"ownerUserId\":{\"type\":\"integer\"},\"status\":{\"enum\":[\"CREATED\",\"PAID\",\"SHIPPED\",\"DELIVERED\",\"COMPLETED\",\"CANCELLED\"],\"type\":\"string\"},\"total\":{\"type\":\"number\"}},\"required\":[\"id\",\"ownerUserId\",\"status\",\"total\"],\"type\":\"object\"};",
+              "pm.test(\"status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"order status is SHIPPED\", () => pm.expect(pm.response.json().status).to.eql(\"SHIPPED\"));",
+              "pm.test(\"body matches the baseline Order schema\", () => pm.response.to.have.jsonSchema(orderSchema));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "4 A -> DELIVERED",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/orders/{{a}}/status",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"status\":\"DELIVERED\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const orderSchema = {\"properties\":{\"completedAt\":{\"pattern\":\"^\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}(\\\\.\\\\d{1,9})?$\",\"type\":[\"string\",\"null\"]},\"id\":{\"type\":\"integer\"},\"ownerUserId\":{\"type\":\"integer\"},\"status\":{\"enum\":[\"CREATED\",\"PAID\",\"SHIPPED\",\"DELIVERED\",\"COMPLETED\",\"CANCELLED\"],\"type\":\"string\"},\"total\":{\"type\":\"number\"}},\"required\":[\"id\",\"ownerUserId\",\"status\",\"total\"],\"type\":\"object\"};",
+              "pm.test(\"status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"order status is DELIVERED\", () => pm.expect(pm.response.json().status).to.eql(\"DELIVERED\"));",
+              "pm.test(\"body matches the baseline Order schema\", () => pm.response.to.have.jsonSchema(orderSchema));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "5 A -> COMPLETED",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/orders/{{a}}/status",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"status\":\"COMPLETED\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const orderSchema = {\"properties\":{\"completedAt\":{\"pattern\":\"^\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}(\\\\.\\\\d{1,9})?$\",\"type\":[\"string\",\"null\"]},\"id\":{\"type\":\"integer\"},\"ownerUserId\":{\"type\":\"integer\"},\"status\":{\"enum\":[\"CREATED\",\"PAID\",\"SHIPPED\",\"DELIVERED\",\"COMPLETED\",\"CANCELLED\"],\"type\":\"string\"},\"total\":{\"type\":\"number\"}},\"required\":[\"id\",\"ownerUserId\",\"status\",\"total\"],\"type\":\"object\"};",
+              "pm.test(\"status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"order status is COMPLETED\", () => pm.expect(pm.response.json().status).to.eql(\"COMPLETED\"));",
+              "pm.test(\"body matches the baseline Order schema\", () => pm.response.to.have.jsonSchema(orderSchema));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "6 A -> CANCELLED (forbidden)",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/orders/{{a}}/status",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"status\":\"CANCELLED\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const orderSchema = {\"properties\":{\"completedAt\":{\"pattern\":\"^\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}(\\\\.\\\\d{1,9})?$\",\"type\":[\"string\",\"null\"]},\"id\":{\"type\":\"integer\"},\"ownerUserId\":{\"type\":\"integer\"},\"status\":{\"enum\":[\"CREATED\",\"PAID\",\"SHIPPED\",\"DELIVERED\",\"COMPLETED\",\"CANCELLED\"],\"type\":\"string\"},\"total\":{\"type\":\"number\"}},\"required\":[\"id\",\"ownerUserId\",\"status\",\"total\"],\"type\":\"object\"};",
+              "pm.test(\"status is 409\", () => pm.response.to.have.status(409));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "7 read A",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/orders/{{a}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const orderSchema = {\"properties\":{\"completedAt\":{\"pattern\":\"^\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}(\\\\.\\\\d{1,9})?$\",\"type\":[\"string\",\"null\"]},\"id\":{\"type\":\"integer\"},\"ownerUserId\":{\"type\":\"integer\"},\"status\":{\"enum\":[\"CREATED\",\"PAID\",\"SHIPPED\",\"DELIVERED\",\"COMPLETED\",\"CANCELLED\"],\"type\":\"string\"},\"total\":{\"type\":\"number\"}},\"required\":[\"id\",\"ownerUserId\",\"status\",\"total\"],\"type\":\"object\"};",
+              "pm.test(\"status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"order status is COMPLETED\", () => pm.expect(pm.response.json().status).to.eql(\"COMPLETED\"));",
+              "pm.test(\"body matches the baseline Order schema\", () => pm.response.to.have.jsonSchema(orderSchema));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "8 create order B",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/orders",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"ownerUserId\":7,\"total\":10}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const orderSchema = {\"properties\":{\"completedAt\":{\"pattern\":\"^\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}(\\\\.\\\\d{1,9})?$\",\"type\":[\"string\",\"null\"]},\"id\":{\"type\":\"integer\"},\"ownerUserId\":{\"type\":\"integer\"},\"status\":{\"enum\":[\"CREATED\",\"PAID\",\"SHIPPED\",\"DELIVERED\",\"COMPLETED\",\"CANCELLED\"],\"type\":\"string\"},\"total\":{\"type\":\"number\"}},\"required\":[\"id\",\"ownerUserId\",\"status\",\"total\"],\"type\":\"object\"};",
+              "pm.test(\"status is 201\", () => pm.response.to.have.status(201));",
+              "pm.test(\"order status is CREATED\", () => pm.expect(pm.response.json().status).to.eql(\"CREATED\"));",
+              "pm.test(\"body matches the baseline Order schema\", () => pm.response.to.have.jsonSchema(orderSchema));",
+              "pm.collectionVariables.set(\"b\", pm.response.json()[\"id\"]);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "9 B -> DELIVERED (forbidden)",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/orders/{{b}}/status",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"status\":\"DELIVERED\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const orderSchema = {\"properties\":{\"completedAt\":{\"pattern\":\"^\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}(\\\\.\\\\d{1,9})?$\",\"type\":[\"string\",\"null\"]},\"id\":{\"type\":\"integer\"},\"ownerUserId\":{\"type\":\"integer\"},\"status\":{\"enum\":[\"CREATED\",\"PAID\",\"SHIPPED\",\"DELIVERED\",\"COMPLETED\",\"CANCELLED\"],\"type\":\"string\"},\"total\":{\"type\":\"number\"}},\"required\":[\"id\",\"ownerUserId\",\"status\",\"total\"],\"type\":\"object\"};",
+              "pm.test(\"status is 409\", () => pm.response.to.have.status(409));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "10 read B",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/orders/{{b}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const orderSchema = {\"properties\":{\"completedAt\":{\"pattern\":\"^\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}(\\\\.\\\\d{1,9})?$\",\"type\":[\"string\",\"null\"]},\"id\":{\"type\":\"integer\"},\"ownerUserId\":{\"type\":\"integer\"},\"status\":{\"enum\":[\"CREATED\",\"PAID\",\"SHIPPED\",\"DELIVERED\",\"COMPLETED\",\"CANCELLED\"],\"type\":\"string\"},\"total\":{\"type\":\"number\"}},\"required\":[\"id\",\"ownerUserId\",\"status\",\"total\"],\"type\":\"object\"};",
+              "pm.test(\"status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"order status is CREATED\", () => pm.expect(pm.response.json().status).to.eql(\"CREATED\"));",
+              "pm.test(\"body matches the baseline Order schema\", () => pm.response.to.have.jsonSchema(orderSchema));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "11 list user 7",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/users/7/orders"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const orderSchema = {\"properties\":{\"completedAt\":{\"pattern\":\"^\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}(\\\\.\\\\d{1,9})?$\",\"type\":[\"string\",\"null\"]},\"id\":{\"type\":\"integer\"},\"ownerUserId\":{\"type\":\"integer\"},\"status\":{\"enum\":[\"CREATED\",\"PAID\",\"SHIPPED\",\"DELIVERED\",\"COMPLETED\",\"CANCELLED\"],\"type\":\"string\"},\"total\":{\"type\":\"number\"}},\"required\":[\"id\",\"ownerUserId\",\"status\",\"total\"],\"type\":\"object\"};",
+              "pm.test(\"status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"list statuses are COMPLETED, CREATED\", () => pm.expect(pm.response.json().map(o => o.status).sort()).to.eql([\"COMPLETED\",\"CREATED\"]));",
+              "pm.test(\"every item matches the baseline Order schema\", () => pm.response.to.have.jsonSchema({ type: \"array\", items: orderSchema }));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

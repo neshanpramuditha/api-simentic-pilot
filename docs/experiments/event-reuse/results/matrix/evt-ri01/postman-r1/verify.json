@@ -1,0 +1,109 @@
+{
+  "run": {
+    "mode": "evt-ri01",
+    "type": "postman",
+    "repeat": 1,
+    "defectSwitchOk": true
+  },
+  "traffic": {
+    "harEntries": 29,
+    "readBacks": 10,
+    "scenarioRequests": 19,
+    "problems": []
+  },
+  "oracle": {
+    "transitions": {
+      "REQUESTED": [
+        "CONFIRMED",
+        "WAITLISTED",
+        "CANCELLED"
+      ],
+      "WAITLISTED": [
+        "CONFIRMED",
+        "CANCELLED"
+      ],
+      "CONFIRMED": [
+        "CHECKED_IN",
+        "CANCELLED"
+      ],
+      "CHECKED_IN": [],
+      "CANCELLED": []
+    },
+    "violations": [
+      {
+        "key": "EVT-INV-001@2",
+        "rule": "EVT-INV-001",
+        "step": 2,
+        "item": null,
+        "kind": "invariant",
+        "detail": "state=CHECKED_IN checkedInAt=null"
+      },
+      {
+        "key": "EVT-INV-001@3",
+        "rule": "EVT-INV-001",
+        "step": 3,
+        "item": null,
+        "kind": "invariant",
+        "detail": "state=CHECKED_IN checkedInAt=null"
+      },
+      {
+        "key": "EVT-INV-001@5",
+        "rule": "EVT-INV-001",
+        "step": 5,
+        "item": null,
+        "kind": "invariant",
+        "detail": "state=CHECKED_IN checkedInAt=null"
+      },
+      {
+        "key": "EVT-INV-001@15#0",
+        "rule": "EVT-INV-001",
+        "step": 15,
+        "item": 0,
+        "kind": "invariant",
+        "detail": "state=CHECKED_IN checkedInAt=null"
+      }
+    ],
+    "causeSteps": [
+      2
+    ],
+    "deviations": [],
+    "affectedSteps": [
+      2,
+      3,
+      5,
+      15
+    ],
+    "hiddenStateChanges": [],
+    "dbRowsCheckedInWithoutTime": 1,
+    "dbRowsOutOfOrder": 0,
+    "exercised": true,
+    "anyDefectSignature": true
+  },
+  "tools": {
+    "postman": {
+      "assertions": 136,
+      "failedAssertions": 4,
+      "parsedFailures": 4,
+      "failsByTag": {
+        "INV-001": 4
+      },
+      "fails": [
+        "EVT-INV-001@2",
+        "EVT-INV-001@3",
+        "EVT-INV-001@5",
+        "EVT-INV-001@15#0"
+      ],
+      "failSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "falsePositiveSteps": [],
+      "detectedAtCause": true,
+      "invariantKeysMatchOracle": true,
+      "exitCode": 1,
+      "durationMs": 6169
+    }
+  }
+}

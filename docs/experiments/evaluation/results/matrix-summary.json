@@ -1,0 +1,1218 @@
+[
+  {
+    "mode": "clean",
+    "tool": "ajv",
+    "repeat": 1,
+    "seconds": 1,
+    "warnings": "",
+    "dir": "clean\\ajv-r1",
+    "failures": 0,
+    "details": [],
+    "exercised": null,
+    "note": "no defect"
+  },
+  {
+    "mode": "clean",
+    "tool": "postman",
+    "repeat": 1,
+    "seconds": 4.3,
+    "warnings": "",
+    "dir": "clean\\postman-r1",
+    "failures": 0,
+    "assertions": 29,
+    "details": [],
+    "exercised": null,
+    "note": "no defect"
+  },
+  {
+    "mode": "clean",
+    "tool": "semval",
+    "repeat": 1,
+    "seconds": 2.1,
+    "warnings": "",
+    "dir": "clean\\semval-r1",
+    "failures": 0,
+    "totals": {
+      "PASS": 22,
+      "FAIL": 0,
+      "NOT_APPLICABLE": 2
+    },
+    "details": [],
+    "exercised": null,
+    "note": "no defect"
+  },
+  {
+    "mode": "clean",
+    "tool": "schemathesis-baseline",
+    "repeat": 1,
+    "seconds": 14.2,
+    "warnings": "",
+    "dir": "clean\\schemathesis-baseline-r1",
+    "failures": 4,
+    "details": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "passiveRules": {
+      "totals": {
+        "PASS": 255,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 535
+      },
+      "byRule": {
+        "ORD-INV-001": {
+          "PASS": 178,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 394
+        },
+        "ORD-ST-001": {
+          "PASS": 77,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 32
+        },
+        "ORD-DB-001": {
+          "PASS": 0,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 109
+        }
+      },
+      "failures": []
+    },
+    "exercised": null,
+    "note": "no defect",
+    "baselineFindings": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "newFindings": []
+  },
+  {
+    "mode": "clean",
+    "tool": "schemathesis-seeded",
+    "repeat": 1,
+    "seconds": 12,
+    "warnings": "",
+    "dir": "clean\\schemathesis-seeded-r1",
+    "failures": 4,
+    "details": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "passiveRules": {
+      "totals": {
+        "PASS": 291,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 514
+      },
+      "byRule": {
+        "ORD-INV-001": {
+          "PASS": 196,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 359
+        },
+        "ORD-ST-001": {
+          "PASS": 95,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 30
+        },
+        "ORD-DB-001": {
+          "PASS": 0,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 125
+        }
+      },
+      "failures": []
+    },
+    "exercised": null,
+    "note": "no defect",
+    "baselineFindings": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "newFindings": []
+  },
+  {
+    "mode": "clean",
+    "tool": "ajv",
+    "repeat": 2,
+    "seconds": 0.9,
+    "warnings": "",
+    "dir": "clean\\ajv-r2",
+    "failures": 0,
+    "details": [],
+    "exercised": null,
+    "note": "no defect"
+  },
+  {
+    "mode": "clean",
+    "tool": "postman",
+    "repeat": 2,
+    "seconds": 3.8,
+    "warnings": "",
+    "dir": "clean\\postman-r2",
+    "failures": 0,
+    "assertions": 29,
+    "details": [],
+    "exercised": null,
+    "note": "no defect"
+  },
+  {
+    "mode": "clean",
+    "tool": "semval",
+    "repeat": 2,
+    "seconds": 1.9,
+    "warnings": "",
+    "dir": "clean\\semval-r2",
+    "failures": 0,
+    "totals": {
+      "PASS": 22,
+      "FAIL": 0,
+      "NOT_APPLICABLE": 2
+    },
+    "details": [],
+    "exercised": null,
+    "note": "no defect"
+  },
+  {
+    "mode": "clean",
+    "tool": "schemathesis-baseline",
+    "repeat": 2,
+    "seconds": 17.9,
+    "warnings": "",
+    "dir": "clean\\schemathesis-baseline-r2",
+    "failures": 4,
+    "details": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "passiveRules": {
+      "totals": {
+        "PASS": 255,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 535
+      },
+      "byRule": {
+        "ORD-INV-001": {
+          "PASS": 178,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 394
+        },
+        "ORD-ST-001": {
+          "PASS": 77,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 32
+        },
+        "ORD-DB-001": {
+          "PASS": 0,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 109
+        }
+      },
+      "failures": []
+    },
+    "exercised": null,
+    "note": "no defect",
+    "baselineFindings": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "newFindings": []
+  },
+  {
+    "mode": "clean",
+    "tool": "schemathesis-seeded",
+    "repeat": 2,
+    "seconds": 19.3,
+    "warnings": "",
+    "dir": "clean\\schemathesis-seeded-r2",
+    "failures": 4,
+    "details": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "passiveRules": {
+      "totals": {
+        "PASS": 291,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 514
+      },
+      "byRule": {
+        "ORD-INV-001": {
+          "PASS": 196,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 359
+        },
+        "ORD-ST-001": {
+          "PASS": 95,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 30
+        },
+        "ORD-DB-001": {
+          "PASS": 0,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 125
+        }
+      },
+      "failures": []
+    },
+    "exercised": null,
+    "note": "no defect",
+    "baselineFindings": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "newFindings": []
+  },
+  {
+    "mode": "sv01-total-as-string",
+    "tool": "ajv",
+    "repeat": 1,
+    "seconds": 1.1,
+    "warnings": "DEFECT SV-01 ENABLED",
+    "dir": "sv01-total-as-string\\ajv-r1",
+    "failures": 2,
+    "details": [
+      "FAIL POST /api/orders -> 201 /total must be number",
+      "FAIL POST /api/orders -> 201 /total must be number"
+    ],
+    "exercised": true,
+    "note": "2 POST 201 responses with total as a string"
+  },
+  {
+    "mode": "sv01-total-as-string",
+    "tool": "postman",
+    "repeat": 1,
+    "seconds": 4.6,
+    "warnings": "DEFECT SV-01 ENABLED",
+    "dir": "sv01-total-as-string\\postman-r1",
+    "failures": 2,
+    "assertions": 29,
+    "details": [
+      "AssertionError: body matches the baseline Order schema",
+      "AssertionError: body matches the baseline Order schema"
+    ],
+    "exercised": true,
+    "note": "same scenario as ajv (requests 1/8 for SV-01, 6 for ST-01, 6 and 9 for DB-02)"
+  },
+  {
+    "mode": "sv01-total-as-string",
+    "tool": "semval",
+    "repeat": 1,
+    "seconds": 2,
+    "warnings": "DEFECT SV-01 ENABLED",
+    "dir": "sv01-total-as-string\\semval-r1",
+    "failures": 0,
+    "totals": {
+      "PASS": 22,
+      "FAIL": 0,
+      "NOT_APPLICABLE": 2
+    },
+    "details": [],
+    "exercised": true,
+    "note": "same scenario as ajv (requests 1/8 for SV-01, 6 for ST-01, 6 and 9 for DB-02)"
+  },
+  {
+    "mode": "sv01-total-as-string",
+    "tool": "schemathesis-baseline",
+    "repeat": 1,
+    "seconds": 18,
+    "warnings": "DEFECT SV-01 ENABLED",
+    "dir": "sv01-total-as-string\\schemathesis-baseline-r1",
+    "failures": 5,
+    "details": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request",
+      "POST /api/orders :: Response violates schema"
+    ],
+    "passiveRules": {
+      "totals": {
+        "PASS": 253,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 514
+      },
+      "byRule": {
+        "ORD-INV-001": {
+          "PASS": 183,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 382
+        },
+        "ORD-ST-001": {
+          "PASS": 70,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 31
+        },
+        "ORD-DB-001": {
+          "PASS": 0,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 101
+        }
+      },
+      "failures": []
+    },
+    "exercised": true,
+    "note": "29 POST 201 responses with total as a string",
+    "baselineFindings": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "newFindings": [
+      "POST /api/orders :: Response violates schema"
+    ]
+  },
+  {
+    "mode": "sv01-total-as-string",
+    "tool": "schemathesis-seeded",
+    "repeat": 1,
+    "seconds": 13.9,
+    "warnings": "DEFECT SV-01 ENABLED",
+    "dir": "sv01-total-as-string\\schemathesis-seeded-r1",
+    "failures": 5,
+    "details": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request",
+      "POST /api/orders :: Response violates schema"
+    ],
+    "passiveRules": {
+      "totals": {
+        "PASS": 225,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 544
+      },
+      "byRule": {
+        "ORD-INV-001": {
+          "PASS": 155,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 414
+        },
+        "ORD-ST-001": {
+          "PASS": 70,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 30
+        },
+        "ORD-DB-001": {
+          "PASS": 0,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 100
+        }
+      },
+      "failures": []
+    },
+    "exercised": true,
+    "note": "18 POST 201 responses with total as a string",
+    "baselineFindings": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "newFindings": [
+      "POST /api/orders :: Response violates schema"
+    ]
+  },
+  {
+    "mode": "sv01-total-as-string",
+    "tool": "ajv",
+    "repeat": 2,
+    "seconds": 0.9,
+    "warnings": "DEFECT SV-01 ENABLED",
+    "dir": "sv01-total-as-string\\ajv-r2",
+    "failures": 2,
+    "details": [
+      "FAIL POST /api/orders -> 201 /total must be number",
+      "FAIL POST /api/orders -> 201 /total must be number"
+    ],
+    "exercised": true,
+    "note": "2 POST 201 responses with total as a string"
+  },
+  {
+    "mode": "sv01-total-as-string",
+    "tool": "postman",
+    "repeat": 2,
+    "seconds": 3.6,
+    "warnings": "DEFECT SV-01 ENABLED",
+    "dir": "sv01-total-as-string\\postman-r2",
+    "failures": 2,
+    "assertions": 29,
+    "details": [
+      "AssertionError: body matches the baseline Order schema",
+      "AssertionError: body matches the baseline Order schema"
+    ],
+    "exercised": true,
+    "note": "same scenario as ajv (requests 1/8 for SV-01, 6 for ST-01, 6 and 9 for DB-02)"
+  },
+  {
+    "mode": "sv01-total-as-string",
+    "tool": "semval",
+    "repeat": 2,
+    "seconds": 1.9,
+    "warnings": "DEFECT SV-01 ENABLED",
+    "dir": "sv01-total-as-string\\semval-r2",
+    "failures": 0,
+    "totals": {
+      "PASS": 22,
+      "FAIL": 0,
+      "NOT_APPLICABLE": 2
+    },
+    "details": [],
+    "exercised": true,
+    "note": "same scenario as ajv (requests 1/8 for SV-01, 6 for ST-01, 6 and 9 for DB-02)"
+  },
+  {
+    "mode": "sv01-total-as-string",
+    "tool": "schemathesis-baseline",
+    "repeat": 2,
+    "seconds": 14.1,
+    "warnings": "DEFECT SV-01 ENABLED",
+    "dir": "sv01-total-as-string\\schemathesis-baseline-r2",
+    "failures": 5,
+    "details": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request",
+      "POST /api/orders :: Response violates schema"
+    ],
+    "passiveRules": {
+      "totals": {
+        "PASS": 253,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 514
+      },
+      "byRule": {
+        "ORD-INV-001": {
+          "PASS": 183,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 382
+        },
+        "ORD-ST-001": {
+          "PASS": 70,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 31
+        },
+        "ORD-DB-001": {
+          "PASS": 0,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 101
+        }
+      },
+      "failures": []
+    },
+    "exercised": true,
+    "note": "29 POST 201 responses with total as a string",
+    "baselineFindings": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "newFindings": [
+      "POST /api/orders :: Response violates schema"
+    ]
+  },
+  {
+    "mode": "sv01-total-as-string",
+    "tool": "schemathesis-seeded",
+    "repeat": 2,
+    "seconds": 13.4,
+    "warnings": "DEFECT SV-01 ENABLED",
+    "dir": "sv01-total-as-string\\schemathesis-seeded-r2",
+    "failures": 5,
+    "details": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request",
+      "POST /api/orders :: Response violates schema"
+    ],
+    "passiveRules": {
+      "totals": {
+        "PASS": 225,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 544
+      },
+      "byRule": {
+        "ORD-INV-001": {
+          "PASS": 155,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 414
+        },
+        "ORD-ST-001": {
+          "PASS": 70,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 30
+        },
+        "ORD-DB-001": {
+          "PASS": 0,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 100
+        }
+      },
+      "failures": []
+    },
+    "exercised": true,
+    "note": "18 POST 201 responses with total as a string",
+    "baselineFindings": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "newFindings": [
+      "POST /api/orders :: Response violates schema"
+    ]
+  },
+  {
+    "mode": "st01-completed-to-cancelled",
+    "tool": "ajv",
+    "repeat": 1,
+    "seconds": 0.9,
+    "warnings": "DEFECT ST-01 ENABLED",
+    "dir": "st01-completed-to-cancelled\\ajv-r1",
+    "failures": 0,
+    "details": [],
+    "exercised": true,
+    "note": "step 6 returned 200; step 7 read-back status CANCELLED"
+  },
+  {
+    "mode": "st01-completed-to-cancelled",
+    "tool": "postman",
+    "repeat": 1,
+    "seconds": 3.6,
+    "warnings": "DEFECT ST-01 ENABLED",
+    "dir": "st01-completed-to-cancelled\\postman-r1",
+    "failures": 3,
+    "assertions": 29,
+    "details": [
+      "AssertionError: status is 409",
+      "AssertionError: order status is COMPLETED",
+      "AssertionError: list statuses are COMPLETED, CREATED"
+    ],
+    "exercised": true,
+    "note": "same scenario as ajv (requests 1/8 for SV-01, 6 for ST-01, 6 and 9 for DB-02)"
+  },
+  {
+    "mode": "st01-completed-to-cancelled",
+    "tool": "semval",
+    "repeat": 1,
+    "seconds": 2.1,
+    "warnings": "DEFECT ST-01 ENABLED",
+    "dir": "st01-completed-to-cancelled\\semval-r1",
+    "failures": 4,
+    "totals": {
+      "PASS": 19,
+      "FAIL": 4,
+      "NOT_APPLICABLE": 1
+    },
+    "details": [
+      "ORD-INV-001 #5: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:26:46.193139\",\"$.status\":\"CANCELLED\"}",
+      "ORD-ST-001 #5: forbidden transition COMPLETED -> CANCELLED was accepted with HTTP 200 (allowed from COMPLETED: [])",
+      "ORD-INV-001 #6: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:26:46.193139\",\"$.status\":\"CANCELLED\"}",
+      "ORD-INV-001 #10: completedAt is set if and only if status is COMPLETED — violated by item 0: {\"$.completedAt\":\"2026-10-19T09:26:46.193139\",\"$.status\":\"CANCELLED\"}"
+    ],
+    "exercised": true,
+    "note": "same scenario as ajv (requests 1/8 for SV-01, 6 for ST-01, 6 and 9 for DB-02)"
+  },
+  {
+    "mode": "st01-completed-to-cancelled",
+    "tool": "schemathesis-baseline",
+    "repeat": 1,
+    "seconds": 14.4,
+    "warnings": "DEFECT ST-01 ENABLED",
+    "dir": "st01-completed-to-cancelled\\schemathesis-baseline-r1",
+    "failures": 4,
+    "details": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "passiveRules": {
+      "totals": {
+        "PASS": 255,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 535
+      },
+      "byRule": {
+        "ORD-INV-001": {
+          "PASS": 178,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 394
+        },
+        "ORD-ST-001": {
+          "PASS": 77,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 32
+        },
+        "ORD-DB-001": {
+          "PASS": 0,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 109
+        }
+      },
+      "failures": []
+    },
+    "exercised": false,
+    "note": "0 accepted COMPLETED -> CANCELLED requests; seeded orders changed: 0/0",
+    "baselineFindings": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "newFindings": []
+  },
+  {
+    "mode": "st01-completed-to-cancelled",
+    "tool": "schemathesis-seeded",
+    "repeat": 1,
+    "seconds": 12.8,
+    "warnings": "DEFECT ST-01 ENABLED",
+    "dir": "st01-completed-to-cancelled\\schemathesis-seeded-r1",
+    "failures": 4,
+    "details": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "passiveRules": {
+      "totals": {
+        "PASS": 293,
+        "FAIL": 7,
+        "NOT_APPLICABLE": 530
+      },
+      "byRule": {
+        "ORD-INV-001": {
+          "PASS": 194,
+          "FAIL": 6,
+          "NOT_APPLICABLE": 366
+        },
+        "ORD-ST-001": {
+          "PASS": 99,
+          "FAIL": 1,
+          "NOT_APPLICABLE": 32
+        },
+        "ORD-DB-001": {
+          "PASS": 0,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 132
+        }
+      },
+      "failures": [
+        "ORD-INV-001 #84: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:27:32.563201\",\"$.status\":\"CANCELLED\"}",
+        "ORD-ST-001 #84: forbidden transition COMPLETED -> CANCELLED was accepted with HTTP 200 (allowed from COMPLETED: [])",
+        "ORD-INV-001 #153: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:27:32.563201\",\"$.status\":\"CANCELLED\"}",
+        "ORD-INV-001 #163: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:27:32.563201\",\"$.status\":\"CANCELLED\"}",
+        "ORD-INV-001 #165: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:27:32.563201\",\"$.status\":\"CANCELLED\"}"
+      ]
+    },
+    "exercised": true,
+    "note": "2 accepted COMPLETED -> CANCELLED requests; seeded orders changed: 2/30",
+    "baselineFindings": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "newFindings": []
+  },
+  {
+    "mode": "st01-completed-to-cancelled",
+    "tool": "ajv",
+    "repeat": 2,
+    "seconds": 1.1,
+    "warnings": "DEFECT ST-01 ENABLED",
+    "dir": "st01-completed-to-cancelled\\ajv-r2",
+    "failures": 0,
+    "details": [],
+    "exercised": true,
+    "note": "step 6 returned 200; step 7 read-back status CANCELLED"
+  },
+  {
+    "mode": "st01-completed-to-cancelled",
+    "tool": "postman",
+    "repeat": 2,
+    "seconds": 3.6,
+    "warnings": "DEFECT ST-01 ENABLED",
+    "dir": "st01-completed-to-cancelled\\postman-r2",
+    "failures": 3,
+    "assertions": 29,
+    "details": [
+      "AssertionError: status is 409",
+      "AssertionError: order status is COMPLETED",
+      "AssertionError: list statuses are COMPLETED, CREATED"
+    ],
+    "exercised": true,
+    "note": "same scenario as ajv (requests 1/8 for SV-01, 6 for ST-01, 6 and 9 for DB-02)"
+  },
+  {
+    "mode": "st01-completed-to-cancelled",
+    "tool": "semval",
+    "repeat": 2,
+    "seconds": 2,
+    "warnings": "DEFECT ST-01 ENABLED",
+    "dir": "st01-completed-to-cancelled\\semval-r2",
+    "failures": 4,
+    "totals": {
+      "PASS": 19,
+      "FAIL": 4,
+      "NOT_APPLICABLE": 1
+    },
+    "details": [
+      "ORD-INV-001 #5: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:28:40.336552\",\"$.status\":\"CANCELLED\"}",
+      "ORD-ST-001 #5: forbidden transition COMPLETED -> CANCELLED was accepted with HTTP 200 (allowed from COMPLETED: [])",
+      "ORD-INV-001 #6: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:28:40.336552\",\"$.status\":\"CANCELLED\"}",
+      "ORD-INV-001 #10: completedAt is set if and only if status is COMPLETED — violated by item 0: {\"$.completedAt\":\"2026-10-19T09:28:40.336552\",\"$.status\":\"CANCELLED\"}"
+    ],
+    "exercised": true,
+    "note": "same scenario as ajv (requests 1/8 for SV-01, 6 for ST-01, 6 and 9 for DB-02)"
+  },
+  {
+    "mode": "st01-completed-to-cancelled",
+    "tool": "schemathesis-baseline",
+    "repeat": 2,
+    "seconds": 14,
+    "warnings": "DEFECT ST-01 ENABLED",
+    "dir": "st01-completed-to-cancelled\\schemathesis-baseline-r2",
+    "failures": 4,
+    "details": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "passiveRules": {
+      "totals": {
+        "PASS": 255,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 535
+      },
+      "byRule": {
+        "ORD-INV-001": {
+          "PASS": 178,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 394
+        },
+        "ORD-ST-001": {
+          "PASS": 77,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 32
+        },
+        "ORD-DB-001": {
+          "PASS": 0,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 109
+        }
+      },
+      "failures": []
+    },
+    "exercised": false,
+    "note": "0 accepted COMPLETED -> CANCELLED requests; seeded orders changed: 0/0",
+    "baselineFindings": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "newFindings": []
+  },
+  {
+    "mode": "st01-completed-to-cancelled",
+    "tool": "schemathesis-seeded",
+    "repeat": 2,
+    "seconds": 12.3,
+    "warnings": "DEFECT ST-01 ENABLED",
+    "dir": "st01-completed-to-cancelled\\schemathesis-seeded-r2",
+    "failures": 4,
+    "details": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "passiveRules": {
+      "totals": {
+        "PASS": 293,
+        "FAIL": 7,
+        "NOT_APPLICABLE": 530
+      },
+      "byRule": {
+        "ORD-INV-001": {
+          "PASS": 194,
+          "FAIL": 6,
+          "NOT_APPLICABLE": 366
+        },
+        "ORD-ST-001": {
+          "PASS": 99,
+          "FAIL": 1,
+          "NOT_APPLICABLE": 32
+        },
+        "ORD-DB-001": {
+          "PASS": 0,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 132
+        }
+      },
+      "failures": [
+        "ORD-INV-001 #84: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:29:29.793662\",\"$.status\":\"CANCELLED\"}",
+        "ORD-ST-001 #84: forbidden transition COMPLETED -> CANCELLED was accepted with HTTP 200 (allowed from COMPLETED: [])",
+        "ORD-INV-001 #153: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:29:29.793662\",\"$.status\":\"CANCELLED\"}",
+        "ORD-INV-001 #163: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:29:29.793662\",\"$.status\":\"CANCELLED\"}",
+        "ORD-INV-001 #165: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:29:29.793662\",\"$.status\":\"CANCELLED\"}"
+      ]
+    },
+    "exercised": true,
+    "note": "2 accepted COMPLETED -> CANCELLED requests; seeded orders changed: 2/30",
+    "baselineFindings": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "newFindings": []
+  },
+  {
+    "mode": "db02-rejected-change-saved",
+    "tool": "ajv",
+    "repeat": 1,
+    "seconds": 1,
+    "warnings": "DEFECT DB-02 ENABLED",
+    "dir": "db02-rejected-change-saved\\ajv-r1",
+    "failures": 0,
+    "details": [],
+    "exercised": true,
+    "note": "step 6 409, read-back CANCELLED; step 9 409, read-back DELIVERED"
+  },
+  {
+    "mode": "db02-rejected-change-saved",
+    "tool": "postman",
+    "repeat": 1,
+    "seconds": 3.9,
+    "warnings": "DEFECT DB-02 ENABLED",
+    "dir": "db02-rejected-change-saved\\postman-r1",
+    "failures": 3,
+    "assertions": 29,
+    "details": [
+      "AssertionError: order status is COMPLETED",
+      "AssertionError: order status is CREATED",
+      "AssertionError: list statuses are COMPLETED, CREATED"
+    ],
+    "exercised": true,
+    "note": "same scenario as ajv (requests 1/8 for SV-01, 6 for ST-01, 6 and 9 for DB-02)"
+  },
+  {
+    "mode": "db02-rejected-change-saved",
+    "tool": "semval",
+    "repeat": 1,
+    "seconds": 1.8,
+    "warnings": "DEFECT DB-02 ENABLED",
+    "dir": "db02-rejected-change-saved\\semval-r1",
+    "failures": 4,
+    "totals": {
+      "PASS": 18,
+      "FAIL": 4,
+      "NOT_APPLICABLE": 2
+    },
+    "details": [
+      "ORD-DB-001 #5: request was rejected with HTTP 409 but the row changed: before {\"status\":\"COMPLETED\",\"completed_at\":\"2026-10-19 09:30:34.467203\"}, after {\"status\":\"CANCELLED\",\"completed_at\":\"2026-10-19 09:30:34.467203\"}",
+      "ORD-INV-001 #6: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:30:34.467203\",\"$.status\":\"CANCELLED\"}",
+      "ORD-DB-001 #8: request was rejected with HTTP 409 but the row changed: before {\"status\":\"CREATED\",\"completed_at\":null}, after {\"status\":\"DELIVERED\",\"completed_at\":null}",
+      "ORD-INV-001 #10: completedAt is set if and only if status is COMPLETED — violated by item 0: {\"$.completedAt\":\"2026-10-19T09:30:34.467203\",\"$.status\":\"CANCELLED\"}"
+    ],
+    "exercised": true,
+    "note": "same scenario as ajv (requests 1/8 for SV-01, 6 for ST-01, 6 and 9 for DB-02)"
+  },
+  {
+    "mode": "db02-rejected-change-saved",
+    "tool": "schemathesis-baseline",
+    "repeat": 1,
+    "seconds": 13.7,
+    "warnings": "DEFECT DB-02 ENABLED",
+    "dir": "db02-rejected-change-saved\\schemathesis-baseline-r1",
+    "failures": 4,
+    "details": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "passiveRules": {
+      "totals": {
+        "PASS": 175,
+        "FAIL": 78,
+        "NOT_APPLICABLE": 537
+      },
+      "byRule": {
+        "ORD-INV-001": {
+          "PASS": 118,
+          "FAIL": 70,
+          "NOT_APPLICABLE": 384
+        },
+        "ORD-ST-001": {
+          "PASS": 57,
+          "FAIL": 8,
+          "NOT_APPLICABLE": 44
+        },
+        "ORD-DB-001": {
+          "PASS": 0,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 109
+        }
+      },
+      "failures": [
+        "ORD-INV-001 #87: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:30:55.770041\",\"$.status\":\"PAID\"}",
+        "ORD-ST-001 #87: forbidden transition CANCELLED -> PAID was accepted with HTTP 200 (allowed from CANCELLED: [])",
+        "ORD-INV-001 #91: completedAt is set if and only if status is COMPLETED — violated by item 0: {\"$.completedAt\":\"2026-10-19T09:30:55.770041\",\"$.status\":\"PAID\"}",
+        "ORD-INV-001 #93: completedAt is set if and only if status is COMPLETED — violated by item 0: {\"$.completedAt\":\"2026-10-19T09:30:55.770041\",\"$.status\":\"PAID\"}",
+        "ORD-INV-001 #94: completedAt is set if and only if status is COMPLETED — violated by item 0: {\"$.completedAt\":\"2026-10-19T09:30:55.770041\",\"$.status\":\"PAID\"}"
+      ]
+    },
+    "exercised": true,
+    "note": "47 PATCH 409 responses (each on an existing order, so each saved a forbidden status); seeded orders changed: 0/0",
+    "baselineFindings": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "newFindings": []
+  },
+  {
+    "mode": "db02-rejected-change-saved",
+    "tool": "schemathesis-seeded",
+    "repeat": 1,
+    "seconds": 13.1,
+    "warnings": "DEFECT DB-02 ENABLED",
+    "dir": "db02-rejected-change-saved\\schemathesis-seeded-r1",
+    "failures": 4,
+    "details": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "passiveRules": {
+      "totals": {
+        "PASS": 250,
+        "FAIL": 22,
+        "NOT_APPLICABLE": 502
+      },
+      "byRule": {
+        "ORD-INV-001": {
+          "PASS": 180,
+          "FAIL": 16,
+          "NOT_APPLICABLE": 370
+        },
+        "ORD-ST-001": {
+          "PASS": 70,
+          "FAIL": 6,
+          "NOT_APPLICABLE": 28
+        },
+        "ORD-DB-001": {
+          "PASS": 0,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 104
+        }
+      },
+      "failures": [
+        "ORD-INV-001 #57: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:31:24.058389\",\"$.status\":\"PAID\"}",
+        "ORD-INV-001 #59: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:31:24.058389\",\"$.status\":\"PAID\"}",
+        "ORD-INV-001 #84: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:31:24.058389\",\"$.status\":\"CANCELLED\"}",
+        "ORD-INV-001 #89: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:31:26.207388\",\"$.status\":\"PAID\"}",
+        "ORD-ST-001 #89: forbidden transition CANCELLED -> PAID was accepted with HTTP 200 (allowed from CANCELLED: [])"
+      ]
+    },
+    "exercised": true,
+    "note": "65 PATCH 409 responses (each on an existing order, so each saved a forbidden status); seeded orders changed: 1/30",
+    "baselineFindings": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "newFindings": []
+  },
+  {
+    "mode": "db02-rejected-change-saved",
+    "tool": "ajv",
+    "repeat": 2,
+    "seconds": 0.9,
+    "warnings": "DEFECT DB-02 ENABLED",
+    "dir": "db02-rejected-change-saved\\ajv-r2",
+    "failures": 0,
+    "details": [],
+    "exercised": true,
+    "note": "step 6 409, read-back CANCELLED; step 9 409, read-back DELIVERED"
+  },
+  {
+    "mode": "db02-rejected-change-saved",
+    "tool": "postman",
+    "repeat": 2,
+    "seconds": 3.5,
+    "warnings": "DEFECT DB-02 ENABLED",
+    "dir": "db02-rejected-change-saved\\postman-r2",
+    "failures": 3,
+    "assertions": 29,
+    "details": [
+      "AssertionError: order status is COMPLETED",
+      "AssertionError: order status is CREATED",
+      "AssertionError: list statuses are COMPLETED, CREATED"
+    ],
+    "exercised": true,
+    "note": "same scenario as ajv (requests 1/8 for SV-01, 6 for ST-01, 6 and 9 for DB-02)"
+  },
+  {
+    "mode": "db02-rejected-change-saved",
+    "tool": "semval",
+    "repeat": 2,
+    "seconds": 2.1,
+    "warnings": "DEFECT DB-02 ENABLED",
+    "dir": "db02-rejected-change-saved\\semval-r2",
+    "failures": 4,
+    "totals": {
+      "PASS": 18,
+      "FAIL": 4,
+      "NOT_APPLICABLE": 2
+    },
+    "details": [
+      "ORD-DB-001 #5: request was rejected with HTTP 409 but the row changed: before {\"status\":\"COMPLETED\",\"completed_at\":\"2026-10-19 09:32:27.32285\"}, after {\"status\":\"CANCELLED\",\"completed_at\":\"2026-10-19 09:32:27.32285\"}",
+      "ORD-INV-001 #6: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:32:27.32285\",\"$.status\":\"CANCELLED\"}",
+      "ORD-DB-001 #8: request was rejected with HTTP 409 but the row changed: before {\"status\":\"CREATED\",\"completed_at\":null}, after {\"status\":\"DELIVERED\",\"completed_at\":null}",
+      "ORD-INV-001 #10: completedAt is set if and only if status is COMPLETED — violated by item 0: {\"$.completedAt\":\"2026-10-19T09:32:27.32285\",\"$.status\":\"CANCELLED\"}"
+    ],
+    "exercised": true,
+    "note": "same scenario as ajv (requests 1/8 for SV-01, 6 for ST-01, 6 and 9 for DB-02)"
+  },
+  {
+    "mode": "db02-rejected-change-saved",
+    "tool": "schemathesis-baseline",
+    "repeat": 2,
+    "seconds": 17.5,
+    "warnings": "DEFECT DB-02 ENABLED",
+    "dir": "db02-rejected-change-saved\\schemathesis-baseline-r2",
+    "failures": 4,
+    "details": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "passiveRules": {
+      "totals": {
+        "PASS": 175,
+        "FAIL": 78,
+        "NOT_APPLICABLE": 537
+      },
+      "byRule": {
+        "ORD-INV-001": {
+          "PASS": 118,
+          "FAIL": 70,
+          "NOT_APPLICABLE": 384
+        },
+        "ORD-ST-001": {
+          "PASS": 57,
+          "FAIL": 8,
+          "NOT_APPLICABLE": 44
+        },
+        "ORD-DB-001": {
+          "PASS": 0,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 109
+        }
+      },
+      "failures": [
+        "ORD-INV-001 #87: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:32:49.876663\",\"$.status\":\"PAID\"}",
+        "ORD-ST-001 #87: forbidden transition CANCELLED -> PAID was accepted with HTTP 200 (allowed from CANCELLED: [])",
+        "ORD-INV-001 #91: completedAt is set if and only if status is COMPLETED — violated by item 0: {\"$.completedAt\":\"2026-10-19T09:32:49.876663\",\"$.status\":\"PAID\"}",
+        "ORD-INV-001 #93: completedAt is set if and only if status is COMPLETED — violated by item 0: {\"$.completedAt\":\"2026-10-19T09:32:49.876663\",\"$.status\":\"PAID\"}",
+        "ORD-INV-001 #94: completedAt is set if and only if status is COMPLETED — violated by item 0: {\"$.completedAt\":\"2026-10-19T09:32:49.876663\",\"$.status\":\"PAID\"}"
+      ]
+    },
+    "exercised": true,
+    "note": "47 PATCH 409 responses (each on an existing order, so each saved a forbidden status); seeded orders changed: 0/0",
+    "baselineFindings": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "newFindings": []
+  },
+  {
+    "mode": "db02-rejected-change-saved",
+    "tool": "schemathesis-seeded",
+    "repeat": 2,
+    "seconds": 17.3,
+    "warnings": "DEFECT DB-02 ENABLED",
+    "dir": "db02-rejected-change-saved\\schemathesis-seeded-r2",
+    "failures": 4,
+    "details": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "passiveRules": {
+      "totals": {
+        "PASS": 250,
+        "FAIL": 22,
+        "NOT_APPLICABLE": 502
+      },
+      "byRule": {
+        "ORD-INV-001": {
+          "PASS": 180,
+          "FAIL": 16,
+          "NOT_APPLICABLE": 370
+        },
+        "ORD-ST-001": {
+          "PASS": 70,
+          "FAIL": 6,
+          "NOT_APPLICABLE": 28
+        },
+        "ORD-DB-001": {
+          "PASS": 0,
+          "FAIL": 0,
+          "NOT_APPLICABLE": 104
+        }
+      },
+      "failures": [
+        "ORD-INV-001 #57: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:33:21.327608\",\"$.status\":\"PAID\"}",
+        "ORD-INV-001 #59: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:33:21.327608\",\"$.status\":\"PAID\"}",
+        "ORD-INV-001 #84: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:33:21.327608\",\"$.status\":\"CANCELLED\"}",
+        "ORD-INV-001 #89: completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:33:23.886434\",\"$.status\":\"PAID\"}",
+        "ORD-ST-001 #89: forbidden transition CANCELLED -> PAID was accepted with HTTP 200 (allowed from CANCELLED: [])"
+      ]
+    },
+    "exercised": true,
+    "note": "65 PATCH 409 responses (each on an existing order, so each saved a forbidden status); seeded orders changed: 1/30",
+    "baselineFindings": [
+      "GET /api/orders/{id} :: Server error on unexpected Content-Type",
+      "GET /api/users/{userId}/orders :: Server error on unexpected Content-Type",
+      "PATCH /api/orders/{id}/status :: Server error on unexpected Content-Type",
+      "POST /api/orders :: API rejected schema-compliant request"
+    ],
+    "newFindings": []
+  }
+]

@@ -1,0 +1,131 @@
+{
+  "run": {
+    "mode": "evt-st01",
+    "type": "capture",
+    "repeat": 1,
+    "defectSwitchOk": true
+  },
+  "traffic": {
+    "harEntries": 19,
+    "readBacks": 0,
+    "scenarioRequests": 19,
+    "problems": []
+  },
+  "oracle": {
+    "transitions": {
+      "REQUESTED": [
+        "CONFIRMED",
+        "WAITLISTED",
+        "CANCELLED"
+      ],
+      "WAITLISTED": [
+        "CONFIRMED",
+        "CANCELLED"
+      ],
+      "CONFIRMED": [
+        "CHECKED_IN",
+        "CANCELLED"
+      ],
+      "CHECKED_IN": [],
+      "CANCELLED": []
+    },
+    "violations": [
+      {
+        "key": "EVT-ST-001@8",
+        "rule": "EVT-ST-001",
+        "step": 8,
+        "item": null,
+        "kind": "transition",
+        "detail": "allowed WAITLISTED -> CONFIRMED rejected with 422"
+      }
+    ],
+    "causeSteps": [
+      8
+    ],
+    "deviations": [
+      {
+        "step": 8,
+        "detail": "status 422 != 200"
+      }
+    ],
+    "affectedSteps": [
+      8
+    ],
+    "hiddenStateChanges": [],
+    "dbRowsCheckedInWithoutTime": 0,
+    "dbRowsOutOfOrder": 0,
+    "exercised": true,
+    "anyDefectSignature": true
+  },
+  "tools": {
+    "semval-v01-passive": {
+      "exitCode": 1,
+      "totals": {
+        "PASS": 59,
+        "FAIL": 1,
+        "NOT_APPLICABLE": 36
+      },
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 1,
+        "EVT-DB-001": 0
+      },
+      "failKeys": [
+        "EVT-ST-001@8"
+      ],
+      "tp": 1,
+      "extraKeys": [],
+      "fn": [],
+      "failSteps": [
+        8
+      ],
+      "falsePositiveSteps": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "fails": 1,
+      "durationMs": 395
+    },
+    "semval-v02-passive": {
+      "exitCode": 1,
+      "totals": {
+        "PASS": 82,
+        "FAIL": 1,
+        "NOT_APPLICABLE": 42
+      },
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 1,
+        "EVT-DB-001": 0
+      },
+      "failKeys": [
+        "EVT-ST-001@8"
+      ],
+      "tp": 1,
+      "extraKeys": [],
+      "fn": [],
+      "failSteps": [
+        8
+      ],
+      "falsePositiveSteps": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "fails": 1,
+      "durationMs": 450
+    },
+    "ajv": {
+      "checked": 13,
+      "violations": 0,
+      "failSteps": [],
+      "falsePositiveSteps": [],
+      "detectedAtCause": false,
+      "durationMs": 285
+    }
+  }
+}

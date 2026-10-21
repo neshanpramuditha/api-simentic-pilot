@@ -1,0 +1,1022 @@
+{
+  "log": {
+    "version": "1.2",
+    "creator": {
+      "name": "record-proxy",
+      "version": "1"
+    },
+    "entries": [
+      {
+        "startedDateTime": "2026-10-19T07:30:09.704Z",
+        "time": 2094,
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8082/v1/registrations",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"attendeeRef\":\"ATT-7\",\"eventCode\":\"JAVA-CONF-26\",\"seats\":2}"
+          }
+        },
+        "response": {
+          "status": 201,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 242,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-BZSLEWBZ\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"JAVA-CONF-26\",\"seats\":2,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":null,\"confirmedAt\":null,\"requestedAt\":\"2026-10-19T07:30:11.552536200Z\",\"state\":\"REQUESTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:11.844Z",
+        "time": 32,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8082/v1/registrations/REG-BZSLEWBZ",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 239,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-BZSLEWBZ\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"JAVA-CONF-26\",\"seats\":2,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":null,\"confirmedAt\":null,\"requestedAt\":\"2026-10-19T07:30:11.552536Z\",\"state\":\"REQUESTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:11.914Z",
+        "time": 87,
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8082/v1/registrations/REG-BZSLEWBZ/transitions",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"to\":\"CONFIRMED\"}"
+          }
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 267,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-BZSLEWBZ\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"JAVA-CONF-26\",\"seats\":2,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":null,\"confirmedAt\":\"2026-10-19T07:30:11.954273300Z\",\"requestedAt\":\"2026-10-19T07:30:11.552536Z\",\"state\":\"CONFIRMED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.060Z",
+        "time": 25,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8082/v1/registrations/REG-BZSLEWBZ",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 264,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-BZSLEWBZ\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"JAVA-CONF-26\",\"seats\":2,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":null,\"confirmedAt\":\"2026-10-19T07:30:11.954273Z\",\"requestedAt\":\"2026-10-19T07:30:11.552536Z\",\"state\":\"CONFIRMED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.096Z",
+        "time": 48,
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8082/v1/registrations/REG-BZSLEWBZ/transitions",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"to\":\"CHECKED_IN\"}"
+          }
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 293,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-BZSLEWBZ\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"JAVA-CONF-26\",\"seats\":2,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":\"2026-10-19T07:30:12.132278300Z\",\"confirmedAt\":\"2026-10-19T07:30:11.954273Z\",\"requestedAt\":\"2026-10-19T07:30:11.552536Z\",\"state\":\"CHECKED_IN\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.154Z",
+        "time": 24,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8082/v1/registrations/REG-BZSLEWBZ",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 290,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-BZSLEWBZ\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"JAVA-CONF-26\",\"seats\":2,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":\"2026-10-19T07:30:12.132278Z\",\"confirmedAt\":\"2026-10-19T07:30:11.954273Z\",\"requestedAt\":\"2026-10-19T07:30:11.552536Z\",\"state\":\"CHECKED_IN\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.188Z",
+        "time": 12,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8082/v1/registrations/REG-BZSLEWBZ",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 290,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-BZSLEWBZ\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"JAVA-CONF-26\",\"seats\":2,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":\"2026-10-19T07:30:12.132278Z\",\"confirmedAt\":\"2026-10-19T07:30:11.954273Z\",\"requestedAt\":\"2026-10-19T07:30:11.552536Z\",\"state\":\"CHECKED_IN\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.217Z",
+        "time": 83,
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8082/v1/registrations/REG-BZSLEWBZ/transitions",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"to\":\"CANCELLED\",\"reason\":\"Left early\"}"
+          }
+        },
+        "response": {
+          "status": 422,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 137,
+            "mimeType": "application/json",
+            "text": "{\"timestamp\":\"2026-10-19T07:30:12.263Z\",\"status\":422,\"error\":\"Unprocessable Content\",\"path\":\"/v1/registrations/REG-BZSLEWBZ/transitions\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.320Z",
+        "time": 22,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8082/v1/registrations/REG-BZSLEWBZ",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 322,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-BZSLEWBZ\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"JAVA-CONF-26\",\"seats\":2,\"cancellationReason\":\"Left early\",\"cancelledAt\":\"2026-10-19T07:30:12.235163Z\",\"checkedInAt\":\"2026-10-19T07:30:12.132278Z\",\"confirmedAt\":\"2026-10-19T07:30:11.954273Z\",\"requestedAt\":\"2026-10-19T07:30:11.552536Z\",\"state\":\"CANCELLED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.350Z",
+        "time": 27,
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8082/v1/registrations",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"attendeeRef\":\"ATT-7\",\"eventCode\":\"SPRING-DAY\",\"seats\":1}"
+          }
+        },
+        "response": {
+          "status": 201,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 240,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-D3PD4DJC\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"SPRING-DAY\",\"seats\":1,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":null,\"confirmedAt\":null,\"requestedAt\":\"2026-10-19T07:30:12.364920100Z\",\"state\":\"REQUESTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.386Z",
+        "time": 12,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8082/v1/registrations/REG-D3PD4DJC",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 237,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-D3PD4DJC\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"SPRING-DAY\",\"seats\":1,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":null,\"confirmedAt\":null,\"requestedAt\":\"2026-10-19T07:30:12.364920Z\",\"state\":\"REQUESTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.416Z",
+        "time": 13,
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8082/v1/registrations/REG-D3PD4DJC/transitions",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"to\":\"WAITLISTED\"}"
+          }
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 238,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-D3PD4DJC\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"SPRING-DAY\",\"seats\":1,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":null,\"confirmedAt\":null,\"requestedAt\":\"2026-10-19T07:30:12.364920Z\",\"state\":\"WAITLISTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.448Z",
+        "time": 28,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8082/v1/registrations/REG-D3PD4DJC",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 238,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-D3PD4DJC\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"SPRING-DAY\",\"seats\":1,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":null,\"confirmedAt\":null,\"requestedAt\":\"2026-10-19T07:30:12.364920Z\",\"state\":\"WAITLISTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.486Z",
+        "time": 17,
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8082/v1/registrations/REG-D3PD4DJC/transitions",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"to\":\"CONFIRMED\"}"
+          }
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 265,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-D3PD4DJC\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"SPRING-DAY\",\"seats\":1,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":null,\"confirmedAt\":\"2026-10-19T07:30:12.496870900Z\",\"requestedAt\":\"2026-10-19T07:30:12.364920Z\",\"state\":\"CONFIRMED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.515Z",
+        "time": 12,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8082/v1/registrations/REG-D3PD4DJC",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 262,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-D3PD4DJC\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"SPRING-DAY\",\"seats\":1,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":null,\"confirmedAt\":\"2026-10-19T07:30:12.496871Z\",\"requestedAt\":\"2026-10-19T07:30:12.364920Z\",\"state\":\"CONFIRMED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.542Z",
+        "time": 24,
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8082/v1/registrations/REG-D3PD4DJC/transitions",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"to\":\"CANCELLED\",\"reason\":\"Schedule conflict\"}"
+          }
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 305,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-D3PD4DJC\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"SPRING-DAY\",\"seats\":1,\"cancellationReason\":\"Schedule conflict\",\"cancelledAt\":\"2026-10-19T07:30:12.557137600Z\",\"checkedInAt\":null,\"confirmedAt\":\"2026-10-19T07:30:12.496871Z\",\"requestedAt\":\"2026-10-19T07:30:12.364920Z\",\"state\":\"CANCELLED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.577Z",
+        "time": 12,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8082/v1/registrations/REG-D3PD4DJC",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 302,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-D3PD4DJC\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"SPRING-DAY\",\"seats\":1,\"cancellationReason\":\"Schedule conflict\",\"cancelledAt\":\"2026-10-19T07:30:12.557138Z\",\"checkedInAt\":null,\"confirmedAt\":\"2026-10-19T07:30:12.496871Z\",\"requestedAt\":\"2026-10-19T07:30:12.364920Z\",\"state\":\"CANCELLED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.608Z",
+        "time": 17,
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8082/v1/registrations",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"attendeeRef\":\"ATT-7\",\"eventCode\":\"API-SUMMIT\",\"seats\":3}"
+          }
+        },
+        "response": {
+          "status": 201,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 237,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-NNQSWRZU\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"API-SUMMIT\",\"seats\":3,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":null,\"confirmedAt\":null,\"requestedAt\":\"2026-10-19T07:30:12.617672Z\",\"state\":\"REQUESTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.646Z",
+        "time": 13,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8082/v1/registrations/REG-NNQSWRZU",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 237,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-NNQSWRZU\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"API-SUMMIT\",\"seats\":3,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":null,\"confirmedAt\":null,\"requestedAt\":\"2026-10-19T07:30:12.617672Z\",\"state\":\"REQUESTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.677Z",
+        "time": 12,
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8082/v1/registrations/REG-NNQSWRZU/transitions",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"to\":\"WAITLISTED\"}"
+          }
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 238,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-NNQSWRZU\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"API-SUMMIT\",\"seats\":3,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":null,\"confirmedAt\":null,\"requestedAt\":\"2026-10-19T07:30:12.617672Z\",\"state\":\"WAITLISTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.709Z",
+        "time": 15,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8082/v1/registrations/REG-NNQSWRZU",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 238,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-NNQSWRZU\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"API-SUMMIT\",\"seats\":3,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":null,\"confirmedAt\":null,\"requestedAt\":\"2026-10-19T07:30:12.617672Z\",\"state\":\"WAITLISTED\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.742Z",
+        "time": 27,
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8082/v1/registrations/REG-NNQSWRZU/transitions",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"to\":\"CHECKED_IN\"}"
+          }
+        },
+        "response": {
+          "status": 422,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 137,
+            "mimeType": "application/json",
+            "text": "{\"timestamp\":\"2026-10-19T07:30:12.766Z\",\"status\":422,\"error\":\"Unprocessable Content\",\"path\":\"/v1/registrations/REG-NNQSWRZU/transitions\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.777Z",
+        "time": 8,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8082/v1/registrations/REG-NNQSWRZU",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 263,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-NNQSWRZU\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"API-SUMMIT\",\"seats\":3,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":\"2026-10-19T07:30:12.758389Z\",\"confirmedAt\":null,\"requestedAt\":\"2026-10-19T07:30:12.617672Z\",\"state\":\"CHECKED_IN\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.800Z",
+        "time": 152,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8082/v1/attendees/ATT-7/registrations",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 933,
+            "mimeType": "application/json",
+            "text": "{\"attendeeRef\":\"ATT-7\",\"count\":3,\"items\":[{\"registrationId\":\"REG-BZSLEWBZ\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"JAVA-CONF-26\",\"seats\":2,\"cancellationReason\":\"Left early\",\"cancelledAt\":\"2026-10-19T07:30:12.235163Z\",\"checkedInAt\":\"2026-10-19T07:30:12.132278Z\",\"confirmedAt\":\"2026-10-19T07:30:11.954273Z\",\"requestedAt\":\"2026-10-19T07:30:11.552536Z\",\"state\":\"CANCELLED\"},{\"registrationId\":\"REG-D3PD4DJC\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"SPRING-DAY\",\"seats\":1,\"cancellationReason\":\"Schedule conflict\",\"cancelledAt\":\"2026-10-19T07:30:12.557138Z\",\"checkedInAt\":null,\"confirmedAt\":\"2026-10-19T07:30:12.496871Z\",\"requestedAt\":\"2026-10-19T07:30:12.364920Z\",\"state\":\"CANCELLED\"},{\"registrationId\":\"REG-NNQSWRZU\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"API-SUMMIT\",\"seats\":3,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":\"2026-10-19T07:30:12.758389Z\",\"confirmedAt\":null,\"requestedAt\":\"2026-10-19T07:30:12.617672Z\",\"state\":\"CHECKED_IN\"}]}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.959Z",
+        "time": 18,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8082/v1/registrations/REG-NOPE0000",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 404,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 113,
+            "mimeType": "application/json",
+            "text": "{\"timestamp\":\"2026-10-19T07:30:12.973Z\",\"status\":404,\"error\":\"Not Found\",\"path\":\"/v1/registrations/REG-NOPE0000\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:12.994Z",
+        "time": 23,
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8082/v1/registrations/REG-NOPE0000/transitions",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"to\":\"CONFIRMED\"}"
+          }
+        },
+        "response": {
+          "status": 404,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 125,
+            "mimeType": "application/json",
+            "text": "{\"timestamp\":\"2026-10-19T07:30:13.005Z\",\"status\":404,\"error\":\"Not Found\",\"path\":\"/v1/registrations/REG-NOPE0000/transitions\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:13.026Z",
+        "time": 13,
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8082/v1/registrations/REG-NNQSWRZU",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "response": {
+          "status": 200,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 263,
+            "mimeType": "application/json",
+            "text": "{\"registrationId\":\"REG-NNQSWRZU\",\"attendeeRef\":\"ATT-7\",\"eventCode\":\"API-SUMMIT\",\"seats\":3,\"cancellationReason\":null,\"cancelledAt\":null,\"checkedInAt\":\"2026-10-19T07:30:12.758389Z\",\"confirmedAt\":null,\"requestedAt\":\"2026-10-19T07:30:12.617672Z\",\"state\":\"CHECKED_IN\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:13.060Z",
+        "time": 22,
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8082/v1/registrations/REG-NNQSWRZU/transitions",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"to\":\"DONE\"}"
+          }
+        },
+        "response": {
+          "status": 400,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 127,
+            "mimeType": "application/json",
+            "text": "{\"timestamp\":\"2026-10-19T07:30:13.074Z\",\"status\":400,\"error\":\"Bad Request\",\"path\":\"/v1/registrations/REG-NNQSWRZU/transitions\"}"
+          }
+        }
+      },
+      {
+        "startedDateTime": "2026-10-19T07:30:13.096Z",
+        "time": 56,
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8082/v1/registrations",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "accept",
+              "value": "application/json"
+            },
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "postData": {
+            "mimeType": "application/json",
+            "text": "{\"attendeeRef\":\"ATT-7\",\"eventCode\":\"JAVA-CONF-26\",\"seats\":0}"
+          }
+        },
+        "response": {
+          "status": 400,
+          "statusText": "",
+          "httpVersion": "HTTP/1.1",
+          "headers": [
+            {
+              "name": "content-type",
+              "value": "application/json"
+            }
+          ],
+          "content": {
+            "size": 102,
+            "mimeType": "application/json",
+            "text": "{\"timestamp\":\"2026-10-19T07:30:13.148Z\",\"status\":400,\"error\":\"Bad Request\",\"path\":\"/v1/registrations\"}"
+          }
+        }
+      }
+    ]
+  }
+}

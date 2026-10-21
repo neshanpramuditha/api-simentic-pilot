@@ -1,0 +1,11 @@
+{
+    "mode":  "clean",
+    "type":  "postman",
+    "repeat":  2,
+    "defect":  "",
+    "exitCode":  0,
+    "durationMs":  5379,
+    "defectLines":  [
+
+                    ]
+}

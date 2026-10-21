@@ -1,0 +1,6 @@
+﻿semantic-validator: 11 exchanges, 3 rules, totals {PASS=18, FAIL=4, NOT_APPLICABLE=2}, 691 ms -> <report-dir>\matrix\db02-rejected-change-saved\semval-r1\report.json
+  FAIL ORD-DB-001 #5 updateStatus: request was rejected with HTTP 409 but the row changed: before {"status":"COMPLETED","completed_at":"2026-10-19 09:30:34.467203"}, after {"status":"CANCELLED","completed_at":"2026-10-19 09:30:34.467203"}
+  FAIL ORD-INV-001 #6 getOrder: completedAt is set if and only if status is COMPLETED � violated: {"$.completedAt":"2026-10-19T09:30:34.467203","$.status":"CANCELLED"}
+  FAIL ORD-DB-001 #8 updateStatus: request was rejected with HTTP 409 but the row changed: before {"status":"CREATED","completed_at":null}, after {"status":"DELIVERED","completed_at":null}
+  FAIL ORD-INV-001 #10 getOrdersByUser: completedAt is set if and only if status is COMPLETED � violated by item 0: {"$.completedAt":"2026-10-19T09:30:34.467203","$.status":"CANCELLED"}
+semantic-validator exit code: 1 (0 = no rule failed, 1 = at least one FAIL)

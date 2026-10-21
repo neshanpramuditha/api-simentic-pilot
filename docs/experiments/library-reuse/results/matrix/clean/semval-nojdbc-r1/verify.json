@@ -1,0 +1,86 @@
+{
+  "run": {
+    "mode": "clean",
+    "config": "semval-nojdbc",
+    "repeat": 1,
+    "exitCode": 0,
+    "durationMs": 2312,
+    "defectLines": []
+  },
+  "traffic": {
+    "harEntries": 24,
+    "readBacks": 9,
+    "scenarioRequests": 15,
+    "problems": []
+  },
+  "oracle": {
+    "transitions": {
+      "REQUESTED": [
+        "APPROVED",
+        "REJECTED"
+      ],
+      "APPROVED": [
+        "ISSUED"
+      ],
+      "ISSUED": [
+        "RETURNED"
+      ],
+      "REJECTED": [],
+      "RETURNED": []
+    },
+    "violations": [],
+    "causeSteps": [],
+    "hiddenStateChanges": [],
+    "dbInvariantViolations": [],
+    "exercised": null,
+    "anyDefectSignature": false
+  },
+  "validator": {
+    "totals": {
+      "PASS": 31,
+      "FAIL": 0,
+      "NOT_APPLICABLE": 21
+    },
+    "byRule": {
+      "LIB-INV-001": {
+        "PASS": 12,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 5
+      },
+      "LIB-INV-002": {
+        "PASS": 12,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 5
+      },
+      "LIB-ST-001": {
+        "PASS": 7,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 2
+      },
+      "LIB-DB-001": {
+        "PASS": 0,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 9
+      }
+    },
+    "failKeys": []
+  },
+  "comparison": {
+    "tp": [],
+    "fp": [],
+    "fn": [],
+    "detectedAtCause": false,
+    "failSteps": []
+  },
+  "evidence": {
+    "problems": [],
+    "failsWithFullEvidence": 0,
+    "fails": 0
+  },
+  "database": {
+    "outcomes": {
+      "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+    },
+    "correctlyScoped": true
+  }
+}

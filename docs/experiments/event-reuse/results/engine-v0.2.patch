@@ -1,0 +1,184 @@
+--- a/semantic-validator/src/main/java/com/example/semval/Condition.java
++++ b/semantic-validator/src/main/java/com/example/semval/Condition.java
+@@ -1,5 +1,7 @@
+ package com.example.semval;
+ 
++import java.time.OffsetDateTime;
++import java.time.format.DateTimeParseException;
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+@@ -9,6 +11,7 @@
+  * Declarative conditions over a JSON document.
+  * <pre>
+  * {"path": "$.a", "equals": v} | {"path": "$.a", "notNull": true} | {"path": "$.a", "isNull": true} | {"path": "$.a", "in": [..]}
++ * {"path": "$.a", "notAfter": "$.b"}   both set and a &lt;= b (ISO-8601 date-times compared as instants, otherwise numbers)
+  * {"iff": [c1, c2]} | {"implies": [c1, c2]} | {"all": [c..]} | {"any": [c..]} | {"not": c}
+  * </pre>
+  */
+@@ -61,15 +64,38 @@
+ 			}
+ 			return false;
+ 		}
++		if (condition.has("notAfter")) {
++			JsonNode other = Json.at(subject, condition.get("notAfter").asText());
++			if (Json.isAbsentOrNull(value) || Json.isAbsentOrNull(other)) {
++				return false;
++			}
++			Integer order = compare(value, other);
++			return order != null && order <= 0;
++		}
+ 		throw new IllegalArgumentException("unsupported condition: " + condition);
+ 	}
+ 
++	/** Orders two values as instants (ISO-8601 date-times) or numbers; null if they are not comparable. */
++	private static Integer compare(JsonNode a, JsonNode b) {
++		if (a.isNumber() && b.isNumber()) {
++			return a.decimalValue().compareTo(b.decimalValue());
++		}
++		try {
++			return OffsetDateTime.parse(a.asText()).toInstant().compareTo(OffsetDateTime.parse(b.asText()).toInstant());
++		} catch (DateTimeParseException e) {
++			return null;
++		}
++	}
++
+ 	/** Lists the paths a condition reads, for evidence. */
+ 	public static List<String> paths(JsonNode condition) {
+ 		List<String> paths = new ArrayList<>();
+ 		if (condition.has("path")) {
+ 			paths.add(condition.get("path").asText());
+ 		}
++		if (condition.has("notAfter")) {
++			paths.add(condition.get("notAfter").asText());
++		}
+ 		for (String key : List.of("iff", "implies", "all", "any")) {
+ 			if (condition.has(key)) {
+ 				condition.get(key).forEach(c -> paths.addAll(paths(c)));
+--- a/semantic-validator/src/main/java/com/example/semval/Report.java
++++ b/semantic-validator/src/main/java/com/example/semval/Report.java
+@@ -35,7 +35,7 @@
+ 		});
+ 
+ 		ObjectNode root = Json.MAPPER.createObjectNode();
+-		root.put("tool", "semantic-validator 0.1.0");
++		root.put("tool", "semantic-validator 0.2.0");
+ 		root.put("mode", mode);
+ 		root.put("source", source);
+ 		root.put("ruleSet", rules.name());
+--- a/semantic-validator/src/main/java/com/example/semval/rules/ResponseInvariantRule.java
++++ b/semantic-validator/src/main/java/com/example/semval/rules/ResponseInvariantRule.java
+@@ -1,7 +1,9 @@
+ package com.example.semval.rules;
+ 
+ import java.util.ArrayList;
++import java.util.HashMap;
+ import java.util.List;
++import java.util.Map;
+ 
+ import com.example.semval.Condition;
+ import com.example.semval.EvaluationContext;
+@@ -16,8 +18,11 @@
+ /**
+  * Cross-field invariant over successful response bodies. Array bodies are checked item by item.
+  * <pre>
+- * {"id": "...", "kind": "response-invariant", "operations": [...], "description": "...", "assert": &lt;condition&gt;}
++ * {"id": "...", "kind": "response-invariant", "operations": [...], "description": "...", "assert": &lt;condition&gt;,
++ *  "items": {"listOperationId": "$.items"}}
+  * </pre>
++ * {@code items} (optional) names, per operation, the path of the array to check inside an envelope response.
++ * A subject in which none of the fields the assertion reads is present is NOT_APPLICABLE, not a (vacuous) PASS.
+  */
+ public final class ResponseInvariantRule implements Rule {
+ 
+@@ -25,6 +30,7 @@
+ 	private final String description;
+ 	private final List<String> operations;
+ 	private final JsonNode assertion;
++	private final Map<String, String> itemPaths = new HashMap<>();
+ 
+ 	public ResponseInvariantRule(JsonNode definition) {
+ 		this.id = definition.get("id").asText();
+@@ -32,6 +38,7 @@
+ 		this.operations = new ArrayList<>();
+ 		definition.get("operations").forEach(op -> operations.add(op.asText()));
+ 		this.assertion = definition.get("assert");
++		definition.path("items").properties().forEach(e -> itemPaths.put(e.getKey(), e.getValue().asText()));
+ 	}
+ 
+ 	@Override
+@@ -56,6 +63,14 @@
+ 					"not a successful response with a body (HTTP " + exchange.status() + ")", null));
+ 		}
+ 		JsonNode body = exchange.responseBody();
++		String itemPath = itemPaths.get(exchange.operationId());
++		if (itemPath != null) {
++			body = Json.at(body, itemPath);
++			if (!body.isArray()) {
++				return List.of(new Finding(id, Outcome.NOT_APPLICABLE, exchange.index(), exchange.operationId(),
++						"no array at " + itemPath + " in the response", null));
++			}
++		}
+ 		List<JsonNode> subjects = new ArrayList<>();
+ 		if (body.isArray()) {
+ 			body.forEach(subjects::add);
+@@ -63,15 +78,21 @@
+ 			subjects.add(body);
+ 		}
+ 		List<Finding> findings = new ArrayList<>();
++		List<String> paths = Condition.paths(assertion);
+ 		for (int i = 0; i < subjects.size(); i++) {
+ 			JsonNode subject = subjects.get(i);
++			if (paths.stream().allMatch(p -> Json.at(subject, p).isMissingNode())) {
++				findings.add(new Finding(id, Outcome.NOT_APPLICABLE, exchange.index(), exchange.operationId(),
++						"none of the fields " + paths + " is present" + (body.isArray() ? " in item " + i : ""), null));
++				continue;
++			}
+ 			if (Condition.test(assertion, subject)) {
+ 				findings.add(new Finding(id, Outcome.PASS, exchange.index(), exchange.operationId(), "invariant holds", null));
+ 				continue;
+ 			}
+ 			ObjectNode evidence = Evidence.of(exchange);
+ 			ObjectNode values = evidence.putObject("values");
+-			for (String path : Condition.paths(assertion)) {
++			for (String path : paths) {
+ 				values.set(path, Json.at(subject, path).isMissingNode() ? Json.MAPPER.nullNode() : Json.at(subject, path));
+ 			}
+ 			if (body.isArray()) {
+--- a/semantic-validator/src/test/java/com/example/semval/RuleEvaluationTests.java
++++ b/semantic-validator/src/test/java/com/example/semval/RuleEvaluationTests.java
+@@ -81,4 +81,34 @@
+ 		assertEquals(Outcome.NOT_APPLICABLE, rule.evaluate(allowedButUnsupported, null, null).get(0).outcome());
+ 	}
+ 
++	// 0.2: found with the Event Registration API, whose list operation returns {"count": n, "items": [...]}.
++	@Test
++	void envelopeWithoutItemsPathIsNotApplicableInsteadOfAVacuousPass() {
++		ResponseInvariantRule plain = new ResponseInvariantRule(json("""
++				{"id": "INV", "description": "d", "operations": ["list"], "assert": %s}""".formatted(IFF)));
++		String envelope = "{\"count\":1,\"items\":[{\"status\":\"CANCELLED\",\"completedAt\":\"t\"}]}";
++		List<Finding> vacuous = plain.evaluate(exchange(0, "list", "GET", Map.of(), null, 200, envelope), null, null);
++		assertEquals(List.of(Outcome.NOT_APPLICABLE), vacuous.stream().map(Finding::outcome).toList());
++
++		ResponseInvariantRule items = new ResponseInvariantRule(json("""
++				{"id": "INV", "description": "d", "operations": ["list", "get"], "assert": %s, "items": {"list": "$.items"}}""".formatted(IFF)));
++		List<Finding> checked = items.evaluate(exchange(1, "list", "GET", Map.of(), null, 200, envelope), null, null);
++		assertEquals(List.of(Outcome.FAIL), checked.stream().map(Finding::outcome).toList());
++		assertEquals(0, checked.get(0).evidence().get("itemIndex").asInt());
++		assertEquals(Outcome.PASS, items.evaluate(exchange(2, "get", "GET", Map.of(), null, 200, "{\"status\":\"PAID\"}"), null, null).get(0).outcome());
++		assertEquals(Outcome.NOT_APPLICABLE, items.evaluate(exchange(3, "list", "GET", Map.of(), null, 200, "{\"count\":0}"), null, null).get(0).outcome());
++	}
++
++	@Test
++	void notAfterOrdersInstantsAndNumbersAndIsFalseWhenEitherSideIsMissing() {
++		JsonNode order = json("{\"path\": \"$.a\", \"notAfter\": \"$.b\"}");
++		assertTrue(Condition.test(order, json("{\"a\":\"2026-10-19T07:00:00Z\",\"b\":\"2026-10-19T07:00:00.000001Z\"}")));
++		assertTrue(Condition.test(order, json("{\"a\":\"2026-10-19T09:00:00+02:00\",\"b\":\"2026-10-19T07:00:00Z\"}")));
++		assertFalse(Condition.test(order, json("{\"a\":\"2026-10-19T07:00:01Z\",\"b\":\"2026-10-19T07:00:00Z\"}")));
++		assertTrue(Condition.test(order, json("{\"a\":1,\"b\":2}")));
++		assertFalse(Condition.test(order, json("{\"a\":\"2026-10-19T07:00:00Z\",\"b\":null}")));
++		assertFalse(Condition.test(order, json("{\"a\":\"x\",\"b\":\"y\"}")));
++		assertEquals(List.of("$.a", "$.b"), Condition.paths(order));
++	}
++
+ }

@@ -1,0 +1,11 @@
+{
+    "mode":  "lib-st01",
+    "config":  "semval-jdbc",
+    "repeat":  2,
+    "defect":  "st01-requested-to-issued",
+    "exitCode":  1,
+    "durationMs":  2688,
+    "defectLines":  [
+                        "DEFECT LIB-ST-01 ENABLED: PATCH /api/loans/{id}/status accepts REQUESTED -\u003e ISSUED"
+                    ]
+}

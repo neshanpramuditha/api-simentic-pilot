@@ -1,0 +1,11 @@
+{
+    "mode":  "evt-cf01",
+    "type":  "postman",
+    "repeat":  2,
+    "defect":  "cf01-checkin-before-confirmation",
+    "exitCode":  1,
+    "durationMs":  6059,
+    "defectLines":  [
+                        "DEFECT EVT-CF-01 ENABLED: checkedInAt is set to requestedAt (before confirmedAt)"
+                    ]
+}

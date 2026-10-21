@@ -1,0 +1,11 @@
+{
+    "mode":  "evt-cf01",
+    "type":  "semval-v01-jdbc",
+    "repeat":  2,
+    "defect":  "cf01-checkin-before-confirmation",
+    "exitCode":  0,
+    "durationMs":  3359,
+    "defectLines":  [
+                        "DEFECT EVT-CF-01 ENABLED: checkedInAt is set to requestedAt (before confirmedAt)"
+                    ]
+}

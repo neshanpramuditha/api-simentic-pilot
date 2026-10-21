@@ -1,0 +1,1 @@
+semantic-validator: 15 exchanges, 4 rules, totals {PASS=31, FAIL=0, NOT_APPLICABLE=21}, 1234 ms -> <run-root>\clean\semval-nojdbc-r1\semval.json

@@ -1,0 +1,82 @@
+{
+  "run": {
+    "mode": "evt-st01",
+    "type": "postman",
+    "repeat": 1,
+    "defectSwitchOk": true
+  },
+  "traffic": {
+    "harEntries": 29,
+    "readBacks": 10,
+    "scenarioRequests": 19,
+    "problems": []
+  },
+  "oracle": {
+    "transitions": {
+      "REQUESTED": [
+        "CONFIRMED",
+        "WAITLISTED",
+        "CANCELLED"
+      ],
+      "WAITLISTED": [
+        "CONFIRMED",
+        "CANCELLED"
+      ],
+      "CONFIRMED": [
+        "CHECKED_IN",
+        "CANCELLED"
+      ],
+      "CHECKED_IN": [],
+      "CANCELLED": []
+    },
+    "violations": [
+      {
+        "key": "EVT-ST-001@8",
+        "rule": "EVT-ST-001",
+        "step": 8,
+        "item": null,
+        "kind": "transition",
+        "detail": "allowed WAITLISTED -> CONFIRMED rejected with 422"
+      }
+    ],
+    "causeSteps": [
+      8
+    ],
+    "deviations": [
+      {
+        "step": 8,
+        "detail": "status 422 != 200"
+      }
+    ],
+    "affectedSteps": [
+      8
+    ],
+    "hiddenStateChanges": [],
+    "dbRowsCheckedInWithoutTime": 0,
+    "dbRowsOutOfOrder": 0,
+    "exercised": true,
+    "anyDefectSignature": true
+  },
+  "tools": {
+    "postman": {
+      "assertions": 130,
+      "failedAssertions": 2,
+      "parsedFailures": 2,
+      "failsByTag": {
+        "STEP": 2
+      },
+      "fails": [
+        "STEP@8",
+        "STEP@8"
+      ],
+      "failSteps": [
+        8
+      ],
+      "falsePositiveSteps": [],
+      "detectedAtCause": true,
+      "invariantKeysMatchOracle": true,
+      "exitCode": 1,
+      "durationMs": 4944
+    }
+  }
+}

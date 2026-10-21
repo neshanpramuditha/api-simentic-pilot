@@ -1,0 +1,273 @@
+No authorization data found. Please use the `postman login` command.
+Refer:https://learning.postman.com/docs/postman-cli/postman-cli-options/#postman-login
+
+Running your collection...
+postman
+
+Event Registration scenario EVT-SC-1
+
+Root 0 register R1
+
+  POST http://localhost:8092/v1/registrations [201 Created, 410 B, 707 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 201
+  Pass  [STEP] state is REQUESTED
+
+Root 1 R1 -> CONFIRMED
+
+  POST http://localhost:8092/v1/registrations/REG-XTXB6KSV/transitions [200 OK, 430 B, 32 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  GET http://localhost:8092/v1/registrations/REG-XTXB6KSV [200 OK, 427 B, 11 ms]
+  Pass  [READBACK] stored registration equals the 200 response
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CONFIRMED
+
+Root 2 R1 -> CHECKED_IN
+
+  POST http://localhost:8092/v1/registrations/REG-XTXB6KSV/transitions [200 OK, 453 B, 11 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  1. [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  GET http://localhost:8092/v1/registrations/REG-XTXB6KSV [200 OK, 453 B, 7 ms]
+  Pass  [READBACK] stored registration equals the 200 response
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CHECKED_IN
+
+Root 3 fetch R1
+
+  GET http://localhost:8092/v1/registrations/REG-XTXB6KSV [200 OK, 453 B, 7 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  2. [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CHECKED_IN
+
+Root 4 R1 -> CANCELLED (forbidden: CHECKED_IN is final)
+
+  POST http://localhost:8092/v1/registrations/REG-XTXB6KSV/transitions [422 Unprocessable Entity, 318 B, 31 ms]
+  GET http://localhost:8092/v1/registrations/REG-XTXB6KSV [200 OK, 453 B, 8 ms]
+  Pass  [READBACK] registration unchanged after HTTP 422
+  Pass  [STEP] status is 422
+
+Root 5 fetch R1
+
+  GET http://localhost:8092/v1/registrations/REG-XTXB6KSV [200 OK, 453 B, 9 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  3. [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CHECKED_IN
+
+Root 6 register R2
+
+  POST http://localhost:8092/v1/registrations [201 Created, 408 B, 14 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 201
+  Pass  [STEP] state is REQUESTED
+
+Root 7 R2 -> WAITLISTED
+
+  POST http://localhost:8092/v1/registrations/REG-5KS73USQ/transitions [200 OK, 401 B, 12 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  GET http://localhost:8092/v1/registrations/REG-5KS73USQ [200 OK, 401 B, 6 ms]
+  Pass  [READBACK] stored registration equals the 200 response
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is WAITLISTED
+
+Root 8 R2 -> CONFIRMED
+
+  POST http://localhost:8092/v1/registrations/REG-5KS73USQ/transitions [200 OK, 428 B, 12 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  GET http://localhost:8092/v1/registrations/REG-5KS73USQ [200 OK, 425 B, 6 ms]
+  Pass  [READBACK] stored registration equals the 200 response
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CONFIRMED
+
+Root 9 R2 -> CANCELLED with reason
+
+  POST http://localhost:8092/v1/registrations/REG-5KS73USQ/transitions [200 OK, 465 B, 9 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  GET http://localhost:8092/v1/registrations/REG-5KS73USQ [200 OK, 465 B, 8 ms]
+  Pass  [READBACK] stored registration equals the 200 response
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CANCELLED
+
+Root 10 fetch R2
+
+  GET http://localhost:8092/v1/registrations/REG-5KS73USQ [200 OK, 465 B, 7 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CANCELLED
+
+Root 11 register R3
+
+  POST http://localhost:8092/v1/registrations [201 Created, 408 B, 10 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 201
+  Pass  [STEP] state is REQUESTED
+
+Root 12 R3 -> WAITLISTED
+
+  POST http://localhost:8092/v1/registrations/REG-7VJCZD23/transitions [200 OK, 401 B, 9 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  GET http://localhost:8092/v1/registrations/REG-7VJCZD23 [200 OK, 401 B, 6 ms]
+  Pass  [READBACK] stored registration equals the 200 response
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is WAITLISTED
+
+Root 13 R3 -> CHECKED_IN (forbidden: not confirmed)
+
+  POST http://localhost:8092/v1/registrations/REG-7VJCZD23/transitions [422 Unprocessable Entity, 318 B, 9 ms]
+  GET http://localhost:8092/v1/registrations/REG-7VJCZD23 [200 OK, 401 B, 10 ms]
+  Pass  [READBACK] registration unchanged after HTTP 422
+  Pass  [STEP] status is 422
+
+Root 14 fetch R3
+
+  GET http://localhost:8092/v1/registrations/REG-7VJCZD23 [200 OK, 401 B, 7 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is WAITLISTED
+
+Root 15 list ATT-7
+
+  GET http://localhost:8092/v1/attendees/ATT-7/registrations [200 OK, 1.01 KB, 70 ms]
+  Pass  [schema] body matches the OpenAPI AttendeeRegistrations schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN (item 0)
+  Pass  [INV-002] cancelledAt set iff CANCELLED (item 0)
+  Pass  [INV-003] cancellationReason set iff CANCELLED (item 0)
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED (item 0)
+  4. [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 0)
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN (item 1)
+  Pass  [INV-002] cancelledAt set iff CANCELLED (item 1)
+  Pass  [INV-003] cancellationReason set iff CANCELLED (item 1)
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED (item 1)
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 1)
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN (item 2)
+  Pass  [INV-002] cancelledAt set iff CANCELLED (item 2)
+  Pass  [INV-003] cancellationReason set iff CANCELLED (item 2)
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED (item 2)
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 2)
+  Pass  [STEP] status is 200
+  Pass  [STEP] list states are CHECKED_IN, CANCELLED, WAITLISTED
+
+Root 16 unknown registration -> CONFIRMED
+
+  POST http://localhost:8092/v1/registrations/REG-NOPE0000/transitions [404 Not Found, 295 B, 10 ms]
+  GET http://localhost:8092/v1/registrations/REG-NOPE0000 [404 Not Found, 283 B, 9 ms]
+  Pass  [STEP] status is 404
+
+Root 17 R3 -> DONE (not a state)
+
+  POST http://localhost:8092/v1/registrations/REG-7VJCZD23/transitions [400 Bad Request, 299 B, 11 ms]
+  GET http://localhost:8092/v1/registrations/REG-7VJCZD23 [200 OK, 401 B, 9 ms]
+  Pass  [READBACK] registration unchanged after HTTP 400
+  Pass  [STEP] status is 400
+
+Root 18 register with 0 seats
+
+  POST http://localhost:8092/v1/registrations [400 Bad Request, 274 B, 51 ms]
+  Pass  [STEP] status is 400
+
+-----------------------------------------------------------------------
+|                         |            executed |              failed |
+--------------------------+---------------------+----------------------
+|              iterations |                   1 |                   0 |
+--------------------------+---------------------+----------------------
+|                requests |                  29 |                   0 |
+--------------------------+---------------------+----------------------
+|            test-scripts |                  38 |                   0 |
+--------------------------+---------------------+----------------------
+|      prerequest-scripts |                   0 |                   0 |
+--------------------------+---------------------+----------------------
+|              assertions |                 136 |                   4 |
+-----------------------------------------------------------------------
+| total run duration: 2.8 s                                           |
+-----------------------------------------------------------------------
+| total data received: 7.25 KB (approx)                               |
+-----------------------------------------------------------------------
+| average response time: 38 ms [min: 6 ms, max: 707 ms, s.d.: 127 ms] |
+-----------------------------------------------------------------------
+
+  #  failure         detail                                                                                                                                 
+                                                                                                                                                            
+ 1.  AssertionError  [INV-005] requestedAt <= confirmedAt <= checkedInAt                                                                                    
+                     confirmedAt 2026-10-19T07:40:03.690474Z vs checkedInAt 2026-10-19T07:40:03.460791Z: expected 1792395603690 to be at most 1792395603460 
+                     at assertion:5 in test-script                                                                                                          
+                     inside "2 R1 -> CHECKED_IN"                                                                                                            
+                                                                                                                                                            
+ 2.  AssertionError  [INV-005] requestedAt <= confirmedAt <= checkedInAt                                                                                    
+                     confirmedAt 2026-10-19T07:40:03.690474Z vs checkedInAt 2026-10-19T07:40:03.460791Z: expected 1792395603690 to be at most 1792395603460 
+                     at assertion:5 in test-script                                                                                                          
+                     inside "3 fetch R1"                                                                                                                    
+                                                                                                                                                            
+ 3.  AssertionError  [INV-005] requestedAt <= confirmedAt <= checkedInAt                                                                                    
+                     confirmedAt 2026-10-19T07:40:03.690474Z vs checkedInAt 2026-10-19T07:40:03.460791Z: expected 1792395603690 to be at most 1792395603460 
+                     at assertion:5 in test-script                                                                                                          
+                     inside "5 fetch R1"                                                                                                                    
+                                                                                                                                                            
+ 4.  AssertionError  [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 0)                                                                           
+                     confirmedAt 2026-10-19T07:40:03.690474Z vs checkedInAt 2026-10-19T07:40:03.460791Z: expected 1792395603690 to be at most 1792395603460 
+                     at assertion:5 in test-script                                                                                                          
+                     inside "15 list ATT-7"                                                                                                                 
+Postman credentials are required for publishing run details to Postman cloud.
+Please specify it by using the `postman login` command

@@ -1,0 +1,44 @@
+{
+  "name": "order-api semantic rules v1",
+  "rules": [
+    {
+      "id": "ORD-INV-001",
+      "kind": "response-invariant",
+      "description": "completedAt is set if and only if status is COMPLETED",
+      "operations": ["createOrder", "getOrder", "updateStatus", "getOrdersByUser"],
+      "assert": {
+        "iff": [
+          { "path": "$.completedAt", "notNull": true },
+          { "path": "$.status", "equals": "COMPLETED" }
+        ]
+      }
+    },
+    {
+      "id": "ORD-ST-001",
+      "kind": "state-transition",
+      "description": "Order status changes follow the order lifecycle; forbidden changes are rejected with 409",
+      "operations": ["updateStatus"],
+      "resource": { "idParam": "id", "idField": "$.id", "stateField": "$.status", "readOperation": "getOrder" },
+      "requestedState": "$request.body.status",
+      "transitions": {
+        "CREATED": ["PAID", "CANCELLED"],
+        "PAID": ["SHIPPED", "CANCELLED"],
+        "SHIPPED": ["DELIVERED"],
+        "DELIVERED": ["COMPLETED"],
+        "COMPLETED": [],
+        "CANCELLED": []
+      },
+      "rejectedStatuses": [409]
+    },
+    {
+      "id": "ORD-DB-001",
+      "kind": "db-consistency",
+      "description": "The persisted order matches a successful status change and is unchanged after a rejected one",
+      "operations": ["updateStatus"],
+      "query": "SELECT status, completed_at FROM orders WHERE id = ?",
+      "params": ["$path.id"],
+      "onSuccess": { "columnsMatchResponse": { "status": "$.status" } },
+      "onError": "rowUnchanged"
+    }
+  ]
+}

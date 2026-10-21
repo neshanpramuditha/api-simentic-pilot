@@ -1,0 +1,13 @@
+﻿FAIL  POST /api/orders -> 201  /total must be number
+pass  PATCH /api/orders/1/status -> 200
+pass  PATCH /api/orders/1/status -> 200
+pass  PATCH /api/orders/1/status -> 200
+pass  PATCH /api/orders/1/status -> 200
+pass  PATCH /api/orders/1/status -> 409  (no body schema documented; body not checked)
+pass  GET /api/orders/1 -> 200
+FAIL  POST /api/orders -> 201  /total must be number
+pass  PATCH /api/orders/2/status -> 409  (no body schema documented; body not checked)
+pass  GET /api/orders/2 -> 200
+pass  GET /api/users/7/orders -> 200
+
+11 responses, 2 schema-only failures

@@ -1,0 +1,25 @@
+# evt-st01: Postman CLI output (sections with failures, then the failure table; ids masked)
+
+Root 8 R2 -> CONFIRMED
+
+  POST http://localhost:8092/v1/registrations/REG-xxxxxxxx/transitions [422 Unprocessable Entity, 318 B, 9 ms]
+  GET http://localhost:8092/v1/registrations/REG-xxxxxxxx [200 OK, 401 B, 7 ms]
+  Pass  [READBACK] registration unchanged after HTTP 422
+  1. [STEP] status is 200
+  2. [STEP] state is CONFIRMED
+
+
+#  failure         detail                                                
+                                                                           
+ 1.  AssertionError  [STEP] status is 200                                  
+                     expected response to have status code 200 but got 422 
+                     at assertion:0 in test-script                         
+                     inside "8 R2 -> CONFIRMED"                            
+                                                                           
+ 2.  AssertionError  [STEP] state is CONFIRMED                             
+                     expected undefined to deeply equal 'CONFIRMED'        
+                     at assertion:1 in test-script                         
+                     inside "8 R2 -> CONFIRMED"                            
+Postman credentials are required for publishing run details to Postman cloud.
+Please specify it by using the `postman login` command
+

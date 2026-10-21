@@ -1,0 +1,55 @@
+{
+  "name": "library-api semantic rules v1",
+  "rules": [
+    {
+      "id": "LIB-INV-001",
+      "kind": "response-invariant",
+      "description": "returnedAt is set if and only if status is RETURNED",
+      "operations": ["createLoan", "getLoan", "updateLoanStatus", "listMemberLoans"],
+      "assert": {
+        "iff": [
+          { "path": "$.returnedAt", "notNull": true },
+          { "path": "$.status", "equals": "RETURNED" }
+        ]
+      }
+    },
+    {
+      "id": "LIB-INV-002",
+      "kind": "response-invariant",
+      "description": "issuedAt is set if and only if status is ISSUED or RETURNED",
+      "operations": ["createLoan", "getLoan", "updateLoanStatus", "listMemberLoans"],
+      "assert": {
+        "iff": [
+          { "path": "$.issuedAt", "notNull": true },
+          { "path": "$.status", "in": ["ISSUED", "RETURNED"] }
+        ]
+      }
+    },
+    {
+      "id": "LIB-ST-001",
+      "kind": "state-transition",
+      "description": "Loan status changes follow the lending lifecycle; forbidden changes are rejected with 409",
+      "operations": ["updateLoanStatus"],
+      "resource": { "idParam": "id", "idField": "$.id", "stateField": "$.status", "readOperation": "getLoan" },
+      "requestedState": "$request.body.status",
+      "transitions": {
+        "REQUESTED": ["APPROVED", "REJECTED"],
+        "APPROVED": ["ISSUED"],
+        "ISSUED": ["RETURNED"],
+        "REJECTED": [],
+        "RETURNED": []
+      },
+      "rejectedStatuses": [409]
+    },
+    {
+      "id": "LIB-DB-001",
+      "kind": "db-consistency",
+      "description": "The persisted loan matches a successful status change and is unchanged after a rejected one",
+      "operations": ["updateLoanStatus"],
+      "query": "SELECT status, issued_at, returned_at FROM loans WHERE id = ?",
+      "params": ["$path.id"],
+      "onSuccess": { "columnsMatchResponse": { "status": "$.status" } },
+      "onError": "rowUnchanged"
+    }
+  ]
+}

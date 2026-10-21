@@ -1,0 +1,172 @@
+{
+  "run": {
+    "mode": "evt-cf01",
+    "type": "capture",
+    "repeat": 2,
+    "defectSwitchOk": true
+  },
+  "traffic": {
+    "harEntries": 19,
+    "readBacks": 0,
+    "scenarioRequests": 19,
+    "problems": []
+  },
+  "oracle": {
+    "transitions": {
+      "REQUESTED": [
+        "CONFIRMED",
+        "WAITLISTED",
+        "CANCELLED"
+      ],
+      "WAITLISTED": [
+        "CONFIRMED",
+        "CANCELLED"
+      ],
+      "CONFIRMED": [
+        "CHECKED_IN",
+        "CANCELLED"
+      ],
+      "CHECKED_IN": [],
+      "CANCELLED": []
+    },
+    "violations": [
+      {
+        "key": "EVT-INV-005@2",
+        "rule": "EVT-INV-005",
+        "step": 2,
+        "item": null,
+        "kind": "invariant",
+        "detail": "requestedAt=2026-10-19T07:40:56.426334Z confirmedAt=2026-10-19T07:40:56.533106Z checkedInAt=2026-10-19T07:40:56.426334Z"
+      },
+      {
+        "key": "EVT-INV-005@3",
+        "rule": "EVT-INV-005",
+        "step": 3,
+        "item": null,
+        "kind": "invariant",
+        "detail": "requestedAt=2026-10-19T07:40:56.426334Z confirmedAt=2026-10-19T07:40:56.533106Z checkedInAt=2026-10-19T07:40:56.426334Z"
+      },
+      {
+        "key": "EVT-INV-005@5",
+        "rule": "EVT-INV-005",
+        "step": 5,
+        "item": null,
+        "kind": "invariant",
+        "detail": "requestedAt=2026-10-19T07:40:56.426334Z confirmedAt=2026-10-19T07:40:56.533106Z checkedInAt=2026-10-19T07:40:56.426334Z"
+      },
+      {
+        "key": "EVT-INV-005@15#0",
+        "rule": "EVT-INV-005",
+        "step": 15,
+        "item": 0,
+        "kind": "invariant",
+        "detail": "requestedAt=2026-10-19T07:40:56.426334Z confirmedAt=2026-10-19T07:40:56.533106Z checkedInAt=2026-10-19T07:40:56.426334Z"
+      }
+    ],
+    "causeSteps": [
+      2
+    ],
+    "deviations": [],
+    "affectedSteps": [
+      2,
+      3,
+      5,
+      15
+    ],
+    "hiddenStateChanges": [],
+    "dbRowsCheckedInWithoutTime": 0,
+    "dbRowsOutOfOrder": 1,
+    "exercised": true,
+    "anyDefectSignature": true
+  },
+  "tools": {
+    "semval-v01-passive": {
+      "exitCode": 0,
+      "totals": {
+        "PASS": 64,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 32
+      },
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      },
+      "failKeys": [],
+      "tp": 0,
+      "extraKeys": [],
+      "fn": [
+        {
+          "key": "EVT-INV-005@2",
+          "reason": "rule absent from this rule set"
+        },
+        {
+          "key": "EVT-INV-005@3",
+          "reason": "rule absent from this rule set"
+        },
+        {
+          "key": "EVT-INV-005@5",
+          "reason": "rule absent from this rule set"
+        },
+        {
+          "key": "EVT-INV-005@15#0",
+          "reason": "rule absent from this rule set"
+        }
+      ],
+      "failSteps": [],
+      "falsePositiveSteps": [],
+      "detectedAtCause": false,
+      "evidenceProblems": [],
+      "fails": 0,
+      "durationMs": 430
+    },
+    "semval-v02-passive": {
+      "exitCode": 1,
+      "totals": {
+        "PASS": 84,
+        "FAIL": 4,
+        "NOT_APPLICABLE": 37
+      },
+      "failsByRule": {
+        "EVT-INV-001": 0,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 4,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      },
+      "failKeys": [
+        "EVT-INV-005@2",
+        "EVT-INV-005@3",
+        "EVT-INV-005@5",
+        "EVT-INV-005@15#0"
+      ],
+      "tp": 4,
+      "extraKeys": [],
+      "fn": [],
+      "failSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "falsePositiveSteps": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "fails": 4,
+      "durationMs": 510
+    },
+    "ajv": {
+      "checked": 14,
+      "violations": 0,
+      "failSteps": [],
+      "falsePositiveSteps": [],
+      "detectedAtCause": false,
+      "durationMs": 257
+    }
+  }
+}

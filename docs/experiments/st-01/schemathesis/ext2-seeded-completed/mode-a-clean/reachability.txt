@@ -1,0 +1,5 @@
+﻿requests: 564; seeded ids: 30
+PATCH requests to seeded ids (target -> HTTP status): {"COMPLETED -> 409":17,"PAID -> 409":3,"undefined -> 400":7,"[object Object] -> 400":1,", -> 400":1,"null -> 400":1,"false -> 400":1,"0 -> 409":1,"AAA -> 400":1,"CANCELLED -> 409":1,"DELIVERED -> 409":1,"SHIPPED -> 409":1,"CREATED -> 409":21,"PAID -> 415":1,"PAID -> 500":1}
+COMPLETED -> CANCELLED attempts on seeded orders: 1
+  #112 id=1 -> 409 body.status=409; later GET of same id: {"index":181,"status":200,"orderStatus":"COMPLETED"}
+post-run persisted state of seeded orders: {"COMPLETED":30}; CANCELLED with completedAt set: 0

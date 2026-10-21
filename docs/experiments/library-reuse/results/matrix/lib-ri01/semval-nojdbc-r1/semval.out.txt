@@ -1,0 +1,4 @@
+semantic-validator: 15 exchanges, 4 rules, totals {PASS=28, FAIL=3, NOT_APPLICABLE=21}, 1191 ms -> <run-root>\lib-ri01\semval-nojdbc-r1\semval.json
+  FAIL LIB-INV-001 #3 updateLoanStatus: returnedAt is set if and only if status is RETURNED � violated: {"$.returnedAt":null,"$.status":"RETURNED"}
+  FAIL LIB-INV-001 #5 getLoan: returnedAt is set if and only if status is RETURNED � violated: {"$.returnedAt":null,"$.status":"RETURNED"}
+  FAIL LIB-INV-001 #12 listMemberLoans: returnedAt is set if and only if status is RETURNED � violated by item 0: {"$.returnedAt":null,"$.status":"RETURNED"}

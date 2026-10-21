@@ -1,0 +1,11 @@
+{
+    "mode":  "evt-db02",
+    "type":  "semval-v01-jdbc",
+    "repeat":  1,
+    "defect":  "db02-cancellation-not-saved",
+    "exitCode":  1,
+    "durationMs":  3862,
+    "defectLines":  [
+                        "DEFECT EVT-DB-02 ENABLED: successful cancellations are returned but not stored"
+                    ]
+}

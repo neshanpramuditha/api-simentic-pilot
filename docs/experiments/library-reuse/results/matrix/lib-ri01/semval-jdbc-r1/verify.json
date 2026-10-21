@@ -1,0 +1,136 @@
+{
+  "run": {
+    "mode": "lib-ri01",
+    "config": "semval-jdbc",
+    "repeat": 1,
+    "exitCode": 1,
+    "durationMs": 3016,
+    "defectLines": [
+      "DEFECT LIB-RI-01 ENABLED: PATCH /api/loans/{id}/status saves RETURNED loans without returnedAt"
+    ]
+  },
+  "traffic": {
+    "harEntries": 24,
+    "readBacks": 9,
+    "scenarioRequests": 15,
+    "problems": []
+  },
+  "oracle": {
+    "transitions": {
+      "REQUESTED": [
+        "APPROVED",
+        "REJECTED"
+      ],
+      "APPROVED": [
+        "ISSUED"
+      ],
+      "ISSUED": [
+        "RETURNED"
+      ],
+      "REJECTED": [],
+      "RETURNED": []
+    },
+    "violations": [
+      {
+        "key": "LIB-INV-001@3",
+        "ruleId": "LIB-INV-001",
+        "step": 3,
+        "item": null,
+        "kind": "invariant",
+        "detail": "status=RETURNED returnedAt=null"
+      },
+      {
+        "key": "LIB-INV-001@5",
+        "ruleId": "LIB-INV-001",
+        "step": 5,
+        "item": null,
+        "kind": "invariant",
+        "detail": "status=RETURNED returnedAt=null"
+      },
+      {
+        "key": "LIB-INV-001@12#0",
+        "ruleId": "LIB-INV-001",
+        "step": 12,
+        "item": 0,
+        "kind": "invariant",
+        "detail": "status=RETURNED returnedAt=null"
+      }
+    ],
+    "causeSteps": [
+      3
+    ],
+    "hiddenStateChanges": [],
+    "dbInvariantViolations": [
+      {
+        "id": "90f5a33c-ff87-4b6e-a219-bdbeb6464497",
+        "status": "RETURNED",
+        "issuedAt": true,
+        "returnedAt": false
+      }
+    ],
+    "exercised": true,
+    "anyDefectSignature": true
+  },
+  "validator": {
+    "totals": {
+      "PASS": 36,
+      "FAIL": 3,
+      "NOT_APPLICABLE": 13
+    },
+    "byRule": {
+      "LIB-INV-001": {
+        "PASS": 9,
+        "FAIL": 3,
+        "NOT_APPLICABLE": 5
+      },
+      "LIB-INV-002": {
+        "PASS": 12,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 5
+      },
+      "LIB-ST-001": {
+        "PASS": 7,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 2
+      },
+      "LIB-DB-001": {
+        "PASS": 8,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 1
+      }
+    },
+    "failKeys": [
+      "LIB-INV-001@3",
+      "LIB-INV-001@5",
+      "LIB-INV-001@12#0"
+    ]
+  },
+  "comparison": {
+    "tp": [
+      "LIB-INV-001@3",
+      "LIB-INV-001@5",
+      "LIB-INV-001@12#0"
+    ],
+    "fp": [],
+    "fn": [],
+    "detectedAtCause": true,
+    "failSteps": [
+      3,
+      5,
+      12
+    ]
+  },
+  "evidence": {
+    "problems": [],
+    "failsWithFullEvidence": 3,
+    "fails": 3
+  },
+  "database": {
+    "outcomes": {
+      "PASS: persisted state matches the response": 4,
+      "PASS: row unchanged after HTTP n": 4,
+      "NOT_APPLICABLE: no row before the request": 1
+    },
+    "correctlyScoped": true
+  }
+}

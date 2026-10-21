@@ -1,0 +1,1 @@
+semantic-validator: 15 exchanges, 4 rules, totals {PASS=39, FAIL=0, NOT_APPLICABLE=13}, 1079 ms -> <run-root>\clean\semval-jdbc-r2\semval.json

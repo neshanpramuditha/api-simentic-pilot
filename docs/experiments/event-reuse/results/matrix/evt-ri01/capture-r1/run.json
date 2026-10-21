@@ -1,0 +1,14 @@
+{
+    "mode":  "evt-ri01",
+    "type":  "capture",
+    "repeat":  1,
+    "defect":  "ri01-checkin-without-timestamp",
+    "exitCodeV01Passive":  1,
+    "durationMsV01Passive":  446,
+    "exitCodeV02Passive":  1,
+    "durationMsV02Passive":  445,
+    "durationMsAjv":  233,
+    "defectLines":  [
+                        "DEFECT EVT-RI-01 ENABLED: CHECKED_IN registrations are stored without checkedInAt"
+                    ]
+}

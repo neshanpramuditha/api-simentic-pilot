@@ -1,0 +1,201 @@
+{
+  "run": {
+    "mode": "evt-db01",
+    "type": "semval-v02-jdbc",
+    "repeat": 1,
+    "defectSwitchOk": true
+  },
+  "traffic": {
+    "harEntries": 29,
+    "readBacks": 10,
+    "scenarioRequests": 19,
+    "problems": []
+  },
+  "oracle": {
+    "transitions": {
+      "REQUESTED": [
+        "CONFIRMED",
+        "WAITLISTED",
+        "CANCELLED"
+      ],
+      "WAITLISTED": [
+        "CONFIRMED",
+        "CANCELLED"
+      ],
+      "CONFIRMED": [
+        "CHECKED_IN",
+        "CANCELLED"
+      ],
+      "CHECKED_IN": [],
+      "CANCELLED": []
+    },
+    "violations": [
+      {
+        "key": "EVT-INV-001@5",
+        "rule": "EVT-INV-001",
+        "step": 5,
+        "item": null,
+        "kind": "invariant",
+        "detail": "state=CANCELLED checkedInAt=2026-10-19T07:30:37.240330Z"
+      },
+      {
+        "key": "EVT-INV-004@14",
+        "rule": "EVT-INV-004",
+        "step": 14,
+        "item": null,
+        "kind": "invariant",
+        "detail": "state=CHECKED_IN confirmedAt=null"
+      },
+      {
+        "key": "EVT-INV-001@15#0",
+        "rule": "EVT-INV-001",
+        "step": 15,
+        "item": 0,
+        "kind": "invariant",
+        "detail": "state=CANCELLED checkedInAt=2026-10-19T07:30:37.240330Z"
+      },
+      {
+        "key": "EVT-INV-004@15#2",
+        "rule": "EVT-INV-004",
+        "step": 15,
+        "item": 2,
+        "kind": "invariant",
+        "detail": "state=CHECKED_IN confirmedAt=null"
+      },
+      {
+        "key": "EVT-DB-001@4",
+        "rule": "EVT-DB-001",
+        "step": 4,
+        "item": null,
+        "kind": "db-rejected",
+        "detail": "HTTP 422 but stored {\"state\":\"CHECKED_IN\",\"confirmedAt\":true,\"checkedInAt\":true,\"cancelledAt\":false,\"cancellationReason\":null} -> {\"state\":\"CANCELLED\",\"confirmedAt\":true,\"checkedInAt\":true,\"cancelledAt\":true,\"cancellationReason\":\"Left early\"} (traffic entry 8)"
+      },
+      {
+        "key": "EVT-DB-001@13",
+        "rule": "EVT-DB-001",
+        "step": 13,
+        "item": null,
+        "kind": "db-rejected",
+        "detail": "HTTP 422 but stored {\"state\":\"WAITLISTED\",\"confirmedAt\":false,\"checkedInAt\":false,\"cancelledAt\":false,\"cancellationReason\":null} -> {\"state\":\"CHECKED_IN\",\"confirmedAt\":false,\"checkedInAt\":true,\"cancelledAt\":false,\"cancellationReason\":null} (traffic entry 22)"
+      }
+    ],
+    "causeSteps": [
+      4,
+      13
+    ],
+    "deviations": [
+      {
+        "step": 5,
+        "detail": "state CANCELLED != CHECKED_IN"
+      },
+      {
+        "step": 14,
+        "detail": "state CHECKED_IN != WAITLISTED"
+      },
+      {
+        "step": 15,
+        "detail": "list CANCELLED,CANCELLED,CHECKED_IN != CHECKED_IN,CANCELLED,WAITLISTED"
+      }
+    ],
+    "affectedSteps": [
+      4,
+      5,
+      13,
+      14,
+      15
+    ],
+    "hiddenStateChanges": [
+      {
+        "id": "REG-AXY5Z5BA",
+        "claimed": {
+          "state": "CHECKED_IN",
+          "confirmedAt": true,
+          "checkedInAt": true,
+          "cancelledAt": false,
+          "cancellationReason": null
+        },
+        "stored": {
+          "state": "CANCELLED",
+          "confirmedAt": true,
+          "checkedInAt": true,
+          "cancelledAt": true,
+          "cancellationReason": "Left early"
+        }
+      },
+      {
+        "id": "REG-2PTYCH58",
+        "claimed": {
+          "state": "WAITLISTED",
+          "confirmedAt": false,
+          "checkedInAt": false,
+          "cancelledAt": false,
+          "cancellationReason": null
+        },
+        "stored": {
+          "state": "CHECKED_IN",
+          "confirmedAt": false,
+          "checkedInAt": true,
+          "cancelledAt": false,
+          "cancellationReason": null
+        }
+      }
+    ],
+    "dbRowsCheckedInWithoutTime": 0,
+    "dbRowsOutOfOrder": 0,
+    "exercised": true,
+    "anyDefectSignature": true
+  },
+  "tools": {
+    "semval-v02-active": {
+      "exitCode": 1,
+      "totals": {
+        "PASS": 89,
+        "FAIL": 8,
+        "NOT_APPLICABLE": 28
+      },
+      "failsByRule": {
+        "EVT-INV-001": 2,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 2,
+        "EVT-INV-005": 2,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 2
+      },
+      "failKeys": [
+        "EVT-DB-001@4",
+        "EVT-INV-001@5",
+        "EVT-DB-001@13",
+        "EVT-INV-004@14",
+        "EVT-INV-005@14",
+        "EVT-INV-001@15#0",
+        "EVT-INV-004@15#2",
+        "EVT-INV-005@15#2"
+      ],
+      "tp": 6,
+      "extraKeys": [
+        {
+          "key": "EVT-INV-005@14",
+          "onAffectedStep": true
+        },
+        {
+          "key": "EVT-INV-005@15#2",
+          "onAffectedStep": true
+        }
+      ],
+      "fn": [],
+      "failSteps": [
+        4,
+        5,
+        13,
+        14,
+        15
+      ],
+      "falsePositiveSteps": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "fails": 8,
+      "durationMs": 5792
+    }
+  }
+}

@@ -1,0 +1,664 @@
+{
+  "info": {
+    "name": "Event Registration scenario EVT-SC-1",
+    "description": "Generated from docs/experiments/event-reuse/scenario.json by build-postman-collection.js; do not edit by hand.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8082"
+    },
+    {
+      "key": "r1",
+      "value": ""
+    },
+    {
+      "key": "r2",
+      "value": ""
+    },
+    {
+      "key": "r3",
+      "value": ""
+    }
+  ],
+  "event": [
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "const registrationSchema = {\"properties\":{\"attendeeRef\":{\"type\":\"string\"},\"cancellationReason\":{\"maxLength\":200,\"type\":[\"string\",\"null\"]},\"cancelledAt\":{\"type\":[\"string\",\"null\"]},\"checkedInAt\":{\"type\":[\"string\",\"null\"]},\"confirmedAt\":{\"type\":[\"string\",\"null\"]},\"eventCode\":{\"type\":\"string\"},\"registrationId\":{\"pattern\":\"^REG-[A-Z0-9]{8}$\",\"type\":\"string\"},\"requestedAt\":{\"type\":\"string\"},\"seats\":{\"maximum\":4,\"minimum\":1,\"type\":\"integer\"},\"state\":{\"enum\":[\"REQUESTED\",\"WAITLISTED\",\"CONFIRMED\",\"CHECKED_IN\",\"CANCELLED\"],\"type\":\"string\"}},\"required\":[\"attendeeRef\",\"cancellationReason\",\"cancelledAt\",\"checkedInAt\",\"confirmedAt\",\"eventCode\",\"registrationId\",\"requestedAt\",\"seats\",\"state\"],\"type\":\"object\"};",
+          "const envelopeSchema = {\"properties\":{\"attendeeRef\":{\"type\":\"string\"},\"count\":{\"type\":\"integer\"},\"items\":{\"type\":\"array\",\"items\":{\"properties\":{\"attendeeRef\":{\"type\":\"string\"},\"cancellationReason\":{\"maxLength\":200,\"type\":[\"string\",\"null\"]},\"cancelledAt\":{\"type\":[\"string\",\"null\"]},\"checkedInAt\":{\"type\":[\"string\",\"null\"]},\"confirmedAt\":{\"type\":[\"string\",\"null\"]},\"eventCode\":{\"type\":\"string\"},\"registrationId\":{\"pattern\":\"^REG-[A-Z0-9]{8}$\",\"type\":\"string\"},\"requestedAt\":{\"type\":\"string\"},\"seats\":{\"maximum\":4,\"minimum\":1,\"type\":\"integer\"},\"state\":{\"enum\":[\"REQUESTED\",\"WAITLISTED\",\"CONFIRMED\",\"CHECKED_IN\",\"CANCELLED\"],\"type\":\"string\"}},\"required\":[\"attendeeRef\",\"cancellationReason\",\"cancelledAt\",\"checkedInAt\",\"confirmedAt\",\"eventCode\",\"registrationId\",\"requestedAt\",\"seats\",\"state\"],\"type\":\"object\"}}},\"required\":[\"attendeeRef\",\"count\",\"items\"],\"type\":\"object\"};",
+          "const ok = pm.response.code >= 200 && pm.response.code < 300;",
+          "let body = null; try { body = pm.response.json(); } catch (e) { body = null; }",
+          "const isEnvelope = body && Array.isArray(body.items);",
+          "const regs = !ok || !body ? [] : isEnvelope ? body.items : (body.registrationId ? [body] : []);",
+          "if (ok && body) pm.test(\"[schema] body matches the OpenAPI \" + (isEnvelope ? \"AttendeeRegistrations\" : \"Registration\") + \" schema\", () => pm.response.to.have.jsonSchema(isEnvelope ? envelopeSchema : registrationSchema));",
+          "const set = v => v !== null && v !== undefined;",
+          "const t = v => Date.parse(v);",
+          "regs.forEach((r, i) => {",
+          "  const at = isEnvelope ? \" (item \" + i + \")\" : \"\";",
+          "  pm.test(\"[INV-001] checkedInAt set iff CHECKED_IN\" + at, () => pm.expect(set(r.checkedInAt), JSON.stringify({ state: r.state, checkedInAt: r.checkedInAt })).to.eql(r.state === \"CHECKED_IN\"));",
+          "  pm.test(\"[INV-002] cancelledAt set iff CANCELLED\" + at, () => pm.expect(set(r.cancelledAt), JSON.stringify({ state: r.state, cancelledAt: r.cancelledAt })).to.eql(r.state === \"CANCELLED\"));",
+          "  pm.test(\"[INV-003] cancellationReason set iff CANCELLED\" + at, () => pm.expect(set(r.cancellationReason), JSON.stringify({ state: r.state, cancellationReason: r.cancellationReason })).to.eql(r.state === \"CANCELLED\"));",
+          "  pm.test(\"[INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED\" + at, () => {",
+          "    if (r.state === \"CHECKED_IN\") pm.expect(r.confirmedAt, \"confirmedAt of a CHECKED_IN registration\").to.not.equal(null);",
+          "    if (set(r.confirmedAt)) pm.expect([\"CONFIRMED\", \"CHECKED_IN\", \"CANCELLED\"], \"state with confirmedAt\").to.include(r.state);",
+          "  });",
+          "  pm.test(\"[INV-005] requestedAt <= confirmedAt <= checkedInAt\" + at, () => {",
+          "    if (set(r.confirmedAt)) pm.expect(t(r.requestedAt), \"requestedAt \" + r.requestedAt + \" vs confirmedAt \" + r.confirmedAt).to.be.at.most(t(r.confirmedAt));",
+          "    if (set(r.checkedInAt)) pm.expect(t(r.confirmedAt), \"confirmedAt \" + r.confirmedAt + \" vs checkedInAt \" + r.checkedInAt).to.be.at.most(t(r.checkedInAt));",
+          "  });",
+          "});",
+          "// Snapshot of each registration as last observed, for the read-back check after rejected transitions.",
+          "const before = {};",
+          "regs.forEach(r => { before[r.registrationId] = pm.collectionVariables.get(\"snap_\" + r.registrationId); pm.collectionVariables.set(\"snap_\" + r.registrationId, JSON.stringify(r)); });",
+          "const m = pm.request.url.getPath().match(/^\\/v1\\/registrations\\/([^/]+)\\/transitions$/);",
+          "if (m) {",
+          "  const id = m[1];",
+          "  const previous = ok ? null : pm.collectionVariables.get(\"snap_\" + id);",
+          "  pm.sendRequest({ url: pm.variables.get(\"baseUrl\") + \"/v1/registrations/\" + id, method: \"GET\", header: { Accept: \"application/json\" } }, (err, res) => {",
+          "    if (err || res.code !== 200) return;",
+          "    const stored = res.json();",
+          "    // Revision 1: the API returns 100 ns timestamps but stores microseconds, so timestamps are compared within 1 ms.",
+          "    const same = (a, b) => [\"state\", \"cancellationReason\"].every(k => a[k] === b[k])",
+          "      && [\"confirmedAt\", \"checkedInAt\", \"cancelledAt\"].every(k => set(a[k]) === set(b[k]) && (!set(a[k]) || Math.abs(t(a[k]) - t(b[k])) < 1));",
+          "    const view = r => JSON.stringify({ state: r.state, confirmedAt: r.confirmedAt, checkedInAt: r.checkedInAt, cancelledAt: r.cancelledAt, cancellationReason: r.cancellationReason });",
+          "    if (ok) pm.test(\"[READBACK] stored registration equals the \" + pm.response.code + \" response\", () => pm.expect(same(stored, body), \"read-back GET \" + view(stored) + \" vs response \" + view(body)).to.eql(true));",
+          "    else if (previous) pm.test(\"[READBACK] registration unchanged after HTTP \" + pm.response.code, () => pm.expect(same(stored, JSON.parse(previous)), \"read-back GET \" + view(stored) + \" vs before \" + view(JSON.parse(previous))).to.eql(true));",
+          "    pm.collectionVariables.set(\"snap_\" + id, JSON.stringify(stored));",
+          "  });",
+          "}"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "0 register R1",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"attendeeRef\":\"ATT-7\",\"eventCode\":\"JAVA-CONF-26\",\"seats\":2}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 201\", () => pm.response.to.have.status(201));",
+              "pm.test(\"[STEP] state is REQUESTED\", () => pm.expect(pm.response.json().state).to.eql(\"REQUESTED\"));",
+              "pm.collectionVariables.set(\"r1\", pm.response.json()[\"registrationId\"]);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "1 R1 -> CONFIRMED",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations/{{r1}}/transitions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"to\":\"CONFIRMED\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"[STEP] state is CONFIRMED\", () => pm.expect(pm.response.json().state).to.eql(\"CONFIRMED\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "2 R1 -> CHECKED_IN",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations/{{r1}}/transitions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"to\":\"CHECKED_IN\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"[STEP] state is CHECKED_IN\", () => pm.expect(pm.response.json().state).to.eql(\"CHECKED_IN\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "3 fetch R1",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations/{{r1}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"[STEP] state is CHECKED_IN\", () => pm.expect(pm.response.json().state).to.eql(\"CHECKED_IN\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "4 R1 -> CANCELLED (forbidden: CHECKED_IN is final)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations/{{r1}}/transitions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"to\":\"CANCELLED\",\"reason\":\"Left early\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 422\", () => pm.response.to.have.status(422));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "5 fetch R1",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations/{{r1}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"[STEP] state is CHECKED_IN\", () => pm.expect(pm.response.json().state).to.eql(\"CHECKED_IN\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "6 register R2",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"attendeeRef\":\"ATT-7\",\"eventCode\":\"SPRING-DAY\",\"seats\":1}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 201\", () => pm.response.to.have.status(201));",
+              "pm.test(\"[STEP] state is REQUESTED\", () => pm.expect(pm.response.json().state).to.eql(\"REQUESTED\"));",
+              "pm.collectionVariables.set(\"r2\", pm.response.json()[\"registrationId\"]);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "7 R2 -> WAITLISTED",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations/{{r2}}/transitions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"to\":\"WAITLISTED\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"[STEP] state is WAITLISTED\", () => pm.expect(pm.response.json().state).to.eql(\"WAITLISTED\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "8 R2 -> CONFIRMED",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations/{{r2}}/transitions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"to\":\"CONFIRMED\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"[STEP] state is CONFIRMED\", () => pm.expect(pm.response.json().state).to.eql(\"CONFIRMED\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "9 R2 -> CANCELLED with reason",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations/{{r2}}/transitions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"to\":\"CANCELLED\",\"reason\":\"Schedule conflict\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"[STEP] state is CANCELLED\", () => pm.expect(pm.response.json().state).to.eql(\"CANCELLED\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "10 fetch R2",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations/{{r2}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"[STEP] state is CANCELLED\", () => pm.expect(pm.response.json().state).to.eql(\"CANCELLED\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "11 register R3",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"attendeeRef\":\"ATT-7\",\"eventCode\":\"API-SUMMIT\",\"seats\":3}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 201\", () => pm.response.to.have.status(201));",
+              "pm.test(\"[STEP] state is REQUESTED\", () => pm.expect(pm.response.json().state).to.eql(\"REQUESTED\"));",
+              "pm.collectionVariables.set(\"r3\", pm.response.json()[\"registrationId\"]);"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "12 R3 -> WAITLISTED",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations/{{r3}}/transitions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"to\":\"WAITLISTED\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"[STEP] state is WAITLISTED\", () => pm.expect(pm.response.json().state).to.eql(\"WAITLISTED\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "13 R3 -> CHECKED_IN (forbidden: not confirmed)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations/{{r3}}/transitions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"to\":\"CHECKED_IN\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 422\", () => pm.response.to.have.status(422));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "14 fetch R3",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations/{{r3}}"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"[STEP] state is WAITLISTED\", () => pm.expect(pm.response.json().state).to.eql(\"WAITLISTED\"));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "15 list ATT-7",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/attendees/ATT-7/registrations"
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 200\", () => pm.response.to.have.status(200));",
+              "pm.test(\"[STEP] list states are CHECKED_IN, CANCELLED, WAITLISTED\", () => pm.expect(pm.response.json().items.map(r => r.state)).to.eql([\"CHECKED_IN\",\"CANCELLED\",\"WAITLISTED\"]));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "16 unknown registration -> CONFIRMED",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations/REG-NOPE0000/transitions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"to\":\"CONFIRMED\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 404\", () => pm.response.to.have.status(404));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "17 R3 -> DONE (not a state)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations/{{r3}}/transitions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"to\":\"DONE\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 400\", () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "18 register with 0 seats",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/v1/registrations",
+        "body": {
+          "mode": "raw",
+          "raw": "{\"attendeeRef\":\"ATT-7\",\"eventCode\":\"JAVA-CONF-26\",\"seats\":0}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"[STEP] status is 400\", () => pm.response.to.have.status(400));"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

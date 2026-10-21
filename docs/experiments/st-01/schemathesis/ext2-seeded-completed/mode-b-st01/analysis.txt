@@ -1,0 +1,50 @@
+﻿HAR entries: 575
+  DELETE /api/orders                   total=   1  405:1
+  DELETE /api/orders/{id}              total=   1  405:1
+  DELETE /api/orders/{id}/status       total=   1  405:1
+  DELETE /api/users/{userId}/orders    total=   1  405:1
+  GET /api/orders                      total=   1  405:1
+  GET /api/orders/{id}                 total= 106  200:86 400:12 404:7 500:1
+  GET /api/orders/{id}/status          total=   1  405:1
+  GET /api/users/{userId}/orders       total=  65  200:55 400:9 500:1
+  OPTIONS /api/orders                  total=   1  200:1
+  OPTIONS /api/orders/{id}             total=   1  200:1
+  OPTIONS /api/orders/{id}/status      total=   1  200:1
+  OPTIONS /api/users/{userId}/orders   total=   1  200:1
+  PATCH /api/orders                    total=   1  405:1
+  PATCH /api/orders/{id}               total=   1  405:1
+  PATCH /api/orders/{id}/status        total= 132  200:4 400:24 404:4 409:98 415:1 500:1
+  PATCH /api/users/{userId}/orders     total=   1  405:1
+  POST /api/orders                     total= 244  201:36 400:208
+  POST /api/orders/{id}                total=   1  405:1
+  POST /api/orders/{id}/status         total=   1  405:1
+  POST /api/users/{userId}/orders      total=   1  405:1
+  PUT /api/orders                      total=   1  405:1
+  PUT /api/orders/{id}                 total=   1  405:1
+  PUT /api/orders/{id}/status          total=   1  405:1
+  PUT /api/users/{userId}/orders       total=   1  405:1
+  QUERY /api/orders                    total=   1  405:1
+  QUERY /api/orders/{id}               total=   1  405:1
+  QUERY /api/orders/{id}/status        total=   1  405:1
+  QUERY /api/users/{userId}/orders     total=   1  405:1
+  TRACE /api/orders                    total=   1  405:1
+  TRACE /api/orders/{id}               total=   1  405:1
+  TRACE /api/orders/{id}/status        total=   1  405:1
+  TRACE /api/users/{userId}/orders     total=   1  405:1
+GET /api/orders/{id} 200 bodies by order status: {"CREATED":79,"COMPLETED":3,"CANCELLED":4}
+PATCH 200 resulting statuses: {"CANCELLED":4}
+check executions (name -> {status: count}):
+  allow_header_conformance       {"success":572}
+  content_type_conformance       {"success":540}
+  ensure_resource_availability   {"success":540}
+  ignored_auth                   {"success":540}
+  max_response_time              {"success":572}
+  missing_required_header        {"success":572}
+  negative_data_rejection        {"success":540}
+  not_a_server_error             {"success":569,"failure":3}
+  positive_data_acceptance       {"success":442,"failure":3}
+  response_headers_conformance   {"success":540}
+  response_schema_conformance    {"success":540}
+  status_code_conformance        {"success":540}
+  unsupported_method             {"success":572}
+  use_after_free                 {"success":540}

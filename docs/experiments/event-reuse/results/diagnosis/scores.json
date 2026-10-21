@@ -1,0 +1,185 @@
+[
+  {
+    "mode": "evt-st01",
+    "cause": [
+      8
+    ],
+    "semval": {
+      "R1": true,
+      "R2": true,
+      "R3": true,
+      "R4": true,
+      "R5": true,
+      "R6": true,
+      "R7": "no",
+      "R8": true
+    },
+    "postman": {
+      "R1": true,
+      "R2": true,
+      "R3": true,
+      "R4": true,
+      "R5": false,
+      "R6": false,
+      "R7": "no",
+      "R8": true
+    },
+    "semvalFailSteps": [
+      8
+    ],
+    "postmanFailSteps": [
+      8
+    ]
+  },
+  {
+    "mode": "evt-db01",
+    "cause": [
+      4,
+      13
+    ],
+    "semval": {
+      "R1": true,
+      "R2": true,
+      "R3": true,
+      "R4": true,
+      "R5": true,
+      "R6": true,
+      "R7": "yes",
+      "R8": true
+    },
+    "postman": {
+      "R1": true,
+      "R2": true,
+      "R3": true,
+      "R4": true,
+      "R5": false,
+      "R6": true,
+      "R7": "partial",
+      "R8": true
+    },
+    "semvalFailSteps": [
+      4,
+      5,
+      13,
+      14,
+      15
+    ],
+    "postmanFailSteps": [
+      4,
+      5,
+      13,
+      14,
+      15
+    ]
+  },
+  {
+    "mode": "evt-db02",
+    "cause": [
+      9
+    ],
+    "semval": {
+      "R1": true,
+      "R2": true,
+      "R3": true,
+      "R4": true,
+      "R5": true,
+      "R6": true,
+      "R7": "yes",
+      "R8": true
+    },
+    "postman": {
+      "R1": true,
+      "R2": true,
+      "R3": true,
+      "R4": true,
+      "R5": false,
+      "R6": false,
+      "R7": "partial",
+      "R8": true
+    },
+    "semvalFailSteps": [
+      9
+    ],
+    "postmanFailSteps": [
+      9,
+      10,
+      15
+    ]
+  },
+  {
+    "mode": "evt-ri01",
+    "cause": [
+      2
+    ],
+    "semval": {
+      "R1": true,
+      "R2": true,
+      "R3": true,
+      "R4": true,
+      "R5": true,
+      "R6": false,
+      "R7": "no",
+      "R8": true
+    },
+    "postman": {
+      "R1": true,
+      "R2": true,
+      "R3": true,
+      "R4": true,
+      "R5": false,
+      "R6": false,
+      "R7": "no",
+      "R8": true
+    },
+    "semvalFailSteps": [
+      2,
+      3,
+      5,
+      15
+    ],
+    "postmanFailSteps": [
+      2,
+      3,
+      5,
+      15
+    ]
+  },
+  {
+    "mode": "evt-cf01",
+    "cause": [
+      2
+    ],
+    "semval": {
+      "R1": true,
+      "R2": true,
+      "R3": true,
+      "R4": true,
+      "R5": true,
+      "R6": false,
+      "R7": "no",
+      "R8": true
+    },
+    "postman": {
+      "R1": true,
+      "R2": true,
+      "R3": true,
+      "R4": true,
+      "R5": false,
+      "R6": false,
+      "R7": "no",
+      "R8": true
+    },
+    "semvalFailSteps": [
+      2,
+      3,
+      5,
+      15
+    ],
+    "postmanFailSteps": [
+      2,
+      3,
+      5,
+      15
+    ]
+  }
+]

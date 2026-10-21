@@ -1,0 +1,11 @@
+{
+    "mode":  "lib-ri01",
+    "config":  "semval-jdbc",
+    "repeat":  2,
+    "defect":  "ri01-returned-without-timestamp",
+    "exitCode":  1,
+    "durationMs":  2319,
+    "defectLines":  [
+                        "DEFECT LIB-RI-01 ENABLED: PATCH /api/loans/{id}/status saves RETURNED loans without returnedAt"
+                    ]
+}

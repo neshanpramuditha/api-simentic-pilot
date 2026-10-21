@@ -1,0 +1,77 @@
+{
+  "name": "event-api semantic rules v2 (engine 0.2: items, notAfter)",
+  "rules": [
+    {
+      "id": "EVT-INV-001",
+      "kind": "response-invariant",
+      "description": "checkedInAt is set if and only if state is CHECKED_IN",
+      "operations": ["registerAttendee", "fetchRegistration", "transitionRegistration", "listAttendeeRegistrations"],
+      "items": { "listAttendeeRegistrations": "$.items" },
+      "assert": { "iff": [ { "path": "$.checkedInAt", "notNull": true }, { "path": "$.state", "equals": "CHECKED_IN" } ] }
+    },
+    {
+      "id": "EVT-INV-002",
+      "kind": "response-invariant",
+      "description": "cancelledAt is set if and only if state is CANCELLED",
+      "operations": ["registerAttendee", "fetchRegistration", "transitionRegistration", "listAttendeeRegistrations"],
+      "items": { "listAttendeeRegistrations": "$.items" },
+      "assert": { "iff": [ { "path": "$.cancelledAt", "notNull": true }, { "path": "$.state", "equals": "CANCELLED" } ] }
+    },
+    {
+      "id": "EVT-INV-003",
+      "kind": "response-invariant",
+      "description": "cancellationReason is set if and only if state is CANCELLED",
+      "operations": ["registerAttendee", "fetchRegistration", "transitionRegistration", "listAttendeeRegistrations"],
+      "items": { "listAttendeeRegistrations": "$.items" },
+      "assert": { "iff": [ { "path": "$.cancellationReason", "notNull": true }, { "path": "$.state", "equals": "CANCELLED" } ] }
+    },
+    {
+      "id": "EVT-INV-004",
+      "kind": "response-invariant",
+      "description": "A CHECKED_IN registration has been confirmed (confirmedAt set); confirmedAt is only set in CONFIRMED, CHECKED_IN or CANCELLED",
+      "operations": ["registerAttendee", "fetchRegistration", "transitionRegistration", "listAttendeeRegistrations"],
+      "items": { "listAttendeeRegistrations": "$.items" },
+      "assert": { "all": [
+        { "implies": [ { "path": "$.state", "equals": "CHECKED_IN" }, { "path": "$.confirmedAt", "notNull": true } ] },
+        { "implies": [ { "path": "$.confirmedAt", "notNull": true }, { "path": "$.state", "in": ["CONFIRMED", "CHECKED_IN", "CANCELLED"] } ] }
+      ] }
+    },
+    {
+      "id": "EVT-INV-005",
+      "kind": "response-invariant",
+      "description": "Timestamps are in lifecycle order: requestedAt <= confirmedAt <= checkedInAt",
+      "operations": ["registerAttendee", "fetchRegistration", "transitionRegistration", "listAttendeeRegistrations"],
+      "items": { "listAttendeeRegistrations": "$.items" },
+      "assert": { "all": [
+        { "implies": [ { "path": "$.confirmedAt", "notNull": true }, { "path": "$.requestedAt", "notAfter": "$.confirmedAt" } ] },
+        { "implies": [ { "path": "$.checkedInAt", "notNull": true }, { "path": "$.confirmedAt", "notAfter": "$.checkedInAt" } ] }
+      ] }
+    },
+    {
+      "id": "EVT-ST-001",
+      "kind": "state-transition",
+      "description": "Registration state changes follow the lifecycle; forbidden changes are rejected with 422",
+      "operations": ["transitionRegistration"],
+      "resource": { "idParam": "registrationId", "idField": "$.registrationId", "stateField": "$.state", "readOperation": "fetchRegistration" },
+      "requestedState": "$request.body.to",
+      "transitions": {
+        "REQUESTED": ["CONFIRMED", "WAITLISTED", "CANCELLED"],
+        "WAITLISTED": ["CONFIRMED", "CANCELLED"],
+        "CONFIRMED": ["CHECKED_IN", "CANCELLED"],
+        "CHECKED_IN": [],
+        "CANCELLED": []
+      },
+      "rejectedStatuses": [422]
+    },
+    {
+      "id": "EVT-DB-001",
+      "kind": "db-consistency",
+      "description": "The stored registration matches a successful transition and is unchanged after a rejected one",
+      "operations": ["transitionRegistration"],
+      "query": "SELECT state, confirmed_at, checked_in_at, cancelled_at, cancellation_reason FROM event_registration WHERE registration_id = ?",
+      "params": ["$path.registrationId"],
+      "onSuccess": { "columnsMatchResponse": { "state": "$.state", "cancellation_reason": "$.cancellationReason" } },
+      "onError": "rowUnchanged"
+    }
+  ]
+}

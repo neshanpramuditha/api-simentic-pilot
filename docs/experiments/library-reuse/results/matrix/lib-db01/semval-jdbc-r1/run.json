@@ -1,0 +1,11 @@
+{
+    "mode":  "lib-db01",
+    "config":  "semval-jdbc",
+    "repeat":  1,
+    "defect":  "db01-rejected-change-saved",
+    "exitCode":  1,
+    "durationMs":  3039,
+    "defectLines":  [
+                        "DEFECT LIB-DB-01 ENABLED: PATCH /api/loans/{id}/status saves rejected (409) status changes"
+                    ]
+}

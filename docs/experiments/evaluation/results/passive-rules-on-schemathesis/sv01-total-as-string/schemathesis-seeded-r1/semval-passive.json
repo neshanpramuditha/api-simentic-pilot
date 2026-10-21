@@ -1,0 +1,4660 @@
+{
+  "tool" : "semantic-validator 0.1.0",
+  "mode" : "check-har",
+  "source" : "HAR har-20261019T092345Z.json (passive: no read-backs, no database)",
+  "ruleSet" : "order-api semantic rules v1",
+  "durationMillis" : 203,
+  "exchanges" : 550,
+  "unmatchedRequests" : 28,
+  "totals" : {
+    "PASS" : 225,
+    "FAIL" : 0,
+    "NOT_APPLICABLE" : 544
+  },
+  "byRule" : {
+    "ORD-INV-001" : {
+      "PASS" : 155,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 414
+    },
+    "ORD-ST-001" : {
+      "PASS" : 70,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 30
+    },
+    "ORD-DB-001" : {
+      "PASS" : 0,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 100
+    }
+  },
+  "rules" : [ {
+    "id" : "ORD-INV-001",
+    "description" : "completedAt is set if and only if status is COMPLETED",
+    "operations" : [ "createOrder", "getOrder", "updateStatus", "getOrdersByUser" ]
+  }, {
+    "id" : "ORD-ST-001",
+    "description" : "Order status changes follow the order lifecycle; forbidden changes are rejected with 409",
+    "operations" : [ "updateStatus" ]
+  }, {
+    "id" : "ORD-DB-001",
+    "description" : "The persisted order matches a successful status change and is unchanged after a rejected one",
+    "operations" : [ "updateStatus" ]
+  } ],
+  "failures" : [ ],
+  "findings" : [ {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 4,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 4,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 4,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 5,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 5,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 5,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 6,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 6,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> PAID rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 6,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 7,
+    "operationId" : "getOrdersByUser",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 8,
+    "operationId" : "getOrdersByUser",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 9,
+    "operationId" : "getOrdersByUser",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 10,
+    "operationId" : "getOrdersByUser",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 11,
+    "operationId" : "getOrdersByUser",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 12,
+    "operationId" : "getOrdersByUser",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 13,
+    "operationId" : "getOrdersByUser",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 18,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 19,
+    "operationId" : "getOrdersByUser",
+    "message" : "not a successful response with a body (HTTP 500)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 20,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 21,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 22,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 23,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 24,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 25,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 26,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 27,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 28,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 29,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 30,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 31,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 32,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 33,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 34,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 35,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 36,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 37,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 38,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 39,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 40,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 41,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 42,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 43,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 44,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 45,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 46,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 47,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 48,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 49,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 50,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 51,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 52,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 53,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 54,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 55,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 56,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 57,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 500)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 58,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 59,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 59,
+    "operationId" : "updateStatus",
+    "message" : "requested state is not a known state: null"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 59,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 60,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 60,
+    "operationId" : "updateStatus",
+    "message" : "previous state of resource 9223372036854775808 unknown"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 60,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 61,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 61,
+    "operationId" : "updateStatus",
+    "message" : "previous state of resource -9223372036854775809 unknown"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 61,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 62,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 62,
+    "operationId" : "updateStatus",
+    "message" : "previous state of resource null%2Cnull unknown"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 62,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 63,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 63,
+    "operationId" : "updateStatus",
+    "message" : "previous state of resource AAA unknown"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 63,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 64,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 64,
+    "operationId" : "updateStatus",
+    "message" : "previous state of resource null unknown"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 64,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 65,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 65,
+    "operationId" : "updateStatus",
+    "message" : "previous state of resource true unknown"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 65,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 66,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 66,
+    "operationId" : "updateStatus",
+    "message" : "previous state of resource 0.5 unknown"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 66,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 67,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 67,
+    "operationId" : "updateStatus",
+    "message" : "previous state of resource 9223372036854775806 unknown"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 67,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 68,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 68,
+    "operationId" : "updateStatus",
+    "message" : "previous state of resource 9223372036854775807 unknown"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 68,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 69,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 69,
+    "operationId" : "updateStatus",
+    "message" : "previous state of resource -9223372036854775807 unknown"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 69,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 70,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 70,
+    "operationId" : "updateStatus",
+    "message" : "previous state of resource -9223372036854775808 unknown"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 70,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 71,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 71,
+    "operationId" : "updateStatus",
+    "message" : "requested state is not a known state: null"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 71,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 72,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 72,
+    "operationId" : "updateStatus",
+    "message" : "requested state is not a known state: null"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 72,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 73,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 73,
+    "operationId" : "updateStatus",
+    "message" : "requested state is not a known state: null"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 73,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 74,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 74,
+    "operationId" : "updateStatus",
+    "message" : "requested state is not a known state: null"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 74,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 75,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 75,
+    "operationId" : "updateStatus",
+    "message" : "requested state is not a known state: null"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 75,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 76,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 76,
+    "operationId" : "updateStatus",
+    "message" : "requested state is not a known state: null"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 76,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 77,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 77,
+    "operationId" : "updateStatus",
+    "message" : "requested state is not a known state: {}"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 77,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 78,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 78,
+    "operationId" : "updateStatus",
+    "message" : "requested state is not a known state: [null,null]"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 78,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 79,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 79,
+    "operationId" : "updateStatus",
+    "message" : "requested state is not a known state: null"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 79,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 80,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 80,
+    "operationId" : "updateStatus",
+    "message" : "requested state is not a known state: false"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 80,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 81,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 81,
+    "operationId" : "updateStatus",
+    "message" : "requested state is not a known state: 0"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 81,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 82,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 82,
+    "operationId" : "updateStatus",
+    "message" : "requested state is not a known state: AAA"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 82,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 83,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 83,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CANCELLED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 83,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 84,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 84,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 84,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 85,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 85,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> DELIVERED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 85,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 86,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 86,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> SHIPPED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 86,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 87,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 87,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 87,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 88,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 88,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> PAID rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 88,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 89,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 415)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 89,
+    "operationId" : "updateStatus",
+    "message" : "request refused for a reason outside this rule (HTTP 415)"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 89,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 90,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 500)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 90,
+    "operationId" : "updateStatus",
+    "message" : "request refused for a reason outside this rule (HTTP 500)"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 90,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 91,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 91,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> PAID rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 91,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 92,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 92,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 94,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 94,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 95,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 95,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 96,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 96,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 97,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 97,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 98,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 98,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 99,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 99,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 100,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 100,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 101,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 101,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 102,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 102,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 105,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 105,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 106,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 106,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 107,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 107,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 108,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 108,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 109,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 109,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 110,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 110,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 111,
+    "operationId" : "getOrdersByUser",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 112,
+    "operationId" : "getOrdersByUser",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 113,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 113,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 114,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 114,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 115,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 115,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 116,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 116,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 117,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 117,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 127,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 127,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 128,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 128,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 129,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 129,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 130,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 130,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 131,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 131,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 132,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 132,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 133,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 133,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 134,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 134,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 135,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 135,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 136,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 136,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 137,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 137,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 138,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 138,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 139,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 139,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 140,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 140,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 141,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 141,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 142,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 143,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 144,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 145,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 146,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 147,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 148,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 149,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 150,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 151,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 152,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 153,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 154,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 155,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 156,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 157,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 158,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 159,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 160,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 161,
+    "operationId" : "getOrder",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 162,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 163,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 164,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 165,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 166,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 167,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 168,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 169,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 170,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 171,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 172,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 173,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 174,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 175,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 176,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 177,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 178,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 179,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 180,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 181,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 182,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 183,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 184,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 185,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 186,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 187,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 188,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 189,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 190,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 191,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 192,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 193,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 193,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 193,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 194,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 194,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 194,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 195,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 195,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 195,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 196,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 196,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 196,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 197,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 197,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 197,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 198,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 198,
+    "operationId" : "updateStatus",
+    "message" : "previous state of resource 413839 unknown"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 198,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 199,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 199,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 199,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 200,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 200,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 200,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 201,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 201,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 201,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 202,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 202,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 202,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 203,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 203,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 203,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 204,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 204,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 204,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 205,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 205,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 205,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 206,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 206,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 206,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 207,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 207,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 207,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 208,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 208,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 208,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 209,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 209,
+    "operationId" : "updateStatus",
+    "message" : "requested state is not a known state: null"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 209,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 210,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 210,
+    "operationId" : "updateStatus",
+    "message" : "previous state of resource 875 unknown"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 210,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 211,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 211,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 211,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 212,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 212,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 212,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 213,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 213,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 213,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 214,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 214,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 214,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 215,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 215,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 215,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 216,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 216,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 216,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 217,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 217,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 217,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 218,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 218,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 218,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 219,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 219,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 219,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 220,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 220,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 220,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 221,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 221,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 221,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 222,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 222,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 222,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 223,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 223,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 223,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 224,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 224,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 224,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 225,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 225,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 225,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 226,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 226,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 226,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 227,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 227,
+    "operationId" : "updateStatus",
+    "message" : "previous state of resource 0 unknown"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 227,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 228,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 228,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 228,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 229,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 229,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 229,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 230,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 230,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 230,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 231,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 231,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 231,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 232,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 232,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 232,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 233,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 233,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 233,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 234,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 234,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 234,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 235,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 235,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 235,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 236,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 236,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 236,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 237,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 237,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 237,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 238,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 238,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 238,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 239,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 239,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 239,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 240,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 240,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 240,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 241,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 241,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 241,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 242,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 242,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 242,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 243,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 244,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 245,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 246,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 247,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 248,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 249,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 250,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 251,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 252,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 253,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 254,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 255,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 256,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 257,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 258,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 259,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 260,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 261,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 262,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 263,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 264,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 265,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 266,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 267,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 268,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 269,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 270,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 271,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 272,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 273,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 274,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 275,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 276,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 277,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 278,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 279,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 280,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 281,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 282,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 283,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 284,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 285,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 286,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 286,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 286,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 287,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 288,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 289,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 290,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 291,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 292,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 293,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 294,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 295,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 296,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 297,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 298,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 299,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 300,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 301,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 302,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 303,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 304,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 305,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 306,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 306,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 306,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 307,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 308,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 309,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 309,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 309,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 310,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 311,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 312,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 313,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 314,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 315,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 316,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 317,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 318,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 319,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 320,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 321,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 322,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 323,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 324,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 325,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 326,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 327,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 327,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 327,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 328,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 329,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 330,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 331,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 332,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 333,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 334,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 335,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 336,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 337,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 338,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 339,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 340,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 341,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 342,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 343,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 344,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 345,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 346,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 347,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 348,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 349,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 349,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 349,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 350,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 351,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 352,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 353,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 354,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 355,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 356,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 357,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 358,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 359,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 360,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 361,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 362,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 362,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 362,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 363,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 363,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 363,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 364,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 365,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 366,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 367,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 368,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 369,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 370,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 371,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 372,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 373,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 374,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 375,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 376,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 377,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 378,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 379,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 380,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 381,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 382,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 383,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 384,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 385,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 386,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 387,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 387,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 387,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 388,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 389,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 389,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> COMPLETED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 389,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 390,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 391,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 392,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 393,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 394,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 394,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 394,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 395,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 395,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 395,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 396,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 397,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 398,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 399,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 400,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 401,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 402,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 403,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 404,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 405,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 406,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 407,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 408,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 409,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 410,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 411,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 412,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 413,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 414,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 415,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 416,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 417,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 418,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 419,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 420,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 421,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 422,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 423,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 424,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 425,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 426,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 427,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 428,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 429,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 430,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 431,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 432,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 433,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 434,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 435,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 436,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 437,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 438,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 439,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 440,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 441,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 442,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 443,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 444,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 445,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 446,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 447,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 448,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 449,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 450,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 451,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 452,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 453,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 454,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 455,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 456,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 457,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 458,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 459,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 460,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 461,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 462,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 463,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 463,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 463,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 464,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 464,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 464,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 465,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 466,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 467,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 468,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 469,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 470,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 471,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 472,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 473,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 474,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 475,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 476,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 476,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> CREATED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 476,
+    "operationId" : "updateStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 477,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 478,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 479,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 480,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 481,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 482,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 483,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 484,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 485,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 486,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 487,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 488,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 489,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 490,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 491,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 492,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 493,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 494,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 495,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 496,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 497,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 498,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 499,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 500,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 501,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 502,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 503,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 504,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 505,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 506,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 507,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 508,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 509,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 510,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 511,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 512,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 513,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 514,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 515,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 516,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 517,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 518,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 519,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 520,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 521,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 522,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 523,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 524,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 525,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 526,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 527,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 528,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 529,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 530,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 531,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 532,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 533,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 534,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 535,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 536,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 537,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 538,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 539,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 540,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 541,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 542,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 543,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 544,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 545,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 546,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 547,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 548,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 549,
+    "operationId" : "createOrder",
+    "message" : "not a successful response with a body (HTTP 400)"
+  } ]
+}

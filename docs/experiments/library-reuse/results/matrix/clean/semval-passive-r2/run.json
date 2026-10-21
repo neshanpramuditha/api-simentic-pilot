@@ -1,0 +1,11 @@
+{
+    "mode":  "clean",
+    "config":  "semval-passive",
+    "repeat":  2,
+    "defect":  "",
+    "exitCode":  0,
+    "durationMs":  408,
+    "defectLines":  [
+
+                    ]
+}

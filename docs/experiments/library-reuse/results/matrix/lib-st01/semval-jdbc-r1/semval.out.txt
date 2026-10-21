@@ -1,0 +1,2 @@
+semantic-validator: 15 exchanges, 4 rules, totals {PASS=40, FAIL=1, NOT_APPLICABLE=11}, 1397 ms -> <run-root>\lib-st01\semval-jdbc-r1\semval.json
+  FAIL LIB-ST-001 #7 updateLoanStatus: forbidden transition REQUESTED -> ISSUED was accepted with HTTP 200 (allowed from REQUESTED: [APPROVED, REJECTED])

@@ -1,0 +1,6 @@
+﻿semantic-validator: 11 exchanges, 3 rules, totals {PASS=19, FAIL=4, NOT_APPLICABLE=1}, 850 ms -> <report-dir>\matrix\st01-completed-to-cancelled\semval-r1\report.json
+  FAIL ORD-INV-001 #5 updateStatus: completedAt is set if and only if status is COMPLETED � violated: {"$.completedAt":"2026-10-19T09:26:46.193139","$.status":"CANCELLED"}
+  FAIL ORD-ST-001 #5 updateStatus: forbidden transition COMPLETED -> CANCELLED was accepted with HTTP 200 (allowed from COMPLETED: [])
+  FAIL ORD-INV-001 #6 getOrder: completedAt is set if and only if status is COMPLETED � violated: {"$.completedAt":"2026-10-19T09:26:46.193139","$.status":"CANCELLED"}
+  FAIL ORD-INV-001 #10 getOrdersByUser: completedAt is set if and only if status is COMPLETED � violated by item 0: {"$.completedAt":"2026-10-19T09:26:46.193139","$.status":"CANCELLED"}
+semantic-validator exit code: 1 (0 = no rule failed, 1 = at least one FAIL)

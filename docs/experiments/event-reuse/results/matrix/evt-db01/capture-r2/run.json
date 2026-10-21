@@ -1,0 +1,14 @@
+{
+    "mode":  "evt-db01",
+    "type":  "capture",
+    "repeat":  2,
+    "defect":  "db01-rejected-change-saved",
+    "exitCodeV01Passive":  1,
+    "durationMsV01Passive":  555,
+    "exitCodeV02Passive":  1,
+    "durationMsV02Passive":  643,
+    "durationMsAjv":  437,
+    "defectLines":  [
+                        "DEFECT EVT-DB-01 ENABLED: transitions rejected with 422 are stored anyway"
+                    ]
+}

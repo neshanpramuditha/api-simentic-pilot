@@ -1,0 +1,2 @@
+semantic-validator: 15 exchanges, 4 rules, totals {PASS=32, FAIL=1, NOT_APPLICABLE=19}, 42 ms -> <run-root>\lib-st01\semval-passive-r2\semval.json
+  FAIL LIB-ST-001 #7 updateLoanStatus: forbidden transition REQUESTED -> ISSUED was accepted with HTTP 200 (allowed from REQUESTED: [APPROVED, REJECTED])

@@ -1,0 +1,121 @@
+{
+  "run": {
+    "mode": "evt-ri01",
+    "type": "semval-v02-jdbc",
+    "repeat": 1,
+    "defectSwitchOk": true
+  },
+  "traffic": {
+    "harEntries": 29,
+    "readBacks": 10,
+    "scenarioRequests": 19,
+    "problems": []
+  },
+  "oracle": {
+    "transitions": {
+      "REQUESTED": [
+        "CONFIRMED",
+        "WAITLISTED",
+        "CANCELLED"
+      ],
+      "WAITLISTED": [
+        "CONFIRMED",
+        "CANCELLED"
+      ],
+      "CONFIRMED": [
+        "CHECKED_IN",
+        "CANCELLED"
+      ],
+      "CHECKED_IN": [],
+      "CANCELLED": []
+    },
+    "violations": [
+      {
+        "key": "EVT-INV-001@2",
+        "rule": "EVT-INV-001",
+        "step": 2,
+        "item": null,
+        "kind": "invariant",
+        "detail": "state=CHECKED_IN checkedInAt=null"
+      },
+      {
+        "key": "EVT-INV-001@3",
+        "rule": "EVT-INV-001",
+        "step": 3,
+        "item": null,
+        "kind": "invariant",
+        "detail": "state=CHECKED_IN checkedInAt=null"
+      },
+      {
+        "key": "EVT-INV-001@5",
+        "rule": "EVT-INV-001",
+        "step": 5,
+        "item": null,
+        "kind": "invariant",
+        "detail": "state=CHECKED_IN checkedInAt=null"
+      },
+      {
+        "key": "EVT-INV-001@15#0",
+        "rule": "EVT-INV-001",
+        "step": 15,
+        "item": 0,
+        "kind": "invariant",
+        "detail": "state=CHECKED_IN checkedInAt=null"
+      }
+    ],
+    "causeSteps": [
+      2
+    ],
+    "deviations": [],
+    "affectedSteps": [
+      2,
+      3,
+      5,
+      15
+    ],
+    "hiddenStateChanges": [],
+    "dbRowsCheckedInWithoutTime": 1,
+    "dbRowsOutOfOrder": 0,
+    "exercised": true,
+    "anyDefectSignature": true
+  },
+  "tools": {
+    "semval-v02-active": {
+      "exitCode": 1,
+      "totals": {
+        "PASS": 93,
+        "FAIL": 4,
+        "NOT_APPLICABLE": 28
+      },
+      "failsByRule": {
+        "EVT-INV-001": 4,
+        "EVT-INV-002": 0,
+        "EVT-INV-003": 0,
+        "EVT-INV-004": 0,
+        "EVT-INV-005": 0,
+        "EVT-ST-001": 0,
+        "EVT-DB-001": 0
+      },
+      "failKeys": [
+        "EVT-INV-001@2",
+        "EVT-INV-001@3",
+        "EVT-INV-001@5",
+        "EVT-INV-001@15#0"
+      ],
+      "tp": 4,
+      "extraKeys": [],
+      "fn": [],
+      "failSteps": [
+        2,
+        3,
+        5,
+        15
+      ],
+      "falsePositiveSteps": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "fails": 4,
+      "durationMs": 3539
+    }
+  }
+}

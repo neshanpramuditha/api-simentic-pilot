@@ -1,0 +1,19 @@
+2026-10-19T06:55:59Z phase1-start
+2026-10-19T06:57:03Z api-implementation-start
+2026-10-19T07:00:43Z contract-frozen clean-tests=38/38
+2026-10-19T07:01:01Z adaptation-start (rules v1 for engine v0.1)
+2026-10-19T07:10:16Z adaptation-v1-first-run-done (engine v0.1 runs; envelope vacuous pass found; time-order not expressible)
+2026-10-19T07:12:19Z defects-start
+2026-10-19T07:14:13Z defects-done tests=52/52
+2026-10-19T07:14:26Z engine-fix-start (v0.2)
+2026-10-19T07:17:54Z engine-fix-done (v0.2, unit tests 5/5)
+2026-10-19T07:18:37Z rules-v2-start
+2026-10-19T07:18:37Z rules-v2-done
+2026-10-19T07:19:10Z postman-start
+2026-10-19T07:21:38Z postman-v1-built-and-trial (3 read-back FPs from timestamp precision) -> revision start
+2026-10-19T07:21:45Z postman-revision-1-done
+2026-10-19T07:22:32Z postman-revision-2 (harness: read-back via proxy; no assertion change)
+2026-10-19T07:23:26Z event-matrix-start
+2026-10-19T07:24:58Z event-matrix-1 ABORTED (stale event-api jar without defect classes); repackaging
+2026-10-19T07:25:19Z event-matrix-2-start
+2026-10-19T07:41:21Z event-matrix-2-end

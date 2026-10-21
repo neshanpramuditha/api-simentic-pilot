@@ -1,0 +1,14 @@
+{
+    "mode":  "evt-db02",
+    "type":  "capture",
+    "repeat":  1,
+    "defect":  "db02-cancellation-not-saved",
+    "exitCodeV01Passive":  0,
+    "durationMsV01Passive":  442,
+    "exitCodeV02Passive":  0,
+    "durationMsV02Passive":  461,
+    "durationMsAjv":  260,
+    "defectLines":  [
+                        "DEFECT EVT-DB-02 ENABLED: successful cancellations are returned but not stored"
+                    ]
+}

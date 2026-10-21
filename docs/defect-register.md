@@ -1,6 +1,6 @@
 # Preliminary defect register
 
-**Status:** Proposed. **SV-01** and **ST-01** have been implemented behind disabled-by-default switches and measured (results recorded under each). The other 15 defects have not been injected, and their detection expectations remain untested hypotheses.
+**Status:** Proposed. **SV-01**, **ST-01** and **DB-02** have been implemented behind disabled-by-default switches and measured (results recorded under each; comparative evaluation and feasibility conclusion in `docs/experiments/evaluation/`). The other 14 defects have not been injected, and their detection expectations remain untested hypotheses.
 **Baseline:** `docs/openapi-baseline.json`, exported from the clean API (OpenAPI 3.1.0, 4 operations). Regenerated on 2026-10-18 after correcting baseline issues BL-01 to BL-03 (see the end of this document).
 **Date:** 2026-10-18
 
@@ -142,6 +142,7 @@ Allowed transitions in the clean API: `CREATED → PAID | CANCELLED`, `PAID → 
 - **Schemathesis (standard checks):** H: Unlikely — `200` is a documented status code, and reaching `COMPLETED` needs a chained flow.
 - **Proposed semantic rule:** For `PATCH …/status` `2xx`: `(previousStatus, response.status)` must be in the allowed-transition table. `previousStatus` comes from a prior `GET` or the last observed response for that `id`.
 - **Measured (2026-10-19, `docs/experiments/st-01/results.md`):** implemented behind `pilot.defects.st01-completed-to-cancelled.enabled` (default off; SV-01 off). In ST-01 mode the forbidden request returns `200` and the stored order changes from `COMPLETED` to `CANCELLED` (with `completedAt` still set). Schema-only: **missed** — the defect was exercised (200, schema-valid body), 0 of 16 failures. Postman CLI 1.74.0: **detected** (2 of 18 assertions fail at step 6: status and persisted state). JUnit suite: **detected** (2 of 29 fail). Schemathesis 4.29.4, baseline configuration: **not exercised** — no order reached `COMPLETED`; traffic identical to clean mode. Separate experiment EXT-1 (`--max-time 300`): **not exercised** — deepest state `SHIPPED`. Schema-only and Postman hypotheses confirmed; the Schemathesis hypothesis ("Unlikely") is neither confirmed nor refuted, because the defect was never reached.
+- **Measured, reachable (2026-10-19, EXT-2 and evaluation matrix, `docs/experiments/st-01/results.md`, `docs/experiments/evaluation/`):** with 30 orders seeded in `COMPLETED` before the run (contract unchanged), Schemathesis 4.29.4 with the recorded configuration **exercised** the defect (2 accepted `COMPLETED → CANCELLED` requests; 2 of 30 seeded orders persisted as `CANCELLED`) and reported only the clean-API findings SB-01..SB-04: **exercised, missed** (hypothesis "Unlikely" confirmed). The semantic-rule prototype detected it (`ORD-ST-001`), both on the shared scenario and passively on the seeded Schemathesis traffic.
 
 ### ST-02 — skipping lifecycle steps
 - **Category:** Invalid state transition
@@ -228,6 +229,7 @@ The pilot has no authentication, so "ownership" here means consistency of `owner
 - **Postman (written test):** H: Likely — record status, send a forbidden transition, expect `409`, then `GET` and compare.
 - **Schemathesis (standard checks):** H: Unlikely.
 - **Proposed semantic rule:** After a `4xx` `PATCH`, the next `GET` of the same `id` returns the same state as before the request.
+- **Measured (2026-10-19, `docs/experiments/db-02/design.md`, `docs/experiments/evaluation/`):** implemented behind `pilot.defects.db02-rejected-change-saved.enabled` (default off). In defect mode the `409` response is identical to clean mode while the forbidden status is persisted. Schema-only (Ajv): **exercised, missed**. Postman: **detected**, through the scenario's later read-back assertions (not at the failing request). Schemathesis 4.29.4 (empty and seeded database): **exercised** (1–2 orders per run whose final database state differs from the last state the client saw; 0 in every clean run) and **missed**. Semantic-rule prototype: **detected at the failing request** by `ORD-DB-001` (database row before/after, direct JDBC). All hypotheses confirmed.
 
 ### DB-03 — created order not saved
 - **Category:** Database-state inconsistency

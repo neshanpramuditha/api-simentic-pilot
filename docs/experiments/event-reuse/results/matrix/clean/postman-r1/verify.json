@@ -1,0 +1,57 @@
+{
+  "run": {
+    "mode": "clean",
+    "type": "postman",
+    "repeat": 1,
+    "defectSwitchOk": true
+  },
+  "traffic": {
+    "harEntries": 29,
+    "readBacks": 10,
+    "scenarioRequests": 19,
+    "problems": []
+  },
+  "oracle": {
+    "transitions": {
+      "REQUESTED": [
+        "CONFIRMED",
+        "WAITLISTED",
+        "CANCELLED"
+      ],
+      "WAITLISTED": [
+        "CONFIRMED",
+        "CANCELLED"
+      ],
+      "CONFIRMED": [
+        "CHECKED_IN",
+        "CANCELLED"
+      ],
+      "CHECKED_IN": [],
+      "CANCELLED": []
+    },
+    "violations": [],
+    "causeSteps": [],
+    "deviations": [],
+    "affectedSteps": [],
+    "hiddenStateChanges": [],
+    "dbRowsCheckedInWithoutTime": 0,
+    "dbRowsOutOfOrder": 0,
+    "exercised": null,
+    "anyDefectSignature": false
+  },
+  "tools": {
+    "postman": {
+      "assertions": 136,
+      "failedAssertions": 0,
+      "parsedFailures": 0,
+      "failsByTag": {},
+      "fails": [],
+      "failSteps": [],
+      "falsePositiveSteps": [],
+      "detectedAtCause": false,
+      "invariantKeysMatchOracle": true,
+      "exitCode": 0,
+      "durationMs": 4941
+    }
+  }
+}

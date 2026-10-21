@@ -1,0 +1,70 @@
+# evt-db02: Postman CLI output (sections with failures, then the failure table; ids masked)
+
+Root 9 R2 -> CANCELLED with reason
+
+  POST http://localhost:8092/v1/registrations/REG-xxxxxxxx/transitions [200 OK, 468 B, 18 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  GET http://localhost:8092/v1/registrations/REG-xxxxxxxx [200 OK, 425 B, 12 ms]
+  1. [READBACK] stored registration equals the 200 response
+  Pass  [STEP] status is 200
+  Pass  [STEP] state is CANCELLED
+
+Root 10 fetch R2
+
+  GET http://localhost:8092/v1/registrations/REG-xxxxxxxx [200 OK, 425 B, 13 ms]
+  Pass  [schema] body matches the OpenAPI Registration schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN
+  Pass  [INV-002] cancelledAt set iff CANCELLED
+  Pass  [INV-003] cancellationReason set iff CANCELLED
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt
+  Pass  [STEP] status is 200
+  2. [STEP] state is CANCELLED
+
+Root 15 list ATT-7
+
+  GET http://localhost:8092/v1/attendees/ATT-7/registrations [200 OK, 999 B, 118 ms]
+  Pass  [schema] body matches the OpenAPI AttendeeRegistrations schema
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN (item 0)
+  Pass  [INV-002] cancelledAt set iff CANCELLED (item 0)
+  Pass  [INV-003] cancellationReason set iff CANCELLED (item 0)
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED (item 0)
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 0)
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN (item 1)
+  Pass  [INV-002] cancelledAt set iff CANCELLED (item 1)
+  Pass  [INV-003] cancellationReason set iff CANCELLED (item 1)
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED (item 1)
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 1)
+  Pass  [INV-001] checkedInAt set iff CHECKED_IN (item 2)
+  Pass  [INV-002] cancelledAt set iff CANCELLED (item 2)
+  Pass  [INV-003] cancellationReason set iff CANCELLED (item 2)
+  Pass  [INV-004] CHECKED_IN implies confirmedAt; confirmedAt only in CONFIRMED/CHECKED_IN/CANCELLED (item 2)
+  Pass  [INV-005] requestedAt <= confirmedAt <= checkedInAt (item 2)
+  Pass  [STEP] status is 200
+  3. [STEP] list states are CHECKED_IN, CANCELLED, WAITLISTED
+
+
+#  failure         detail                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                   
+ 1.  AssertionError  [READBACK] stored registration equals the 200 response                                                                                                                                                                                                                                                                                                                        
+                     read-back GET {"state":"CONFIRMED","confirmedAt":"2026-10-19T07:35:15.609778Z","checkedInAt":null,"cancelledAt":null,"cancellationReason":null} vs response {"state":"CANCELLED","confirmedAt":"2026-10-19T07:35:15.609778Z","checkedInAt":null,"cancelledAt":"2026-10-19T07:35:15.736320100Z","cancellationReason":"Schedule conflict"}: expected false to deeply equal true 
+                     at assertion:6 in test-script                                                                                                                                                                                                                                                                                                                                                 
+                     inside "9 R2 -> CANCELLED with reason"                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                   
+ 2.  AssertionError  [STEP] state is CANCELLED                                                                                                                                                                                                                                                                                                                                                     
+                     expected 'CONFIRMED' to deeply equal 'CANCELLED'                                                                                                                                                                                                                                                                                                                              
+                     at assertion:1 in test-script                                                                                                                                                                                                                                                                                                                                                 
+                     inside "10 fetch R2"                                                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                                                                                                   
+ 3.  AssertionError  [STEP] list states are CHECKED_IN, CANCELLED, WAITLISTED                                                                                                                                                                                                                                                                                                                      
+                     expected [ 'CHECKED_IN', 'CONFIRMED', …(1) ] to deeply equal [ 'CHECKED_IN', 'CANCELLED', …(1) ]                                                                                                                                                                                                                                                                              
+                     at assertion:1 in test-script                                                                                                                                                                                                                                                                                                                                                 
+                     inside "15 list ATT-7"                                                                                                                                                                                                                                                                                                                                                        
+Postman credentials are required for publishing run details to Postman cloud.
+Please specify it by using the `postman login` command
+

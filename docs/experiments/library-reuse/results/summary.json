@@ -1,0 +1,1028 @@
+{
+  "rows": [
+    {
+      "mode": "clean",
+      "config": "semval-jdbc",
+      "repeat": 1,
+      "exitCode": 0,
+      "durationMs": 2393,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 9,
+      "exercised": true,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "hiddenStateChanges": 0,
+      "fails": 0,
+      "failsByRule": {
+        "LIB-INV-001": 0,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [],
+      "tp": 0,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": false,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "PASS: persisted state matches the response": 4,
+        "PASS: row unchanged after HTTP n": 4,
+        "NOT_APPLICABLE: no row before the request": 1
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "clean",
+      "config": "semval-jdbc",
+      "repeat": 2,
+      "exitCode": 0,
+      "durationMs": 2235,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 9,
+      "exercised": true,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "hiddenStateChanges": 0,
+      "fails": 0,
+      "failsByRule": {
+        "LIB-INV-001": 0,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [],
+      "tp": 0,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": false,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "PASS: persisted state matches the response": 4,
+        "PASS: row unchanged after HTTP n": 4,
+        "NOT_APPLICABLE: no row before the request": 1
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "clean",
+      "config": "semval-nojdbc",
+      "repeat": 1,
+      "exitCode": 0,
+      "durationMs": 2312,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 9,
+      "exercised": true,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "hiddenStateChanges": 0,
+      "fails": 0,
+      "failsByRule": {
+        "LIB-INV-001": 0,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [],
+      "tp": 0,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": false,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "clean",
+      "config": "semval-nojdbc",
+      "repeat": 2,
+      "exitCode": 0,
+      "durationMs": 2201,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 9,
+      "exercised": true,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "hiddenStateChanges": 0,
+      "fails": 0,
+      "failsByRule": {
+        "LIB-INV-001": 0,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [],
+      "tp": 0,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": false,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "clean",
+      "config": "semval-passive",
+      "repeat": 1,
+      "exitCode": 0,
+      "durationMs": 414,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 0,
+      "exercised": true,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "hiddenStateChanges": 0,
+      "fails": 0,
+      "failsByRule": {
+        "LIB-INV-001": 0,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [],
+      "tp": 0,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": false,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "clean",
+      "config": "semval-passive",
+      "repeat": 2,
+      "exitCode": 0,
+      "durationMs": 408,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 0,
+      "exercised": true,
+      "oracleViolations": 0,
+      "causeSteps": [],
+      "hiddenStateChanges": 0,
+      "fails": 0,
+      "failsByRule": {
+        "LIB-INV-001": 0,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [],
+      "tp": 0,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": false,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-st01",
+      "config": "semval-jdbc",
+      "repeat": 1,
+      "exitCode": 1,
+      "durationMs": 2745,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 9,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        7
+      ],
+      "hiddenStateChanges": 0,
+      "fails": 1,
+      "failsByRule": {
+        "LIB-INV-001": 0,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 1,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [
+        7
+      ],
+      "tp": 1,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "PASS: persisted state matches the response": 5,
+        "PASS: row unchanged after HTTP n": 3,
+        "NOT_APPLICABLE: no row before the request": 1
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-st01",
+      "config": "semval-jdbc",
+      "repeat": 2,
+      "exitCode": 1,
+      "durationMs": 2688,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 9,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        7
+      ],
+      "hiddenStateChanges": 0,
+      "fails": 1,
+      "failsByRule": {
+        "LIB-INV-001": 0,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 1,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [
+        7
+      ],
+      "tp": 1,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "PASS: persisted state matches the response": 5,
+        "PASS: row unchanged after HTTP n": 3,
+        "NOT_APPLICABLE: no row before the request": 1
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-st01",
+      "config": "semval-nojdbc",
+      "repeat": 1,
+      "exitCode": 1,
+      "durationMs": 2835,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 9,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        7
+      ],
+      "hiddenStateChanges": 0,
+      "fails": 1,
+      "failsByRule": {
+        "LIB-INV-001": 0,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 1,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [
+        7
+      ],
+      "tp": 1,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-st01",
+      "config": "semval-nojdbc",
+      "repeat": 2,
+      "exitCode": 1,
+      "durationMs": 2263,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 9,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        7
+      ],
+      "hiddenStateChanges": 0,
+      "fails": 1,
+      "failsByRule": {
+        "LIB-INV-001": 0,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 1,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [
+        7
+      ],
+      "tp": 1,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-st01",
+      "config": "semval-passive",
+      "repeat": 1,
+      "exitCode": 1,
+      "durationMs": 553,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 0,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        7
+      ],
+      "hiddenStateChanges": 0,
+      "fails": 1,
+      "failsByRule": {
+        "LIB-INV-001": 0,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 1,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [
+        7
+      ],
+      "tp": 1,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-st01",
+      "config": "semval-passive",
+      "repeat": 2,
+      "exitCode": 1,
+      "durationMs": 447,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 0,
+      "exercised": true,
+      "oracleViolations": 1,
+      "causeSteps": [
+        7
+      ],
+      "hiddenStateChanges": 0,
+      "fails": 1,
+      "failsByRule": {
+        "LIB-INV-001": 0,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 1,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [
+        7
+      ],
+      "tp": 1,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-db01",
+      "config": "semval-jdbc",
+      "repeat": 1,
+      "exitCode": 1,
+      "durationMs": 3039,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 9,
+      "exercised": true,
+      "oracleViolations": 5,
+      "causeSteps": [
+        4,
+        7,
+        11
+      ],
+      "hiddenStateChanges": 3,
+      "fails": 5,
+      "failsByRule": {
+        "LIB-INV-001": 2,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 3
+      },
+      "failSteps": [
+        4,
+        5,
+        7,
+        11,
+        12
+      ],
+      "tp": 5,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "PASS: persisted state matches the response": 4,
+        "FAIL: request was rejected with HTTP n but the row changed: before {\"status\":\"RETURNED\",\"issued_at\":\"2026-10-19T06:17:18.978406Z\",\"returned_at\":\"2026-10-19T06:17:19.008062Z\"}, after {\"status\":\"ISSUED\",\"issued_at\":\"2026-10-19T06:17:19.048093Z\",\"returned_at\":\"2026-10-19T06:17:19.008062Z\"}": 1,
+        "FAIL: request was rejected with HTTP n but the row changed: before {\"status\":\"REQUESTED\",\"issued_at\":null,\"returned_at\":null}, after {\"status\":\"ISSUED\",\"issued_at\":\"2026-10-19T06:17:19.139594Z\",\"returned_at\":null}": 1,
+        "FAIL: request was rejected with HTTP n but the row changed: before {\"status\":\"REJECTED\",\"issued_at\":null,\"returned_at\":null}, after {\"status\":\"APPROVED\",\"issued_at\":null,\"returned_at\":null}": 1,
+        "NOT_APPLICABLE: no row before the request": 1,
+        "PASS: row unchanged after HTTP n": 1
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-db01",
+      "config": "semval-jdbc",
+      "repeat": 2,
+      "exitCode": 1,
+      "durationMs": 3169,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 9,
+      "exercised": true,
+      "oracleViolations": 5,
+      "causeSteps": [
+        4,
+        7,
+        11
+      ],
+      "hiddenStateChanges": 3,
+      "fails": 5,
+      "failsByRule": {
+        "LIB-INV-001": 2,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 3
+      },
+      "failSteps": [
+        4,
+        5,
+        7,
+        11,
+        12
+      ],
+      "tp": 5,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "PASS: persisted state matches the response": 4,
+        "FAIL: request was rejected with HTTP n but the row changed: before {\"status\":\"RETURNED\",\"issued_at\":\"2026-10-19T06:17:34.757916Z\",\"returned_at\":\"2026-10-19T06:17:34.791044Z\"}, after {\"status\":\"ISSUED\",\"issued_at\":\"2026-10-19T06:17:34.827881Z\",\"returned_at\":\"2026-10-19T06:17:34.791044Z\"}": 1,
+        "FAIL: request was rejected with HTTP n but the row changed: before {\"status\":\"REQUESTED\",\"issued_at\":null,\"returned_at\":null}, after {\"status\":\"ISSUED\",\"issued_at\":\"2026-10-19T06:17:34.905170Z\",\"returned_at\":null}": 1,
+        "FAIL: request was rejected with HTTP n but the row changed: before {\"status\":\"REJECTED\",\"issued_at\":null,\"returned_at\":null}, after {\"status\":\"APPROVED\",\"issued_at\":null,\"returned_at\":null}": 1,
+        "NOT_APPLICABLE: no row before the request": 1,
+        "PASS: row unchanged after HTTP n": 1
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-db01",
+      "config": "semval-nojdbc",
+      "repeat": 1,
+      "exitCode": 1,
+      "durationMs": 3029,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 9,
+      "exercised": true,
+      "oracleViolations": 5,
+      "causeSteps": [
+        4,
+        7,
+        11
+      ],
+      "hiddenStateChanges": 3,
+      "fails": 2,
+      "failsByRule": {
+        "LIB-INV-001": 2,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [
+        5,
+        12
+      ],
+      "tp": 2,
+      "fp": 0,
+      "fnNotEvaluable": 3,
+      "fnMissed": 0,
+      "fnDetail": [
+        "LIB-DB-001@4 (NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured))",
+        "LIB-DB-001@7 (NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured))",
+        "LIB-DB-001@11 (NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured))"
+      ],
+      "detectedAtCause": false,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-db01",
+      "config": "semval-nojdbc",
+      "repeat": 2,
+      "exitCode": 1,
+      "durationMs": 3089,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 9,
+      "exercised": true,
+      "oracleViolations": 5,
+      "causeSteps": [
+        4,
+        7,
+        11
+      ],
+      "hiddenStateChanges": 3,
+      "fails": 2,
+      "failsByRule": {
+        "LIB-INV-001": 2,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [
+        5,
+        12
+      ],
+      "tp": 2,
+      "fp": 0,
+      "fnNotEvaluable": 3,
+      "fnMissed": 0,
+      "fnDetail": [
+        "LIB-DB-001@4 (NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured))",
+        "LIB-DB-001@7 (NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured))",
+        "LIB-DB-001@11 (NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured))"
+      ],
+      "detectedAtCause": false,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-db01",
+      "config": "semval-passive",
+      "repeat": 1,
+      "exitCode": 1,
+      "durationMs": 417,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 0,
+      "exercised": true,
+      "oracleViolations": 5,
+      "causeSteps": [
+        4,
+        7,
+        11
+      ],
+      "hiddenStateChanges": 3,
+      "fails": 2,
+      "failsByRule": {
+        "LIB-INV-001": 2,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [
+        5,
+        12
+      ],
+      "tp": 2,
+      "fp": 0,
+      "fnNotEvaluable": 3,
+      "fnMissed": 0,
+      "fnDetail": [
+        "LIB-DB-001@4 (NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured))",
+        "LIB-DB-001@7 (NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured))",
+        "LIB-DB-001@11 (NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured))"
+      ],
+      "detectedAtCause": false,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-db01",
+      "config": "semval-passive",
+      "repeat": 2,
+      "exitCode": 1,
+      "durationMs": 418,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 0,
+      "exercised": true,
+      "oracleViolations": 5,
+      "causeSteps": [
+        4,
+        7,
+        11
+      ],
+      "hiddenStateChanges": 3,
+      "fails": 2,
+      "failsByRule": {
+        "LIB-INV-001": 2,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [
+        5,
+        12
+      ],
+      "tp": 2,
+      "fp": 0,
+      "fnNotEvaluable": 3,
+      "fnMissed": 0,
+      "fnDetail": [
+        "LIB-DB-001@4 (NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured))",
+        "LIB-DB-001@7 (NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured))",
+        "LIB-DB-001@11 (NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured))"
+      ],
+      "detectedAtCause": false,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-ri01",
+      "config": "semval-jdbc",
+      "repeat": 1,
+      "exitCode": 1,
+      "durationMs": 3016,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 9,
+      "exercised": true,
+      "oracleViolations": 3,
+      "causeSteps": [
+        3
+      ],
+      "hiddenStateChanges": 0,
+      "fails": 3,
+      "failsByRule": {
+        "LIB-INV-001": 3,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [
+        3,
+        5,
+        12
+      ],
+      "tp": 3,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "PASS: persisted state matches the response": 4,
+        "PASS: row unchanged after HTTP n": 4,
+        "NOT_APPLICABLE: no row before the request": 1
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-ri01",
+      "config": "semval-jdbc",
+      "repeat": 2,
+      "exitCode": 1,
+      "durationMs": 2319,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 9,
+      "exercised": true,
+      "oracleViolations": 3,
+      "causeSteps": [
+        3
+      ],
+      "hiddenStateChanges": 0,
+      "fails": 3,
+      "failsByRule": {
+        "LIB-INV-001": 3,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [
+        3,
+        5,
+        12
+      ],
+      "tp": 3,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "PASS: persisted state matches the response": 4,
+        "PASS: row unchanged after HTTP n": 4,
+        "NOT_APPLICABLE: no row before the request": 1
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-ri01",
+      "config": "semval-nojdbc",
+      "repeat": 1,
+      "exitCode": 1,
+      "durationMs": 2253,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 9,
+      "exercised": true,
+      "oracleViolations": 3,
+      "causeSteps": [
+        3
+      ],
+      "hiddenStateChanges": 0,
+      "fails": 3,
+      "failsByRule": {
+        "LIB-INV-001": 3,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [
+        3,
+        5,
+        12
+      ],
+      "tp": 3,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-ri01",
+      "config": "semval-nojdbc",
+      "repeat": 2,
+      "exitCode": 1,
+      "durationMs": 2178,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 9,
+      "exercised": true,
+      "oracleViolations": 3,
+      "causeSteps": [
+        3
+      ],
+      "hiddenStateChanges": 0,
+      "fails": 3,
+      "failsByRule": {
+        "LIB-INV-001": 3,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [
+        3,
+        5,
+        12
+      ],
+      "tp": 3,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-ri01",
+      "config": "semval-passive",
+      "repeat": 1,
+      "exitCode": 1,
+      "durationMs": 426,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 0,
+      "exercised": true,
+      "oracleViolations": 3,
+      "causeSteps": [
+        3
+      ],
+      "hiddenStateChanges": 0,
+      "fails": 3,
+      "failsByRule": {
+        "LIB-INV-001": 3,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [
+        3,
+        5,
+        12
+      ],
+      "tp": 3,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+      },
+      "dbCorrectlyScoped": true
+    },
+    {
+      "mode": "lib-ri01",
+      "config": "semval-passive",
+      "repeat": 2,
+      "exitCode": 1,
+      "durationMs": 445,
+      "defectSwitchOk": true,
+      "trafficOk": true,
+      "readBacks": 0,
+      "exercised": true,
+      "oracleViolations": 3,
+      "causeSteps": [
+        3
+      ],
+      "hiddenStateChanges": 0,
+      "fails": 3,
+      "failsByRule": {
+        "LIB-INV-001": 3,
+        "LIB-INV-002": 0,
+        "LIB-ST-001": 0,
+        "LIB-DB-001": 0
+      },
+      "failSteps": [
+        3,
+        5,
+        12
+      ],
+      "tp": 3,
+      "fp": 0,
+      "fnNotEvaluable": 0,
+      "fnMissed": 0,
+      "fnDetail": [],
+      "detectedAtCause": true,
+      "evidenceProblems": [],
+      "dbOutcomes": {
+        "NOT_APPLICABLE: no database access (passive mode or no JDBC URL configured)": 9
+      },
+      "dbCorrectlyScoped": true
+    }
+  ],
+  "reproducibility": [
+    {
+      "group": "clean/semval-jdbc",
+      "repeats": 2,
+      "findingsIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "clean/semval-nojdbc",
+      "repeats": 2,
+      "findingsIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "clean/semval-passive",
+      "repeats": 2,
+      "findingsIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "lib-st01/semval-jdbc",
+      "repeats": 2,
+      "findingsIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "lib-st01/semval-nojdbc",
+      "repeats": 2,
+      "findingsIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "lib-st01/semval-passive",
+      "repeats": 2,
+      "findingsIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "lib-db01/semval-jdbc",
+      "repeats": 2,
+      "findingsIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "lib-db01/semval-nojdbc",
+      "repeats": 2,
+      "findingsIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "lib-db01/semval-passive",
+      "repeats": 2,
+      "findingsIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "lib-ri01/semval-jdbc",
+      "repeats": 2,
+      "findingsIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "lib-ri01/semval-nojdbc",
+      "repeats": 2,
+      "findingsIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    },
+    {
+      "group": "lib-ri01/semval-passive",
+      "repeats": 2,
+      "findingsIdentical": true,
+      "oracleIdentical": true,
+      "finalDbIdentical": true
+    }
+  ]
+}

@@ -1,0 +1,322 @@
+﻿[
+    {
+        "mode":  "clean",
+        "tool":  "ajv",
+        "repeat":  1,
+        "seconds":  1,
+        "warnings":  "",
+        "dir":  "clean\\ajv-r1"
+    },
+    {
+        "mode":  "clean",
+        "tool":  "postman",
+        "repeat":  1,
+        "seconds":  4.3,
+        "warnings":  "",
+        "dir":  "clean\\postman-r1"
+    },
+    {
+        "mode":  "clean",
+        "tool":  "semval",
+        "repeat":  1,
+        "seconds":  2.1,
+        "warnings":  "",
+        "dir":  "clean\\semval-r1"
+    },
+    {
+        "mode":  "clean",
+        "tool":  "schemathesis-baseline",
+        "repeat":  1,
+        "seconds":  14.2,
+        "warnings":  "",
+        "dir":  "clean\\schemathesis-baseline-r1"
+    },
+    {
+        "mode":  "clean",
+        "tool":  "schemathesis-seeded",
+        "repeat":  1,
+        "seconds":  12,
+        "warnings":  "",
+        "dir":  "clean\\schemathesis-seeded-r1"
+    },
+    {
+        "mode":  "clean",
+        "tool":  "ajv",
+        "repeat":  2,
+        "seconds":  0.9,
+        "warnings":  "",
+        "dir":  "clean\\ajv-r2"
+    },
+    {
+        "mode":  "clean",
+        "tool":  "postman",
+        "repeat":  2,
+        "seconds":  3.8,
+        "warnings":  "",
+        "dir":  "clean\\postman-r2"
+    },
+    {
+        "mode":  "clean",
+        "tool":  "semval",
+        "repeat":  2,
+        "seconds":  1.9,
+        "warnings":  "",
+        "dir":  "clean\\semval-r2"
+    },
+    {
+        "mode":  "clean",
+        "tool":  "schemathesis-baseline",
+        "repeat":  2,
+        "seconds":  17.9,
+        "warnings":  "",
+        "dir":  "clean\\schemathesis-baseline-r2"
+    },
+    {
+        "mode":  "clean",
+        "tool":  "schemathesis-seeded",
+        "repeat":  2,
+        "seconds":  19.3,
+        "warnings":  "",
+        "dir":  "clean\\schemathesis-seeded-r2"
+    },
+    {
+        "mode":  "sv01-total-as-string",
+        "tool":  "ajv",
+        "repeat":  1,
+        "seconds":  1.1,
+        "warnings":  "DEFECT SV-01 ENABLED",
+        "dir":  "sv01-total-as-string\\ajv-r1"
+    },
+    {
+        "mode":  "sv01-total-as-string",
+        "tool":  "postman",
+        "repeat":  1,
+        "seconds":  4.6,
+        "warnings":  "DEFECT SV-01 ENABLED",
+        "dir":  "sv01-total-as-string\\postman-r1"
+    },
+    {
+        "mode":  "sv01-total-as-string",
+        "tool":  "semval",
+        "repeat":  1,
+        "seconds":  2,
+        "warnings":  "DEFECT SV-01 ENABLED",
+        "dir":  "sv01-total-as-string\\semval-r1"
+    },
+    {
+        "mode":  "sv01-total-as-string",
+        "tool":  "schemathesis-baseline",
+        "repeat":  1,
+        "seconds":  18,
+        "warnings":  "DEFECT SV-01 ENABLED",
+        "dir":  "sv01-total-as-string\\schemathesis-baseline-r1"
+    },
+    {
+        "mode":  "sv01-total-as-string",
+        "tool":  "schemathesis-seeded",
+        "repeat":  1,
+        "seconds":  13.9,
+        "warnings":  "DEFECT SV-01 ENABLED",
+        "dir":  "sv01-total-as-string\\schemathesis-seeded-r1"
+    },
+    {
+        "mode":  "sv01-total-as-string",
+        "tool":  "ajv",
+        "repeat":  2,
+        "seconds":  0.9,
+        "warnings":  "DEFECT SV-01 ENABLED",
+        "dir":  "sv01-total-as-string\\ajv-r2"
+    },
+    {
+        "mode":  "sv01-total-as-string",
+        "tool":  "postman",
+        "repeat":  2,
+        "seconds":  3.6,
+        "warnings":  "DEFECT SV-01 ENABLED",
+        "dir":  "sv01-total-as-string\\postman-r2"
+    },
+    {
+        "mode":  "sv01-total-as-string",
+        "tool":  "semval",
+        "repeat":  2,
+        "seconds":  1.9,
+        "warnings":  "DEFECT SV-01 ENABLED",
+        "dir":  "sv01-total-as-string\\semval-r2"
+    },
+    {
+        "mode":  "sv01-total-as-string",
+        "tool":  "schemathesis-baseline",
+        "repeat":  2,
+        "seconds":  14.1,
+        "warnings":  "DEFECT SV-01 ENABLED",
+        "dir":  "sv01-total-as-string\\schemathesis-baseline-r2"
+    },
+    {
+        "mode":  "sv01-total-as-string",
+        "tool":  "schemathesis-seeded",
+        "repeat":  2,
+        "seconds":  13.4,
+        "warnings":  "DEFECT SV-01 ENABLED",
+        "dir":  "sv01-total-as-string\\schemathesis-seeded-r2"
+    },
+    {
+        "mode":  "st01-completed-to-cancelled",
+        "tool":  "ajv",
+        "repeat":  1,
+        "seconds":  0.9,
+        "warnings":  "DEFECT ST-01 ENABLED",
+        "dir":  "st01-completed-to-cancelled\\ajv-r1"
+    },
+    {
+        "mode":  "st01-completed-to-cancelled",
+        "tool":  "postman",
+        "repeat":  1,
+        "seconds":  3.6,
+        "warnings":  "DEFECT ST-01 ENABLED",
+        "dir":  "st01-completed-to-cancelled\\postman-r1"
+    },
+    {
+        "mode":  "st01-completed-to-cancelled",
+        "tool":  "semval",
+        "repeat":  1,
+        "seconds":  2.1,
+        "warnings":  "DEFECT ST-01 ENABLED",
+        "dir":  "st01-completed-to-cancelled\\semval-r1"
+    },
+    {
+        "mode":  "st01-completed-to-cancelled",
+        "tool":  "schemathesis-baseline",
+        "repeat":  1,
+        "seconds":  14.4,
+        "warnings":  "DEFECT ST-01 ENABLED",
+        "dir":  "st01-completed-to-cancelled\\schemathesis-baseline-r1"
+    },
+    {
+        "mode":  "st01-completed-to-cancelled",
+        "tool":  "schemathesis-seeded",
+        "repeat":  1,
+        "seconds":  12.8,
+        "warnings":  "DEFECT ST-01 ENABLED",
+        "dir":  "st01-completed-to-cancelled\\schemathesis-seeded-r1"
+    },
+    {
+        "mode":  "st01-completed-to-cancelled",
+        "tool":  "ajv",
+        "repeat":  2,
+        "seconds":  1.1,
+        "warnings":  "DEFECT ST-01 ENABLED",
+        "dir":  "st01-completed-to-cancelled\\ajv-r2"
+    },
+    {
+        "mode":  "st01-completed-to-cancelled",
+        "tool":  "postman",
+        "repeat":  2,
+        "seconds":  3.6,
+        "warnings":  "DEFECT ST-01 ENABLED",
+        "dir":  "st01-completed-to-cancelled\\postman-r2"
+    },
+    {
+        "mode":  "st01-completed-to-cancelled",
+        "tool":  "semval",
+        "repeat":  2,
+        "seconds":  2,
+        "warnings":  "DEFECT ST-01 ENABLED",
+        "dir":  "st01-completed-to-cancelled\\semval-r2"
+    },
+    {
+        "mode":  "st01-completed-to-cancelled",
+        "tool":  "schemathesis-baseline",
+        "repeat":  2,
+        "seconds":  14,
+        "warnings":  "DEFECT ST-01 ENABLED",
+        "dir":  "st01-completed-to-cancelled\\schemathesis-baseline-r2"
+    },
+    {
+        "mode":  "st01-completed-to-cancelled",
+        "tool":  "schemathesis-seeded",
+        "repeat":  2,
+        "seconds":  12.3,
+        "warnings":  "DEFECT ST-01 ENABLED",
+        "dir":  "st01-completed-to-cancelled\\schemathesis-seeded-r2"
+    },
+    {
+        "mode":  "db02-rejected-change-saved",
+        "tool":  "ajv",
+        "repeat":  1,
+        "seconds":  1,
+        "warnings":  "DEFECT DB-02 ENABLED",
+        "dir":  "db02-rejected-change-saved\\ajv-r1"
+    },
+    {
+        "mode":  "db02-rejected-change-saved",
+        "tool":  "postman",
+        "repeat":  1,
+        "seconds":  3.9,
+        "warnings":  "DEFECT DB-02 ENABLED",
+        "dir":  "db02-rejected-change-saved\\postman-r1"
+    },
+    {
+        "mode":  "db02-rejected-change-saved",
+        "tool":  "semval",
+        "repeat":  1,
+        "seconds":  1.8,
+        "warnings":  "DEFECT DB-02 ENABLED",
+        "dir":  "db02-rejected-change-saved\\semval-r1"
+    },
+    {
+        "mode":  "db02-rejected-change-saved",
+        "tool":  "schemathesis-baseline",
+        "repeat":  1,
+        "seconds":  13.7,
+        "warnings":  "DEFECT DB-02 ENABLED",
+        "dir":  "db02-rejected-change-saved\\schemathesis-baseline-r1"
+    },
+    {
+        "mode":  "db02-rejected-change-saved",
+        "tool":  "schemathesis-seeded",
+        "repeat":  1,
+        "seconds":  13.1,
+        "warnings":  "DEFECT DB-02 ENABLED",
+        "dir":  "db02-rejected-change-saved\\schemathesis-seeded-r1"
+    },
+    {
+        "mode":  "db02-rejected-change-saved",
+        "tool":  "ajv",
+        "repeat":  2,
+        "seconds":  0.9,
+        "warnings":  "DEFECT DB-02 ENABLED",
+        "dir":  "db02-rejected-change-saved\\ajv-r2"
+    },
+    {
+        "mode":  "db02-rejected-change-saved",
+        "tool":  "postman",
+        "repeat":  2,
+        "seconds":  3.5,
+        "warnings":  "DEFECT DB-02 ENABLED",
+        "dir":  "db02-rejected-change-saved\\postman-r2"
+    },
+    {
+        "mode":  "db02-rejected-change-saved",
+        "tool":  "semval",
+        "repeat":  2,
+        "seconds":  2.1,
+        "warnings":  "DEFECT DB-02 ENABLED",
+        "dir":  "db02-rejected-change-saved\\semval-r2"
+    },
+    {
+        "mode":  "db02-rejected-change-saved",
+        "tool":  "schemathesis-baseline",
+        "repeat":  2,
+        "seconds":  17.5,
+        "warnings":  "DEFECT DB-02 ENABLED",
+        "dir":  "db02-rejected-change-saved\\schemathesis-baseline-r2"
+    },
+    {
+        "mode":  "db02-rejected-change-saved",
+        "tool":  "schemathesis-seeded",
+        "repeat":  2,
+        "seconds":  17.3,
+        "warnings":  "DEFECT DB-02 ENABLED",
+        "dir":  "db02-rejected-change-saved\\schemathesis-seeded-r2"
+    }
+]

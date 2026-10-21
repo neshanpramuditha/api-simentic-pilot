@@ -1,0 +1,431 @@
+{
+  "tool" : "semantic-validator 0.1.0",
+  "mode" : "check-har",
+  "source" : "HAR traffic.har.json (passive: no read-backs, no database)",
+  "ruleSet" : "library-api semantic rules v1",
+  "durationMillis" : 42,
+  "exchanges" : 15,
+  "unmatchedRequests" : 0,
+  "totals" : {
+    "PASS" : 32,
+    "FAIL" : 1,
+    "NOT_APPLICABLE" : 19
+  },
+  "byRule" : {
+    "LIB-INV-001" : {
+      "PASS" : 13,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 4
+    },
+    "LIB-INV-002" : {
+      "PASS" : 13,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 4
+    },
+    "LIB-ST-001" : {
+      "PASS" : 6,
+      "FAIL" : 1,
+      "NOT_APPLICABLE" : 2
+    },
+    "LIB-DB-001" : {
+      "PASS" : 0,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 9
+    }
+  },
+  "rules" : [ {
+    "id" : "LIB-INV-001",
+    "description" : "returnedAt is set if and only if status is RETURNED",
+    "operations" : [ "createLoan", "getLoan", "updateLoanStatus", "listMemberLoans" ]
+  }, {
+    "id" : "LIB-INV-002",
+    "description" : "issuedAt is set if and only if status is ISSUED or RETURNED",
+    "operations" : [ "createLoan", "getLoan", "updateLoanStatus", "listMemberLoans" ]
+  }, {
+    "id" : "LIB-ST-001",
+    "description" : "Loan status changes follow the lending lifecycle; forbidden changes are rejected with 409",
+    "operations" : [ "updateLoanStatus" ]
+  }, {
+    "id" : "LIB-DB-001",
+    "description" : "The persisted loan matches a successful status change and is unchanged after a rejected one",
+    "operations" : [ "updateLoanStatus" ]
+  } ],
+  "failures" : [ {
+    "ruleId" : "LIB-ST-001",
+    "outcome" : "FAIL",
+    "exchangeIndex" : 7,
+    "operationId" : "updateLoanStatus",
+    "message" : "forbidden transition REQUESTED -> ISSUED was accepted with HTTP 200 (allowed from REQUESTED: [APPROVED, REJECTED])",
+    "evidence" : {
+      "request" : {
+        "method" : "PATCH",
+        "url" : "/api/loans/306a3f28-c2ca-4361-a120-ecfc963aeb4a/status",
+        "body" : {
+          "status" : "ISSUED"
+        }
+      },
+      "response" : {
+        "status" : 200,
+        "body" : {
+          "memberId" : 42,
+          "bookId" : 1002,
+          "id" : "306a3f28-c2ca-4361-a120-ecfc963aeb4a",
+          "issuedAt" : "2026-10-19T06:17:01.390875400Z",
+          "requestedAt" : "2026-10-19T06:17:01.380713Z",
+          "returnedAt" : null,
+          "status" : "ISSUED"
+        }
+      },
+      "state" : {
+        "resourceId" : "306a3f28-c2ca-4361-a120-ecfc963aeb4a",
+        "previous" : "REQUESTED",
+        "previousSource" : "last state observed in earlier responses",
+        "requested" : "ISSUED",
+        "transitionAllowed" : false,
+        "allowedFromPrevious" : [ "APPROVED", "REJECTED" ]
+      }
+    }
+  } ],
+  "findings" : [ {
+    "ruleId" : "LIB-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 0,
+    "operationId" : "createLoan",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 0,
+    "operationId" : "createLoan",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "updateLoanStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "updateLoanStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "updateLoanStatus",
+    "message" : "allowed transition REQUESTED -> APPROVED succeeded"
+  }, {
+    "ruleId" : "LIB-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 1,
+    "operationId" : "updateLoanStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "LIB-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "updateLoanStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "updateLoanStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "updateLoanStatus",
+    "message" : "allowed transition APPROVED -> ISSUED succeeded"
+  }, {
+    "ruleId" : "LIB-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 2,
+    "operationId" : "updateLoanStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "LIB-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "updateLoanStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "updateLoanStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "updateLoanStatus",
+    "message" : "allowed transition ISSUED -> RETURNED succeeded"
+  }, {
+    "ruleId" : "LIB-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 3,
+    "operationId" : "updateLoanStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "LIB-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 4,
+    "operationId" : "updateLoanStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "LIB-INV-002",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 4,
+    "operationId" : "updateLoanStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "LIB-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 4,
+    "operationId" : "updateLoanStatus",
+    "message" : "forbidden transition RETURNED -> ISSUED rejected with HTTP 409"
+  }, {
+    "ruleId" : "LIB-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 4,
+    "operationId" : "updateLoanStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "LIB-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 5,
+    "operationId" : "getLoan",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 5,
+    "operationId" : "getLoan",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 6,
+    "operationId" : "createLoan",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 6,
+    "operationId" : "createLoan",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 7,
+    "operationId" : "updateLoanStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 7,
+    "operationId" : "updateLoanStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-ST-001",
+    "outcome" : "FAIL",
+    "exchangeIndex" : 7,
+    "operationId" : "updateLoanStatus",
+    "message" : "forbidden transition REQUESTED -> ISSUED was accepted with HTTP 200 (allowed from REQUESTED: [APPROVED, REJECTED])",
+    "evidence" : {
+      "request" : {
+        "method" : "PATCH",
+        "url" : "/api/loans/306a3f28-c2ca-4361-a120-ecfc963aeb4a/status",
+        "body" : {
+          "status" : "ISSUED"
+        }
+      },
+      "response" : {
+        "status" : 200,
+        "body" : {
+          "memberId" : 42,
+          "bookId" : 1002,
+          "id" : "306a3f28-c2ca-4361-a120-ecfc963aeb4a",
+          "issuedAt" : "2026-10-19T06:17:01.390875400Z",
+          "requestedAt" : "2026-10-19T06:17:01.380713Z",
+          "returnedAt" : null,
+          "status" : "ISSUED"
+        }
+      },
+      "state" : {
+        "resourceId" : "306a3f28-c2ca-4361-a120-ecfc963aeb4a",
+        "previous" : "REQUESTED",
+        "previousSource" : "last state observed in earlier responses",
+        "requested" : "ISSUED",
+        "transitionAllowed" : false,
+        "allowedFromPrevious" : [ "APPROVED", "REJECTED" ]
+      }
+    }
+  }, {
+    "ruleId" : "LIB-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 7,
+    "operationId" : "updateLoanStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "LIB-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "getLoan",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "getLoan",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 9,
+    "operationId" : "createLoan",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 9,
+    "operationId" : "createLoan",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 10,
+    "operationId" : "updateLoanStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 10,
+    "operationId" : "updateLoanStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 10,
+    "operationId" : "updateLoanStatus",
+    "message" : "allowed transition REQUESTED -> REJECTED succeeded"
+  }, {
+    "ruleId" : "LIB-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 10,
+    "operationId" : "updateLoanStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "LIB-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 11,
+    "operationId" : "updateLoanStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "LIB-INV-002",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 11,
+    "operationId" : "updateLoanStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "LIB-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 11,
+    "operationId" : "updateLoanStatus",
+    "message" : "forbidden transition REJECTED -> APPROVED rejected with HTTP 409"
+  }, {
+    "ruleId" : "LIB-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 11,
+    "operationId" : "updateLoanStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "LIB-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "listMemberLoans",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "listMemberLoans",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "listMemberLoans",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "listMemberLoans",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "listMemberLoans",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "listMemberLoans",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "LIB-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 13,
+    "operationId" : "updateLoanStatus",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "LIB-INV-002",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 13,
+    "operationId" : "updateLoanStatus",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "LIB-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 13,
+    "operationId" : "updateLoanStatus",
+    "message" : "previous state of resource 00000000-0000-4000-8000-000000000000 unknown"
+  }, {
+    "ruleId" : "LIB-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 13,
+    "operationId" : "updateLoanStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "LIB-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 14,
+    "operationId" : "updateLoanStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "LIB-INV-002",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 14,
+    "operationId" : "updateLoanStatus",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "LIB-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 14,
+    "operationId" : "updateLoanStatus",
+    "message" : "requested state is not a known state: LOST"
+  }, {
+    "ruleId" : "LIB-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 14,
+    "operationId" : "updateLoanStatus",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  } ]
+}

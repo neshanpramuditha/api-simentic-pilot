@@ -1,0 +1,832 @@
+{
+  "tool" : "semantic-validator 0.2.0",
+  "mode" : "run",
+  "source" : "scenario scenario.json against http://localhost:8092 (with database access)",
+  "ruleSet" : "event-api semantic rules v2 (engine 0.2: items, notAfter)",
+  "durationMillis" : 1766,
+  "exchanges" : 19,
+  "unmatchedRequests" : 0,
+  "totals" : {
+    "PASS" : 97,
+    "FAIL" : 0,
+    "NOT_APPLICABLE" : 28
+  },
+  "byRule" : {
+    "EVT-INV-001" : {
+      "PASS" : 16,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 5
+    },
+    "EVT-INV-002" : {
+      "PASS" : 16,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 5
+    },
+    "EVT-INV-003" : {
+      "PASS" : 16,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 5
+    },
+    "EVT-INV-004" : {
+      "PASS" : 16,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 5
+    },
+    "EVT-INV-005" : {
+      "PASS" : 16,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 5
+    },
+    "EVT-ST-001" : {
+      "PASS" : 8,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 2
+    },
+    "EVT-DB-001" : {
+      "PASS" : 9,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 1
+    }
+  },
+  "rules" : [ {
+    "id" : "EVT-INV-001",
+    "description" : "checkedInAt is set if and only if state is CHECKED_IN",
+    "operations" : [ "registerAttendee", "fetchRegistration", "transitionRegistration", "listAttendeeRegistrations" ]
+  }, {
+    "id" : "EVT-INV-002",
+    "description" : "cancelledAt is set if and only if state is CANCELLED",
+    "operations" : [ "registerAttendee", "fetchRegistration", "transitionRegistration", "listAttendeeRegistrations" ]
+  }, {
+    "id" : "EVT-INV-003",
+    "description" : "cancellationReason is set if and only if state is CANCELLED",
+    "operations" : [ "registerAttendee", "fetchRegistration", "transitionRegistration", "listAttendeeRegistrations" ]
+  }, {
+    "id" : "EVT-INV-004",
+    "description" : "A CHECKED_IN registration has been confirmed (confirmedAt set); confirmedAt is only set in CONFIRMED, CHECKED_IN or CANCELLED",
+    "operations" : [ "registerAttendee", "fetchRegistration", "transitionRegistration", "listAttendeeRegistrations" ]
+  }, {
+    "id" : "EVT-INV-005",
+    "description" : "Timestamps are in lifecycle order: requestedAt <= confirmedAt <= checkedInAt",
+    "operations" : [ "registerAttendee", "fetchRegistration", "transitionRegistration", "listAttendeeRegistrations" ]
+  }, {
+    "id" : "EVT-ST-001",
+    "description" : "Registration state changes follow the lifecycle; forbidden changes are rejected with 422",
+    "operations" : [ "transitionRegistration" ]
+  }, {
+    "id" : "EVT-DB-001",
+    "description" : "The stored registration matches a successful transition and is unchanged after a rejected one",
+    "operations" : [ "transitionRegistration" ]
+  } ],
+  "failures" : [ ],
+  "findings" : [ {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 0,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 0,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 0,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 0,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "PASS",
+    "exchangeIndex" : 0,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "transitionRegistration",
+    "message" : "allowed transition REQUESTED -> CONFIRMED succeeded"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "transitionRegistration",
+    "message" : "persisted state matches the response"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "transitionRegistration",
+    "message" : "allowed transition CONFIRMED -> CHECKED_IN succeeded"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "transitionRegistration",
+    "message" : "persisted state matches the response"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 4,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 4,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 4,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 4,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 4,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 4,
+    "operationId" : "transitionRegistration",
+    "message" : "forbidden transition CHECKED_IN -> CANCELLED rejected with HTTP 422"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 4,
+    "operationId" : "transitionRegistration",
+    "message" : "row unchanged after HTTP 422"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 5,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 5,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 5,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 5,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "PASS",
+    "exchangeIndex" : 5,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 6,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 6,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 6,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 6,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "PASS",
+    "exchangeIndex" : 6,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 7,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 7,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 7,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 7,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "PASS",
+    "exchangeIndex" : 7,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 7,
+    "operationId" : "transitionRegistration",
+    "message" : "allowed transition REQUESTED -> WAITLISTED succeeded"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 7,
+    "operationId" : "transitionRegistration",
+    "message" : "persisted state matches the response"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "transitionRegistration",
+    "message" : "allowed transition WAITLISTED -> CONFIRMED succeeded"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "transitionRegistration",
+    "message" : "persisted state matches the response"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 9,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 9,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 9,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 9,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "PASS",
+    "exchangeIndex" : 9,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 9,
+    "operationId" : "transitionRegistration",
+    "message" : "allowed transition CONFIRMED -> CANCELLED succeeded"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 9,
+    "operationId" : "transitionRegistration",
+    "message" : "persisted state matches the response"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 10,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 10,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 10,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 10,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "PASS",
+    "exchangeIndex" : 10,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 11,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 11,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 11,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 11,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "PASS",
+    "exchangeIndex" : 11,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "transitionRegistration",
+    "message" : "allowed transition REQUESTED -> WAITLISTED succeeded"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "transitionRegistration",
+    "message" : "persisted state matches the response"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 13,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 13,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 13,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 13,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 13,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 13,
+    "operationId" : "transitionRegistration",
+    "message" : "forbidden transition WAITLISTED -> CHECKED_IN rejected with HTTP 422"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 13,
+    "operationId" : "transitionRegistration",
+    "message" : "row unchanged after HTTP 422"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 14,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 14,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 14,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 14,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "PASS",
+    "exchangeIndex" : 14,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 16,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 16,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 16,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 16,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 16,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 16,
+    "operationId" : "transitionRegistration",
+    "message" : "resource REG-NOPE0000 not readable before the request (HTTP 404)"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 16,
+    "operationId" : "transitionRegistration",
+    "message" : "no row before the request"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 17,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 17,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 17,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 17,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 17,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 17,
+    "operationId" : "transitionRegistration",
+    "message" : "requested state is not a known state: DONE"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 17,
+    "operationId" : "transitionRegistration",
+    "message" : "row unchanged after HTTP 400"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 18,
+    "operationId" : "registerAttendee",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 18,
+    "operationId" : "registerAttendee",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 18,
+    "operationId" : "registerAttendee",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 18,
+    "operationId" : "registerAttendee",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "EVT-INV-005",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 18,
+    "operationId" : "registerAttendee",
+    "message" : "not a successful response with a body (HTTP 400)"
+  } ]
+}

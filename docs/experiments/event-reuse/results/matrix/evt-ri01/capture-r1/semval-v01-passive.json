@@ -1,0 +1,881 @@
+{
+  "tool" : "semantic-validator 0.1.0",
+  "mode" : "check-har",
+  "source" : "HAR traffic.har.json (passive: no read-backs, no database)",
+  "ruleSet" : "event-api semantic rules v1 (engine 0.1 features only)",
+  "durationMillis" : 60,
+  "exchanges" : 19,
+  "unmatchedRequests" : 0,
+  "totals" : {
+    "PASS" : 61,
+    "FAIL" : 3,
+    "NOT_APPLICABLE" : 32
+  },
+  "byRule" : {
+    "EVT-INV-001" : {
+      "PASS" : 11,
+      "FAIL" : 3,
+      "NOT_APPLICABLE" : 5
+    },
+    "EVT-INV-002" : {
+      "PASS" : 14,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 5
+    },
+    "EVT-INV-003" : {
+      "PASS" : 14,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 5
+    },
+    "EVT-INV-004" : {
+      "PASS" : 14,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 5
+    },
+    "EVT-ST-001" : {
+      "PASS" : 8,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 2
+    },
+    "EVT-DB-001" : {
+      "PASS" : 0,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 10
+    }
+  },
+  "rules" : [ {
+    "id" : "EVT-INV-001",
+    "description" : "checkedInAt is set if and only if state is CHECKED_IN",
+    "operations" : [ "registerAttendee", "fetchRegistration", "transitionRegistration", "listAttendeeRegistrations" ]
+  }, {
+    "id" : "EVT-INV-002",
+    "description" : "cancelledAt is set if and only if state is CANCELLED",
+    "operations" : [ "registerAttendee", "fetchRegistration", "transitionRegistration", "listAttendeeRegistrations" ]
+  }, {
+    "id" : "EVT-INV-003",
+    "description" : "cancellationReason is set if and only if state is CANCELLED",
+    "operations" : [ "registerAttendee", "fetchRegistration", "transitionRegistration", "listAttendeeRegistrations" ]
+  }, {
+    "id" : "EVT-INV-004",
+    "description" : "A CHECKED_IN registration has been confirmed (confirmedAt set); confirmedAt is only set in CONFIRMED, CHECKED_IN or CANCELLED",
+    "operations" : [ "registerAttendee", "fetchRegistration", "transitionRegistration", "listAttendeeRegistrations" ]
+  }, {
+    "id" : "EVT-ST-001",
+    "description" : "Registration state changes follow the lifecycle; forbidden changes are rejected with 422",
+    "operations" : [ "transitionRegistration" ]
+  }, {
+    "id" : "EVT-DB-001",
+    "description" : "The stored registration matches a successful transition and is unchanged after a rejected one",
+    "operations" : [ "transitionRegistration" ]
+  } ],
+  "failures" : [ {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "FAIL",
+    "exchangeIndex" : 2,
+    "operationId" : "transitionRegistration",
+    "message" : "checkedInAt is set if and only if state is CHECKED_IN — violated: {\"$.checkedInAt\":null,\"$.state\":\"CHECKED_IN\"}",
+    "evidence" : {
+      "request" : {
+        "method" : "POST",
+        "url" : "/v1/registrations/REG-2BGJJT5F/transitions",
+        "body" : {
+          "to" : "CHECKED_IN"
+        }
+      },
+      "response" : {
+        "status" : 200,
+        "body" : {
+          "registrationId" : "REG-2BGJJT5F",
+          "attendeeRef" : "ATT-7",
+          "eventCode" : "JAVA-CONF-26",
+          "seats" : 2,
+          "cancellationReason" : null,
+          "cancelledAt" : null,
+          "checkedInAt" : null,
+          "confirmedAt" : "2026-10-19T07:37:25.795650Z",
+          "requestedAt" : "2026-10-19T07:37:25.580425Z",
+          "state" : "CHECKED_IN"
+        }
+      },
+      "values" : {
+        "$.checkedInAt" : null,
+        "$.state" : "CHECKED_IN"
+      },
+      "assertion" : {
+        "iff" : [ {
+          "path" : "$.checkedInAt",
+          "notNull" : true
+        }, {
+          "path" : "$.state",
+          "equals" : "CHECKED_IN"
+        } ]
+      }
+    }
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "FAIL",
+    "exchangeIndex" : 3,
+    "operationId" : "fetchRegistration",
+    "message" : "checkedInAt is set if and only if state is CHECKED_IN — violated: {\"$.checkedInAt\":null,\"$.state\":\"CHECKED_IN\"}",
+    "evidence" : {
+      "request" : {
+        "method" : "GET",
+        "url" : "/v1/registrations/REG-2BGJJT5F",
+        "body" : null
+      },
+      "response" : {
+        "status" : 200,
+        "body" : {
+          "registrationId" : "REG-2BGJJT5F",
+          "attendeeRef" : "ATT-7",
+          "eventCode" : "JAVA-CONF-26",
+          "seats" : 2,
+          "cancellationReason" : null,
+          "cancelledAt" : null,
+          "checkedInAt" : null,
+          "confirmedAt" : "2026-10-19T07:37:25.795650Z",
+          "requestedAt" : "2026-10-19T07:37:25.580425Z",
+          "state" : "CHECKED_IN"
+        }
+      },
+      "values" : {
+        "$.checkedInAt" : null,
+        "$.state" : "CHECKED_IN"
+      },
+      "assertion" : {
+        "iff" : [ {
+          "path" : "$.checkedInAt",
+          "notNull" : true
+        }, {
+          "path" : "$.state",
+          "equals" : "CHECKED_IN"
+        } ]
+      }
+    }
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "FAIL",
+    "exchangeIndex" : 5,
+    "operationId" : "fetchRegistration",
+    "message" : "checkedInAt is set if and only if state is CHECKED_IN — violated: {\"$.checkedInAt\":null,\"$.state\":\"CHECKED_IN\"}",
+    "evidence" : {
+      "request" : {
+        "method" : "GET",
+        "url" : "/v1/registrations/REG-2BGJJT5F",
+        "body" : null
+      },
+      "response" : {
+        "status" : 200,
+        "body" : {
+          "registrationId" : "REG-2BGJJT5F",
+          "attendeeRef" : "ATT-7",
+          "eventCode" : "JAVA-CONF-26",
+          "seats" : 2,
+          "cancellationReason" : null,
+          "cancelledAt" : null,
+          "checkedInAt" : null,
+          "confirmedAt" : "2026-10-19T07:37:25.795650Z",
+          "requestedAt" : "2026-10-19T07:37:25.580425Z",
+          "state" : "CHECKED_IN"
+        }
+      },
+      "values" : {
+        "$.checkedInAt" : null,
+        "$.state" : "CHECKED_IN"
+      },
+      "assertion" : {
+        "iff" : [ {
+          "path" : "$.checkedInAt",
+          "notNull" : true
+        }, {
+          "path" : "$.state",
+          "equals" : "CHECKED_IN"
+        } ]
+      }
+    }
+  } ],
+  "findings" : [ {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 0,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 0,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 0,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 0,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "transitionRegistration",
+    "message" : "allowed transition REQUESTED -> CONFIRMED succeeded"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 1,
+    "operationId" : "transitionRegistration",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "FAIL",
+    "exchangeIndex" : 2,
+    "operationId" : "transitionRegistration",
+    "message" : "checkedInAt is set if and only if state is CHECKED_IN — violated: {\"$.checkedInAt\":null,\"$.state\":\"CHECKED_IN\"}",
+    "evidence" : {
+      "request" : {
+        "method" : "POST",
+        "url" : "/v1/registrations/REG-2BGJJT5F/transitions",
+        "body" : {
+          "to" : "CHECKED_IN"
+        }
+      },
+      "response" : {
+        "status" : 200,
+        "body" : {
+          "registrationId" : "REG-2BGJJT5F",
+          "attendeeRef" : "ATT-7",
+          "eventCode" : "JAVA-CONF-26",
+          "seats" : 2,
+          "cancellationReason" : null,
+          "cancelledAt" : null,
+          "checkedInAt" : null,
+          "confirmedAt" : "2026-10-19T07:37:25.795650Z",
+          "requestedAt" : "2026-10-19T07:37:25.580425Z",
+          "state" : "CHECKED_IN"
+        }
+      },
+      "values" : {
+        "$.checkedInAt" : null,
+        "$.state" : "CHECKED_IN"
+      },
+      "assertion" : {
+        "iff" : [ {
+          "path" : "$.checkedInAt",
+          "notNull" : true
+        }, {
+          "path" : "$.state",
+          "equals" : "CHECKED_IN"
+        } ]
+      }
+    }
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "transitionRegistration",
+    "message" : "allowed transition CONFIRMED -> CHECKED_IN succeeded"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 2,
+    "operationId" : "transitionRegistration",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "FAIL",
+    "exchangeIndex" : 3,
+    "operationId" : "fetchRegistration",
+    "message" : "checkedInAt is set if and only if state is CHECKED_IN — violated: {\"$.checkedInAt\":null,\"$.state\":\"CHECKED_IN\"}",
+    "evidence" : {
+      "request" : {
+        "method" : "GET",
+        "url" : "/v1/registrations/REG-2BGJJT5F",
+        "body" : null
+      },
+      "response" : {
+        "status" : 200,
+        "body" : {
+          "registrationId" : "REG-2BGJJT5F",
+          "attendeeRef" : "ATT-7",
+          "eventCode" : "JAVA-CONF-26",
+          "seats" : 2,
+          "cancellationReason" : null,
+          "cancelledAt" : null,
+          "checkedInAt" : null,
+          "confirmedAt" : "2026-10-19T07:37:25.795650Z",
+          "requestedAt" : "2026-10-19T07:37:25.580425Z",
+          "state" : "CHECKED_IN"
+        }
+      },
+      "values" : {
+        "$.checkedInAt" : null,
+        "$.state" : "CHECKED_IN"
+      },
+      "assertion" : {
+        "iff" : [ {
+          "path" : "$.checkedInAt",
+          "notNull" : true
+        }, {
+          "path" : "$.state",
+          "equals" : "CHECKED_IN"
+        } ]
+      }
+    }
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 4,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 4,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 4,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 4,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 4,
+    "operationId" : "transitionRegistration",
+    "message" : "forbidden transition CHECKED_IN -> CANCELLED rejected with HTTP 422"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 4,
+    "operationId" : "transitionRegistration",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "FAIL",
+    "exchangeIndex" : 5,
+    "operationId" : "fetchRegistration",
+    "message" : "checkedInAt is set if and only if state is CHECKED_IN — violated: {\"$.checkedInAt\":null,\"$.state\":\"CHECKED_IN\"}",
+    "evidence" : {
+      "request" : {
+        "method" : "GET",
+        "url" : "/v1/registrations/REG-2BGJJT5F",
+        "body" : null
+      },
+      "response" : {
+        "status" : 200,
+        "body" : {
+          "registrationId" : "REG-2BGJJT5F",
+          "attendeeRef" : "ATT-7",
+          "eventCode" : "JAVA-CONF-26",
+          "seats" : 2,
+          "cancellationReason" : null,
+          "cancelledAt" : null,
+          "checkedInAt" : null,
+          "confirmedAt" : "2026-10-19T07:37:25.795650Z",
+          "requestedAt" : "2026-10-19T07:37:25.580425Z",
+          "state" : "CHECKED_IN"
+        }
+      },
+      "values" : {
+        "$.checkedInAt" : null,
+        "$.state" : "CHECKED_IN"
+      },
+      "assertion" : {
+        "iff" : [ {
+          "path" : "$.checkedInAt",
+          "notNull" : true
+        }, {
+          "path" : "$.state",
+          "equals" : "CHECKED_IN"
+        } ]
+      }
+    }
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 5,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 5,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 5,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 6,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 6,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 6,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 6,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 7,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 7,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 7,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 7,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 7,
+    "operationId" : "transitionRegistration",
+    "message" : "allowed transition REQUESTED -> WAITLISTED succeeded"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 7,
+    "operationId" : "transitionRegistration",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "transitionRegistration",
+    "message" : "allowed transition WAITLISTED -> CONFIRMED succeeded"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 8,
+    "operationId" : "transitionRegistration",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 9,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 9,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 9,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 9,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 9,
+    "operationId" : "transitionRegistration",
+    "message" : "allowed transition CONFIRMED -> CANCELLED succeeded"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 9,
+    "operationId" : "transitionRegistration",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 10,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 10,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 10,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 10,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 11,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 11,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 11,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 11,
+    "operationId" : "registerAttendee",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "transitionRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 12,
+    "operationId" : "transitionRegistration",
+    "message" : "allowed transition REQUESTED -> WAITLISTED succeeded"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 12,
+    "operationId" : "transitionRegistration",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 13,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 13,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 13,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 13,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 422)"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 13,
+    "operationId" : "transitionRegistration",
+    "message" : "forbidden transition WAITLISTED -> CHECKED_IN rejected with HTTP 422"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 13,
+    "operationId" : "transitionRegistration",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 14,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 14,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 14,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 14,
+    "operationId" : "fetchRegistration",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "PASS",
+    "exchangeIndex" : 15,
+    "operationId" : "listAttendeeRegistrations",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 16,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 16,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 16,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 16,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 404)"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 16,
+    "operationId" : "transitionRegistration",
+    "message" : "previous state of resource REG-NOPE0000 unknown"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 16,
+    "operationId" : "transitionRegistration",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 17,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 17,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 17,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 17,
+    "operationId" : "transitionRegistration",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "EVT-ST-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 17,
+    "operationId" : "transitionRegistration",
+    "message" : "requested state is not a known state: DONE"
+  }, {
+    "ruleId" : "EVT-DB-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 17,
+    "operationId" : "transitionRegistration",
+    "message" : "no database access (passive mode or no JDBC URL configured)"
+  }, {
+    "ruleId" : "EVT-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 18,
+    "operationId" : "registerAttendee",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "EVT-INV-002",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 18,
+    "operationId" : "registerAttendee",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "EVT-INV-003",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 18,
+    "operationId" : "registerAttendee",
+    "message" : "not a successful response with a body (HTTP 400)"
+  }, {
+    "ruleId" : "EVT-INV-004",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 18,
+    "operationId" : "registerAttendee",
+    "message" : "not a successful response with a body (HTTP 400)"
+  } ]
+}

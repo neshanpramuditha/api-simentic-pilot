@@ -1,0 +1,102 @@
+﻿No authorization data found. Please use the `postman login` command.
+Refer:https://learning.postman.com/docs/postman-cli/postman-cli-options/#postman-login
+
+Running your collection...
+postman
+
+Evaluation scenario EVAL-SC-1
+
+Root 1 create order A
+
+  POST http://localhost:8080/api/orders [201 Created, 237 B, 237 ms]
+  Pass  status is 201
+  Pass  order status is CREATED
+  Pass  body matches the baseline Order schema
+
+Root 2 A -> PAID
+
+  PATCH http://localhost:8080/api/orders/1/status [200 OK, 229 B, 46 ms]
+  Pass  status is 200
+  Pass  order status is PAID
+  Pass  body matches the baseline Order schema
+
+Root 3 A -> SHIPPED
+
+  PATCH http://localhost:8080/api/orders/1/status [200 OK, 232 B, 6 ms]
+  Pass  status is 200
+  Pass  order status is SHIPPED
+  Pass  body matches the baseline Order schema
+
+Root 4 A -> DELIVERED
+
+  PATCH http://localhost:8080/api/orders/1/status [200 OK, 234 B, 13 ms]
+  Pass  status is 200
+  Pass  order status is DELIVERED
+  Pass  body matches the baseline Order schema
+
+Root 5 A -> COMPLETED
+
+  PATCH http://localhost:8080/api/orders/1/status [200 OK, 260 B, 9 ms]
+  Pass  status is 200
+  Pass  order status is COMPLETED
+  Pass  body matches the baseline Order schema
+
+Root 6 A -> CANCELLED (forbidden)
+
+  PATCH http://localhost:8080/api/orders/1/status [409 Conflict, 272 B, 20 ms]
+  Pass  status is 409
+
+Root 7 read A
+
+  GET http://localhost:8080/api/orders/1 [200 OK, 259 B, 10 ms]
+  Pass  status is 200
+  Pass  order status is COMPLETED
+  Pass  body matches the baseline Order schema
+
+Root 8 create order B
+
+  POST http://localhost:8080/api/orders [201 Created, 234 B, 7 ms]
+  Pass  status is 201
+  Pass  order status is CREATED
+  Pass  body matches the baseline Order schema
+
+Root 9 B -> DELIVERED (forbidden)
+
+  PATCH http://localhost:8080/api/orders/2/status [409 Conflict, 272 B, 8 ms]
+  Pass  status is 409
+
+Root 10 read B
+
+  GET http://localhost:8080/api/orders/2 [200 OK, 232 B, 7 ms]
+  Pass  status is 200
+  Pass  order status is CREATED
+  Pass  body matches the baseline Order schema
+
+Root 11 list user 7
+
+  GET http://localhost:8080/api/users/7/orders [200 OK, 338 B, 326 ms]
+  Pass  status is 200
+  Pass  list statuses are COMPLETED, CREATED
+  Pass  every item matches the baseline Order schema
+
+-----------------------------------------------------------------------
+|                         |            executed |              failed |
+--------------------------+---------------------+----------------------
+|              iterations |                   1 |                   0 |
+--------------------------+---------------------+----------------------
+|                requests |                  11 |                   0 |
+--------------------------+---------------------+----------------------
+|            test-scripts |                  11 |                   0 |
+--------------------------+---------------------+----------------------
+|      prerequest-scripts |                   0 |                   0 |
+--------------------------+---------------------+----------------------
+|              assertions |                  29 |                   0 |
+-----------------------------------------------------------------------
+| total run duration: 1680 ms                                         |
+-----------------------------------------------------------------------
+| total data received: 1.02 KB (approx)                               |
+-----------------------------------------------------------------------
+| average response time: 62 ms [min: 6 ms, max: 326 ms, s.d.: 105 ms] |
+-----------------------------------------------------------------------
+Postman credentials are required for publishing run details to Postman cloud.
+Please specify it by using the `postman login` command

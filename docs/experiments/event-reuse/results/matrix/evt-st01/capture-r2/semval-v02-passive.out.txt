@@ -1,0 +1,2 @@
+semantic-validator: 19 exchanges, 7 rules, totals {PASS=82, FAIL=1, NOT_APPLICABLE=42}, 69 ms -> <run-root>\evt-st01\capture-r2\semval-v02-passive.json
+  FAIL EVT-ST-001 #8 transitionRegistration: allowed transition WAITLISTED -> CONFIRMED was rejected with HTTP 422

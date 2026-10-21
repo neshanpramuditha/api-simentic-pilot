@@ -1,0 +1,3 @@
+semantic-validator: 15 exchanges, 4 rules, totals {PASS=29, FAIL=2, NOT_APPLICABLE=21}, 58 ms -> <run-root>\lib-db01\semval-passive-r1\semval.json
+  FAIL LIB-INV-001 #5 getLoan: returnedAt is set if and only if status is RETURNED � violated: {"$.returnedAt":"2026-10-19T06:18:25.472624Z","$.status":"ISSUED"}
+  FAIL LIB-INV-001 #12 listMemberLoans: returnedAt is set if and only if status is RETURNED � violated by item 0: {"$.returnedAt":"2026-10-19T06:18:25.472624Z","$.status":"ISSUED"}

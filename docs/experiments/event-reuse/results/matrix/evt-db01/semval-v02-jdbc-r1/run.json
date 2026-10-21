@@ -1,0 +1,11 @@
+{
+    "mode":  "evt-db01",
+    "type":  "semval-v02-jdbc",
+    "repeat":  1,
+    "defect":  "db01-rejected-change-saved",
+    "exitCode":  1,
+    "durationMs":  5792,
+    "defectLines":  [
+                        "DEFECT EVT-DB-01 ENABLED: transitions rejected with 422 are stored anyway"
+                    ]
+}

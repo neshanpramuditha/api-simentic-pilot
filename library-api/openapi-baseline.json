@@ -1,0 +1,262 @@
+{
+  "components" : {
+    "schemas" : {
+      "CreateLoanRequest" : {
+        "description" : "Request body for requesting a loan",
+        "properties" : {
+          "bookId" : {
+            "description" : "ID of the book to borrow",
+            "example" : 1001,
+            "exclusiveMinimum" : 0,
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "memberId" : {
+            "description" : "ID of the member who borrows the book",
+            "example" : 42,
+            "exclusiveMinimum" : 0,
+            "format" : "int64",
+            "type" : "integer"
+          }
+        },
+        "required" : [ "bookId", "memberId" ],
+        "type" : "object"
+      },
+      "Loan" : {
+        "description" : "A book loan",
+        "properties" : {
+          "bookId" : {
+            "description" : "ID of the book being borrowed",
+            "example" : 1001,
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "id" : {
+            "description" : "Loan ID, assigned by the server",
+            "example" : "3f2c8a51-7d0e-4c8e-9a43-2b1f6c9d0e15",
+            "format" : "uuid",
+            "readOnly" : true,
+            "type" : "string"
+          },
+          "issuedAt" : {
+            "description" : "When the book was issued; set on the move to ISSUED, null before that",
+            "example" : "2026-10-19T09:20:41.5Z",
+            "format" : "date-time",
+            "type" : [ "string", "null" ]
+          },
+          "memberId" : {
+            "description" : "ID of the member who borrows the book",
+            "example" : 42,
+            "format" : "int64",
+            "type" : "integer"
+          },
+          "requestedAt" : {
+            "description" : "When the loan was requested",
+            "example" : "2026-10-19T09:15:02.123456Z",
+            "format" : "date-time",
+            "type" : "string"
+          },
+          "returnedAt" : {
+            "description" : "When the book was returned; set on the move to RETURNED, null before that",
+            "example" : "2026-11-02T16:03:10.9Z",
+            "format" : "date-time",
+            "type" : [ "string", "null" ]
+          },
+          "status" : {
+            "description" : "Current lifecycle status",
+            "enum" : [ "REQUESTED", "APPROVED", "REJECTED", "ISSUED", "RETURNED" ],
+            "example" : "REQUESTED",
+            "type" : "string"
+          }
+        },
+        "required" : [ "bookId", "id", "issuedAt", "memberId", "requestedAt", "returnedAt", "status" ],
+        "type" : "object"
+      },
+      "UpdateLoanStatusRequest" : {
+        "description" : "Request body for changing a loan's status",
+        "properties" : {
+          "status" : {
+            "description" : "Target status; must be an allowed transition from the current status",
+            "enum" : [ "REQUESTED", "APPROVED", "REJECTED", "ISSUED", "RETURNED" ],
+            "example" : "APPROVED",
+            "type" : "string"
+          }
+        },
+        "required" : [ "status" ],
+        "type" : "object"
+      }
+    }
+  },
+  "info" : {
+    "description" : "Second subject API for the semantic-validator reuse experiment. Members request book loans, which are approved or rejected, issued and returned.",
+    "title" : "Library Lending API",
+    "version" : "0.0.1"
+  },
+  "openapi" : "3.1.0",
+  "paths" : {
+    "/api/loans" : {
+      "post" : {
+        "description" : "Creates a loan request with status REQUESTED; issuedAt and returnedAt are null.",
+        "operationId" : "createLoan",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CreateLoanRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "201" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Loan"
+                }
+              }
+            },
+            "description" : "Loan requested"
+          },
+          "400" : {
+            "description" : "Request body failed validation"
+          }
+        },
+        "summary" : "Request a loan",
+        "tags" : [ "Loans" ]
+      }
+    },
+    "/api/loans/{id}" : {
+      "get" : {
+        "operationId" : "getLoan",
+        "parameters" : [ {
+          "description" : "Loan ID",
+          "example" : "3f2c8a51-7d0e-4c8e-9a43-2b1f6c9d0e15",
+          "in" : "path",
+          "name" : "id",
+          "required" : true,
+          "schema" : {
+            "format" : "uuid",
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Loan"
+                }
+              }
+            },
+            "description" : "Loan found"
+          },
+          "400" : {
+            "description" : "ID is not a UUID"
+          },
+          "404" : {
+            "description" : "No loan with this ID"
+          }
+        },
+        "summary" : "Get a loan by ID",
+        "tags" : [ "Loans" ]
+      }
+    },
+    "/api/loans/{id}/status" : {
+      "patch" : {
+        "description" : "Allowed transitions: REQUESTED -> APPROVED | REJECTED; APPROVED -> ISSUED; ISSUED -> RETURNED. REJECTED and RETURNED are final. Moving to ISSUED sets issuedAt; moving to RETURNED sets returnedAt.",
+        "operationId" : "updateLoanStatus",
+        "parameters" : [ {
+          "description" : "Loan ID",
+          "example" : "3f2c8a51-7d0e-4c8e-9a43-2b1f6c9d0e15",
+          "in" : "path",
+          "name" : "id",
+          "required" : true,
+          "schema" : {
+            "format" : "uuid",
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/UpdateLoanStatusRequest"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/Loan"
+                }
+              }
+            },
+            "description" : "Status updated"
+          },
+          "400" : {
+            "description" : "ID is not a UUID, or request body failed validation"
+          },
+          "404" : {
+            "description" : "No loan with this ID"
+          },
+          "409" : {
+            "description" : "Transition not allowed from the current status"
+          }
+        },
+        "summary" : "Change a loan's status",
+        "tags" : [ "Loans" ]
+      }
+    },
+    "/api/members/{memberId}/loans" : {
+      "get" : {
+        "description" : "Returns every loan of the member, oldest request first; an empty list if the member has none.",
+        "operationId" : "listMemberLoans",
+        "parameters" : [ {
+          "description" : "Member ID",
+          "example" : 42,
+          "in" : "path",
+          "name" : "memberId",
+          "required" : true,
+          "schema" : {
+            "format" : "int64",
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "items" : {
+                    "$ref" : "#/components/schemas/Loan"
+                  },
+                  "type" : "array"
+                }
+              }
+            },
+            "description" : "Loans of the member"
+          },
+          "400" : {
+            "description" : "Member ID is not a valid 64-bit integer"
+          }
+        },
+        "summary" : "List a member's loans",
+        "tags" : [ "Loans" ]
+      }
+    }
+  },
+  "servers" : [ {
+    "description" : "Generated server url",
+    "url" : "http://localhost:8081"
+  } ],
+  "tags" : [ {
+    "description" : "Request book loans, look them up, and move them through the lending lifecycle",
+    "name" : "Loans"
+  } ]
+}

@@ -1,0 +1,7 @@
+semantic-validator: 19 exchanges, 7 rules, totals {PASS=82, FAIL=6, NOT_APPLICABLE=37}, 793 ms -> <run-root>\evt-db01\capture-r1\semval-v02-passive.json
+  FAIL EVT-INV-001 #5 fetchRegistration: checkedInAt is set if and only if state is CHECKED_IN � violated: {"$.checkedInAt":"2026-10-19T07:31:03.380582Z","$.state":"CANCELLED"}
+  FAIL EVT-INV-004 #14 fetchRegistration: A CHECKED_IN registration has been confirmed (confirmedAt set); confirmedAt is only set in CONFIRMED, CHECKED_IN or CANCELLED � violated: {"$.state":"CHECKED_IN","$.confirmedAt":null}
+  FAIL EVT-INV-005 #14 fetchRegistration: Timestamps are in lifecycle order: requestedAt <= confirmedAt <= checkedInAt � violated: {"$.confirmedAt":null,"$.requestedAt":"2026-10-19T07:31:03.518096Z","$.checkedInAt":"2026-10-19T07:31:03.542618Z"}
+  FAIL EVT-INV-001 #15 listAttendeeRegistrations: checkedInAt is set if and only if state is CHECKED_IN � violated by item 0: {"$.checkedInAt":"2026-10-19T07:31:03.380582Z","$.state":"CANCELLED"}
+  FAIL EVT-INV-004 #15 listAttendeeRegistrations: A CHECKED_IN registration has been confirmed (confirmedAt set); confirmedAt is only set in CONFIRMED, CHECKED_IN or CANCELLED � violated by item 2: {"$.state":"CHECKED_IN","$.confirmedAt":null}
+  FAIL EVT-INV-005 #15 listAttendeeRegistrations: Timestamps are in lifecycle order: requestedAt <= confirmedAt <= checkedInAt � violated by item 2: {"$.confirmedAt":null,"$.requestedAt":"2026-10-19T07:31:03.518096Z","$.checkedInAt":"2026-10-19T07:31:03.542618Z"}

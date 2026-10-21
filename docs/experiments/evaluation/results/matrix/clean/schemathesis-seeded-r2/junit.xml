@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites errors="0" failures="4" skipped="0" tests="5" time="15.361505">
+  <testsuite name="schemathesis" hostname="DESKTOP-1RDQIN2" errors="0" failures="4" skipped="0" tests="5" time="15.361505">
+    <testcase name="GET /api/users/{userId}/orders" time="2.515438">
+      <failure type="failure">1. Test Case ID: dv4AFy
+
+- Server error on unexpected Content-Type
+
+    `Content-Type: multipart/form-data` without a boundary returned 500, expected 400 Bad Request or 415 Unsupported Media Type
+
+    Reject a malformed `Content-Type` before parsing the request body
+
+[500] Internal Server Error:
+
+    `{"timestamp":"2026-10-19T03:51:42.300Z","status":500,"error":"Internal Server Error","path":"/api/users/7/orders"}`
+
+Reproduce with:
+
+    curl -X GET -H 'Content-Type: multipart/form-data' http://localhost:8080/api/users/7/orders</failure>
+    </testcase>
+    <testcase name="POST /api/orders" time="0.989568">
+      <failure type="failure">1. Test Case ID: ILZf7H
+
+- API rejected schema-compliant request
+
+    Valid data should have been accepted
+    Expected: 2xx, 401, 403, 404, 409, 429, 5xx
+
+[400] Bad Request:
+
+    `{"timestamp":"2026-10-19T03:51:43.140Z","status":400,"error":"Bad Request","path":"/api/orders"}`
+
+Reproduce with:
+
+    curl -X POST -H 'Content-Type: application/json' -d '{"ownerUserId": 7, "total": 5e-324}' http://localhost:8080/api/orders</failure>
+    </testcase>
+    <testcase name="GET /api/orders/{id}" time="1.566209">
+      <failure type="failure">1. Test Case ID: ya9T5a
+
+- Server error on unexpected Content-Type
+
+    `Content-Type: multipart/form-data` without a boundary returned 500, expected 400 Bad Request or 415 Unsupported Media Type
+
+    Reject a malformed `Content-Type` before parsing the request body
+
+[500] Internal Server Error:
+
+    `{"timestamp":"2026-10-19T03:51:43.456Z","status":500,"error":"Internal Server Error","path":"/api/orders/1"}`
+
+Reproduce with:
+
+    curl -X GET -H 'Content-Type: multipart/form-data' http://localhost:8080/api/orders/1</failure>
+    </testcase>
+    <testcase name="PATCH /api/orders/{id}/status" time="2.660669">
+      <failure type="failure">1. Test Case ID: DXDxEq
+
+- Server error on unexpected Content-Type
+
+    `Content-Type: multipart/form-data` without a boundary returned 500, expected 400 Bad Request or 415 Unsupported Media Type
+
+    Reject a malformed `Content-Type` before parsing the request body
+
+[500] Internal Server Error:
+
+    `{"timestamp":"2026-10-19T03:51:44.564Z","status":500,"error":"Internal Server Error","path":"/api/orders/1/status"}`
+
+Reproduce with:
+
+    curl -X PATCH -H 'Content-Type: multipart/form-data' -d '{"status": "PAID"}' http://localhost:8080/api/orders/1/status</failure>
+    </testcase>
+    <testcase name="Stateful tests" time="7.629621" />
+  </testsuite>
+</testsuites>

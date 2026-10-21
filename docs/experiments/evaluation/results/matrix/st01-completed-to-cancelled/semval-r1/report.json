@@ -1,0 +1,490 @@
+{
+  "tool" : "semantic-validator 0.1.0",
+  "mode" : "run",
+  "source" : "scenario scenario.json against http://localhost:8080 (with database access)",
+  "ruleSet" : "order-api semantic rules v1",
+  "durationMillis" : 850,
+  "exchanges" : 11,
+  "unmatchedRequests" : 0,
+  "totals" : {
+    "PASS" : 19,
+    "FAIL" : 4,
+    "NOT_APPLICABLE" : 1
+  },
+  "byRule" : {
+    "ORD-INV-001" : {
+      "PASS" : 8,
+      "FAIL" : 3,
+      "NOT_APPLICABLE" : 1
+    },
+    "ORD-ST-001" : {
+      "PASS" : 5,
+      "FAIL" : 1,
+      "NOT_APPLICABLE" : 0
+    },
+    "ORD-DB-001" : {
+      "PASS" : 6,
+      "FAIL" : 0,
+      "NOT_APPLICABLE" : 0
+    }
+  },
+  "rules" : [ {
+    "id" : "ORD-INV-001",
+    "description" : "completedAt is set if and only if status is COMPLETED",
+    "operations" : [ "createOrder", "getOrder", "updateStatus", "getOrdersByUser" ]
+  }, {
+    "id" : "ORD-ST-001",
+    "description" : "Order status changes follow the order lifecycle; forbidden changes are rejected with 409",
+    "operations" : [ "updateStatus" ]
+  }, {
+    "id" : "ORD-DB-001",
+    "description" : "The persisted order matches a successful status change and is unchanged after a rejected one",
+    "operations" : [ "updateStatus" ]
+  } ],
+  "failures" : [ {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "FAIL",
+    "exchangeIndex" : 5,
+    "operationId" : "updateStatus",
+    "message" : "completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:26:46.193139\",\"$.status\":\"CANCELLED\"}",
+    "evidence" : {
+      "request" : {
+        "method" : "PATCH",
+        "url" : "/api/orders/1/status",
+        "body" : {
+          "status" : "CANCELLED"
+        }
+      },
+      "response" : {
+        "status" : 200,
+        "body" : {
+          "ownerUserId" : 7,
+          "total" : 49.99,
+          "completedAt" : "2026-10-19T09:26:46.193139",
+          "id" : 1,
+          "status" : "CANCELLED"
+        }
+      },
+      "values" : {
+        "$.completedAt" : "2026-10-19T09:26:46.193139",
+        "$.status" : "CANCELLED"
+      },
+      "assertion" : {
+        "iff" : [ {
+          "path" : "$.completedAt",
+          "notNull" : true
+        }, {
+          "path" : "$.status",
+          "equals" : "COMPLETED"
+        } ]
+      }
+    }
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "FAIL",
+    "exchangeIndex" : 5,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CANCELLED was accepted with HTTP 200 (allowed from COMPLETED: [])",
+    "evidence" : {
+      "request" : {
+        "method" : "PATCH",
+        "url" : "/api/orders/1/status",
+        "body" : {
+          "status" : "CANCELLED"
+        }
+      },
+      "response" : {
+        "status" : 200,
+        "body" : {
+          "ownerUserId" : 7,
+          "total" : 49.99,
+          "completedAt" : "2026-10-19T09:26:46.193139",
+          "id" : 1,
+          "status" : "CANCELLED"
+        }
+      },
+      "state" : {
+        "resourceId" : "1",
+        "previous" : "COMPLETED",
+        "previousSource" : "read-back before request",
+        "readBack" : {
+          "operationId" : "getOrder",
+          "url" : "/api/orders/1",
+          "status" : 200,
+          "body" : {
+            "ownerUserId" : 7,
+            "total" : 49.99,
+            "completedAt" : "2026-10-19T09:26:46.193139",
+            "id" : 1,
+            "status" : "COMPLETED"
+          }
+        },
+        "requested" : "CANCELLED",
+        "transitionAllowed" : false,
+        "allowedFromPrevious" : [ ]
+      }
+    }
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "FAIL",
+    "exchangeIndex" : 6,
+    "operationId" : "getOrder",
+    "message" : "completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:26:46.193139\",\"$.status\":\"CANCELLED\"}",
+    "evidence" : {
+      "request" : {
+        "method" : "GET",
+        "url" : "/api/orders/1",
+        "body" : null
+      },
+      "response" : {
+        "status" : 200,
+        "body" : {
+          "ownerUserId" : 7,
+          "total" : 49.99,
+          "completedAt" : "2026-10-19T09:26:46.193139",
+          "id" : 1,
+          "status" : "CANCELLED"
+        }
+      },
+      "values" : {
+        "$.completedAt" : "2026-10-19T09:26:46.193139",
+        "$.status" : "CANCELLED"
+      },
+      "assertion" : {
+        "iff" : [ {
+          "path" : "$.completedAt",
+          "notNull" : true
+        }, {
+          "path" : "$.status",
+          "equals" : "COMPLETED"
+        } ]
+      }
+    }
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "FAIL",
+    "exchangeIndex" : 10,
+    "operationId" : "getOrdersByUser",
+    "message" : "completedAt is set if and only if status is COMPLETED — violated by item 0: {\"$.completedAt\":\"2026-10-19T09:26:46.193139\",\"$.status\":\"CANCELLED\"}",
+    "evidence" : {
+      "request" : {
+        "method" : "GET",
+        "url" : "/api/users/7/orders",
+        "body" : null
+      },
+      "response" : {
+        "status" : 200,
+        "body" : [ {
+          "ownerUserId" : 7,
+          "total" : 49.99,
+          "completedAt" : "2026-10-19T09:26:46.193139",
+          "id" : 1,
+          "status" : "CANCELLED"
+        }, {
+          "ownerUserId" : 7,
+          "total" : 10.0,
+          "completedAt" : null,
+          "id" : 2,
+          "status" : "CREATED"
+        } ]
+      },
+      "values" : {
+        "$.completedAt" : "2026-10-19T09:26:46.193139",
+        "$.status" : "CANCELLED"
+      },
+      "itemIndex" : 0,
+      "assertion" : {
+        "iff" : [ {
+          "path" : "$.completedAt",
+          "notNull" : true
+        }, {
+          "path" : "$.status",
+          "equals" : "COMPLETED"
+        } ]
+      }
+    }
+  } ],
+  "findings" : [ {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 0,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "updateStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "updateStatus",
+    "message" : "allowed transition CREATED -> PAID succeeded"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 1,
+    "operationId" : "updateStatus",
+    "message" : "persisted state matches the response"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "updateStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "updateStatus",
+    "message" : "allowed transition PAID -> SHIPPED succeeded"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 2,
+    "operationId" : "updateStatus",
+    "message" : "persisted state matches the response"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "updateStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "updateStatus",
+    "message" : "allowed transition SHIPPED -> DELIVERED succeeded"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 3,
+    "operationId" : "updateStatus",
+    "message" : "persisted state matches the response"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 4,
+    "operationId" : "updateStatus",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 4,
+    "operationId" : "updateStatus",
+    "message" : "allowed transition DELIVERED -> COMPLETED succeeded"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 4,
+    "operationId" : "updateStatus",
+    "message" : "persisted state matches the response"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "FAIL",
+    "exchangeIndex" : 5,
+    "operationId" : "updateStatus",
+    "message" : "completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:26:46.193139\",\"$.status\":\"CANCELLED\"}",
+    "evidence" : {
+      "request" : {
+        "method" : "PATCH",
+        "url" : "/api/orders/1/status",
+        "body" : {
+          "status" : "CANCELLED"
+        }
+      },
+      "response" : {
+        "status" : 200,
+        "body" : {
+          "ownerUserId" : 7,
+          "total" : 49.99,
+          "completedAt" : "2026-10-19T09:26:46.193139",
+          "id" : 1,
+          "status" : "CANCELLED"
+        }
+      },
+      "values" : {
+        "$.completedAt" : "2026-10-19T09:26:46.193139",
+        "$.status" : "CANCELLED"
+      },
+      "assertion" : {
+        "iff" : [ {
+          "path" : "$.completedAt",
+          "notNull" : true
+        }, {
+          "path" : "$.status",
+          "equals" : "COMPLETED"
+        } ]
+      }
+    }
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "FAIL",
+    "exchangeIndex" : 5,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition COMPLETED -> CANCELLED was accepted with HTTP 200 (allowed from COMPLETED: [])",
+    "evidence" : {
+      "request" : {
+        "method" : "PATCH",
+        "url" : "/api/orders/1/status",
+        "body" : {
+          "status" : "CANCELLED"
+        }
+      },
+      "response" : {
+        "status" : 200,
+        "body" : {
+          "ownerUserId" : 7,
+          "total" : 49.99,
+          "completedAt" : "2026-10-19T09:26:46.193139",
+          "id" : 1,
+          "status" : "CANCELLED"
+        }
+      },
+      "state" : {
+        "resourceId" : "1",
+        "previous" : "COMPLETED",
+        "previousSource" : "read-back before request",
+        "readBack" : {
+          "operationId" : "getOrder",
+          "url" : "/api/orders/1",
+          "status" : 200,
+          "body" : {
+            "ownerUserId" : 7,
+            "total" : 49.99,
+            "completedAt" : "2026-10-19T09:26:46.193139",
+            "id" : 1,
+            "status" : "COMPLETED"
+          }
+        },
+        "requested" : "CANCELLED",
+        "transitionAllowed" : false,
+        "allowedFromPrevious" : [ ]
+      }
+    }
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 5,
+    "operationId" : "updateStatus",
+    "message" : "persisted state matches the response"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "FAIL",
+    "exchangeIndex" : 6,
+    "operationId" : "getOrder",
+    "message" : "completedAt is set if and only if status is COMPLETED — violated: {\"$.completedAt\":\"2026-10-19T09:26:46.193139\",\"$.status\":\"CANCELLED\"}",
+    "evidence" : {
+      "request" : {
+        "method" : "GET",
+        "url" : "/api/orders/1",
+        "body" : null
+      },
+      "response" : {
+        "status" : 200,
+        "body" : {
+          "ownerUserId" : 7,
+          "total" : 49.99,
+          "completedAt" : "2026-10-19T09:26:46.193139",
+          "id" : 1,
+          "status" : "CANCELLED"
+        }
+      },
+      "values" : {
+        "$.completedAt" : "2026-10-19T09:26:46.193139",
+        "$.status" : "CANCELLED"
+      },
+      "assertion" : {
+        "iff" : [ {
+          "path" : "$.completedAt",
+          "notNull" : true
+        }, {
+          "path" : "$.status",
+          "equals" : "COMPLETED"
+        } ]
+      }
+    }
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 7,
+    "operationId" : "createOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "NOT_APPLICABLE",
+    "exchangeIndex" : 8,
+    "operationId" : "updateStatus",
+    "message" : "not a successful response with a body (HTTP 409)"
+  }, {
+    "ruleId" : "ORD-ST-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "updateStatus",
+    "message" : "forbidden transition CREATED -> DELIVERED rejected with HTTP 409"
+  }, {
+    "ruleId" : "ORD-DB-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 8,
+    "operationId" : "updateStatus",
+    "message" : "row unchanged after HTTP 409"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 9,
+    "operationId" : "getOrder",
+    "message" : "invariant holds"
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "FAIL",
+    "exchangeIndex" : 10,
+    "operationId" : "getOrdersByUser",
+    "message" : "completedAt is set if and only if status is COMPLETED — violated by item 0: {\"$.completedAt\":\"2026-10-19T09:26:46.193139\",\"$.status\":\"CANCELLED\"}",
+    "evidence" : {
+      "request" : {
+        "method" : "GET",
+        "url" : "/api/users/7/orders",
+        "body" : null
+      },
+      "response" : {
+        "status" : 200,
+        "body" : [ {
+          "ownerUserId" : 7,
+          "total" : 49.99,
+          "completedAt" : "2026-10-19T09:26:46.193139",
+          "id" : 1,
+          "status" : "CANCELLED"
+        }, {
+          "ownerUserId" : 7,
+          "total" : 10.0,
+          "completedAt" : null,
+          "id" : 2,
+          "status" : "CREATED"
+        } ]
+      },
+      "values" : {
+        "$.completedAt" : "2026-10-19T09:26:46.193139",
+        "$.status" : "CANCELLED"
+      },
+      "itemIndex" : 0,
+      "assertion" : {
+        "iff" : [ {
+          "path" : "$.completedAt",
+          "notNull" : true
+        }, {
+          "path" : "$.status",
+          "equals" : "COMPLETED"
+        } ]
+      }
+    }
+  }, {
+    "ruleId" : "ORD-INV-001",
+    "outcome" : "PASS",
+    "exchangeIndex" : 10,
+    "operationId" : "getOrdersByUser",
+    "message" : "invariant holds"
+  } ]
+}

@@ -1,0 +1,5 @@
+semantic-validator: 19 exchanges, 7 rules, totals {PASS=93, FAIL=4, NOT_APPLICABLE=28}, 2032 ms -> <run-root>\evt-ri01\semval-v02-jdbc-r2\semval.json
+  FAIL EVT-INV-001 #2 transitionRegistration: checkedInAt is set if and only if state is CHECKED_IN � violated: {"$.checkedInAt":null,"$.state":"CHECKED_IN"}
+  FAIL EVT-INV-001 #3 fetchRegistration: checkedInAt is set if and only if state is CHECKED_IN � violated: {"$.checkedInAt":null,"$.state":"CHECKED_IN"}
+  FAIL EVT-INV-001 #5 fetchRegistration: checkedInAt is set if and only if state is CHECKED_IN � violated: {"$.checkedInAt":null,"$.state":"CHECKED_IN"}
+  FAIL EVT-INV-001 #15 listAttendeeRegistrations: checkedInAt is set if and only if state is CHECKED_IN � violated by item 0: {"$.checkedInAt":null,"$.state":"CHECKED_IN"}

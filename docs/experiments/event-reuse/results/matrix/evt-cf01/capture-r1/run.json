@@ -1,0 +1,14 @@
+{
+    "mode":  "evt-cf01",
+    "type":  "capture",
+    "repeat":  1,
+    "defect":  "cf01-checkin-before-confirmation",
+    "exitCodeV01Passive":  0,
+    "durationMsV01Passive":  536,
+    "exitCodeV02Passive":  1,
+    "durationMsV02Passive":  1003,
+    "durationMsAjv":  407,
+    "defectLines":  [
+                        "DEFECT EVT-CF-01 ENABLED: checkedInAt is set to requestedAt (before confirmedAt)"
+                    ]
+}

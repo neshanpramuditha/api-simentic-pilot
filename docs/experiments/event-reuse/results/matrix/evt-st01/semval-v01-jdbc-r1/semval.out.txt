@@ -1,0 +1,2 @@
+semantic-validator: 19 exchanges, 6 rules, totals {PASS=68, FAIL=1, NOT_APPLICABLE=27}, 1298 ms -> <run-root>\evt-st01\semval-v01-jdbc-r1\semval.json
+  FAIL EVT-ST-001 #8 transitionRegistration: allowed transition WAITLISTED -> CONFIRMED was rejected with HTTP 422

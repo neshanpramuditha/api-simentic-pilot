@@ -1,0 +1,14 @@
+{
+    "mode":  "evt-st01",
+    "type":  "capture",
+    "repeat":  2,
+    "defect":  "st01-waitlist-confirm-rejected",
+    "exitCodeV01Passive":  1,
+    "durationMsV01Passive":  838,
+    "exitCodeV02Passive":  1,
+    "durationMsV02Passive":  546,
+    "durationMsAjv":  295,
+    "defectLines":  [
+                        "DEFECT EVT-ST-01 ENABLED: WAITLISTED -\u003e CONFIRMED is rejected with 422"
+                    ]
+}

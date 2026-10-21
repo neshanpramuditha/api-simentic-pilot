@@ -1,0 +1,11 @@
+{
+    "mode":  "clean",
+    "config":  "semval-jdbc",
+    "repeat":  1,
+    "defect":  "",
+    "exitCode":  0,
+    "durationMs":  2393,
+    "defectLines":  [
+
+                    ]
+}

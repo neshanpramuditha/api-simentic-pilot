@@ -1,0 +1,4 @@
+semantic-validator: 19 exchanges, 6 rules, totals {PASS=61, FAIL=3, NOT_APPLICABLE=32}, 60 ms -> <run-root>\evt-ri01\capture-r1\semval-v01-passive.json
+  FAIL EVT-INV-001 #2 transitionRegistration: checkedInAt is set if and only if state is CHECKED_IN � violated: {"$.checkedInAt":null,"$.state":"CHECKED_IN"}
+  FAIL EVT-INV-001 #3 fetchRegistration: checkedInAt is set if and only if state is CHECKED_IN � violated: {"$.checkedInAt":null,"$.state":"CHECKED_IN"}
+  FAIL EVT-INV-001 #5 fetchRegistration: checkedInAt is set if and only if state is CHECKED_IN � violated: {"$.checkedInAt":null,"$.state":"CHECKED_IN"}

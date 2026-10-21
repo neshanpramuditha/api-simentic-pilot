@@ -1,0 +1,110 @@
+{
+  "run": {
+    "mode": "evt-db02",
+    "type": "postman",
+    "repeat": 2,
+    "defectSwitchOk": true
+  },
+  "traffic": {
+    "harEntries": 29,
+    "readBacks": 10,
+    "scenarioRequests": 19,
+    "problems": []
+  },
+  "oracle": {
+    "transitions": {
+      "REQUESTED": [
+        "CONFIRMED",
+        "WAITLISTED",
+        "CANCELLED"
+      ],
+      "WAITLISTED": [
+        "CONFIRMED",
+        "CANCELLED"
+      ],
+      "CONFIRMED": [
+        "CHECKED_IN",
+        "CANCELLED"
+      ],
+      "CHECKED_IN": [],
+      "CANCELLED": []
+    },
+    "violations": [
+      {
+        "key": "EVT-DB-001@9",
+        "rule": "EVT-DB-001",
+        "step": 9,
+        "item": null,
+        "kind": "db-success",
+        "detail": "response state CANCELLED but stored CONFIRMED (traffic entry 15)"
+      }
+    ],
+    "causeSteps": [
+      9
+    ],
+    "deviations": [
+      {
+        "step": 10,
+        "detail": "state CONFIRMED != CANCELLED"
+      },
+      {
+        "step": 15,
+        "detail": "list CHECKED_IN,CONFIRMED,WAITLISTED != CHECKED_IN,CANCELLED,WAITLISTED"
+      }
+    ],
+    "affectedSteps": [
+      9,
+      10,
+      15
+    ],
+    "hiddenStateChanges": [
+      {
+        "id": "REG-KR4HNPFD",
+        "claimed": {
+          "state": "CANCELLED",
+          "confirmedAt": true,
+          "checkedInAt": false,
+          "cancelledAt": true,
+          "cancellationReason": "Schedule conflict"
+        },
+        "stored": {
+          "state": "CONFIRMED",
+          "confirmedAt": true,
+          "checkedInAt": false,
+          "cancelledAt": false,
+          "cancellationReason": null
+        }
+      }
+    ],
+    "dbRowsCheckedInWithoutTime": 0,
+    "dbRowsOutOfOrder": 0,
+    "exercised": true,
+    "anyDefectSignature": true
+  },
+  "tools": {
+    "postman": {
+      "assertions": 136,
+      "failedAssertions": 3,
+      "parsedFailures": 3,
+      "failsByTag": {
+        "READBACK": 1,
+        "STEP": 2
+      },
+      "fails": [
+        "READBACK@9",
+        "STEP@10",
+        "STEP@15"
+      ],
+      "failSteps": [
+        9,
+        10,
+        15
+      ],
+      "falsePositiveSteps": [],
+      "detectedAtCause": true,
+      "invariantKeysMatchOracle": true,
+      "exitCode": 1,
+      "durationMs": 5920
+    }
+  }
+}

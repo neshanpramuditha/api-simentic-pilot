@@ -1,0 +1,203 @@
+{
+  "run": {
+    "mode": "lib-db01",
+    "config": "semval-jdbc",
+    "repeat": 1,
+    "exitCode": 1,
+    "durationMs": 3039,
+    "defectLines": [
+      "DEFECT LIB-DB-01 ENABLED: PATCH /api/loans/{id}/status saves rejected (409) status changes"
+    ]
+  },
+  "traffic": {
+    "harEntries": 24,
+    "readBacks": 9,
+    "scenarioRequests": 15,
+    "problems": []
+  },
+  "oracle": {
+    "transitions": {
+      "REQUESTED": [
+        "APPROVED",
+        "REJECTED"
+      ],
+      "APPROVED": [
+        "ISSUED"
+      ],
+      "ISSUED": [
+        "RETURNED"
+      ],
+      "REJECTED": [],
+      "RETURNED": []
+    },
+    "violations": [
+      {
+        "key": "LIB-INV-001@5",
+        "ruleId": "LIB-INV-001",
+        "step": 5,
+        "item": null,
+        "kind": "invariant",
+        "detail": "status=ISSUED returnedAt=2026-10-19T06:17:19.008062Z"
+      },
+      {
+        "key": "LIB-INV-001@12#0",
+        "ruleId": "LIB-INV-001",
+        "step": 12,
+        "item": 0,
+        "kind": "invariant",
+        "detail": "status=ISSUED returnedAt=2026-10-19T06:17:19.008062Z"
+      },
+      {
+        "key": "LIB-DB-001@4",
+        "ruleId": "LIB-DB-001",
+        "step": 4,
+        "item": null,
+        "kind": "db",
+        "detail": "HTTP 409 but loan changed {\"status\":\"RETURNED\",\"issuedAt\":true,\"returnedAt\":true} -> {\"status\":\"ISSUED\",\"issuedAt\":true,\"returnedAt\":true} (observed in traffic entry 9)"
+      },
+      {
+        "key": "LIB-DB-001@7",
+        "ruleId": "LIB-DB-001",
+        "step": 7,
+        "item": null,
+        "kind": "db",
+        "detail": "HTTP 409 but loan changed {\"status\":\"REQUESTED\",\"issuedAt\":false,\"returnedAt\":false} -> {\"status\":\"ISSUED\",\"issuedAt\":true,\"returnedAt\":false} (observed in traffic entry 13)"
+      },
+      {
+        "key": "LIB-DB-001@11",
+        "ruleId": "LIB-DB-001",
+        "step": 11,
+        "item": null,
+        "kind": "db",
+        "detail": "HTTP 409 but loan changed {\"status\":\"REJECTED\",\"issuedAt\":false,\"returnedAt\":false} -> {\"status\":\"APPROVED\",\"issuedAt\":false,\"returnedAt\":false} (observed in traffic entry 19)"
+      }
+    ],
+    "causeSteps": [
+      4,
+      7,
+      11
+    ],
+    "hiddenStateChanges": [
+      {
+        "id": "c1dd7ca2-2e29-4770-9a98-94f5effb7903",
+        "claimed": {
+          "status": "RETURNED",
+          "issuedAt": true,
+          "returnedAt": true
+        },
+        "persisted": {
+          "status": "ISSUED",
+          "issuedAt": true,
+          "returnedAt": true
+        }
+      },
+      {
+        "id": "a4f4db7d-837b-47bc-9e1c-af901d330807",
+        "claimed": {
+          "status": "REQUESTED",
+          "issuedAt": false,
+          "returnedAt": false
+        },
+        "persisted": {
+          "status": "ISSUED",
+          "issuedAt": true,
+          "returnedAt": false
+        }
+      },
+      {
+        "id": "33ffa6b4-c1ed-41d9-a780-5b6599645e53",
+        "claimed": {
+          "status": "REJECTED",
+          "issuedAt": false,
+          "returnedAt": false
+        },
+        "persisted": {
+          "status": "APPROVED",
+          "issuedAt": false,
+          "returnedAt": false
+        }
+      }
+    ],
+    "dbInvariantViolations": [
+      {
+        "id": "c1dd7ca2-2e29-4770-9a98-94f5effb7903",
+        "status": "ISSUED",
+        "issuedAt": true,
+        "returnedAt": true
+      }
+    ],
+    "exercised": true,
+    "anyDefectSignature": true
+  },
+  "validator": {
+    "totals": {
+      "PASS": 34,
+      "FAIL": 5,
+      "NOT_APPLICABLE": 13
+    },
+    "byRule": {
+      "LIB-INV-001": {
+        "PASS": 10,
+        "FAIL": 2,
+        "NOT_APPLICABLE": 5
+      },
+      "LIB-INV-002": {
+        "PASS": 12,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 5
+      },
+      "LIB-ST-001": {
+        "PASS": 7,
+        "FAIL": 0,
+        "NOT_APPLICABLE": 2
+      },
+      "LIB-DB-001": {
+        "PASS": 5,
+        "FAIL": 3,
+        "NOT_APPLICABLE": 1
+      }
+    },
+    "failKeys": [
+      "LIB-DB-001@4",
+      "LIB-INV-001@5",
+      "LIB-DB-001@7",
+      "LIB-DB-001@11",
+      "LIB-INV-001@12#0"
+    ]
+  },
+  "comparison": {
+    "tp": [
+      "LIB-DB-001@4",
+      "LIB-INV-001@5",
+      "LIB-DB-001@7",
+      "LIB-DB-001@11",
+      "LIB-INV-001@12#0"
+    ],
+    "fp": [],
+    "fn": [],
+    "detectedAtCause": true,
+    "failSteps": [
+      4,
+      5,
+      7,
+      11,
+      12
+    ]
+  },
+  "evidence": {
+    "problems": [],
+    "failsWithFullEvidence": 5,
+    "fails": 5
+  },
+  "database": {
+    "outcomes": {
+      "PASS: persisted state matches the response": 4,
+      "FAIL: request was rejected with HTTP n but the row changed: before {\"status\":\"RETURNED\",\"issued_at\":\"2026-10-19T06:17:18.978406Z\",\"returned_at\":\"2026-10-19T06:17:19.008062Z\"}, after {\"status\":\"ISSUED\",\"issued_at\":\"2026-10-19T06:17:19.048093Z\",\"returned_at\":\"2026-10-19T06:17:19.008062Z\"}": 1,
+      "FAIL: request was rejected with HTTP n but the row changed: before {\"status\":\"REQUESTED\",\"issued_at\":null,\"returned_at\":null}, after {\"status\":\"ISSUED\",\"issued_at\":\"2026-10-19T06:17:19.139594Z\",\"returned_at\":null}": 1,
+      "FAIL: request was rejected with HTTP n but the row changed: before {\"status\":\"REJECTED\",\"issued_at\":null,\"returned_at\":null}, after {\"status\":\"APPROVED\",\"issued_at\":null,\"returned_at\":null}": 1,
+      "NOT_APPLICABLE: no row before the request": 1,
+      "PASS: row unchanged after HTTP n": 1
+    },
+    "correctlyScoped": true
+  }
+}
